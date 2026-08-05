@@ -30,21 +30,6 @@
 
 <div align="center">
 
-<h1><a id="screenshots"></a>Screenshots</h1>
-
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_1.png" alt="Home screen" width="30%" />
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_2.png" alt="Artist screen" width="30%" />
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_3.png" alt="Recognize music screen" width="30%" />
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_4.png" alt="Listen together screen" width="30%" />
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_5.png" alt="Player screen" width="30%" />
-<img src="https://github.com/MuzikGroup/Muzik/blob/main/fastlane/metadata/android/en-US/images/screenshots/screenshot_6.png" alt="Player lyrics screen" width="30%" />
-
-</div>
-
----
-
-<div align="center">
-
 <h1><a id="features"></a>Features</h1>
 
 <table>
