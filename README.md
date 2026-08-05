@@ -106,49 +106,12 @@
 
 <table>
   <tr>
-    <th align="center">Obtainium</th>
-    <th align="center">IzzyOnDroid</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/MuzikGroup/Muzik/">
-        <img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png" alt="Download from Obtainium" height="40">
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://apt.izzysoft.de/fdroid/index/apk/com.muzikgroup.music">
-        <img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Download from IzzyOnDroid" height="60">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th align="center">OpenAPK</th>
     <th align="center">GitHub</th>
   </tr>
   <tr>
-    <td align="center">
-      <a href="https://www.openapk.net/muzik/com.muzikgroup.music/">
-        <img src="https://www.openapk.net/images/openapk-badge.png" alt="Download from OpenAPK" height="60">
-      </a>
-    </td>
     <td align="center">
       <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
         <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="60">
-      </a>
-    </td>
-  </tr>
-</table>
-
-<h2>Nightly Build</h2>
-
-<table>
-  <tr>
-    <th align="center">GitHub</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://nightly.link/MuzikGroup/Muzik/workflows/build/main/app-with-Google-Cast.zip">
-        <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="75">
       </a>
     </td>
   </tr>
@@ -162,7 +125,7 @@
 
 <h1><a id="faq"></a>FAQ</h1>
 
-<h3>Got questions? Check out our <a href="https://muzik.cc/#faq">FAQ page</a> for answers to the most common ones.</h3>
+<h3>Got questions? Check out our <a href="https://github.com/MuzikGroup/Muzik#faq">FAQ page</a> for answers to the most common ones.</h3>
 
 </div>
 
@@ -174,7 +137,7 @@
 
 [![Translation status](https://img.shields.io/weblate/progress/muzik?style=for-the-badge&labelColor=0d1117)](https://hosted.weblate.org/engage/muzik/)
 
-<h3>We use Weblate to translate Muzik. <a href="https://hosted.weblate.org/projects/Muzik/">Help us bring Muzik to more people!</a></h3>
+<h3>We use Weblate to translate Muzik. <a href="https://hosted.weblate.org/projects/Muzik/">Remember to share Muzik to friends. It's completely free!</a></h3>
 
 <a href="https://hosted.weblate.org/projects/Muzik/">
   <img src="https://hosted.weblate.org/widget/Muzik/horizontal-auto.svg" alt="Translation status" />
@@ -190,7 +153,7 @@
 
 <h1><a id="support-the-project"></a>Support the Project</h1>
 
-<h3>Muzik is free and open-source. If it brings you joy, consider supporting its development!</h3>
+<h3>Muzik is free to listen and share with friends. Please consider supporting its development! Do not forget to follow the lead developer and give us a star. This goes a long way in motivating us to improve our app and other projects. Click below to donate!</h3>
 
 #### Ko-fi
 
@@ -207,27 +170,6 @@
 <h1>Special Thanks</h1>
 
 <h3>Muzik stands on the shoulders of incredible open-source work.</h3>
-
-<h3>Main Inspirations</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th align="center">Project</th>
-      <th align="center">Authors</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><strong>InnerTune</strong></td>
-      <td align="center"><a href="https://github.com/z-huang">Zion Huang</a> · <a href="https://github.com/Malopieds">Malopieds</a></td>
-    </tr>
-    <tr>
-      <td align="center"><strong>OuterTune</strong></td>
-      <td align="center"><a href="https://github.com/DD3Boh">Davide Garberi</a> · <a href="https://github.com/mikooomich">Michael Zh</a></td>
-    </tr>
-  </tbody>
-</table>
 
 <h3>Libraries & Integrations</h3>
 
@@ -298,6 +240,6 @@ All trademarks, service marks, and intellectual property rights referenced in th
 
 **Made with ❤️ by [Ignatius](https://github.com/Motius)**
 
-**This project stands with Palestine 🇵🇸**
+**Proudly made by Kenyan Developers**
 
 </div>
