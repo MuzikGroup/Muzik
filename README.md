@@ -19,7 +19,7 @@
 
 <br/>
 
-[**Download**](#download-now) · [**Features**](#features) · [**Translate**](#translations) · [**FAQ**](#faq) · [**Support**](#support-the-project)
+[**Download**](#download-now) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Translate**](#translations) · [**FAQ**](#faq) · [**Support**](#support-the-project)
 
 </div>
 
@@ -94,6 +94,19 @@
   </tr>
 </table>
 
+<br/>
+
+<h2><a id="screenshots"></a>Screenshots</h2>
+
+<p>
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" alt="Home" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2-library.png" alt="Library" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3-listentogether.png" alt="Listen Together" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4-account.png" alt="Account" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5-search.png" alt="Search" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6-player.png" alt="Player" width="150">
+</p>
+
 </div>
 
 ---
@@ -110,7 +123,7 @@
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-v1.0.0.apk">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
         <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="60">
       </a>
     </td>

@@ -123,6 +123,16 @@ import com.muzikgroup.music.ui.theme.PlayerColorExtractor
 import com.muzikgroup.music.ui.component.LocalMenuState
 import com.muzikgroup.music.ui.menu.AddToPlaylistDialog
 
+private val SpotifyGreenRing =
+    Brush.verticalGradient(
+        colors =
+            listOf(
+                Color(0xFF1ED760),
+                Color(0xFF1DB954),
+                Color(0xFF0B7A3D),
+            ),
+    )
+
 /**
  * Stable wrapper for progress state - reads values only during draw phase
  * This prevents recomposition when position/duration change
@@ -379,7 +389,7 @@ private fun NewMiniPlayer(
                     .offset { IntOffset(offsetXAnimatable.value.roundToInt(), 0) }
                     .clip(RoundedCornerShape(32.dp))
                     .background(color = backgroundColor)
-                    .border(1.dp, outlineColor.copy(alpha = 0.3f), RoundedCornerShape(32.dp))
+                    .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(32.dp))
                     .clickable(
                         interactionSource = interactionSource,
                         indication = LocalIndication.current,

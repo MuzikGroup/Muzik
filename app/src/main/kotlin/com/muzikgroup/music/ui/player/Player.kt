@@ -1601,13 +1601,14 @@ fun BottomSheetPlayer(
                                 interactionSource = backInteractionSource,
                                 colors =
                                     IconButtonDefaults.filledIconButtonColors(
-                                        containerColor = sideButtonContainerColor,
+                                        containerColor = Color.Transparent,
                                         contentColor = sideButtonContentColor,
                                     ),
                                 modifier =
                                     Modifier
                                         .height(68.dp)
                                         .weight(backButtonWeight)
+                                        .background(sideButtonContainerColor, RoundedCornerShape(50))
                                         .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Icon(
@@ -1642,7 +1643,7 @@ fun BottomSheetPlayer(
                                 interactionSource = playPauseInteractionSource,
                                 colors =
                                     IconButtonDefaults.filledIconButtonColors(
-                                        containerColor = textButtonColor,
+                                        containerColor = Color.Transparent,
                                         contentColor = iconButtonColor,
                                     ),
                                 modifier =
@@ -1650,6 +1651,7 @@ fun BottomSheetPlayer(
                                         .height(68.dp)
                                         .weight(playPauseWeight)
                                         .focusRequester(focusRequester)
+                                        .background(textButtonColor, RoundedCornerShape(50))
                                         .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Row(
@@ -1695,13 +1697,14 @@ fun BottomSheetPlayer(
                                 interactionSource = nextInteractionSource,
                                 colors =
                                     IconButtonDefaults.filledIconButtonColors(
-                                        containerColor = sideButtonContainerColor,
+                                        containerColor = Color.Transparent,
                                         contentColor = sideButtonContentColor,
                                     ),
                                 modifier =
                                     Modifier
                                         .height(68.dp)
                                         .weight(nextButtonWeight)
+                                        .background(sideButtonContainerColor, RoundedCornerShape(50))
                                         .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Icon(
@@ -1764,9 +1767,9 @@ fun BottomSheetPlayer(
                                 modifier =
                                     Modifier
                                         .size(72.dp)
-                                        .clip(RoundedCornerShape(playPauseRoundness))
-                                        .background(textButtonColor)
+                                        .background(textButtonColor, RoundedCornerShape(playPauseRoundness))
                                         .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(playPauseRoundness))
+                                        .clip(RoundedCornerShape(playPauseRoundness))
                                         .clickable {
                                             if (isListenTogetherGuest) {
                                                 playerConnection.toggleMute()
