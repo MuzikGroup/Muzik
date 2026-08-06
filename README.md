@@ -110,12 +110,14 @@
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-v1.0.0.apk">
         <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="60">
       </a>
     </td>
   </tr>
 </table>
+
+<p align="center"><b>F-Droid:</b> coming soon (build recipe in <code>.fdroid/fdroid.yml</code>)</p>
 
 </div>
 

@@ -1,0 +1,7 @@
+First release of Muzik — a Material 3 YouTube Music client for Android.
+
+- Play any song or video from YT Music
+- Background playback
+- Downloads and offline caching
+- Lyrics, sleep timer, tempo/pitch controls
+- Light/Dark/Black/Dynamic themes

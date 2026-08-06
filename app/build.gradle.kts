@@ -29,6 +29,8 @@ val debugKeyPassword = System.getenv("MUZIK_DEBUG_KEY_PASSWORD")?.takeIf { it.is
 val persistentDebugKeystoreFile = file("persistent-debug.keystore")
 val workflowDebugKeystoreFile = debugKeystorePathOverride?.let(::file)
 val architectureOverride = System.getenv("MUZIK_ARCHITECTURE")?.takeIf { it.isNotBlank() }
+val releaseSigningAvailable =
+    listOf("STORE_PASSWORD", "KEY_ALIAS", "KEY_PASSWORD").all { !System.getenv(it).isNullOrBlank() }
 
 plugins {
     id("com.android.application")
@@ -185,7 +187,7 @@ android {
             isShrinkResources = true
             isCrunchPngs = false
             isDebuggable = false
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (releaseSigningAvailable) signingConfigs.getByName("release") else null
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
