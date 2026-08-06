@@ -1025,12 +1025,6 @@ class MainActivity : ComponentActivity() {
                                                     )
                                                 }
                                             }
-                                            IconButton(onClick = { navController.navigate("stats") }) {
-                                                Icon(
-                                                    painter = painterResource(R.drawable.stats),
-                                                    contentDescription = stringResource(R.string.stats),
-                                                )
-                                            }
                                             IconButton(onClick = { navController.navigate(Screens.Search.route) }) {
                                                 Icon(
                                                     painter = painterResource(R.drawable.search),

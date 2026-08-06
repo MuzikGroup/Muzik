@@ -55,6 +55,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ContainedLoadingIndicator
@@ -197,6 +199,15 @@ import com.muzikgroup.music.constants.SleepTimerDefaultKey
 import com.muzikgroup.music.constants.SleepTimerFadeOutKey
 import com.muzikgroup.music.constants.SleepTimerStopAfterCurrentSongKey
 
+private val SpotifyGreenRing =
+    Brush.verticalGradient(
+        colors =
+            listOf(
+                Color(0xFF1ED760),
+                Color(0xFF1DB954),
+                Color(0xFF0B7A3D),
+            ),
+    )
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -1596,7 +1607,8 @@ fun BottomSheetPlayer(
                                 modifier =
                                     Modifier
                                         .height(68.dp)
-                                        .weight(backButtonWeight),
+                                        .weight(backButtonWeight)
+                                        .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.skip_previous),
@@ -1637,7 +1649,8 @@ fun BottomSheetPlayer(
                                     Modifier
                                         .height(68.dp)
                                         .weight(playPauseWeight)
-                                        .focusRequester(focusRequester),
+                                        .focusRequester(focusRequester)
+                                        .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -1688,7 +1701,8 @@ fun BottomSheetPlayer(
                                 modifier =
                                     Modifier
                                         .height(68.dp)
-                                        .weight(nextButtonWeight),
+                                        .weight(nextButtonWeight)
+                                        .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(50)),
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.skip_next),
@@ -1738,7 +1752,8 @@ fun BottomSheetPlayer(
                                         Modifier
                                             .size(32.dp)
                                             .align(Alignment.Center)
-                                            .alpha(if (isListenTogetherGuest) 0.5f else 1f),
+                                            .alpha(if (isListenTogetherGuest) 0.5f else 1f)
+                                            .border(1.5.dp, SpotifyGreenRing, CircleShape),
                                     onClick = playerConnection::seekToPrevious,
                                 )
                             }
@@ -1751,6 +1766,7 @@ fun BottomSheetPlayer(
                                         .size(72.dp)
                                         .clip(RoundedCornerShape(playPauseRoundness))
                                         .background(textButtonColor)
+                                        .border(1.5.dp, SpotifyGreenRing, RoundedCornerShape(playPauseRoundness))
                                         .clickable {
                                             if (isListenTogetherGuest) {
                                                 playerConnection.toggleMute()
@@ -1806,7 +1822,8 @@ fun BottomSheetPlayer(
                                         Modifier
                                             .size(32.dp)
                                             .align(Alignment.Center)
-                                            .alpha(if (isListenTogetherGuest) 0.5f else 1f),
+                                            .alpha(if (isListenTogetherGuest) 0.5f else 1f)
+                                            .border(1.5.dp, SpotifyGreenRing, CircleShape),
                                     onClick = playerConnection::seekToNext,
                                 )
                             }
