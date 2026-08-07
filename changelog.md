@@ -1,5 +1,15 @@
 # Changelog
 
+---v1.0.2
+
+## What's New
+
+- Updated app screenshots in the repository README and Play Store listing
+
+## Improvements
+
+- Screenshot filenames now match their content (Home, Library, Listen Together, Search, Player)
+
 ---v1.0.1
 
 ## What's New
