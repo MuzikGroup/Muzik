@@ -100,9 +100,9 @@
 
 <p>
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" alt="Home" width="150">
-  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2-library.png" alt="Library" width="150">
-  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3-listentogether.png" alt="Listen Together" width="150">
-  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4-account.png" alt="Account" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2-home.png" alt="Home" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3-library.png" alt="Library" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4-listentogether.png" alt="Listen Together" width="150">
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5-search.png" alt="Search" width="150">
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6-player.png" alt="Player" width="150">
 </p>
