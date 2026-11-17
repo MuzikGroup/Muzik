@@ -60,32 +60,14 @@ jobs:
       - name: Build portable jar
         run: ./gradlew packageUberJarForCurrentOS --no-daemon
 
-      - name: Run playback smoke (search -> extract -> decode)
+      - name: Run playback smoke
         run: |
           JAR=$(ls app/build/compose/jars/Muzik-*.jar | head -1)
-          set +e
-          PASS=0
-          for attempt in 1 2 3; do
-            echo "::group::smoke attempt $attempt"
-            OUT=$(timeout 600 java -Djava.awt.headless=true -Xmx1024m -cp "$JAR" com.muzik.desktop.smoke.SmokeKt 2>&1)
-            echo "$OUT" | tail -40
-            echo "::endgroup::"
-            if echo "$OUT" | grep -q "SMOKE_OK"; then
-              PASS=1
-              break
-            fi
-            if echo "$OUT" | grep -qiE "Sign in to confirm|bot-gat|LOGIN_REQUIRED|HTTP 302|search returned no songs"; then
-              echo "::warning::YouTube is gating this runner (attempt $attempt). Retrying in 60s."
-              sleep 60
-              continue
-            fi
-            # Any other failure is a real playback-stack bug: fail the run.
-            echo "::error::Playback smoke failed with a non-gating error."
-            exit 1
-          done
-          if [ "$PASS" -ne 1 ]; then
-            echo "::warning::Smoke could not complete: YouTube gates this runner's datacenter IP. The playback stack itself (extraction library, FFmpeg decode) is exercised by the decode-only checks and compiles clean."
-          fi
+          # SMOKE_OK        = full network + offline verification
+          # SMOKE_PARTIAL   = YouTube gated the runner IP; offline player stack verified
+          # non-zero exit   = real playback-stack bug, fails the release
+          java -Djava.awt.headless=true -Xmx1024m -cp "$JAR" com.muzik.desktop.smoke.ParserTestKt
+          timeout 600 java -Djava.awt.headless=true -Xmx1024m -cp "$JAR" com.muzik.desktop.smoke.SmokeKt
 
   build:
     needs: [check-version, smoke]
