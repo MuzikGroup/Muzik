@@ -15,6 +15,14 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         google()
+        // InnerTubeX and QuackJS publish through JitPack.
+        maven("https://jitpack.io") {
+            content {
+                includeGroup("com.github.MetrolistGroup")
+                includeGroup("com.github.MetrolistGroup.innertubex")
+                includeGroup("com.github.MetrolistGroup.quackjs")
+            }
+        }
     }
 }
 

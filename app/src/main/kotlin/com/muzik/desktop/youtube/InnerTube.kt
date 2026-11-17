@@ -1,10 +1,11 @@
 package com.muzik.desktop.youtube
 
+import com.metrolist.innertubex.InnerTube as InnerTubeClient
+import com.metrolist.innertubex.models.YouTubeClient
 import io.ktor.client.HttpClient
-import io.ktor.client.request.get
+import io.ktor.client.engine.cio.CIO
+import io.ktor.serialization.kotlinx.json.json
 import io.ktor.client.request.headers
-import io.ktor.client.request.post
-import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.sync.Mutex
@@ -15,146 +16,50 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 
 /**
- * Compact InnerTube client for YouTube Music.
+ * YouTube Music browsing facade backed by InnerTubeX — the same battle-tested
+ * client library Metrolist uses. Search, suggestions, album/artist pages and
+ * radio queues all ride on the library's WEB_REMIX transport, which keeps
+ * visitor identity, client versions and locale handling current without
+ * hand-rolled profile guesswork.
  *
- * Browsing (search, suggestions, album/artist pages, radio) uses the WEB_REMIX
- * music client, which is accepted tokenless. Playback stream resolution lives
- * in [StreamResolver], which follows the multi-profile, tokenless-first
- * approach measured by the NewPipeExtractor community (GPL-3.0) — see that
- * project for the full-blown implementation with SABR and attestation support.
+ * Playback stream resolution lives in [Extraction], built on the library's
+ * StreamExtractor (multi-client fallback, SABR, signature ciphers).
  */
 object InnerTube {
 
-    private val http = HttpClient(io.ktor.client.engine.cio.CIO) {
+    val http: HttpClient = HttpClient(CIO) {
         expectSuccess = false
-    }
-
-    private const val MUSIC = "https://music.youtube.com"
-
-    private const val BROWSER_UA =
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-            "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-
-    private val webRemix = buildJsonObject {
-        put("clientName", "WEB_REMIX")
-        put("clientVersion", "1.20250310.01.00")
-        put("hl", "en")
-        put("gl", "US")
-    }
-
-    // ---------------------------------------------------------------- visitor
-
-    @Volatile
-    private var cachedVisitorData: String? = null
-    private var visitorFetchedAt: Long = 0
-    private val visitorMutex = Mutex()
-
-    /**
-     * YouTube's watch-config visitor identity. Required for the tokenless
-     * VISIONOS playback profile; harmless everywhere else.
-     */
-    suspend fun visitorData(): String? = visitorMutex.withLock {
-        val now = System.currentTimeMillis()
-        if (cachedVisitorData != null && now - visitorFetchedAt < 30 * 60 * 1000L) {
-            return cachedVisitorData
+        install(io.ktor.client.plugins.contentnegotiation.ContentNegotiation) {
+            json(
+                kotlinx.serialization.json.Json {
+                    ignoreUnknownKeys = true
+                    explicitNulls = false
+                },
+            )
         }
-        try {
-            val html = http.get(MUSIC) {
-                headers { append(HttpHeaders.UserAgent, BROWSER_UA) }
-            }.bodyAsText()
-            val m = Regex("\"VISITOR_DATA\":\"((?:[^\"\\\\]|\\\\.)*)\"").find(html)
-            val raw = m?.groupValues?.get(1)
-            cachedVisitorData = raw?.let(::jsonUnescape)
-            visitorFetchedAt = now
-        } catch (_: Exception) {
-            // Keep previous value on transient failure.
+        install(io.ktor.client.plugins.compression.ContentEncoding) {
+            gzip(0.9f)
+            deflate(0.8f)
         }
-        if (cachedVisitorData == null) {
-            // The music host may serve a consent page without the watch config;
-            // the main host always embeds a visitor id in its bootstrap HTML.
-            try {
-                val html = http.get("https://www.youtube.com") {
-                    headers { append(HttpHeaders.UserAgent, BROWSER_UA) }
-                }.bodyAsText()
-                val m = Regex("\"visitorData\":\"((?:[^\"\\\\]|\\\\.)*)\"").find(html)
-                    ?: Regex("\"VISITOR_DATA\":\"((?:[^\"\\\\]|\\\\.)*)\"").find(html)
-                val raw = m?.groupValues?.get(1)
-                cachedVisitorData = raw?.let(::jsonUnescape)
-                visitorFetchedAt = System.currentTimeMillis()
-            } catch (_: Exception) {
-            }
+        install(io.ktor.client.plugins.HttpTimeout) {
+            requestTimeoutMillis = 30_000
+            connectTimeoutMillis = 15_000
+            socketTimeoutMillis = 30_000
         }
-        cachedVisitorData
     }
 
-    /** Drops the cached visitor identity so the next call re-fetches a fresh one. */
-    fun invalidateVisitor() {
-        cachedVisitorData = null
-        visitorFetchedAt = 0
-    }
-
-    private fun jsonUnescape(s: String): String {
-        val sb = StringBuilder(s.length)
-        var i = 0
-        while (i < s.length) {
-            val c = s[i]
-            if (c == '\\' && i + 1 < s.length) {
-                when (val n = s[i + 1]) {
-                    'n' -> sb.append('\n')
-                    't' -> sb.append('\t')
-                    'r' -> sb.append('\r')
-                    '"' -> sb.append('"')
-                    '\\' -> sb.append('\\')
-                    'u' -> {
-                        val hex = s.substring(i + 2, (i + 6).coerceAtMost(s.length))
-                        hex.toIntOrNull(16)?.let { sb.append(it.toChar()) }
-                        i += 4
-                    }
-                    else -> sb.append(n)
-                }
-                i += 2
-            } else {
-                sb.append(c)
-                i++
-            }
-        }
-        return sb.toString()
-    }
-
-    // ------------------------------------------------------------------ http
-
-    private suspend fun post(endpoint: String, body: JsonObject, extra: Map<String, String> = emptyMap()): JsonObject {
-        val visitor = visitorData()
-        val payload = buildJsonObject {
-            put("context", buildJsonObject { put("client", webRemix) })
-            body.forEach { (k, v) -> put(k, v) }
-        }
-        val text = http.post("$MUSIC/youtubei/v1/$endpoint?prettyPrint=false") {
-            headers {
-                append(HttpHeaders.UserAgent, BROWSER_UA)
-                append(HttpHeaders.Origin, MUSIC)
-                append(HttpHeaders.Referrer, "$MUSIC/")
-                append("X-YouTube-Client-Name", "67")
-                append("X-YouTube-Client-Version", str(webRemix, "clientVersion") ?: "")
-                visitor?.let { append("X-Goog-Visitor-Id", it) }
-                extra.forEach { (k, v) -> append(k, v) }
-            }
-            setBody(payload.toString())
-        }.bodyAsText()
-        return obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" }))
-    }
+    internal val client: InnerTubeClient = InnerTubeClient(http)
 
     // ---------------------------------------------------------------- search
 
     suspend fun search(query: String, filter: SearchFilter, continuation: String? = null): SearchPage {
-        val body = buildJsonObject {
-            if (continuation != null) put("continuation", JsonPrimitive(continuation)) else {
-                put("query", JsonPrimitive(query))
-                put("params", JsonPrimitive(filter.params))
-            }
-        }
-        val root = post("search", body)
-        return parseSearch(root, filter)
+        val text = client.search(
+            client = YouTubeClient.WEB_REMIX,
+            query = query.takeIf { continuation == null },
+            params = filter.params.takeIf { continuation == null },
+            continuation = continuation,
+        ).bodyAsText()
+        return parseSearch(obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" })), filter)
     }
 
     private fun parseSearch(root: JsonObject, filter: SearchFilter): SearchPage {
@@ -183,9 +88,8 @@ object InnerTube {
     }
 
     suspend fun suggestions(input: String): List<String> {
-        val root = post("music/get_search_suggestions", buildJsonObject {
-            put("input", JsonPrimitive(input))
-        })
+        val text = client.getSearchSuggestions(YouTubeClient.WEB_REMIX, input).bodyAsText()
+        val root = obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" }))
         return collect(root, "searchSuggestionRenderer")
             .mapNotNull { runsText(obj(it), "suggestion", "runs").takeIf { t -> t.isNotBlank() } }
     }
@@ -193,7 +97,8 @@ object InnerTube {
     // ----------------------------------------------------------------- album
 
     suspend fun album(browseId: String): AlbumDetail {
-        val root = post("browse", buildJsonObject { put("browseId", JsonPrimitive(browseId)) })
+        val text = client.browse(YouTubeClient.WEB_REMIX, browseId = browseId).bodyAsText()
+        val root = obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" }))
         val header = collect(root, "musicDetailHeaderRenderer").firstOrNull()
             ?: collect(root, "musicResponsiveHeaderRenderer").firstOrNull()
             ?: collect(root, "musicImmersiveHeaderRenderer").firstOrNull()
@@ -232,7 +137,8 @@ object InnerTube {
     // ---------------------------------------------------------------- artist
 
     suspend fun artist(browseId: String): Artist {
-        val root = post("browse", buildJsonObject { put("browseId", JsonPrimitive(browseId)) })
+        val text = client.browse(YouTubeClient.WEB_REMIX, browseId = browseId).bodyAsText()
+        val root = obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" }))
         val header = collect(root, "musicImmersiveHeaderRenderer").firstOrNull()
             ?: collect(root, "musicDetailHeaderRenderer").firstOrNull()
         val name = header?.let { runsText(obj(it), "title", "runs") }.orEmpty().ifBlank { "Artist" }
@@ -258,10 +164,12 @@ object InnerTube {
 
     /** Autoplay "up next" queue seeded by a song. */
     suspend fun radio(videoId: String): List<Song> {
-        val root = post("next", buildJsonObject {
-            put("videoId", JsonPrimitive(videoId))
-            put("playlistId", JsonPrimitive("RDAMVM$videoId"))
-        })
+        val text = client.next(
+            client = YouTubeClient.WEB_REMIX,
+            videoId = videoId,
+            playlistId = "RDAMVM$videoId",
+        ).bodyAsText()
+        val root = obj(innertubeJson.parseToJsonElement(text.ifEmpty { "{}" }))
         // The queue panel has moved between response revisions
         // (twoColumnWatchNextResults.playlist.playlist vs
         // singleColumnMusicWatchNextResultsRenderer...musicQueueRenderer),
@@ -293,7 +201,6 @@ object InnerTube {
         var album: String? = null
         var albumBrowseId: String? = null
         var views: String? = null
-        var detectedVideoType: String? = null
 
         val columns = arrAt(item, "flexColumns")
         for (ci in 1 until columns.size) {
@@ -323,8 +230,7 @@ object InnerTube {
         }
 
         val musicVideoType = str(item, "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint", "watchEndpoint", "watchEndpointMusicSupportedConfigs", "watchEndpointMusicConfig", "musicVideoType")
-        detectedVideoType = musicVideoType
-        val video = isVideo || detectedVideoType?.let { it != "MUSIC_VIDEO_TYPE_ATV" } ?: false
+        val video = isVideo || musicVideoType?.let { it != "MUSIC_VIDEO_TYPE_ATV" } ?: false
 
         val durationText = arrAt(item, "fixedColumns")
             .firstOrNull()
@@ -354,7 +260,6 @@ object InnerTube {
         val title = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs").ifBlank { return null }
         var artist = ""
         var artistBrowseId: String? = null
-        var year: String? = null
         for (ci in 1 until arrAt(item, "flexColumns").size) {
             val col = obj(arrAt(item, "flexColumns")[ci])["musicResponsiveListItemFlexColumnRenderer"] ?: continue
             val run = firstNavigableRun(obj(col), "text", "runs")
@@ -364,7 +269,7 @@ object InnerTube {
                 artistBrowseId = str(run, "browseEndpoint", "browseId")
             }
         }
-        year = arrAt(item, "flexColumns")
+        val year = arrAt(item, "flexColumns")
             .lastOrNull()
             ?.let { runsText(obj(it), "musicResponsiveListItemFlexColumnRenderer", "text", "runs") }
             ?.split("•")
@@ -384,9 +289,6 @@ object InnerTube {
     private fun parseArtistFromListItem(item: JsonObject): Artist? {
         val browseId = str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs"), "browseEndpoint", "browseId") ?: return null
         val name = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs").ifBlank { return null }
-        val subs = arrAt(item, "flexColumns")
-            .getOrNull(1)
-            ?.let { runsText(obj(it), "musicResponsiveListItemFlexColumnRenderer", "text", "runs") }
         return Artist(browseId = browseId, name = name, thumbnail = bestThumb(item, "thumbnail", "musicThumbnailRenderer", "thumbnail", "thumbnails"))
     }
 

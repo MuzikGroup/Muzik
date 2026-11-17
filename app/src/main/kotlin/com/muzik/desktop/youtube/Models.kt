@@ -50,14 +50,6 @@ data class SearchPage(
     val continuation: String? = null,
 )
 
-data class StreamInfo(
-    val url: String,
-    val itag: Int,
-    val bitrate: Int,
-    val mimeType: String,
-    val profileId: String,
-)
-
 enum class SearchFilter(val params: String, val label: String) {
     SONGS("EgWKAQIIAWoKEAkQBRAKEAMQBA%3D%3D", "Songs"),
     VIDEOS("EgWKAQIQAWoKEAkQChAFEAMQBA%3D%3D", "Videos"),

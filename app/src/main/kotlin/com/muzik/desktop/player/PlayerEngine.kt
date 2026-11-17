@@ -1,17 +1,20 @@
 package com.muzik.desktop.player
 
+import com.muzik.desktop.player.ffmpeg.AudioPlayer
+import com.muzik.desktop.player.ffmpeg.HttpRangeInputStream
+import com.muzik.desktop.player.ffmpeg.SabrInputStream
+import com.muzik.desktop.youtube.Extraction
+import com.muzik.desktop.youtube.Extraction.ResolvedStream
 import com.muzik.desktop.youtube.InnerTube
 import com.muzik.desktop.youtube.Song
-import com.muzik.desktop.youtube.StreamInfo
-import com.muzik.desktop.youtube.StreamResolver
-import javafx.application.Platform
-import javafx.scene.media.Media
-import javafx.scene.media.MediaPlayer
-import javafx.util.Duration
+import com.metrolist.innertubex.sabr.SabrAudioStream
+import com.metrolist.innertubex.sabr.SabrBootstrap
+import com.metrolist.innertubex.sabr.SabrChunk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,15 +40,11 @@ data class PlayerState(
 }
 
 /**
- * Queue + playback engine. Audio decoding uses the JavaFX media stack
- * (native AAC/M4A decoder bundled per platform); queue state is exposed to
- * Compose through [state].
- *
- * Threading contract: every [MediaPlayer] access happens on the JavaFX
- * application thread via [Platform.runLater] or JavaFX callbacks. Compose
- * (AWT/EDT) and coroutine threads only ever touch the [state] flow. This is
- * what keeps the seek bar live and the play/pause button reliable — touching
- * the player from any other thread makes JavaFX throw.
+ * Queue + playback engine. Audio is decoded and rendered through the FFmpeg
+ * desktop stack ported from Metrolist (AudioPlayer → AudioDecoder →
+ * AudioRenderer), with streams opened in Metrolist's priority order:
+ * SABR transport → bounded-range HTTP input → direct URL. All FFmpeg work
+ * happens on the engine's worker threads; Compose only ever reads [state].
  */
 class PlayerEngine(
     private val highQualityProvider: suspend () -> Boolean = { false },
@@ -59,30 +58,23 @@ class PlayerEngine(
     private val _volume = MutableStateFlow(1.0f)
     val volume: StateFlow<Float> = _volume.asStateFlow()
 
-    private var fxPlayer: MediaPlayer? = null
     private val generation = java.util.concurrent.atomic.AtomicLong(0)
 
-    companion object {
-        @Volatile
-        private var fxStarted = false
-
-        /** Boots the JavaFX runtime exactly once, off the UI thread. */
-        fun ensureFx() {
-            if (!fxStarted) {
-                synchronized(this) {
-                    if (!fxStarted) {
-                        Platform.setImplicitExit(false)
-                        Platform.startup { }
-                        fxStarted = true
+    private var audio: AudioPlayer =
+        AudioPlayer(
+            onPlaybackCompleted = { _ -> scope.launch { advance(auto = true, forward = true) } },
+            onPlaybackFailed = { _, throwable ->
+                if (generation.get() > 0) {
+                    _state.update {
+                        it.copy(
+                            isLoading = false,
+                            isPlaying = false,
+                            error = "Playback failed: ${throwable.message?.lineSequence()?.firstOrNull() ?: throwable.javaClass.simpleName}",
+                        )
                     }
                 }
-            }
-        }
-    }
-
-    init {
-        ensureFx()
-    }
+            },
+        )
 
     // ---------------------------------------------------------------- control
 
@@ -93,14 +85,18 @@ class PlayerEngine(
     }
 
     fun playPause() {
-        val hasCurrent = _state.value.current != null
-        Platform.runLater {
-            val player = fxPlayer
-            when {
-                player == null -> if (hasCurrent) loadCurrent()
-                player.status == MediaPlayer.Status.PLAYING -> player.pause()
-                else -> player.play()
+        val s = _state.value
+        val player = audio
+        when {
+            player.isPrepared && player.isPlaying() -> {
+                player.pause()
+                _state.update { it.copy(isPlaying = false) }
             }
+            player.isPrepared -> {
+                player.resume()
+                _state.update { it.copy(isPlaying = true, error = null) }
+            }
+            s.current != null -> loadCurrent()
         }
     }
 
@@ -109,30 +105,22 @@ class PlayerEngine(
     fun previous() {
         val s = _state.value
         // A playing track restarts on Previous; otherwise jump back one slot.
-        if (s.positionMs > 3000 || s.durationMs <= 0) {
-            Platform.runLater {
-                fxPlayer?.seek(Duration.ZERO)
-                _state.update { it.copy(positionMs = 0) }
-            }
-            if (s.positionMs > 3000) return
+        if (s.positionMs > 3000) {
+            seekTo(0)
+            return
         }
         advance(auto = false, forward = false)
     }
 
     fun seekTo(ms: Long) {
         _state.update { it.copy(positionMs = ms) }
-        Platform.runLater {
-            try {
-                fxPlayer?.seek(Duration.millis(ms.toDouble()))
-            } catch (_: Exception) {
-            }
-        }
+        audio.seekTo(ms.coerceAtLeast(0))
     }
 
     fun setVolume(volume: Float) {
         val clamped = volume.coerceIn(0f, 1f)
         _volume.value = clamped
-        Platform.runLater { fxPlayer?.volume = clamped.toDouble() }
+        audio.setVolume(clamped)
     }
 
     fun setRepeat(mode: RepeatMode) {
@@ -153,13 +141,7 @@ class PlayerEngine(
 
     fun dispose() {
         scope.cancel()
-        Platform.runLater {
-            try {
-                fxPlayer?.dispose()
-            } catch (_: Exception) {
-            }
-            fxPlayer = null
-        }
+        audio.close()
     }
 
     // ----------------------------------------------------------------- engine
@@ -174,11 +156,9 @@ class PlayerEngine(
             return
         }
         if (auto && s.repeat == RepeatMode.ONE) {
-            Platform.runLater {
-                fxPlayer?.seek(Duration.ZERO)
-                fxPlayer?.play()
-                _state.update { it.copy(positionMs = 0, isPlaying = true) }
-            }
+            audio.seekTo(0)
+            audio.resume()
+            _state.update { it.copy(positionMs = 0, isPlaying = true) }
             return
         }
         if (s.shuffle && s.queue.size > 1) {
@@ -205,14 +185,14 @@ class PlayerEngine(
                         _state.update { it.copy(index = it.index + 1, error = null) }
                         loadCurrent()
                     } else {
-                        Platform.runLater { fxPlayer?.pause() }
+                        audio.pause()
                         _state.update { it.copy(isPlaying = false) }
                     }
                 }
             }
             else -> {
                 if (auto) {
-                    Platform.runLater { fxPlayer?.pause() }
+                    audio.pause()
                     _state.update { it.copy(isPlaying = false) }
                 }
             }
@@ -229,13 +209,12 @@ class PlayerEngine(
         scope.launch {
             try {
                 val high = try { highQualityProvider() } catch (_: Exception) { false }
-                val stream = StreamResolver.resolve(song.videoId, high)
-                Platform.runLater {
-                    if (generation.get() != gen) return@runLater
-                    mount(song, stream)
-                }
+                val stream = Extraction.resolve(song.videoId, high)
+                if (generation.get() != gen) return@launch
+                mount(stream, gen)
             } catch (e: Exception) {
                 if (generation.get() != gen) return@launch
+                if (e is kotlinx.coroutines.CancellationException) throw e
                 _state.update {
                     it.copy(
                         isLoading = false,
@@ -249,62 +228,98 @@ class PlayerEngine(
         scope.launch { onSongStarted(song) }
     }
 
-    /** Called on the JavaFX application thread only. */
-    private fun mount(song: Song, stream: StreamInfo) {
-        try {
-            fxPlayer?.dispose()
-        } catch (_: Exception) {
-        }
-        fxPlayer = null
-        val gen = generation.get()
-        try {
-            val media = Media(stream.url)
-            val player = MediaPlayer(media)
-            player.volume = _volume.value.toDouble()
-
-            // Live position → Compose seek bar. Fires on the FX thread.
-            player.currentTimeProperty().addListener { _, _, cur ->
-                if (generation.get() != gen) return@addListener
-                val ms = cur.toMillis().toLong()
-                _state.update {
-                    // Don't clobber an in-flight user seek.
-                    if (kotlin.math.abs(it.positionMs - ms) > 1200) it.copy(positionMs = ms) else it
-                }
+    /** Opens the resolved stream through the Metrolist priority chain and starts playback. */
+    private fun mount(stream: ResolvedStream, gen: Long) {
+        _state.update { it.copy(isLoading = true) }
+        audio.setNormalizationGain(Extraction.normalizationGain(stream.loudnessDb))
+        val prepared =
+            try {
+                prepare(stream)
+            } catch (e: Exception) {
+                false
             }
-            player.setOnReady {
-                if (generation.get() != gen) return@setOnReady
-                val d = (player.media.duration.toMillis().toLong()).takeIf { it > 0 }
-                _state.update { it.copy(isLoading = false, durationMs = d ?: it.durationMs) }
-                player.play()
-            }
-            player.setOnEndOfMedia {
-                if (generation.get() != gen) return@setOnEndOfMedia
-                advance(auto = true, forward = true)
-            }
-            player.setOnError {
-                if (generation.get() != gen) return@setOnError
-                _state.update {
-                    it.copy(
-                        isLoading = false,
-                        isPlaying = false,
-                        error = "Playback error (profile ${stream.profileId}). Trying the next track may help.",
-                    )
-                }
-            }
-            player.statusProperty().addListener { _, _, st ->
-                if (generation.get() != gen) return@addListener
-                _state.update { it.copy(isPlaying = st == MediaPlayer.Status.PLAYING) }
-            }
-            fxPlayer = player
-            if (player.status == MediaPlayer.Status.READY) player.play()
-            _state.update { it.copy(isLoading = false) }
-        } catch (e: Exception) {
+        if (generation.get() != gen) return
+        if (!prepared) {
             _state.update {
                 it.copy(
                     isLoading = false,
                     isPlaying = false,
-                    error = "Couldn't mount stream: ${e.message ?: e.javaClass.simpleName}",
+                    error = "Couldn't open the audio stream (profile ${stream.profileId}).",
                 )
+            }
+            return
+        }
+        audio.play()
+        _state.update { it.copy(isLoading = false, isPlaying = true) }
+        pollPosition()
+    }
+
+    private fun prepare(stream: ResolvedStream): Boolean {
+        // 1. SABR transport (protobuf-chunked) — used when YouTube issues a SABR bootstrap.
+        stream.sabrBootstrap?.let { bootstrap ->
+            val input =
+                SabrInputStream(
+                    mediaSize = bootstrap.contentLengthBytes ?: stream.contentLengthBytes,
+                    expectedDurationMs = bootstrap.durationMs,
+                    streamFactory = { initialPlayerTimeMs, playbackPositionMs ->
+                        sabrAudioChunks(bootstrap, initialPlayerTimeMs, playbackPositionMs)
+                    },
+                )
+            val max = (bootstrap.contentLengthBytes ?: stream.contentLengthBytes ?: 1L)
+                .coerceIn(1L, Int.MAX_VALUE.toLong() - 8L).toInt()
+            if (audio.prepareStream(input, max, startPaused = false)) return true
+            runCatching { input.close() }
+        }
+        // 2. Bounded-range HTTP input — only when the content length is known.
+        val size = stream.contentLengthBytes
+        if (!stream.requireBoundedRange || size != null) {
+            if (size != null && size > 0L) {
+                val input =
+                    HttpRangeInputStream(
+                        url = stream.url,
+                        requestHeaders = stream.headers,
+                        mediaSize = size,
+                        chunkSize =
+                            stream.rangeChunkSizeBytes.takeIf { it > 0L }
+                                ?.coerceIn(1L, Int.MAX_VALUE.toLong())?.toInt()
+                                ?: DEFAULT_HTTP_RANGE_CHUNK_BYTES,
+                    )
+                val max = size.coerceIn(1L, Int.MAX_VALUE.toLong() - 8L).toInt()
+                if (audio.prepareStream(input, max, startPaused = false)) return true
+                runCatching { input.close() }
+            }
+        }
+        // 3. Direct URL — FFmpeg opens it with the extraction headers itself.
+        return audio.prepareFile(stream.url, stream.headers, startPaused = false)
+    }
+
+    /** Tokenless SABR chunk flow, mirroring Metrolist's playback wrapper. */
+    private fun sabrAudioChunks(
+        bootstrap: SabrBootstrap,
+        initialPlayerTimeMs: Long,
+        playbackPositionMs: () -> Long,
+    ): Flow<SabrChunk> =
+        SabrAudioStream(
+            httpClient = InnerTube.http,
+            bootstrap = bootstrap,
+            playbackPositionMs = playbackPositionMs,
+            initialPlayerTimeMs = initialPlayerTimeMs,
+        ).chunks()
+
+    /** Single position sampler: the AudioPlayer drives its own clock. */
+    private fun pollPosition() {
+        val gen = generation.get()
+        scope.launch {
+            while (generation.get() == gen) {
+                val dur = audio.getDuration()
+                val pos = audio.getCurrentPosition()
+                _state.update {
+                    it.copy(
+                        positionMs = pos,
+                        durationMs = if (dur > 0) dur else it.durationMs,
+                    )
+                }
+                kotlinx.coroutines.delay(200)
             }
         }
     }
@@ -322,5 +337,9 @@ class PlayerEngine(
         } catch (_: Exception) {
             false
         }
+    }
+
+    private companion object {
+        const val DEFAULT_HTTP_RANGE_CHUNK_BYTES = 1_048_576
     }
 }

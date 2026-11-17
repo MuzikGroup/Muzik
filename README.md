@@ -44,19 +44,25 @@ Grab the installer for your system from the [latest release](../../releases/late
 - **System tray** — play/pause/skip from the tray on Windows, macOS and Linux
 - **Auto-updates** — Muzik checks GitHub releases and points you straight at the right installer for your OS
 - **Theme that fits** — dark, light, or follow your system, in the Muzik violet you know from mobile
-- **Audio that just works** — native AAC decoding, ~128 kbps Normal or up to 256 kbps High quality
+- **Audio that just works** — FFmpeg decoding through Java Sound (the Metrolist desktop engine), Normal or High quality
+- **Battle-tested playback stack** — the InnerTubeX extraction engine and FFmpeg player that power Metrolist, with a bundled PO-token sidecar for networks where YouTube tightens its bot checks
 
 ## How it works
 
 Muzik Desktop is a **Kotlin + Compose Multiplatform** app packaged into native installers with
-`jpackage` (bundled runtime — nothing to install). Playback requests use **tokenless YouTube Music
-client profiles** with automatic fallback — the same measured, tokenless-first approach used by
-NewPipeExtractor (GPL-3.0), the engine Muzik's own extractor is built on.
+`jpackage` (bundled runtime — nothing to install). Search, browsing and playback ride on
+[InnerTubeX](https://github.com/MetrolistGroup/innertubex) (GPL-3.0) — the extraction library that
+powers [Metrolist](https://github.com/MetrolistGroup/Metrolist) — including multi-client fallback,
+signature-cipher solving and SABR streaming. Audio is decoded by FFmpeg and rendered through Java
+Sound, ported from Metrolist's desktop player. When YouTube requires PO tokens, Muzik launches the
+bundled [bgutil-ytdlp-pot-provider](https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs)
+sidecar (Apache-2.0) on loopback to mint them — the same resilience Metrolist ships.
+Every release is gated by a headless CI smoke test that searches, extracts and decodes real audio.
 
 > **Honest note on networks:** YouTube gates unauthenticated playback by IP reputation. On home or
 > office Wi-Fi it just works. On VPN or datacenter exits, YouTube may answer *"Sign in to confirm
-> you're not a bot"* — that's YouTube's policy, not a bug, and the app will tell you plainly when it
-> happens.
+> you're not a bot"* — Muzik automatically starts its bundled PO-token sidecar in that case, which
+> restores playback on most networks. If YouTube still refuses, the app tells you plainly.
 
 ## Versioning
 
@@ -101,4 +107,4 @@ Built with care by **Ignatius (Motius)** & **pipo.ai** for [MuzikGroup](https://
 
 ## Disclaimer
 
-Muzik is an unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or any of their subsidiaries. All catalog content is streamed from YouTube Music; please support the artists you love. Licensed under [GPL-3.0](LICENSE). Playback-profile design informed by the NewPipeExtractor project (GPL-3.0).
+Muzik is an unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or any of their subsidiaries. All catalog content is streamed from YouTube Music; please support the artists you love. Licensed under [GPL-3.0](LICENSE). Built on [InnerTubeX](https://github.com/MetrolistGroup/innertubex) and the Metrolist desktop playback stack (GPL-3.0); PO-token sidecar from [bgutil-ytdlp-pot-provider-rs](https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs) (Apache-2.0).
