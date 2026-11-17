@@ -88,6 +88,7 @@ jobs:
         run: |
           VERSION=${{ needs.check-version.outputs.new_version }}
           OUT_DIR="app/build/compose/binaries"
+          DEST=""
           case "${{ matrix.target }}" in
             msi)
               FILE=$(find "$OUT_DIR/main/msi" -name "*.msi" | head -1)
@@ -100,6 +101,20 @@ jobs:
             linux)
               FILE=$(find "$OUT_DIR/main/deb" -name "*.deb" | head -1)
               DEST="muzik-$VERSION-linux-amd64.deb"
+              if [ -n "$FILE" ]; then
+                cp "$FILE" "$DEST"
+                echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+              fi
+              RPM=$(find "$OUT_DIR/main/rpm" -name "*.rpm" | head -1)
+              if [ -n "$RPM" ]; then
+                cp "$RPM" "muzik-$VERSION-linux-x64.rpm"
+                echo "rpm=muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
+              fi
+              if [ -z "$DEST" ] || [ ! -f "$DEST" ]; then
+                echo "No deb found for linux target"
+                exit 1
+              fi
+              exit 0
               ;;
           esac
           if [ -n "$FILE" ]; then
@@ -114,7 +129,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: muzik-${{ matrix.target }}-${{ needs.check-version.outputs.new_version }}
-          path: ${{ steps.rename.outputs.renamed }}
+          path: |
+            ${{ steps.rename.outputs.renamed }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.rpm || '' }}
           if-no-files-found: error
 
       - name: Upload portable JAR (Linux job only)
