@@ -76,6 +76,16 @@
 
 **Minimum requirement:** Android 8.0 (API 26) — covering virtually every Android device in use today.
 
+<h2>Desktop — <a href="https://github.com/MuzikGroup/MuzikDesktop">Muzik for Desktop</a> is here</h2>
+
+Muzik now runs on your computer too. Same violet, same catalog, one suite:
+
+| OS | Get it |
+| --- | :---: |
+| **Windows 10/11** | [MSI installer](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
+| **macOS** (Apple Silicon + Intel) | [DMG](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
+| **Linux** (Deb / RPM / portable JAR) | [Download](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
+
 </div>
 
 ---
