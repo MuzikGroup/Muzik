@@ -27,7 +27,7 @@ Grab the installer for your system from the [latest release](../../releases/late
 | --- | --- | --- |
 | **Windows** | `Muzik-*-windows-x64.msi` | Windows 10 & 11, installs per-user, Start-menu shortcut included |
 | **macOS (Apple Silicon)** | `Muzik-*-macos-arm64.dmg` | M1 / M2 / M3 / M4 Macs |
-| **macOS (Intel)** | `Muzik-*-macos-x64.dmg` | 2018–2020 Intel Macs |
+| **macOS (Intel)** | portable `Muzik-*.jar` | 2018–2020 Intel Macs — run with Java 21+ |
 | **Linux (Debian/Ubuntu)** | `muzik-*-linux-amd64.deb` | Ubuntu, Debian, Mint, Pop!\_OS |
 | **Linux (RPM)** | `muzik-*-linux-*.rpm` in assets | Fedora, openSUSE, RHEL |
 | **Anything else** | portable `Muzik-*.jar` | Any OS with Java 21+ — including Linux ARM64 (Raspberry Pi 5-class hardware) |
@@ -50,8 +50,8 @@ Grab the installer for your system from the [latest release](../../releases/late
 
 Muzik Desktop is a **Kotlin + Compose Multiplatform** app packaged into native installers with
 `jpackage` (bundled runtime — nothing to install). Playback requests use **tokenless YouTube Music
-client profiles** with automatic fallback, following the measured, benchmarked approach documented by
-[MetrolistGroup/innertubex](https://github.com/MetrolistGroup/innertubex) (GPL-3.0).
+client profiles** with automatic fallback — the same measured, tokenless-first approach used by
+NewPipeExtractor (GPL-3.0), the engine Muzik's own extractor is built on.
 
 > **Honest note on networks:** YouTube gates unauthenticated playback by IP reputation. On home or
 > office Wi-Fi it just works. On VPN or datacenter exits, YouTube may answer *"Sign in to confirm
@@ -101,4 +101,4 @@ Built with care by **Ignatius (Motius)** & **pipo.ai** for [MuzikGroup](https://
 
 ## Disclaimer
 
-Muzik is an unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or any of their subsidiaries. All catalog content is streamed from YouTube Music; please support the artists you love. Licensed under [GPL-3.0](LICENSE). Architecture and playback-profile design informed by Metrolist (GPL-3.0).
+Muzik is an unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or any of their subsidiaries. All catalog content is streamed from YouTube Music; please support the artists you love. Licensed under [GPL-3.0](LICENSE). Playback-profile design informed by the NewPipeExtractor project (GPL-3.0).
