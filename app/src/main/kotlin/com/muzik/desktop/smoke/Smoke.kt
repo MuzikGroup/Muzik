@@ -8,7 +8,6 @@ import com.muzik.desktop.youtube.Extraction
 import com.muzik.desktop.youtube.InnerTube
 import com.muzik.desktop.youtube.SearchFilter
 import java.io.File
-import javax.sound.sampled.LineUnavailableException
 
 /**
  * Headless end-to-end smoke test of the desktop playback pipeline.
@@ -156,28 +155,22 @@ private fun AudioPlayer.prepare(stream: Extraction.ResolvedStream): Boolean =
     }
 
 /**
- * Deterministic offline proof: synthesizes an AAC file with the FFmpeg binary
- * shipped on the classpath and decodes it through the exact player decoder.
+ * Deterministic offline proof: decodes a committed AAC test tone through the
+ * exact player decoder (FFmpeg -> PCM), no audio device or network required.
  */
 private fun offlinePhase() {
     val tone = File(System.getProperty("java.io.tmpdir"), "muzik-smoke-tone.m4a")
-    tone.delete()
-    val (program, extraEnv) = bundledFfmpegProgram() ?: error("FFmpeg program binary missing from the classpath")
-    val process =
-        ProcessBuilder(program.absolutePath, "-y", "-f", "lavfi", "-i", "sine=frequency=440:duration=8", "-c:a", "aac", "-b:a", "128k", tone.absolutePath)
-            .apply { extraEnv.forEach { (k, v) -> environment()[k] = v } }
-            .redirectErrorStream(true)
-            .start()
-    val output = process.inputStream.bufferedReader().readText()
-    require(process.waitFor() == 0 && tone.isFile && tone.length() > 10_000) {
-        "could not synthesize the test tone:\n${output.take(600)}"
-    }
+    Thread.currentThread().contextClassLoader.getResourceAsStream("smoke-tone.m4a")?.use { input ->
+        tone.outputStream().use { input.copyTo(it) }
+    } ?: error("smoke-tone.m4a resource missing from the classpath")
+    check(tone.length() > 10_000) { "smoke tone resource is truncated" }
 
     val decoder = AudioDecoder(tone.absolutePath)
     try {
         println("decoded: rate=${decoder.sampleRate} ch=${decoder.audioChannels} durationMs=${decoder.duration}")
         require(decoder.sampleRate > 0) { "no audio track reported" }
         require(decoder.audioChannels > 0) { "no channels reported" }
+        require(decoder.duration > 10_000) { "unreasonable tone duration: ${decoder.duration}ms" }
         var bytes = 0L
         while (bytes < 200_000) {
             val pcm = decoder.readPCMFrame(null) ?: break
@@ -190,58 +183,3 @@ private fun offlinePhase() {
     }
 }
 
-/**
- * Extracts the FFmpeg CLI program plus its shared libraries for this OS/arch
- * out of the bytedeco native jar on the classpath into one temp directory.
- * Returns the program path and the LD_LIBRARY_PATH entry (Linux).
- */
-private fun bundledFfmpegProgram(): Pair<File, Map<String, String>>? {
-    val os = System.getProperty("os.name").lowercase()
-    val arch = System.getProperty("os.arch").lowercase()
-    val dirName =
-        when {
-            os.contains("linux") && (arch.contains("x86_64") || arch.contains("amd64")) -> "linux-x86_64"
-            os.contains("linux") && (arch.contains("aarch64") || arch.contains("arm64")) -> "linux-arm64"
-            os.contains("win") && (arch.contains("x86_64") || arch.contains("amd64")) -> "windows-x86_64"
-            os.contains("mac") || os.contains("darwin") ->
-                if (arch.contains("aarch64") || arch.contains("arm64")) "macosx-arm64" else "macosx-x86_64"
-            else -> return null
-        }
-    val programName = if (os.contains("win")) "ffmpeg.exe" else "ffmpeg"
-    val prefix = "org/bytedeco/ffmpeg/$dirName/"
-
-    // Locate the jar that hosts the bytedeco natives on the classpath.
-    val jars =
-        (System.getProperty("java.class.path") ?: "")
-            .split(File.pathSeparator)
-            .map(::File)
-            .filter { it.isFile }
-    val sourceJar =
-        jars.firstOrNull { jar ->
-            java.util.zip.ZipFile(jar).use { zip -> zip.getEntry("${prefix}javacpp/${programName}.sha256") != null || zip.getEntry(prefix + programName) != null }
-        } ?: return null
-
-    val outDir = File(System.getProperty("java.io.tmpdir"), "muzik-smoke-ffmpeg-$dirName")
-    outDir.mkdirs()
-    java.util.zip.ZipFile(sourceJar).use { zip ->
-        val entries = zip.entries().asSequence().filter { !it.isDirectory && it.name.startsWith(prefix) }
-        for (entry in entries) {
-            val name = entry.name.removePrefix(prefix).substringAfterLast('/')
-            val target = File(outDir, name)
-            if (target.isFile && target.length() == entry.size) continue
-            zip.getInputStream(entry).use { input -> target.outputStream().use { input.copyTo(it) } }
-            if (!name.endsWith(".so") && !name.endsWith(".dylib") && !name.endsWith(".dll")) {
-                target.setExecutable(true)
-            }
-        }
-    }
-    val program = File(outDir, programName)
-    if (!program.isFile) return null
-    val env = if (os.contains("linux")) mapOf("LD_LIBRARY_PATH" to outDir.absolutePath) else emptyMap()
-    return program to env
-}
-
-/** Kept for hosts that want a strict failure when audio output is missing. */
-@Suppress("unused")
-private fun throwIfNoAudioDevice(e: Throwable): Boolean =
-    generateSequence<Throwable>(e) { it.cause }.any { it is LineUnavailableException }
