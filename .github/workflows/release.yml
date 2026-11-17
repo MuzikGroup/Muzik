@@ -54,10 +54,8 @@ jobs:
         include:
           - os: windows-latest
             target: msi
-          - os: macos-14
+          - os: macos-15
             target: dmg-arm64
-          - os: macos-13
-            target: dmg-x64
           - os: ubuntu-latest
             target: linux
     runs-on: ${{ matrix.os }}
@@ -78,10 +76,6 @@ jobs:
         if: matrix.target == 'dmg-arm64'
         run: ./gradlew packageDmg --no-daemon
 
-      - name: Build macOS DMG (Intel)
-        if: matrix.target == 'dmg-x64'
-        run: ./gradlew packageDmg --no-daemon
-
       - name: Build Linux packages and portable JAR
         if: matrix.target == 'linux'
         run: ./gradlew packageDeb packageRpm packageUberJarForCurrentOS --no-daemon
@@ -100,10 +94,6 @@ jobs:
             dmg-arm64)
               FILE=$(find "$OUT_DIR/main/dmg" -name "*.dmg" | head -1)
               DEST="Muzik-$VERSION-macos-arm64.dmg"
-              ;;
-            dmg-x64)
-              FILE=$(find "$OUT_DIR/main/dmg" -name "*.dmg" | head -1)
-              DEST="Muzik-$VERSION-macos-x64.dmg"
               ;;
             linux)
               FILE=$(find "$OUT_DIR/main/deb" -name "*.deb" | head -1)
