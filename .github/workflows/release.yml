@@ -56,10 +56,12 @@ jobs:
             target: msi
           - os: macos-15
             target: dmg-arm64
+            optional: true
           - os: ubuntu-latest
             target: linux
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
+    continue-on-error: ${{ matrix.optional == true }}
     steps:
       - uses: actions/checkout@v6
 
@@ -148,10 +150,10 @@ jobs:
 
           One-click installers for every desktop platform:
           - **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64)
-          - **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon), \`Muzik-$VERSION-macos-x64.dmg\` (Intel)
+          - **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon, when the macOS runner queue allows) — Intel and Apple Silicon Macs can always use the portable JAR with Java 21
           - **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM and portable JAR in assets
-          - **Any OS with Java 21+**: the portable \`Muzik-$VERSION-linux-x64.jar\` (also runs on Linux ARM64)
+          - **Any OS with Java 21+**: the portable \`Muzik-$VERSION-linux-x64.jar\` — also runs on Linux ARM64 and every Mac
 
-          Unsigned builds: on macOS, right-click > Open the first time; on Windows SmartScreen, choose *More info > Run anyway*.
+          Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*.
 
           Playback uses tokenless YouTube Music profiles; if your network is a VPN or datacenter exit, playback may be bot-gated by YouTube."
