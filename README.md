@@ -4,27 +4,79 @@
 
 # Muzik
 
-### YouTube Music client for Android
+### Your entire YouTube Music library — beautifully reimagined for Android
+
+**Live synced lyrics · Offline downloads · Listen Together · Built with Material 3**
 
 <br/>
 
 [![Latest release](https://img.shields.io/github/v/release/MuzikGroup/Muzik?style=for-the-badge&labelColor=0d1117)](https://github.com/MuzikGroup/Muzik/releases)
 [![License](https://img.shields.io/github/license/MuzikGroup/muzik?style=for-the-badge&labelColor=0d1117)](https://github.com/MuzikGroup/Muzik/blob/main/LICENSE)
+[![Platform](https://img.shields.io/badge/Android%208.0%2B-Universal%20APK-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117)](#works-everywhere)
 [![Downloads](https://img.shields.io/github/downloads/MuzikGroup/Muzik/total?style=for-the-badge&labelColor=0d1117)](https://github.com/MuzikGroup/Muzik/releases)
-
-<br/>
+[![Sponsor](https://img.shields.io/badge/Sponsor-Support%20Muzik-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white&labelColor=0d1117)](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13)
 
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white&labelColor=0d1117)](https://discord.gg/JMnxcXr4t)
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0d1117)](https://t.me/Muzik_ke)
 
 <br/>
 
-[**Download**](#download-now) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Translate**](#translations) · [**FAQ**](#faq) · [**Support**](#support-the-project)
+[**Install Now**](#install-in-one-click) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Works Everywhere**](#works-everywhere) · [**FAQ**](#faq) · [**Translate**](#translations) · [**Support**](#support-the-project)
 
 </div>
 
+> [!IMPORTANT]
+> **Sponsor the project** — Muzik is free, open source, and built with love. If it makes your day, [**buy us a soda**](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13). Every contribution keeps development alive.
+
 > [!WARNING]
-> **Regional Restriction** - If YouTube Music is unavailable in your region, this app will not work without a **VPN or proxy** connecting to a supported region.
+> **Regional Restriction** — If YouTube Music is unavailable in your region, this app will not work without a **VPN or proxy** connecting to a supported region.
+
+---
+
+<div align="center">
+
+<h1><a id="install-in-one-click"></a>Install in One Click</h1>
+
+<h3>No accounts. No waiting. Tap the button below and the latest APK downloads instantly — open it, install, done.</h3>
+
+<br/>
+
+<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
+  <img src="https://img.shields.io/badge/Install%20Muzik%20Now-Direct%20APK%20Download-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117" alt="Install Muzik in one click" height="64"/>
+</a>
+
+<br/><br/>
+
+**Direct link:** [github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk)
+
+**Other variants:** [Muzik-izzy.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-izzy.apk) (IzzyOnDroid repo) · [Muzik-with-Google-Cast.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-with-Google-Cast.apk) (Google Cast support)
+
+<p><b>F-Droid:</b> coming soon (build recipe in <code>.fdroid/fdroid.yml</code>)</p>
+
+</div>
+
+---
+
+<div align="center">
+
+<h1><a id="works-everywhere"></a>Works Everywhere</h1>
+
+<h3>One universal APK, every device. Muzik ships all CPU architectures in a single install, so it runs smoothly wherever Android runs.</h3>
+
+<br/>
+
+| Device | Supported |
+| --- | :---: |
+| Phones & tablets (ARM) | ✔ |
+| Foldables & large screens | ✔ |
+| ChromeOS laptops | ✔ |
+| Android emulators (x86 / x86_64) | ✔ |
+| Android TV (sideload) | ✔ |
+| Dark, light, black & dynamic themes | ✔ |
+
+**Minimum requirement:** Android 8.0 (API 26) — covering virtually every Android device in use today.
+
+</div>
 
 ---
 
@@ -99,7 +151,7 @@
 <h2><a id="screenshots"></a>Screenshots</h2>
 
 <p>
-  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" alt="Home" width="150">
+  <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" alt="Muzik" width="150">
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2-home.png" alt="Home" width="150">
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3-library.png" alt="Library" width="150">
   <img src="https://raw.githubusercontent.com/MuzikGroup/Muzik/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4-listentogether.png" alt="Listen Together" width="150">
@@ -113,34 +165,13 @@
 
 <div align="center">
 
-<h1><a id="download-now"></a>Download Now</h1>
-
-<h2>Stable Release</h2>
-
-<table>
-  <tr>
-    <th align="center">GitHub</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
-        <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub" height="60">
-      </a>
-    </td>
-  </tr>
-</table>
-
-<p align="center"><b>F-Droid:</b> coming soon (build recipe in <code>.fdroid/fdroid.yml</code>)</p>
-
-</div>
-
----
-
-<div align="center">
-
 <h1><a id="faq"></a>FAQ</h1>
 
-<h3>Got questions? Check out our <a href="https://github.com/MuzikGroup/Muzik#faq">FAQ page</a> for answers to the most common ones.</h3>
+<h3>Questions, ideas, or need a hand? Join the conversation on our <a href="https://github.com/MuzikGroup/Muzik/discussions">GitHub Discussions</a> — the community and the developers are all there.</h3>
+
+<a href="https://github.com/MuzikGroup/Muzik/discussions">
+  <img src="https://img.shields.io/badge/Ask%20on%20GitHub%20Discussions-Start%20a%20conversation-5865F2?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="GitHub Discussions" height="44"/>
+</a>
 
 </div>
 
@@ -150,15 +181,7 @@
 
 <h1><a id="translations"></a>Translations</h1>
 
-[![Translation status](https://img.shields.io/weblate/progress/muzik?style=for-the-badge&labelColor=0d1117)](https://hosted.weblate.org/engage/muzik/)
-
-<h3>We use Weblate to translate Muzik. <a href="https://hosted.weblate.org/projects/Muzik/">Remember to share Muzik to friends. It's completely free!</a></h3>
-
-<a href="https://hosted.weblate.org/projects/Muzik/">
-  <img src="https://hosted.weblate.org/widget/Muzik/horizontal-auto.svg" alt="Translation status" />
-</a>
-
-<h3>Thank you! Every translation makes Muzik a little more accessible to someone, somewhere in the world.</h3>
+<h3>Muzik's strings are managed through Crowdin (see <code>crowdin.yml</code>). Want Muzik in your language? Open an issue or pull request and help make Muzik a little more accessible to someone, somewhere in the world.</h3>
 
 </div>
 
@@ -168,13 +191,19 @@
 
 <h1><a id="support-the-project"></a>Support the Project</h1>
 
-<h3>Muzik is free to listen and share with friends. Please consider supporting its development! Do not forget to follow the lead developer and give us a star. This goes a long way in motivating us to improve our app and other projects. Click below to donate!</h3>
+<h3>Muzik is free to listen and share with friends — and it stays free because of people like you.<br/>Follow the lead developer, give the repo a star, and if you can, buy us a soda. It goes a long way.</h3>
 
-#### Ko-fi
+<br/>
 
-<a href="https://ko-fi.com/ignatius68489">
-  <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_tag_dark.png" alt="Support on Ko-fi" width="200" />
+<a href="https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13">
+  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Soda-Support%20Muzik-F96854?style=for-the-badge&logo=githubsponsors&logoColor=white&labelColor=0d1117" alt="Buy Me a Soda — Support Muzik" height="64"/>
 </a>
+
+<br/><br/>
+
+**Direct link:** [buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13)
+
+You can also click the pink **Sponsor** button at the top of this repository.
 
 </div>
 
@@ -182,7 +211,7 @@
 
 <div align="center">
 
-<h1>Lead Developer</h1>
+<h1>Team</h1>
 
 <h3>Muzik is developed and maintained by</h3>
 
@@ -190,7 +219,9 @@
   <img src="https://github.com/Motius.png?size=150" alt="Ignatius" width="150" />
 </a>
 
-<h3><a href="https://github.com/Motius">Ignatius</a></h3>
+<h3><a href="https://github.com/Motius">Ignatius (motius)</a></h3>
+
+<h3>in partnership with <a href="https://www.pipo-ke.com/">pipo.ai</a></h3>
 
 </div>
 
@@ -200,7 +231,7 @@
 
 <h1>Disclaimer</h1>
 
-This project is **not affiliated with, funded, authorized, endorsed by, or in any way associated** with YouTube, Google LLC, Muzik Group LLC, or any of their affiliates and subsidiaries.
+This project is **not affiliated with, funded, authorized, endorsed by, or in any way associated** with YouTube, Google LLC, or any of their affiliates and subsidiaries.
 
 All trademarks, service marks, and intellectual property rights referenced in this project belong to their respective owners.
 
@@ -212,6 +243,6 @@ All trademarks, service marks, and intellectual property rights referenced in th
 
 <br/>
 
-**Made with ❤️ by [Ignatius](https://github.com/Motius)**
+**Made with ❤️ by [Ignatius](https://github.com/Motius) & [pipo.ai](https://www.pipo-ke.com/)**
 
 </div>

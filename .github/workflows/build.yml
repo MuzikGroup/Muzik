@@ -59,6 +59,7 @@ jobs:
         run: ./gradlew --console=plain assemble${{ matrix.variantName }}Release :app:lint${{ matrix.variantName }}Release --warning-mode summary
         env:
           MUZIK_APPLICATION_ID: com.muzikgroup.music
+          MUZIK_ARCHITECTURE: universal
           PULL_REQUEST: "false"
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -125,6 +126,7 @@ jobs:
         run: ./gradlew --console=plain assemble${{ matrix.variantName }}Debug :app:lint${{ matrix.variantName }}Debug --warning-mode summary
         env:
           MUZIK_APPLICATION_ID: com.muzikgroup.music
+          MUZIK_ARCHITECTURE: universal
           PULL_REQUEST: "false"
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}

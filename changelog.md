@@ -1,5 +1,18 @@
 # Changelog
 
+---v7.8.4
+
+## What's New
+
+- Universal device support: Muzik now ships with all CPU architectures bundled (arm64-v8a, armeabi-v7a, x86, x86_64), so it installs and runs on every Android device — phones, tablets, foldables, ChromeOS laptops, and emulators
+- In-app support button now points to Buy Me a Soda
+- Sponsor button added to GitHub — support the project in one click
+
+## Improvements
+
+- Automated version bumping: every push to main increments the build version by 0.0.1 and publishes a fresh release automatically
+- One-click APK installation directly from the README
+
 ---v1.0.2
 
 ## What's New

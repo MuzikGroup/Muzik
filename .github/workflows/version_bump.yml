@@ -1,0 +1,84 @@
+name: Auto version bump
+
+# Bumps the patch version by 0.0.1 on every push to main, then triggers the
+# release workflow so the new version is built and published automatically.
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: version-bump
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+          submodules: recursive
+
+      - name: Skip if the head commit opted out of bumping
+        id: gate
+        run: |
+          MSG="$(git log -1 --pretty=%s)"
+          echo "Head commit: $MSG"
+          if [[ "$MSG" == *"[no bump]"* ]]; then
+            echo "Head commit opted out of version bumping — nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump patch version by 0.0.1
+        id: bump
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+
+          CURRENT=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts)
+          [[ "$CURRENT" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
+            echo "versionName '$CURRENT' is not MAJOR.MINOR.PATCH" >&2
+            exit 1
+          }
+
+          MAJOR=$(echo "$CURRENT" | cut -d. -f1)
+          MINOR=$(echo "$CURRENT" | cut -d. -f2)
+          PATCH=$(echo "$CURRENT" | cut -d. -f3)
+          NEW_PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+          NEW_CODE=$((MAJOR * 10000 + MINOR * 100 + NEW_PATCH))
+
+          sed -i "s/versionName = \"$CURRENT\"/versionName = \"$NEW_VERSION\"/" app/build.gradle.kts
+          sed -i "s/versionCode = [0-9]\+/versionCode = $NEW_CODE/" app/build.gradle.kts
+
+          echo "Bumped $CURRENT -> $NEW_VERSION (versionCode $NEW_CODE)"
+          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        id: commit
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          git config user.name "Ignatius"
+          git config user.email "311002533+Motius@users.noreply.github.com"
+          git add app/build.gradle.kts
+          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} [no bump]"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger release build for the new version
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "repos/${{ github.repository }}/actions/workflows/release.yml/dispatches" \
+            -f ref=main
+          echo "Release workflow dispatched for v${{ steps.bump.outputs.new_version }}"

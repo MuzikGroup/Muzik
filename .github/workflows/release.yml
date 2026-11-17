@@ -109,6 +109,7 @@ jobs:
         run: ./gradlew --console=plain clean assemble${{ matrix.variantName }}Release :app:lint${{ matrix.variantName }}Release --warning-mode summary
         env:
           MUZIK_APPLICATION_ID: com.muzikgroup.music
+          MUZIK_ARCHITECTURE: universal
           MUZIK_APP_NAME: Muzik
           PULL_REQUEST: "false"
           GITHUB_EVENT_NAME: ${{ github.event_name }}
