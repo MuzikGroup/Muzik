@@ -1,0 +1,26 @@
+[versions]
+kotlin = "2.4.21"
+composeMultiplatform = "1.12.2"
+coroutines = "1.10.2"
+serializationJson = "1.9.0"
+ktor = "3.6.1"
+coil = "3.6.3"
+javafx = "21.0.13"
+
+[libraries]
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
+javafx-base-win = { module = "org.openjfx:javafx-base", version.ref = "javafx" }
+javafx-graphics-win = { module = "org.openjfx:javafx-graphics", version.ref = "javafx" }
+javafx-media-win = { module = "org.openjfx:javafx-media", version.ref = "javafx" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-desktop = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }

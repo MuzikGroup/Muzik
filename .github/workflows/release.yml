@@ -1,0 +1,167 @@
+name: Build and release Muzik Desktop
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version_changed: ${{ steps.check_version.outputs.version_changed }}
+      new_version: ${{ steps.check_version.outputs.new_version }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check if version changed
+        id: check_version
+        run: |
+          NEW_VERSION=$(grep -oP '^muzik\.version=\K.*' gradle.properties || echo "")
+          if [ -z "$NEW_VERSION" ]; then
+            echo "Could not read muzik.version from gradle.properties"
+            echo "version_changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Current version: $NEW_VERSION"
+
+          if git show HEAD^:gradle.properties > /dev/null 2>&1; then
+            OLD_VERSION=$(git show HEAD^:gradle.properties | grep -oP '^muzik\.version=\K.*' || echo "")
+            echo "Previous version: $OLD_VERSION"
+            if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
+              echo "Version changed from $OLD_VERSION to $NEW_VERSION"
+              echo "version_changed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "Version unchanged: $NEW_VERSION"
+              echo "version_changed=false" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "First version detected: $NEW_VERSION"
+            echo "version_changed=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: check-version
+    if: needs.check-version.outputs.version_changed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            target: msi
+          - os: macos-14
+            target: dmg-arm64
+          - os: macos-13
+            target: dmg-x64
+          - os: ubuntu-latest
+            target: linux
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Build Windows MSI
+        if: matrix.target == 'msi'
+        run: .\gradlew.bat packageMsi --no-daemon
+
+      - name: Build macOS DMG (Apple Silicon)
+        if: matrix.target == 'dmg-arm64'
+        run: ./gradlew packageDmg --no-daemon
+
+      - name: Build macOS DMG (Intel)
+        if: matrix.target == 'dmg-x64'
+        run: ./gradlew packageDmg --no-daemon
+
+      - name: Build Linux packages and portable JAR
+        if: matrix.target == 'linux'
+        run: ./gradlew packageDeb packageRpm packageUberJarForCurrentOS --no-daemon
+
+      - name: Normalize artifact names
+        id: rename
+        shell: bash
+        run: |
+          VERSION=${{ needs.check-version.outputs.new_version }}
+          OUT_DIR="app/build/compose/binaries"
+          case "${{ matrix.target }}" in
+            msi)
+              FILE=$(find "$OUT_DIR/main/msi" -name "*.msi" | head -1)
+              DEST="Muzik-$VERSION-windows-x64.msi"
+              ;;
+            dmg-arm64)
+              FILE=$(find "$OUT_DIR/main/dmg" -name "*.dmg" | head -1)
+              DEST="Muzik-$VERSION-macos-arm64.dmg"
+              ;;
+            dmg-x64)
+              FILE=$(find "$OUT_DIR/main/dmg" -name "*.dmg" | head -1)
+              DEST="Muzik-$VERSION-macos-x64.dmg"
+              ;;
+            linux)
+              FILE=$(find "$OUT_DIR/main/deb" -name "*.deb" | head -1)
+              DEST="muzik-$VERSION-linux-amd64.deb"
+              ;;
+          esac
+          if [ -n "$FILE" ]; then
+            cp "$FILE" "$DEST"
+            echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+          else
+            echo "No installer found for ${{ matrix.target }}"
+            exit 1
+          fi
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: muzik-${{ matrix.target }}-${{ needs.check-version.outputs.new_version }}
+          path: ${{ steps.rename.outputs.renamed }}
+          if-no-files-found: error
+
+      - name: Upload portable JAR (Linux job only)
+        if: matrix.target == 'linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: muzik-portable-${{ needs.check-version.outputs.new_version }}
+          path: app/build/compose/jars/Muzik-*.jar
+          if-no-files-found: error
+
+  release:
+    needs: [check-version, build]
+    if: needs.check-version.outputs.version_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: dist
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ needs.check-version.outputs.new_version }}
+        run: |
+          gh release create "v$VERSION" dist/* \
+            --title "Muzik Desktop v$VERSION" \
+            --generate-notes \
+            --notes "Muzik Desktop v$VERSION
+
+          One-click installers for every desktop platform:
+          - **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64)
+          - **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon), \`Muzik-$VERSION-macos-x64.dmg\` (Intel)
+          - **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM and portable JAR in assets
+          - **Any OS with Java 21+**: the portable \`Muzik-$VERSION-linux-x64.jar\` (also runs on Linux ARM64)
+
+          Unsigned builds: on macOS, right-click > Open the first time; on Windows SmartScreen, choose *More info > Run anyway*.
+
+          Playback uses tokenless YouTube Music profiles; if your network is a VPN or datacenter exit, playback may be bot-gated by YouTube."
