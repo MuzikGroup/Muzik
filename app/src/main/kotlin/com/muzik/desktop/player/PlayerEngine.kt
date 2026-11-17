@@ -16,10 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
-import java.util.concurrent.atomic.AtomicReference
 import kotlin.random.Random
 
 enum class RepeatMode { OFF, ALL, ONE }
@@ -43,6 +40,12 @@ data class PlayerState(
  * Queue + playback engine. Audio decoding uses the JavaFX media stack
  * (native AAC/M4A decoder bundled per platform); queue state is exposed to
  * Compose through [state].
+ *
+ * Threading contract: every [MediaPlayer] access happens on the JavaFX
+ * application thread via [Platform.runLater] or JavaFX callbacks. Compose
+ * (AWT/EDT) and coroutine threads only ever touch the [state] flow. This is
+ * what keeps the seek bar live and the play/pause button reliable — touching
+ * the player from any other thread makes JavaFX throw.
  */
 class PlayerEngine(
     private val highQualityProvider: suspend () -> Boolean = { false },
@@ -79,18 +82,6 @@ class PlayerEngine(
 
     init {
         ensureFx()
-        scope.launch {
-            while (isActive) {
-                delay(500)
-                val player = fxPlayer ?: continue
-                val pos = try {
-                    (player.currentTime.toMillis().toLong())
-                } catch (_: Exception) {
-                    continue
-                }
-                _state.update { it.copy(positionMs = pos) }
-            }
-        }
     }
 
     // ---------------------------------------------------------------- control
@@ -102,42 +93,50 @@ class PlayerEngine(
     }
 
     fun playPause() {
-        val player = fxPlayer
-        val s = _state.value
-        when {
-            player == null && s.current != null -> loadCurrent()
-            player == null -> return
-            else -> Platform.runLater {
-                if (player.status == MediaPlayer.Status.PLAYING) player.pause() else player.play()
+        val hasCurrent = _state.value.current != null
+        Platform.runLater {
+            val player = fxPlayer
+            when {
+                player == null -> if (hasCurrent) loadCurrent()
+                player.status == MediaPlayer.Status.PLAYING -> player.pause()
+                else -> player.play()
             }
         }
     }
 
     fun next(auto: Boolean = false) = advance(auto, forward = true)
 
-    fun previous() = advance(auto = false, forward = false)
+    fun previous() {
+        val s = _state.value
+        // A playing track restarts on Previous; otherwise jump back one slot.
+        if (s.positionMs > 3000 || s.durationMs <= 0) {
+            Platform.runLater {
+                fxPlayer?.seek(Duration.ZERO)
+                _state.update { it.copy(positionMs = 0) }
+            }
+            if (s.positionMs > 3000) return
+        }
+        advance(auto = false, forward = false)
+    }
 
     fun seekTo(ms: Long) {
-        val player = fxPlayer ?: return
+        _state.update { it.copy(positionMs = ms) }
         Platform.runLater {
             try {
-                player.seek(Duration.millis(ms.toDouble()))
+                fxPlayer?.seek(Duration.millis(ms.toDouble()))
             } catch (_: Exception) {
             }
         }
-        _state.update { it.copy(positionMs = ms) }
     }
 
     fun setVolume(volume: Float) {
         val clamped = volume.coerceIn(0f, 1f)
         _volume.value = clamped
-        val player = fxPlayer
-        Platform.runLater { player?.volume = clamped.toDouble() }
+        Platform.runLater { fxPlayer?.volume = clamped.toDouble() }
     }
 
     fun setRepeat(mode: RepeatMode) {
         _state.update { it.copy(repeat = mode) }
-        fxPlayer?.let { p -> Platform.runLater { p.cycleCount = if (mode == RepeatMode.ONE) Int.MAX_VALUE else 1 } }
     }
 
     fun setShuffle(enabled: Boolean) {
@@ -155,7 +154,10 @@ class PlayerEngine(
     fun dispose() {
         scope.cancel()
         Platform.runLater {
-            fxPlayer?.dispose()
+            try {
+                fxPlayer?.dispose()
+            } catch (_: Exception) {
+            }
             fxPlayer = null
         }
     }
@@ -171,9 +173,12 @@ class PlayerEngine(
             loadCurrent()
             return
         }
-        if (auto && s.repeat == RepeatMode.ONE && fxPlayer != null) {
-            seekTo(0)
-            Platform.runLater { fxPlayer?.play() }
+        if (auto && s.repeat == RepeatMode.ONE) {
+            Platform.runLater {
+                fxPlayer?.seek(Duration.ZERO)
+                fxPlayer?.play()
+                _state.update { it.copy(positionMs = 0, isPlaying = true) }
+            }
             return
         }
         if (s.shuffle && s.queue.size > 1) {
@@ -244,22 +249,33 @@ class PlayerEngine(
         scope.launch { onSongStarted(song) }
     }
 
+    /** Called on the JavaFX application thread only. */
     private fun mount(song: Song, stream: StreamInfo) {
         try {
             fxPlayer?.dispose()
         } catch (_: Exception) {
         }
+        fxPlayer = null
         val gen = generation.get()
         try {
             val media = Media(stream.url)
             val player = MediaPlayer(media)
             player.volume = _volume.value.toDouble()
-            player.cycleCount = if (_state.value.repeat == RepeatMode.ONE) Int.MAX_VALUE else 1
 
+            // Live position → Compose seek bar. Fires on the FX thread.
+            player.currentTimeProperty().addListener { _, _, cur ->
+                if (generation.get() != gen) return@addListener
+                val ms = cur.toMillis().toLong()
+                _state.update {
+                    // Don't clobber an in-flight user seek.
+                    if (kotlin.math.abs(it.positionMs - ms) > 1200) it.copy(positionMs = ms) else it
+                }
+            }
             player.setOnReady {
                 if (generation.get() != gen) return@setOnReady
                 val d = (player.media.duration.toMillis().toLong()).takeIf { it > 0 }
                 _state.update { it.copy(isLoading = false, durationMs = d ?: it.durationMs) }
+                player.play()
             }
             player.setOnEndOfMedia {
                 if (generation.get() != gen) return@setOnEndOfMedia
@@ -271,7 +287,7 @@ class PlayerEngine(
                     it.copy(
                         isLoading = false,
                         isPlaying = false,
-                        error = "Playback error on profile ${stream.profileId}. Retrying with the next profile may help.",
+                        error = "Playback error (profile ${stream.profileId}). Trying the next track may help.",
                     )
                 }
             }
@@ -280,7 +296,7 @@ class PlayerEngine(
                 _state.update { it.copy(isPlaying = st == MediaPlayer.Status.PLAYING) }
             }
             fxPlayer = player
-            player.play()
+            if (player.status == MediaPlayer.Status.READY) player.play()
             _state.update { it.copy(isLoading = false) }
         } catch (e: Exception) {
             _state.update {

@@ -44,7 +44,22 @@ fun objAt(o: JsonObject?, vararg path: Any): JsonObject {
     return obj(cur)
 }
 
-fun arrAt(o: JsonObject?, vararg path: Any): JsonArray = arr(objAt(o, *path))
+/**
+ * Descends [path] and returns the element as a JSON array. Unlike [objAt],
+ * the final element is cast with [arr] — an array must never be funnelled
+ * through [obj], which would reduce it to an empty object and silently
+ * break every parser that relies on it (song columns, radio queue,
+ * adaptiveFormats…).
+ */
+fun arrAt(o: JsonObject?, vararg path: Any): JsonArray {
+    if (path.isEmpty()) return arr(o)
+    var cur: JsonElement? = o
+    for (i in 0 until path.size - 1) {
+        cur = descend(cur, path[i])
+        if (cur == null) return JsonArray(emptyList())
+    }
+    return arr(descend(cur, path.last()))
+}
 
 fun int(o: JsonObject?, vararg path: Any): Int = str(o, *path)?.toIntOrNull() ?: 0
 

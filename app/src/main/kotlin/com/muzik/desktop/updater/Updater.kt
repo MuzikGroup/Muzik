@@ -54,8 +54,10 @@ object Updater {
         val suffix = when {
             os.contains("win") -> ".msi"
             os.contains("mac") -> if (arch.contains("aarch64") || arch.contains("arm")) "-arm64.dmg" else ".dmg"
-            else -> if (arch.contains("aarch64") || arch.contains("arm")) "_aarch64.deb" else "_amd64.deb"
-        }
+            // Release assets are renamed to `muzik-<v>-linux-amd64.deb`; ARM64
+            // Linux users are served the portable JAR via the release page.
+            else -> if (arch.contains("aarch64") || arch.contains("arm")) null else "-amd64.deb"
+        } ?: return null
         return assets
             .mapNotNull { it["browser_download_url"]?.jsonPrimitive?.content }
             .firstOrNull { it.endsWith(suffix) }

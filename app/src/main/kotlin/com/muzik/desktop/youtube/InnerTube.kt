@@ -18,10 +18,10 @@ import kotlinx.serialization.json.put
  * Compact InnerTube client for YouTube Music.
  *
  * Browsing (search, suggestions, album/artist pages, radio) uses the WEB_REMIX
- * music client, which is accepted tokenless. Playback stream resolution lives in
- * [StreamResolver], which mirrors the multi-profile fallback philosophy of
- * MetrolistGroup's innertubex (GPL-3.0) — see that project for the full-blown
- * implementation with SABR and attestation support.
+ * music client, which is accepted tokenless. Playback stream resolution lives
+ * in [StreamResolver], which follows the multi-profile, tokenless-first
+ * approach measured by the NewPipeExtractor community (GPL-3.0) — see that
+ * project for the full-blown implementation with SABR and attestation support.
  */
 object InnerTube {
 
@@ -69,7 +69,28 @@ object InnerTube {
         } catch (_: Exception) {
             // Keep previous value on transient failure.
         }
+        if (cachedVisitorData == null) {
+            // The music host may serve a consent page without the watch config;
+            // the main host always embeds a visitor id in its bootstrap HTML.
+            try {
+                val html = http.get("https://www.youtube.com") {
+                    headers { append(HttpHeaders.UserAgent, BROWSER_UA) }
+                }.bodyAsText()
+                val m = Regex("\"visitorData\":\"((?:[^\"\\\\]|\\\\.)*)\"").find(html)
+                    ?: Regex("\"VISITOR_DATA\":\"((?:[^\"\\\\]|\\\\.)*)\"").find(html)
+                val raw = m?.groupValues?.get(1)
+                cachedVisitorData = raw?.let(::jsonUnescape)
+                visitorFetchedAt = System.currentTimeMillis()
+            } catch (_: Exception) {
+            }
+        }
         cachedVisitorData
+    }
+
+    /** Drops the cached visitor identity so the next call re-fetches a fresh one. */
+    fun invalidateVisitor() {
+        cachedVisitorData = null
+        visitorFetchedAt = 0
     }
 
     private fun jsonUnescape(s: String): String {
@@ -241,10 +262,11 @@ object InnerTube {
             put("videoId", JsonPrimitive(videoId))
             put("playlistId", JsonPrimitive("RDAMVM$videoId"))
         })
-        val playlist = objAt(root, "contents", "twoColumnWatchNextResults", "playlist", "playlist")
-        val contents = arrAt(playlist, "contents")
-        return contents.mapNotNull { cell ->
-            val r = obj(cell)["playlistPanelVideoRenderer"] ?: return@mapNotNull null
+        // The queue panel has moved between response revisions
+        // (twoColumnWatchNextResults.playlist.playlist vs
+        // singleColumnMusicWatchNextResultsRenderer...musicQueueRenderer),
+        // so collect the renderers wherever they sit in the tree.
+        return collect(root, "playlistPanelVideoRenderer").mapNotNull { r ->
             val vid = str(obj(r), "videoId") ?: return@mapNotNull null
             Song(
                 videoId = vid,
@@ -262,9 +284,9 @@ object InnerTube {
     private fun parseSong(item: JsonObject, isVideo: Boolean): Song? {
         val videoId = str(item, "playlistItemData", "videoId")
             ?: str(item, "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint", "watchEndpoint", "videoId")
-            ?: str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs"), "watchEndpoint", "videoId")
+            ?: str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs"), "watchEndpoint", "videoId")
             ?: return null
-        val title = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs").ifBlank { "Unknown" }
+        val title = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs").ifBlank { "Unknown" }
 
         var artist = ""
         var artistBrowseId: String? = null
@@ -328,8 +350,8 @@ object InnerTube {
     }
 
     private fun parseAlbumFromListItem(item: JsonObject): Album? {
-        val browseId = str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs"), "browseEndpoint", "browseId") ?: return null
-        val title = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs").ifBlank { return null }
+        val browseId = str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs"), "browseEndpoint", "browseId") ?: return null
+        val title = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs").ifBlank { return null }
         var artist = ""
         var artistBrowseId: String? = null
         var year: String? = null
@@ -344,7 +366,7 @@ object InnerTube {
         }
         year = arrAt(item, "flexColumns")
             .lastOrNull()
-            ?.let { runsText(obj(it), "musicResponsiveListItemFlexCellRenderer", "text", "runs") }
+            ?.let { runsText(obj(it), "musicResponsiveListItemFlexColumnRenderer", "text", "runs") }
             ?.split("•")
             ?.lastOrNull()
             ?.trim()
@@ -360,11 +382,11 @@ object InnerTube {
     }
 
     private fun parseArtistFromListItem(item: JsonObject): Artist? {
-        val browseId = str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs"), "browseEndpoint", "browseId") ?: return null
-        val name = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexCellRenderer", "text", "runs").ifBlank { return null }
+        val browseId = str(firstNavigableRun(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs"), "browseEndpoint", "browseId") ?: return null
+        val name = runsText(item, "flexColumns", 0, "musicResponsiveListItemFlexColumnRenderer", "text", "runs").ifBlank { return null }
         val subs = arrAt(item, "flexColumns")
             .getOrNull(1)
-            ?.let { runsText(obj(it), "musicResponsiveListItemFlexCellRenderer", "text", "runs") }
+            ?.let { runsText(obj(it), "musicResponsiveListItemFlexColumnRenderer", "text", "runs") }
         return Artist(browseId = browseId, name = name, thumbnail = bestThumb(item, "thumbnail", "musicThumbnailRenderer", "thumbnail", "thumbnails"))
     }
 

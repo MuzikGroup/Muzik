@@ -18,16 +18,22 @@ import kotlinx.serialization.json.put
  * Playback stream resolver.
  *
  * YouTube now gates unauthenticated media behind bot checks on many clients.
- * Following the measured, tokenless-first philosophy documented by
- * MetrolistGroup's innertubex (GPL-3.0), Muzik tries a chain of profiles that
- * passed sustained ranged playback in their November 2026 device benchmarks:
+ * Muzik therefore walks a chain of tokenless playback profiles and keeps the
+ * first one that yields a directly playable audio URL — the same
+ * multi-profile, tokenless-first philosophy measured by the NewPipeExtractor
+ * community (GPL-3.0), which Muzik's own extractor is built on:
  *
- *  1. VISIONOS 0.1 (watch-config visitor identity) — fastest tokenless audio.
- *  2. TV HTML5 Samsung — tokenless direct audio; media unlocks after the
+ *  1. VISIONOS 0.1 — watch-config visitor identity; fast tokenless audio.
+ *  2. IOS 20.10.4 — Apple device identity; usually returns direct URLs.
+ *  3. ANDROID_VR 1.62 — headset identity; independent of the two above.
+ *  4. TV HTML5 Samsung — tokenless direct audio that unlocks after a short
  *     pre-roll window, so a 403 on first touch triggers bounded retries.
  *
- * If every profile fails (datacenter IPs, VPN exits, or YouTube policy shifts),
- * the caller receives a clear error and the player surfaces it in the UI.
+ * If a profile answers with a stale-session style error ("page needs to be
+ * reloaded") the cached visitor identity is invalidated once and the chain
+ * retried. If every profile fails (datacenter IPs, VPN exits, or YouTube
+ * policy shifts), the caller receives a clear error the player surfaces in
+ * the UI.
  */
 object StreamResolver {
 
@@ -41,12 +47,13 @@ object StreamResolver {
         val clientVersion: String,
         val clientId: String,
         val userAgent: String,
-        val needsVisitorData: Boolean = false,
+        val extraContext: Map<String, JsonPrimitive> = emptyMap(),
         val prerollRetry: Boolean = false,
         val musicOrigin: Boolean = true,
     )
 
-    // Exact identities mirror innertubex PlaybackClientCatalog / YouTubeClient.
+    private fun prim(v: String) = JsonPrimitive(v)
+
     private val profiles = listOf(
         Profile(
             id = "VISIONOS_0_1",
@@ -55,8 +62,42 @@ object StreamResolver {
             clientId = "101",
             userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 " +
                 "(KHTML, like Gecko) Version/17.5 Safari/605.1.15",
-            needsVisitorData = true,
+            extraContext = mapOf(
+                "osName" to prim("VISION_OS"),
+                "osVersion" to prim("1.3"),
+                "deviceMake" to prim("Apple"),
+                "deviceModel" to prim("RealityDevice14,1"),
+                "platform" to prim("MOBILE"),
+            ),
             musicOrigin = true,
+        ),
+        Profile(
+            id = "IOS_20_10_4",
+            clientName = "IOS",
+            clientVersion = "20.10.4",
+            clientId = "5",
+            userAgent = "com.google.ios.youtube/20.10.4 (iPhone16,2; U; iOS 18.1.0; gzip)",
+            extraContext = mapOf(
+                "deviceMake" to prim("Apple"),
+                "deviceModel" to prim("iPhone16,2"),
+                "osName" to prim("iPhone"),
+                "osVersion" to prim("18.1.0.22B83"),
+            ),
+            musicOrigin = false,
+        ),
+        Profile(
+            id = "ANDROID_VR_1_62",
+            clientName = "ANDROID_VR",
+            clientVersion = "1.62.27",
+            clientId = "28",
+            userAgent = "com.google.android.apps.youtube.vr.oculus/1.62.27 (Linux; U; " +
+                "Android 12; eureka-user Build/SQ3A.220605.009.A1) gzip",
+            extraContext = mapOf(
+                "androidSdkVersion" to prim("31"),
+                "osName" to prim("Android"),
+                "osVersion" to prim("12"),
+            ),
+            musicOrigin = false,
         ),
         Profile(
             id = "TVHTML5_SAMSUNG",
@@ -65,6 +106,12 @@ object StreamResolver {
             clientId = "7",
             userAgent = "Mozilla/5.0 (SMART-TV; Linux; Tizen 2.4.0) AppleWebKit/538.1 " +
                 "(KHTML, like Gecko) Version/2.4.0 TV Safari/538.1",
+            extraContext = mapOf(
+                "osName" to prim("Tizen"),
+                "osVersion" to prim("2.4.0"),
+                "deviceMake" to prim("Samsung"),
+                "deviceModel" to prim("UKS9800"),
+            ),
             prerollRetry = true,
             musicOrigin = false,
         ),
@@ -78,23 +125,44 @@ object StreamResolver {
     /** Resolves a playable AAC (audio/mp4) stream for [videoId]. Throws [NoPlayableStream] when all profiles fail. */
     suspend fun resolve(videoId: String, highQuality: Boolean): StreamInfo {
         val failures = mutableListOf<String>()
-        for (profile in profiles) {
-            try {
-                val candidate = playerRequest(videoId, profile, highQuality, failures)
-                if (candidate != null) return candidate
-            } catch (e: Exception) {
-                failures.add("${profile.id}: ${e.message ?: e.javaClass.simpleName}")
+        for (round in 0..1) {
+            for ((i, profile) in profiles.withIndex()) {
+                // Pace the requests: firing the whole chain back-to-back reads
+                // as automation to YouTube and triggers bot-gating.
+                if (i > 0 || round > 0) delay(500)
+                try {
+                    val candidate = playerRequest(videoId, profile, highQuality, failures)
+                    if (candidate != null) return candidate
+                } catch (e: Exception) {
+                    failures.add("${profile.id}: ${e.message ?: e.javaClass.simpleName}")
+                }
             }
+            // Hard bot-gates ("Sign in to confirm you're not a bot") are IP
+            // reputation based — retrying will not help, so fail fast.
+            val gated = failures.any {
+                it.contains("Sign in to confirm", ignoreCase = true) ||
+                    it.contains("LOGIN_REQUIRED", ignoreCase = true)
+            }
+            if (gated || round == 1) break
+            // Otherwise a stale visitor identity may be the cause; refresh it
+            // once and give the chain a calm second pass.
+            InnerTube.invalidateVisitor()
         }
-        throw NoPlayableStream(failures.joinToString("\n"))
+        val gated = failures.any { it.contains("Sign in to confirm", ignoreCase = true) }
+        val headline = if (gated) {
+            "YouTube is bot-gating this network. Try again in a few minutes, or switch networks."
+        } else {
+            "No playback profile succeeded."
+        }
+        throw NoPlayableStream("$headline\n${failures.joinToString("\n")}")
     }
 
     class NoPlayableStream(detail: String) : Exception(
-        "No tokenless playback profile succeeded.\n$detail"
+        "No playback profile succeeded.\n$detail"
     )
 
     private suspend fun playerRequest(videoId: String, p: Profile, highQuality: Boolean, failures: MutableList<String>): StreamInfo? {
-        val visitor = if (p.needsVisitorData) InnerTube.visitorData() else InnerTube.visitorData()
+        val visitor = InnerTube.visitorData()
         val body = buildJsonObject {
             put("context", buildJsonObject {
                 put("client", buildJsonObject {
@@ -103,18 +171,7 @@ object StreamResolver {
                     put("hl", JsonPrimitive("en"))
                     put("gl", JsonPrimitive("US"))
                     put("utcOffsetMinutes", JsonPrimitive(0))
-                    if (p.musicOrigin) {
-                        put("osName", JsonPrimitive("VISION_OS"))
-                        put("osVersion", JsonPrimitive("1.3"))
-                        put("deviceMake", JsonPrimitive("Apple"))
-                        put("deviceModel", JsonPrimitive("RealityDevice14,1"))
-                        put("platform", JsonPrimitive("MOBILE"))
-                    } else {
-                        put("osName", JsonPrimitive("Tizen"))
-                        put("osVersion", JsonPrimitive("2.4.0"))
-                        put("deviceMake", JsonPrimitive("Samsung"))
-                        put("deviceModel", JsonPrimitive("UKS9800"))
-                    }
+                    p.extraContext.forEach { (k, v) -> put(k, v) }
                     visitor?.let { put("visitorData", JsonPrimitive(it)) }
                 })
             })
