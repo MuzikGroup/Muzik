@@ -14,6 +14,14 @@ package com.muzik.shared.ui.settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.muzik.shared.alarm.MusicAlarmEntry
+import com.muzik.shared.alarm.clockLabel
+import com.muzik.shared.alarm.timeOfDayMinutes
 import com.muzik.shared.generated.resources.*
 import com.muzik.shared.settings.KeepScreenOnMode
 import com.muzik.shared.settings.LoudnessLevel
@@ -277,6 +285,81 @@ internal fun SettingsUiRegistryBuilder.registerPlaybackSettings(host: SharedSett
             ) {
                 settings.crossfadeGapless = it
                 host.onSettingChanged(SettingsChangeEffect.AUDIO, null)
+            }
+        }
+        val alarmDatabase = host.alarmDatabase
+        if (alarmDatabase != null) {
+            val alarmPlaylists by alarmDatabase.dao().playlistsByNameAsc().collectAsState(emptyList())
+            val alarms = remember(settings.alarmEntriesJson) { loadAlarms(settings) }
+            var showAlarmEditor by remember { mutableStateOf(false) }
+            var alarmEditorTarget by remember { mutableStateOf<MusicAlarmEntry?>(null) }
+            group("alarm", stringResource(Res.string.alarm)) {
+                action(
+                    id = "alarmAdd",
+                    title = stringResource(Res.string.alarm_add),
+                    onClick = {
+                        alarmEditorTarget = null
+                        showAlarmEditor = true
+                    },
+                )
+                if (alarms.isEmpty()) {
+                    action(
+                        id = "alarmEmpty",
+                        title = stringResource(Res.string.alarm_empty),
+                        enabled = false,
+                        onClick = {},
+                    )
+                } else {
+                    alarms.sortedBy { it.timeOfDayMinutes }.forEach { alarm ->
+                        val playlistTitle =
+                            alarmPlaylists.firstOrNull { it.id == alarm.playlistId }?.title
+                                ?: stringResource(Res.string.alarm_select_playlist)
+                        custom(
+                            id = "alarmRow:${alarm.id}",
+                            title = alarm.clockLabel(),
+                            description = playlistTitle,
+                        ) { _ ->
+                            AlarmRowContent(
+                                alarm = alarm,
+                                playlistTitle = playlistTitle,
+                                onToggle = { enabled ->
+                                    persistAlarms(settings) { current ->
+                                        current.map {
+                                            if (it.id == alarm.id) it.copy(enabled = enabled) else it
+                                        }
+                                    }
+                                },
+                                onEdit = {
+                                    alarmEditorTarget = alarm
+                                    showAlarmEditor = true
+                                },
+                                onDelete = {
+                                    persistAlarms(settings) { current ->
+                                        current.filterNot { it.id == alarm.id }
+                                    }
+                                },
+                            )
+                        }
+                    }
+                }
+            }
+            if (showAlarmEditor) {
+                AlarmEditorDialog(
+                    existing = alarmEditorTarget,
+                    allAlarms = alarms,
+                    playlists = alarmPlaylists,
+                    onDismiss = {
+                        showAlarmEditor = false
+                        alarmEditorTarget = null
+                    },
+                    onSave = { entry ->
+                        persistAlarms(settings) { current ->
+                            current.filterNot { it.id == entry.id } + entry
+                        }
+                        showAlarmEditor = false
+                        alarmEditorTarget = null
+                    },
+                )
             }
         }
         group("queue", stringResource(Res.string.queue)) {

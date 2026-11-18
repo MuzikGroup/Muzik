@@ -499,4 +499,25 @@
     <string name="new_releases">เวอร์ชั่นใหม่</string>
     <string name="podcasts_for_you">พอดแคสต์สำหรับคุณ</string>
     <string name="recap">สรุป</string>
+
+    <string name="alarm">ปลุกด้วยเพลง</string>
+    <string name="alarm_add">เพิ่มปลุก</string>
+    <string name="alarm_new">ปลุกใหม่</string>
+    <string name="alarm_edit">แก้ไขปลุก</string>
+    <string name="alarm_empty">ยังไม่มีปลุก เพิ่มหนึ่งรายการเพื่อเริ่มวันด้วยเพลย์ลิสต์</string>
+    <string name="alarm_time">เวลา</string>
+    <string name="alarm_playlist">เพลย์ลิสต์</string>
+    <string name="alarm_select_playlist">เลือกเพลย์ลิสต์</string>
+    <string name="alarm_no_playlists">สร้างเพลย์ลิสต์ก่อนเพื่อใช้เป็นปลุก</string>
+    <string name="alarm_playlist_song_count">%1$d เพลง</string>
+    <string name="alarm_random_song">เล่นเพลงแบบสุ่ม</string>
+    <string name="alarm_random_enabled">เพลงสุ่ม</string>
+    <string name="alarm_random_disabled">ลำดับเพลย์ลิสต์</string>
+    <string name="alarm_on">ปลุกเปิดอยู่</string>
+    <string name="alarm_off">ปลุกปิดอยู่</string>
+    <string name="alarm_not_scheduled">ยังไม่ได้ตั้งเวลา</string>
+    <string name="alarm_next_prefix">ถัดไป: %1$s</string>
+    <string name="alarm_duplicate_time_warning">มีปลุกอื่นใช้เวลานี้อยู่แล้ว</string>
+    <string name="alarm_requires_playlist">เลือกเพลย์ลิสต์เพื่อเปิดใช้งานปลุก</string>
+    <string name="alarm_selected">เลือกแล้ว</string>
 </resources>

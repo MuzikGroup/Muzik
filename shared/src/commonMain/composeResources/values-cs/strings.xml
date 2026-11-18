@@ -2313,4 +2313,25 @@
     <string name="listen_together_server_label">%1$s · %2$s</string>
     <string name="settings_sound">Zvuk</string>
     <string name="song_count_with_hidden">%1$s, %2$s</string>
+
+    <string name="alarm">Hudební budík</string>
+    <string name="alarm_add">Přidat budík</string>
+    <string name="alarm_new">Nový budík</string>
+    <string name="alarm_edit">Upravit budík</string>
+    <string name="alarm_empty">Zatím žádné budíky. Přidejte jeden a začněte den s playlistem.</string>
+    <string name="alarm_time">Čas</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Vyberte playlist</string>
+    <string name="alarm_no_playlists">Nejprve vytvořte playlist, který chcete jako budík použít.</string>
+    <string name="alarm_playlist_song_count">Počet písní: %1$d</string>
+    <string name="alarm_random_song">Přehrát náhodnou píseň</string>
+    <string name="alarm_random_enabled">Náhodná píseň</string>
+    <string name="alarm_random_disabled">Pořadí playlistu</string>
+    <string name="alarm_on">Budík zapnut</string>
+    <string name="alarm_off">Budík vypnut</string>
+    <string name="alarm_not_scheduled">Nenaplánováno</string>
+    <string name="alarm_next_prefix">Další: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Jiný budík už tento čas používá.</string>
+    <string name="alarm_requires_playlist">Vyberte playlist, aby budík fungoval.</string>
+    <string name="alarm_selected">Vybráno</string>
 </resources>

@@ -60,6 +60,7 @@ import com.muzik.shared.generated.resources.continue_action
 import com.muzik.shared.generated.resources.finish
 import com.muzik.shared.generated.resources.log_in
 import com.muzik.shared.generated.resources.logo
+import com.muzik.shared.generated.resources.logo_app
 import com.muzik.shared.generated.resources.no
 import com.muzik.shared.generated.resources.onboarding_backup_picker_error
 import com.muzik.shared.generated.resources.onboarding_backup_picker_title
@@ -325,9 +326,8 @@ private fun DesktopOnboardingPage(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     Image(
-                        painter = painterResource(Res.drawable.logo),
+                        painter = painterResource(Res.drawable.logo_app),
                         contentDescription = null,
-                        colorFilter = ColorFilter.tint(colors.onSurface),
                         modifier = Modifier.size(20.dp),
                     )
                     Text(stringResource(Res.string.app_name), style = MaterialTheme.typography.titleSmall)

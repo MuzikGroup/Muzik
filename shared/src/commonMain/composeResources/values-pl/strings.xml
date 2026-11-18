@@ -2556,4 +2556,25 @@
     <string name="lyrics_editor_save_error">Nie udało się zapisać Twojego tekstu. Spróbuj ponownie przed opuszczeniem edytora.</string>
     <string name="lyrics_editor_limit_error">Ten tekst przekracza obsługiwany rozmiar. Twoja wersja robocza została zachowana. Skróć go przed wyeksportowaniem lub synchronizacją.</string>
     <string name="density_extra_large">Bardzo duża (150%)</string>
+
+    <string name="alarm">Budzik muzyczny</string>
+    <string name="alarm_add">Dodaj budzik</string>
+    <string name="alarm_new">Nowy budzik</string>
+    <string name="alarm_edit">Edytuj budzik</string>
+    <string name="alarm_empty">Nie ma jeszcze budzików. Dodaj jeden i zacznij dzień od playlisty.</string>
+    <string name="alarm_time">Czas</string>
+    <string name="alarm_playlist">Playlista</string>
+    <string name="alarm_select_playlist">Wybierz playlistę</string>
+    <string name="alarm_no_playlists">Najpierw utwórz playlistę, aby użyć jej jako budzika.</string>
+    <string name="alarm_playlist_song_count">%1$d utworów</string>
+    <string name="alarm_random_song">Odtwórz losowy utwór</string>
+    <string name="alarm_random_enabled">Losowy utwór</string>
+    <string name="alarm_random_disabled">Kolejność playlisty</string>
+    <string name="alarm_on">Budzik włączony</string>
+    <string name="alarm_off">Budzik wyłączony</string>
+    <string name="alarm_not_scheduled">Nie zaplanowano</string>
+    <string name="alarm_next_prefix">Następny: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Inny budzik już używa tej godziny.</string>
+    <string name="alarm_requires_playlist">Wybierz playlistę, aby uzbroić budzik.</string>
+    <string name="alarm_selected">Wybrano</string>
 </resources>

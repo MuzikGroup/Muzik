@@ -1317,4 +1317,25 @@
     <string name="settings_resume_prompt_summary">Vraag om bevestiging voordat de opgeslagen wachtrij bij het starten wordt hervat</string>
     <string name="settings_player_layout_summary">Wijzig de indeling van hoezen en afspeelknoppen</string>
     <string name="settings_filter_q_summary">Q bepaalt de breedte of resonantie van het geselecteerde filter</string>
+
+    <string name="alarm">Muziekwekker</string>
+    <string name="alarm_add">Wekker toevoegen</string>
+    <string name="alarm_new">Nieuwe wekker</string>
+    <string name="alarm_edit">Wekker bewerken</string>
+    <string name="alarm_empty">Nog geen wekkers. Voeg er een toe en start de dag met een playlist.</string>
+    <string name="alarm_time">Tijd</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Kies een playlist</string>
+    <string name="alarm_no_playlists">Maak eerst een playlist om als wekker te gebruiken.</string>
+    <string name="alarm_playlist_song_count">%1$d nummers</string>
+    <string name="alarm_random_song">Willekeurig nummer afspelen</string>
+    <string name="alarm_random_enabled">Willekeurig nummer</string>
+    <string name="alarm_random_disabled">Playlistvolgorde</string>
+    <string name="alarm_on">Wekker aan</string>
+    <string name="alarm_off">Wekker uit</string>
+    <string name="alarm_not_scheduled">Niet ingepland</string>
+    <string name="alarm_next_prefix">Volgende: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Er bestaat al een andere wekker op dit tijdstip.</string>
+    <string name="alarm_requires_playlist">Kies een playlist om de wekker te activeren.</string>
+    <string name="alarm_selected">Geselecteerd</string>
 </resources>

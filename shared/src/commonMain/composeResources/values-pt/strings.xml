@@ -965,4 +965,25 @@
     <string name="discord_integration_description">Mostrar a música que reproduzes no teu perfil do Discord</string>
     <string name="device_connect_peer_details">%1$s\n%2$s</string>
     <string name="listen_together_server_label">%1$s · %2$s</string>
+
+    <string name="alarm">Alarme musical</string>
+    <string name="alarm_add">Adicionar alarme</string>
+    <string name="alarm_new">Novo alarme</string>
+    <string name="alarm_edit">Editar alarme</string>
+    <string name="alarm_empty">Ainda não há alarmes. Adicione um para começar o dia com uma playlist.</string>
+    <string name="alarm_time">Hora</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Selecionar uma playlist</string>
+    <string name="alarm_no_playlists">Crie primeiro uma playlist para usar como alarme.</string>
+    <string name="alarm_playlist_song_count">%1$d músicas</string>
+    <string name="alarm_random_song">Reproduzir música aleatória</string>
+    <string name="alarm_random_enabled">Música aleatória</string>
+    <string name="alarm_random_disabled">Ordem da playlist</string>
+    <string name="alarm_on">Alarme ligado</string>
+    <string name="alarm_off">Alarme desligado</string>
+    <string name="alarm_not_scheduled">Não agendado</string>
+    <string name="alarm_next_prefix">Próximo: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Outro alarme já usa esta hora.</string>
+    <string name="alarm_requires_playlist">Escolha uma playlist para ativar o alarme.</string>
+    <string name="alarm_selected">Selecionado</string>
 </resources>

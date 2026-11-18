@@ -750,4 +750,25 @@
     <string name="settings_resume_prompt_summary">应用启动时，在继续播放已保存的队列前询问</string>
     <string name="settings_player_layout_summary">更改封面和播放控件的布局</string>
     <string name="settings_filter_q_summary">Q 控制所选滤波器的带宽或共振</string>
+
+    <string name="alarm">音乐闹钟</string>
+    <string name="alarm_add">添加闹钟</string>
+    <string name="alarm_new">新建闹钟</string>
+    <string name="alarm_edit">编辑闹钟</string>
+    <string name="alarm_empty">还没有闹钟。添加一个，用播放列表开启新的一天。</string>
+    <string name="alarm_time">时间</string>
+    <string name="alarm_playlist">播放列表</string>
+    <string name="alarm_select_playlist">选择播放列表</string>
+    <string name="alarm_no_playlists">请先创建一个播放列表作为闹钟使用。</string>
+    <string name="alarm_playlist_song_count">%1$d 首歌曲</string>
+    <string name="alarm_random_song">随机播放歌曲</string>
+    <string name="alarm_random_enabled">随机歌曲</string>
+    <string name="alarm_random_disabled">按列表顺序</string>
+    <string name="alarm_on">闹钟已开启</string>
+    <string name="alarm_off">闹钟已关闭</string>
+    <string name="alarm_not_scheduled">未设定</string>
+    <string name="alarm_next_prefix">下次：%1$s</string>
+    <string name="alarm_duplicate_time_warning">已有其他闹钟使用该时间。</string>
+    <string name="alarm_requires_playlist">请选择播放列表以启用闹钟。</string>
+    <string name="alarm_selected">已选择</string>
 </resources>

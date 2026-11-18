@@ -1240,4 +1240,25 @@
     <string name="settings_resume_prompt_summary">ऐप शुरू होने पर सेव की गई कतार फिर चलाने से पहले पूछें</string>
     <string name="settings_player_layout_summary">कवर और प्लेबैक कंट्रोल की जगह बदलें</string>
     <string name="settings_filter_q_summary">Q चुने हुए फ़िल्टर की चौड़ाई या अनुनाद को नियंत्रित करता है</string>
+
+    <string name="alarm">संगीत अलार्म</string>
+    <string name="alarm_add">अलार्म जोड़ें</string>
+    <string name="alarm_new">नया अलार्म</string>
+    <string name="alarm_edit">अलार्म संपादित करें</string>
+    <string name="alarm_empty">अभी कोई अलार्म नहीं है। प्लेलिस्ट के साथ दिन शुरू करने के लिए एक जोड़ें।</string>
+    <string name="alarm_time">समय</string>
+    <string name="alarm_playlist">प्लेलिस्ट</string>
+    <string name="alarm_select_playlist">प्लेलिस्ट चुनें</string>
+    <string name="alarm_no_playlists">अलार्म के रूप में उपयोग के लिए पहले प्लेलिस्ट बनाएं।</string>
+    <string name="alarm_playlist_song_count">%1$d गाने</string>
+    <string name="alarm_random_song">यादृच्छिक गाना चलाएँ</string>
+    <string name="alarm_random_enabled">यादृच्छिक गाना</string>
+    <string name="alarm_random_disabled">प्लेलिस्ट क्रम</string>
+    <string name="alarm_on">अलार्म चालू</string>
+    <string name="alarm_off">अलार्म बंद</string>
+    <string name="alarm_not_scheduled">अनुसूचित नहीं</string>
+    <string name="alarm_next_prefix">अगला: %1$s</string>
+    <string name="alarm_duplicate_time_warning">इस समय पर पहले से दूसरा अलार्म है।</string>
+    <string name="alarm_requires_playlist">अलार्म चालू करने के लिए प्लेलिस्ट चुनें।</string>
+    <string name="alarm_selected">चयनित</string>
 </resources>

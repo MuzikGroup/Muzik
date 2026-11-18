@@ -512,4 +512,25 @@
     <string name="settings_resume_prompt_summary">בקשת אישור לפני חידוש התור השמור בהפעלת היישום</string>
     <string name="settings_player_layout_summary">שינוי סידור העטיפות ופקדי הנגינה</string>
     <string name="settings_filter_q_summary">Q קובע את הרוחב או התהודה של המסנן שנבחר</string>
+
+    <string name="alarm">שעון מעורר מוזיקה</string>
+    <string name="alarm_add">הוספת שעון מעורר</string>
+    <string name="alarm_new">שעון מעורר חדש</string>
+    <string name="alarm_edit">עריכת שעון מעורר</string>
+    <string name="alarm_empty">אין עדיין שעונים מעוררים. הוסיפו אחד כדי להתחיל את היום עם פלייליסט.</string>
+    <string name="alarm_time">שעה</string>
+    <string name="alarm_playlist">פלייליסט</string>
+    <string name="alarm_select_playlist">בחרו פלייליסט</string>
+    <string name="alarm_no_playlists">צרו קודם פלייליסט לשימוש כשעון מעורר.</string>
+    <string name="alarm_playlist_song_count">%1$d שירים</string>
+    <string name="alarm_random_song">השמעת שיר אקראי</string>
+    <string name="alarm_random_enabled">שיר אקראי</string>
+    <string name="alarm_random_disabled">סדר הפלייליסט</string>
+    <string name="alarm_on">השעון המעורר פועל</string>
+    <string name="alarm_off">השעון המעורר כבוי</string>
+    <string name="alarm_not_scheduled">לא מתוזמן</string>
+    <string name="alarm_next_prefix">הבא: %1$s</string>
+    <string name="alarm_duplicate_time_warning">לשעון מעורר אחר כבר יש את השעה הזו.</string>
+    <string name="alarm_requires_playlist">בחרו פלייליסט כדי להפעיל את השעון המעורר.</string>
+    <string name="alarm_selected">נבחר</string>
 </resources>

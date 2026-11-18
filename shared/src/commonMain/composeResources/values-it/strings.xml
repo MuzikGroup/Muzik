@@ -2592,4 +2592,25 @@
     <string name="density_massive">Gigante (200%)</string>
     <string name="density_huge">Enorme (175%)</string>
     <string name="density_extra_large">Molto grande (150%)</string>
+
+    <string name="alarm">Sveglia musicale</string>
+    <string name="alarm_add">Aggiungi sveglia</string>
+    <string name="alarm_new">Nuova sveglia</string>
+    <string name="alarm_edit">Modifica sveglia</string>
+    <string name="alarm_empty">Nessuna sveglia. Aggiungine una per iniziare la giornata con una playlist.</string>
+    <string name="alarm_time">Ora</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Seleziona una playlist</string>
+    <string name="alarm_no_playlists">Crea prima una playlist da usare come sveglia.</string>
+    <string name="alarm_playlist_song_count">%1$d brani</string>
+    <string name="alarm_random_song">Riproduci brano casuale</string>
+    <string name="alarm_random_enabled">Brano casuale</string>
+    <string name="alarm_random_disabled">Ordine della playlist</string>
+    <string name="alarm_on">Sveglia attiva</string>
+    <string name="alarm_off">Sveglia spenta</string>
+    <string name="alarm_not_scheduled">Non programmata</string>
+    <string name="alarm_next_prefix">Prossima: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Un\'altra sveglia usa già quest\'ora.</string>
+    <string name="alarm_requires_playlist">Scegli una playlist per attivare la sveglia.</string>
+    <string name="alarm_selected">Selezionato</string>
 </resources>

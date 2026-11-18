@@ -414,4 +414,25 @@
     <string name="lastfm_service_error">Уваход у Last.fm недаступны. Паспрабуйце пазней.</string>
     <string name="song_cache_location_custom">Уласная папка</string>
     <string name="song_cache_location_custom_desc">Уласная папка, выбраная праз Storage Access Framework</string>
+
+    <string name="alarm">Музычальны будзільнік</string>
+    <string name="alarm_add">Дадаць будзільнік</string>
+    <string name="alarm_new">Новы будзільнік</string>
+    <string name="alarm_edit">Змяніць будзільнік</string>
+    <string name="alarm_empty">Будзільнікаў пакуль няма. Дадайце адзін, каб пачаць дзень з плэйліста.</string>
+    <string name="alarm_time">Час</string>
+    <string name="alarm_playlist">Плэйліст</string>
+    <string name="alarm_select_playlist">Выберыце плэйліст</string>
+    <string name="alarm_no_playlists">Спачатку стварыце плэйліст, каб выкарыстоўваць яго як будзільнік.</string>
+    <string name="alarm_playlist_song_count">%1$d песень</string>
+    <string name="alarm_random_song">Выконваць выпадковую песню</string>
+    <string name="alarm_random_enabled">Выпадковая песня</string>
+    <string name="alarm_random_disabled">Парадак плэйліста</string>
+    <string name="alarm_on">Будзільнік уключаны</string>
+    <string name="alarm_off">Будзільнік выключаны</string>
+    <string name="alarm_not_scheduled">Не запланавана</string>
+    <string name="alarm_next_prefix">Наступнае: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Іншы будзільнік ужо выкарыстоўвае гэты час.</string>
+    <string name="alarm_requires_playlist">Выберыце плэйліст, каб уключыць будзільнік.</string>
+    <string name="alarm_selected">Выбрана</string>
 </resources>

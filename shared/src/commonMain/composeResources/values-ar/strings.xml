@@ -646,4 +646,25 @@
     <string name="settings_resume_prompt_summary">اسأل قبل استئناف قائمة الانتظار المحفوظة عند بدء التطبيق</string>
     <string name="settings_player_layout_summary">غيّر ترتيب الأغلفة وعناصر التحكم في التشغيل</string>
     <string name="settings_filter_q_summary">تتحكم Q في عرض المرشح المحدد أو رنينه</string>
+
+    <string name="alarm">منبّه الموسيقى</string>
+    <string name="alarm_add">إضافة منبّه</string>
+    <string name="alarm_new">منبّه جديد</string>
+    <string name="alarm_edit">تعديل المنبّه</string>
+    <string name="alarm_empty">لا توجد منبّهات بعد. أضف واحداً لتبدأ يومك بقائمة تشغيل.</string>
+    <string name="alarm_time">الوقت</string>
+    <string name="alarm_playlist">قائمة التشغيل</string>
+    <string name="alarm_select_playlist">اختر قائمة تشغيل</string>
+    <string name="alarm_no_playlists">أنشئ قائمة تشغيل أولاً لاستخدامها كمنبّه.</string>
+    <string name="alarm_playlist_song_count">%1$d أغنية</string>
+    <string name="alarm_random_song">تشغيل أغنية عشوائية</string>
+    <string name="alarm_random_enabled">أغنية عشوائية</string>
+    <string name="alarm_random_disabled">ترتيب القائمة</string>
+    <string name="alarm_on">المنبّه مفعّل</string>
+    <string name="alarm_off">المنبّه متوقف</string>
+    <string name="alarm_not_scheduled">غير مجدول</string>
+    <string name="alarm_next_prefix">التالي: %1$s</string>
+    <string name="alarm_duplicate_time_warning">منبّه آخر يستخدم هذا الوقت بالفعل.</string>
+    <string name="alarm_requires_playlist">اختر قائمة تشغيل لتفعيل المنبّه.</string>
+    <string name="alarm_selected">محدد</string>
 </resources>

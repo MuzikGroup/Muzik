@@ -311,6 +311,27 @@
     <string name="sleep_timer_advanced_options">Advanced options</string>
     <string name="sleep_timer_finish_current_song">Stop timer at end of current song when timer ends</string>
     <string name="sleep_timer_set_default">Set as default</string>
+    <!-- Music alarm settings, mirroring the Android app. -->
+    <string name="alarm">Music alarm</string>
+    <string name="alarm_add">Add alarm</string>
+    <string name="alarm_new">New alarm</string>
+    <string name="alarm_edit">Edit alarm</string>
+    <string name="alarm_empty">No alarms yet. Add one to start your day with a playlist.</string>
+    <string name="alarm_time">Time</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Select a playlist</string>
+    <string name="alarm_no_playlists">Create a playlist first to use it as an alarm.</string>
+    <string name="alarm_playlist_song_count">%1$d songs</string>
+    <string name="alarm_random_song">Play a random song</string>
+    <string name="alarm_random_enabled">Random song</string>
+    <string name="alarm_random_disabled">Playlist order</string>
+    <string name="alarm_on">Alarm on</string>
+    <string name="alarm_off">Alarm off</string>
+    <string name="alarm_not_scheduled">Not scheduled</string>
+    <string name="alarm_next_prefix">Next: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Another alarm already uses this time.</string>
+    <string name="alarm_requires_playlist">Pick a playlist to arm this alarm.</string>
+    <string name="alarm_selected">Selected</string>
     <!-- Translators: Error message about unknown in the multiple app screens. -->
     <string name="error_unknown">Unknown error</string>
     <!-- Translators: Heading for benchmark in the playback benchmark settings. -->

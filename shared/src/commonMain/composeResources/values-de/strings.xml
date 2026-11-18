@@ -2455,4 +2455,25 @@
     <string name="lyrics_editor_invalid_timestamp">Ungültiger Zeitstempel bei Zeile %1$d. Verwende [mm:ss.cc]. Dein Entwurf wird gespeichert, bis du es korrigierst.</string>
     <string name="lyrics_editor_save_error">Konnte deine Lyrics nicht speichern. Versuche es erneut, bevor du den Editor verlässt.</string>
     <string name="lyrics_editor_limit_error">Diese Lyrics überschreiten die unterstützte Länge. Dein Entwurf wird gespeichert. Kürze ihn, bevor du ihn exportiertst oder synchronisierst.</string>
+
+    <string name="alarm">Musikwecker</string>
+    <string name="alarm_add">Wecker hinzufügen</string>
+    <string name="alarm_new">Neuer Wecker</string>
+    <string name="alarm_edit">Wecker bearbeiten</string>
+    <string name="alarm_empty">Noch keine Wecker. Füge einen hinzu und starte den Tag mit einer Playlist.</string>
+    <string name="alarm_time">Zeit</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Playlist auswählen</string>
+    <string name="alarm_no_playlists">Erstelle zuerst eine Playlist, um sie als Wecker zu nutzen.</string>
+    <string name="alarm_playlist_song_count">%1$d Songs</string>
+    <string name="alarm_random_song">Zufälligen Song abspielen</string>
+    <string name="alarm_random_enabled">Zufälliger Song</string>
+    <string name="alarm_random_disabled">Playlist-Reihenfolge</string>
+    <string name="alarm_on">Wecker aktiv</string>
+    <string name="alarm_off">Wecker aus</string>
+    <string name="alarm_not_scheduled">Nicht geplant</string>
+    <string name="alarm_next_prefix">Nächste: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Ein anderer Wecker nutzt diese Zeit bereits.</string>
+    <string name="alarm_requires_playlist">Wähle eine Playlist, um den Wecker zu aktivieren.</string>
+    <string name="alarm_selected">Ausgewählt</string>
 </resources>

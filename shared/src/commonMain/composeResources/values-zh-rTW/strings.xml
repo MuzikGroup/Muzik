@@ -769,4 +769,25 @@
     <string name="appearance_play_videos_in_mini_player" tools:ignore="MissingTranslation">用迷你播放器播放影片</string>
     <string name="appearance_play_videos_in_mini_player_desc" tools:ignore="MissingTranslation">迷你播放器關閉時，仍然顯示音樂影片</string>
     <string name="appearance_mini_player_swipe_sensitivity">滑動敏感度</string>
+
+    <string name="alarm">音樂鬧鐘</string>
+    <string name="alarm_add">新增鬧鐘</string>
+    <string name="alarm_new">新鬧鐘</string>
+    <string name="alarm_edit">編輯鬧鐘</string>
+    <string name="alarm_empty">還沒有鬧鐘。新增一個，用播放列表開始新的一天。</string>
+    <string name="alarm_time">時間</string>
+    <string name="alarm_playlist">播放清單</string>
+    <string name="alarm_select_playlist">選擇播放清單</string>
+    <string name="alarm_no_playlists">請先建立播放清單才能設為鬧鐘。</string>
+    <string name="alarm_playlist_song_count">%1$d 首歌曲</string>
+    <string name="alarm_random_song">隨機播放歌曲</string>
+    <string name="alarm_random_enabled">隨機歌曲</string>
+    <string name="alarm_random_disabled">依清單順序</string>
+    <string name="alarm_on">鬧鐘已開啟</string>
+    <string name="alarm_off">鬧鐘已關閉</string>
+    <string name="alarm_not_scheduled">未設定</string>
+    <string name="alarm_next_prefix">下次：%1$s</string>
+    <string name="alarm_duplicate_time_warning">已有其他鬧鐘使用這個時間。</string>
+    <string name="alarm_requires_playlist">請選擇播放清單以啟用鬧鐘。</string>
+    <string name="alarm_selected">已選擇</string>
 </resources>

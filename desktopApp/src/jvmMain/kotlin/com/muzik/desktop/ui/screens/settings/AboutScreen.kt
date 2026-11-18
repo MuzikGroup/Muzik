@@ -13,6 +13,7 @@ import com.muzik.desktop.state.playback.PlayerState
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.app_name
 import com.muzik.shared.generated.resources.logo
+import com.muzik.shared.generated.resources.logo_app
 import com.muzik.shared.ui.screens.AboutScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -24,6 +25,7 @@ fun DesktopAboutScreen(
 ) {
     AboutScreen(
         logo = painterResource(Res.drawable.logo),
+        brandLogo = painterResource(Res.drawable.logo_app),
         appName = stringResource(Res.string.app_name),
         colorScheme = colorScheme,
         contentPadding = PaddingValues(32.dp),

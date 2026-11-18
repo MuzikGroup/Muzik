@@ -98,6 +98,8 @@ import org.jetbrains.compose.resources.stringResource
 fun AboutScreen(
     logo: Painter,
     modifier: Modifier = Modifier,
+    /** Full-color app icon matching the Android version; skips the tinted monochrome treatment. */
+    brandLogo: Painter? = null,
     appName: String = "",
     version: String = BuildConfig.APP_VERSION,
     architecture: String = remember { getAppArchitecture().uppercase() },
@@ -202,6 +204,7 @@ fun AboutScreen(
         ) {
             AppHeaderCard(
                 logo = logo,
+                brandLogo = brandLogo,
                 appName = appName,
                 version = version,
                 architecture = architecture,
@@ -284,6 +287,7 @@ internal fun contributorShape(contributor: AboutContributor): Shape =
 @Composable
 private fun AppHeaderCard(
     logo: Painter,
+    brandLogo: Painter? = null,
     appName: String,
     version: String,
     architecture: String,
@@ -311,9 +315,14 @@ private fun AppHeaderCard(
                 modifier = Modifier.size(112.dp),
             ) {
                 Image(
-                    painter = logo,
+                    painter = brandLogo ?: logo,
                     contentDescription = stringResource(Res.string.app_name),
-                    colorFilter = ColorFilter.tint(colorScheme.onPrimaryContainer, BlendMode.SrcIn),
+                    colorFilter =
+                        if (brandLogo != null) {
+                            null
+                        } else {
+                            ColorFilter.tint(colorScheme.onPrimaryContainer, BlendMode.SrcIn)
+                        },
                     modifier = Modifier.padding(12.dp),
                 )
             }

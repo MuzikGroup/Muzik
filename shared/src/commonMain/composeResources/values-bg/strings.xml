@@ -504,4 +504,25 @@
     <string name="settings_resume_prompt_summary">Питане преди продължаване на запазената опашка при стартиране на приложението</string>
     <string name="settings_player_layout_summary">Промяна на разположението на обложките и контролите за възпроизвеждане</string>
     <string name="settings_filter_q_summary">Q определя ширината или резонанса на избрания филтър</string>
+
+    <string name="alarm">Музикален будилник</string>
+    <string name="alarm_add">Добавяне на будилник</string>
+    <string name="alarm_new">Нов будилник</string>
+    <string name="alarm_edit">Редактиране на будилника</string>
+    <string name="alarm_empty">Още няма будилници. Добавете един, за да започнете деня с плейлист.</string>
+    <string name="alarm_time">Час</string>
+    <string name="alarm_playlist">Плейлист</string>
+    <string name="alarm_select_playlist">Изберете плейлист</string>
+    <string name="alarm_no_playlists">Първо създайте плейлист, за да го използвате като будилник.</string>
+    <string name="alarm_playlist_song_count">%1$d песни</string>
+    <string name="alarm_random_song">Пускане на случайна песен</string>
+    <string name="alarm_random_enabled">Случайна песен</string>
+    <string name="alarm_random_disabled">Ред на плейлиста</string>
+    <string name="alarm_on">Будилникът е включен</string>
+    <string name="alarm_off">Будилникът е изключен</string>
+    <string name="alarm_not_scheduled">Не е планирано</string>
+    <string name="alarm_next_prefix">Следващ: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Друг будилник вече използва този час.</string>
+    <string name="alarm_requires_playlist">Изберете плейлист, за да активирате будилника.</string>
+    <string name="alarm_selected">Избрано</string>
 </resources>

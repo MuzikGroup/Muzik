@@ -504,4 +504,25 @@
     <string name="settings_resume_prompt_summary">Kérdezzen rá a mentett sor folytatására az alkalmazás indításakor</string>
     <string name="settings_player_layout_summary">Módosítsd a borítók és a lejátszásvezérlők elrendezését</string>
     <string name="settings_filter_q_summary">A Q a kiválasztott szűrő szélességét vagy rezonanciáját szabályozza</string>
+
+    <string name="alarm">Zenés ébresztő</string>
+    <string name="alarm_add">Ébresztő hozzáadása</string>
+    <string name="alarm_new">Új ébresztő</string>
+    <string name="alarm_edit">Ébresztő szerkesztése</string>
+    <string name="alarm_empty">Még nincsenek ébresztők. Adj hozzá egyet, és playlisttel indítsd a napot.</string>
+    <string name="alarm_time">Idő</string>
+    <string name="alarm_playlist">Lejátszási lista</string>
+    <string name="alarm_select_playlist">Lejátszási lista kiválasztása</string>
+    <string name="alarm_no_playlists">Először hozz létre egy lejátszási listát ébresztőként való használatra.</string>
+    <string name="alarm_playlist_song_count">%1$d dal</string>
+    <string name="alarm_random_song">Véletlen dal lejátszása</string>
+    <string name="alarm_random_enabled">Véletlen dal</string>
+    <string name="alarm_random_disabled">Lejátszási lista sorrendje</string>
+    <string name="alarm_on">Ébresztő bekapcsolva</string>
+    <string name="alarm_off">Ébresztő kikapcsolva</string>
+    <string name="alarm_not_scheduled">Nem ütemezett</string>
+    <string name="alarm_next_prefix">Következő: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Már van másik ébresztő ekkorra.</string>
+    <string name="alarm_requires_playlist">Válassz lejátszási listát az ébresztő bekapcsolásához.</string>
+    <string name="alarm_selected">Kiválasztva</string>
 </resources>

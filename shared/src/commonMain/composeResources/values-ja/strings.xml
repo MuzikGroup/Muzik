@@ -599,4 +599,25 @@
     <string name="history_playlist_weekly">週間トップ曲</string>
     <string name="history_playlist_monthly">月間トップ曲</string>
     <string name="queue_youtube_history_when_offline">オフライン時にYouTubeの履歴をキューに追加</string>
+
+    <string name="alarm">音楽アラーム</string>
+    <string name="alarm_add">アラームを追加</string>
+    <string name="alarm_new">新しいアラーム</string>
+    <string name="alarm_edit">アラームを編集</string>
+    <string name="alarm_empty">アラームはまだありません。追加して、プレイリストで一日を始めましょう。</string>
+    <string name="alarm_time">時刻</string>
+    <string name="alarm_playlist">プレイリスト</string>
+    <string name="alarm_select_playlist">プレイリストを選択</string>
+    <string name="alarm_no_playlists">アラームに使うには、まずプレイリストを作成してください。</string>
+    <string name="alarm_playlist_song_count">%1$d 曲</string>
+    <string name="alarm_random_song">ランダムな曲を再生</string>
+    <string name="alarm_random_enabled">ランダムな曲</string>
+    <string name="alarm_random_disabled">プレイリスト順</string>
+    <string name="alarm_on">アラーム オン</string>
+    <string name="alarm_off">アラーム オフ</string>
+    <string name="alarm_not_scheduled">未設定</string>
+    <string name="alarm_next_prefix">次回: %1$s</string>
+    <string name="alarm_duplicate_time_warning">同じ時刻に別のアラームが既にあります。</string>
+    <string name="alarm_requires_playlist">アラームを有効にするにはプレイリストを選択してください。</string>
+    <string name="alarm_selected">選択済み</string>
 </resources>

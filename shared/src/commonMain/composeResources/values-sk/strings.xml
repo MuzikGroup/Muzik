@@ -1181,4 +1181,25 @@
     <string name="menu_next">Ďalšie</string>
     <string name="menu_repeat_all">Všetky</string>
     <string name="menu_repeat_one">Jeden</string>
+
+    <string name="alarm">Hudobný budík</string>
+    <string name="alarm_add">Pridať budík</string>
+    <string name="alarm_new">Nový budík</string>
+    <string name="alarm_edit">Upraviť budík</string>
+    <string name="alarm_empty">Zatiaľ žiadne budíky. Pridajte jeden a začnite deň s playlistom.</string>
+    <string name="alarm_time">Čas</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Vyberte playlist</string>
+    <string name="alarm_no_playlists">Najprv vytvorte playlist, ktorý chcete použiť ako budík.</string>
+    <string name="alarm_playlist_song_count">%1$d skladieb</string>
+    <string name="alarm_random_song">Prehrať náhodnú skladbu</string>
+    <string name="alarm_random_enabled">Náhodná skladba</string>
+    <string name="alarm_random_disabled">Poradie playlistu</string>
+    <string name="alarm_on">Budík zapnutý</string>
+    <string name="alarm_off">Budík vypnutý</string>
+    <string name="alarm_not_scheduled">Nenaplanované</string>
+    <string name="alarm_next_prefix">Ďalší: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Iný budík už tento čas používa.</string>
+    <string name="alarm_requires_playlist">Vyberte playlist, aby budík fungoval.</string>
+    <string name="alarm_selected">Vybrané</string>
 </resources>

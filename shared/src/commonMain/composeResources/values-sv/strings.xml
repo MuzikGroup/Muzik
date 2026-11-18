@@ -1654,4 +1654,25 @@
     <string name="settings_player_layout_summary">Ändra placeringen av omslag och uppspelningskontroller</string>
     <string name="settings_filter_q_summary">Q styr bredden eller resonansen hos det valda filtret</string>
     <string name="settings_reset_to_default">Reset to default</string>
+
+    <string name="alarm">Musikväckare</string>
+    <string name="alarm_add">Lägg till väckare</string>
+    <string name="alarm_new">Ny väckare</string>
+    <string name="alarm_edit">Redigera väckare</string>
+    <string name="alarm_empty">Inga väckare än. Lägg till en och börja dagen med en spellista.</string>
+    <string name="alarm_time">Tid</string>
+    <string name="alarm_playlist">Spellista</string>
+    <string name="alarm_select_playlist">Välj en spellista</string>
+    <string name="alarm_no_playlists">Skapa först en spellista att använda som väckare.</string>
+    <string name="alarm_playlist_song_count">%1$d låtar</string>
+    <string name="alarm_random_song">Spela en slumpmässig låt</string>
+    <string name="alarm_random_enabled">Slumpmässig låt</string>
+    <string name="alarm_random_disabled">Spellistordning</string>
+    <string name="alarm_on">Väckare på</string>
+    <string name="alarm_off">Väckare av</string>
+    <string name="alarm_not_scheduled">Inte schemalagd</string>
+    <string name="alarm_next_prefix">Nästa: %1$s</string>
+    <string name="alarm_duplicate_time_warning">En annan väckare använder redan den här tiden.</string>
+    <string name="alarm_requires_playlist">Välj en spellista för att aktivera väckaren.</string>
+    <string name="alarm_selected">Vald</string>
 </resources>

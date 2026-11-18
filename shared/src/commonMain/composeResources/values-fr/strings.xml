@@ -2602,4 +2602,25 @@
     <string name="listen_together_custom_server_name">Serveur personnalisé</string>
     <string name="listen_together_custom_server_maintainer">Utilisateur</string>
     <string name="learn_more">En savoir plus</string>
+
+    <string name="alarm">Réveil musical</string>
+    <string name="alarm_add">Ajouter un réveil</string>
+    <string name="alarm_new">Nouveau réveil</string>
+    <string name="alarm_edit">Modifier le réveil</string>
+    <string name="alarm_empty">Aucun réveil pour le moment. Ajoutez-en un pour commencer la journée avec une playlist.</string>
+    <string name="alarm_time">Heure</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Sélectionner une playlist</string>
+    <string name="alarm_no_playlists">Créez d\'abord une playlist à utiliser comme réveil.</string>
+    <string name="alarm_playlist_song_count">%1$d titres</string>
+    <string name="alarm_random_song">Lire un titre aléatoire</string>
+    <string name="alarm_random_enabled">Titre aléatoire</string>
+    <string name="alarm_random_disabled">Ordre de la playlist</string>
+    <string name="alarm_on">Réveil activé</string>
+    <string name="alarm_off">Réveil désactivé</string>
+    <string name="alarm_not_scheduled">Non programmé</string>
+    <string name="alarm_next_prefix">Suivant : %1$s</string>
+    <string name="alarm_duplicate_time_warning">Un autre réveil utilise déjà cette heure.</string>
+    <string name="alarm_requires_playlist">Choisissez une playlist pour activer le réveil.</string>
+    <string name="alarm_selected">Sélectionné</string>
 </resources>

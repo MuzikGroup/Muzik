@@ -496,4 +496,25 @@
     <string name="settings_resume_prompt_summary">앱을 시작할 때 저장된 대기열을 다시 재생하기 전에 확인</string>
     <string name="settings_player_layout_summary">커버와 재생 컨트롤의 배치 변경</string>
     <string name="settings_filter_q_summary">Q는 선택한 필터의 대역폭이나 공명을 조절합니다</string>
+
+    <string name="alarm">음악 알람</string>
+    <string name="alarm_add">알람 추가</string>
+    <string name="alarm_new">새 알람</string>
+    <string name="alarm_edit">알람 편집</string>
+    <string name="alarm_empty">아직 알람이 없습니다. 하나 추가하여 플레이리스트로 하루를 시작하세요.</string>
+    <string name="alarm_time">시간</string>
+    <string name="alarm_playlist">플레이리스트</string>
+    <string name="alarm_select_playlist">플레이리스트 선택</string>
+    <string name="alarm_no_playlists">알람으로 사용할 플레이리스트를 먼저 만들어 주세요.</string>
+    <string name="alarm_playlist_song_count">%1$d곡</string>
+    <string name="alarm_random_song">무작위 곡 재생</string>
+    <string name="alarm_random_enabled">무작위 곡</string>
+    <string name="alarm_random_disabled">플레이리스트 순서</string>
+    <string name="alarm_on">알람 켜짐</string>
+    <string name="alarm_off">알람 꺼짐</string>
+    <string name="alarm_not_scheduled">예약 없음</string>
+    <string name="alarm_next_prefix">다음: %1$s</string>
+    <string name="alarm_duplicate_time_warning">이 시간에 이미 다른 알람이 있습니다.</string>
+    <string name="alarm_requires_playlist">알람을 켜려면 플레이리스트를 선택하세요.</string>
+    <string name="alarm_selected">선택됨</string>
 </resources>

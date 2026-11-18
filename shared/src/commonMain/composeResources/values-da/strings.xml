@@ -334,4 +334,25 @@
     <string name="settings_resume_prompt_summary">Spørg, før den gemte kø genoptages, når appen starter</string>
     <string name="settings_player_layout_summary">Skift placeringen af omslag og afspilningsknapper</string>
     <string name="settings_filter_q_summary">Q styrer bredden eller resonansen for det valgte filter</string>
+
+    <string name="alarm">Musikvækkeur</string>
+    <string name="alarm_add">Tilføj vækkeur</string>
+    <string name="alarm_new">Ny vækkeur</string>
+    <string name="alarm_edit">Redigér vækkeur</string>
+    <string name="alarm_empty">Ingen vækkeure endnu. Tilføj én, og start dagen med en playliste.</string>
+    <string name="alarm_time">Tid</string>
+    <string name="alarm_playlist">Playliste</string>
+    <string name="alarm_select_playlist">Vælg en playliste</string>
+    <string name="alarm_no_playlists">Opret først en playliste, som kan bruges som vækkeur.</string>
+    <string name="alarm_playlist_song_count">%1$d sange</string>
+    <string name="alarm_random_song">Afspil en tilfældig sang</string>
+    <string name="alarm_random_enabled">Tilfældig sang</string>
+    <string name="alarm_random_disabled">Playliste­rækkefølge</string>
+    <string name="alarm_on">Vækkeur slået til</string>
+    <string name="alarm_off">Vækkeur slået fra</string>
+    <string name="alarm_not_scheduled">Ikke planlagt</string>
+    <string name="alarm_next_prefix">Næste: %1$s</string>
+    <string name="alarm_duplicate_time_warning">En anden vækkeur bruger allerede dette tidspunkt.</string>
+    <string name="alarm_requires_playlist">Vælg en playliste for at aktivere vækkeuren.</string>
+    <string name="alarm_selected">Valgt</string>
 </resources>

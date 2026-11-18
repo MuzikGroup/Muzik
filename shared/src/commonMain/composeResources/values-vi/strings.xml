@@ -2506,4 +2506,25 @@
     <string name="ai_setup_privacy_settings">Mở cài đặt quyền riêng tư</string>
     <string name="ai_setup_sign_in_again">Đăng nhập lại</string>
     <string name="ai_setup_key_limits">Xem lại giới hạn khóa</string>
+
+    <string name="alarm">Báo thức nhạc</string>
+    <string name="alarm_add">Thêm báo thức</string>
+    <string name="alarm_new">Báo thức mới</string>
+    <string name="alarm_edit">Chỉnh sửa báo thức</string>
+    <string name="alarm_empty">Chưa có báo thức nào. Thêm một cái để bắt đầu ngày với danh sách phát.</string>
+    <string name="alarm_time">Thời gian</string>
+    <string name="alarm_playlist">Danh sách phát</string>
+    <string name="alarm_select_playlist">Chọn danh sách phát</string>
+    <string name="alarm_no_playlists">Hãy tạo danh sách phát trước để dùng làm báo thức.</string>
+    <string name="alarm_playlist_song_count">%1$d bài hát</string>
+    <string name="alarm_random_song">Phát bài hát ngẫu nhiên</string>
+    <string name="alarm_random_enabled">Bài hát ngẫu nhiên</string>
+    <string name="alarm_random_disabled">Thứ tự danh sách phát</string>
+    <string name="alarm_on">Báo thức bật</string>
+    <string name="alarm_off">Báo thức tắt</string>
+    <string name="alarm_not_scheduled">Chưa lên lịch</string>
+    <string name="alarm_next_prefix">Tiếp theo: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Đã có báo thức khác dùng giờ này.</string>
+    <string name="alarm_requires_playlist">Chọn danh sách phát để bật báo thức.</string>
+    <string name="alarm_selected">Đã chọn</string>
 </resources>

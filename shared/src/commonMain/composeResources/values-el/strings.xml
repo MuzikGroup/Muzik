@@ -500,4 +500,25 @@
     <string name="settings_resume_prompt_summary">Ερώτηση πριν συνεχιστεί η αποθηκευμένη ουρά κατά την εκκίνηση της εφαρμογής</string>
     <string name="settings_player_layout_summary">Αλλαγή της διάταξης εξωφύλλων και χειριστηρίων αναπαραγωγής</string>
     <string name="settings_filter_q_summary">Το Q ελέγχει το εύρος ή τον συντονισμό του επιλεγμένου φίλτρου</string>
+
+    <string name="alarm">Μουσικός ξυπνητήρι</string>
+    <string name="alarm_add">Προσθήκη ξυπνητηριού</string>
+    <string name="alarm_new">Νέο ξυπνητήρι</string>
+    <string name="alarm_edit">Επεξεργασία ξυπνητηριού</string>
+    <string name="alarm_empty">Δεν υπάρχουν ξυπνητήρια ακόμη. Προσθέστε ένα για να ξεκινήσετε τη μέρα με playlist.</string>
+    <string name="alarm_time">Ώρα</string>
+    <string name="alarm_playlist">Λίστα αναπαραγωγής</string>
+    <string name="alarm_select_playlist">Επιλέξτε λίστα αναπαραγωγής</string>
+    <string name="alarm_no_playlists">Δημιουργήστε πρώτα λίστα αναπαραγωγής για χρήση ως ξυπνητήρι.</string>
+    <string name="alarm_playlist_song_count">%1$d τραγούδια</string>
+    <string name="alarm_random_song">Αναπαραγωγή τυχαίου τραγουδιού</string>
+    <string name="alarm_random_enabled">Τυχαίο τραγούδι</string>
+    <string name="alarm_random_disabled">Σειρά λίστας</string>
+    <string name="alarm_on">Το ξυπνητήρι είναι ενεργό</string>
+    <string name="alarm_off">Το ξυπνητήρι είναι ανενεργό</string>
+    <string name="alarm_not_scheduled">Χωρίς προγραμματισμό</string>
+    <string name="alarm_next_prefix">Επόμενο: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Ένα άλλο ξυπνητήρι χρησιμοποιεί ήδη αυτή την ώρα.</string>
+    <string name="alarm_requires_playlist">Επιλέξτε λίστα αναπαραγωγής για να ενεργοποιήσετε το ξυπνητήρι.</string>
+    <string name="alarm_selected">Επιλέχθηκε</string>
 </resources>

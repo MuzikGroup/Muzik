@@ -144,6 +144,7 @@ import com.muzik.shared.generated.resources.liked_songs
 import com.muzik.shared.generated.resources.listen_together
 import com.muzik.shared.generated.resources.loading
 import com.muzik.shared.generated.resources.logo
+import com.muzik.shared.generated.resources.logo_app
 import com.muzik.shared.generated.resources.mysterious_fourth_tab
 import com.muzik.shared.generated.resources.mysterious_fourth_tab_description
 import com.muzik.shared.generated.resources.offline_mode
@@ -1574,6 +1575,7 @@ fun MobileApp(
                             MobileRoute.About -> {
                                 AboutScreen(
                                     logo = painterResource(Res.drawable.logo),
+                                    brandLogo = painterResource(Res.drawable.logo_app),
                                     appName = stringResource(Res.string.app_name),
                                     onNavigateBack = ::back,
                                     bottomInset = padding.calculateBottomPadding(),

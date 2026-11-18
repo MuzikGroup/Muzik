@@ -583,4 +583,25 @@
     <string name="settings_resume_prompt_summary">پرسش پیش از ادامهٔ صف ذخیره‌شده هنگام شروع برنامه</string>
     <string name="settings_player_layout_summary">تغییر چیدمان جلدها و کنترل‌های پخش</string>
     <string name="settings_filter_q_summary">Q پهنا یا تشدید فیلتر انتخاب‌شده را کنترل می‌کند</string>
+
+    <string name="alarm">هشدار موسیقی</string>
+    <string name="alarm_add">افزودن هشدار</string>
+    <string name="alarm_new">هشدار جدید</string>
+    <string name="alarm_edit">ویرایش هشدار</string>
+    <string name="alarm_empty">هنوز هشداری نیست. یکی اضافه کنید تا روز را با یک پلی‌لیست شروع کنید.</string>
+    <string name="alarm_time">زمان</string>
+    <string name="alarm_playlist">پلی‌لیست</string>
+    <string name="alarm_select_playlist">یک پلی‌لیست انتخاب کنید</string>
+    <string name="alarm_no_playlists">ابتدا یک پلی‌لیست بسازید تا به‌عنوان هشدار استفاده شود.</string>
+    <string name="alarm_playlist_song_count">%1$d آهنگ</string>
+    <string name="alarm_random_song">پخش آهنگ تصادفی</string>
+    <string name="alarm_random_enabled">آهنگ تصادفی</string>
+    <string name="alarm_random_disabled">ترتیب پلی‌لیست</string>
+    <string name="alarm_on">هشدار روشن</string>
+    <string name="alarm_off">هشدار خاموش</string>
+    <string name="alarm_not_scheduled">بدون زمان‌بندی</string>
+    <string name="alarm_next_prefix">بعدی: %1$s</string>
+    <string name="alarm_duplicate_time_warning">هشدار دیگری از این زمان استفاده می‌کند.</string>
+    <string name="alarm_requires_playlist">برای فعال‌سازی هشدار، یک پلی‌لیست انتخاب کنید.</string>
+    <string name="alarm_selected">انتخاب‌شده</string>
 </resources>

@@ -58,6 +58,7 @@ import com.muzik.desktop.ui.components.rememberMetroEqProfilePicker
 import com.muzik.desktop.utils.AppLogger
 import com.muzik.desktop.utils.DesktopFontManager
 import com.muzik.desktop.utils.SentryManager
+import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.app_font_active
 import com.muzik.shared.generated.resources.app_font_checking
@@ -112,6 +113,7 @@ import kotlinx.coroutines.withContext
 import meow.nyx.spotlib.SpotifyClient
 import meow.nyx.spotlib.SpotifyConfig
 import org.jetbrains.compose.resources.stringResource
+import org.koin.core.context.GlobalContext
 import java.awt.Desktop
 import java.util.Locale
 
@@ -331,6 +333,7 @@ fun SettingsOverlay(colorScheme: ColorScheme) {
                         platform = SettingsPlatform.DESKTOP,
                         onSpotifySignIn = { showSpotifyLogin = true },
                         onSwitchYouTubeChannel = if (AuthState.isSignedIn) ({ UiState.showSwitchChannel = true }) else null,
+                        alarmDatabase = runCatching { GlobalContext.get().get<MusicDatabase>() }.getOrNull(),
                         lyricsPreview = { modifier ->
                             val song = PlayerState.currentTrack
                             val castState by PlayerState.castManager.state.collectAsState()

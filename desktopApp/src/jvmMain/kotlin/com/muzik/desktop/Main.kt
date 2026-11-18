@@ -91,6 +91,7 @@ import com.muzik.desktop.state.app.UiState
 import com.muzik.desktop.state.auth.AuthState
 import com.muzik.desktop.state.content.HomeState
 import com.muzik.desktop.state.content.LibraryContentState
+import com.muzik.desktop.alarm.MusicAlarmEngine
 import com.muzik.desktop.state.content.LibraryState
 import com.muzik.desktop.state.playback.DesktopPlaybackController
 import com.muzik.desktop.state.playback.ListenTogetherState
@@ -983,6 +984,7 @@ private fun runDesktopApp(args: Array<String>) {
             LyricsState.currentLyricsEntries
             HomeState.setLikedSongsName(runBlocking { getString(Res.string.liked_songs) })
             ListenTogetherState.initialize()
+            MusicAlarmEngine.start()
             if (OsUtil.isWindows) {
                 listOf("previous.ico", "play.ico", "pause.ico", "next.ico").forEach { IconResources.toTempFile(it) }
             }

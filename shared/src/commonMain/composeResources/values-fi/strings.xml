@@ -2236,4 +2236,25 @@
     <string name="settings_more_options">Muut asetukset</string>
     <string name="app_icon_gradient">Liukuväri</string>
     <string name="appearance_floating_bottom_nav">Kelluva navigointipalkki</string>
+
+    <string name="alarm">Musiikkiherätys</string>
+    <string name="alarm_add">Lisää herätys</string>
+    <string name="alarm_new">Uusi herätys</string>
+    <string name="alarm_edit">Muokkaa herätystä</string>
+    <string name="alarm_empty">Ei vielä herätyksiä. Lisää yksi ja aloita päivä soittolistalla.</string>
+    <string name="alarm_time">Aika</string>
+    <string name="alarm_playlist">Soittolista</string>
+    <string name="alarm_select_playlist">Valitse soittolista</string>
+    <string name="alarm_no_playlists">Luo ensin soittolista käytettäväksi herätyksenä.</string>
+    <string name="alarm_playlist_song_count">%1$d kappaletta</string>
+    <string name="alarm_random_song">Toista satunnainen kappale</string>
+    <string name="alarm_random_enabled">Satunnainen kappale</string>
+    <string name="alarm_random_disabled">Soittolistan järjestys</string>
+    <string name="alarm_on">Herätys päällä</string>
+    <string name="alarm_off">Herätys pois</string>
+    <string name="alarm_not_scheduled">Ei ajastettu</string>
+    <string name="alarm_next_prefix">Seuraava: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Toinen herätys käyttää jo tätä aikaa.</string>
+    <string name="alarm_requires_playlist">Valitse soittolista ottaaksesi herätyksen käyttöön.</string>
+    <string name="alarm_selected">Valittu</string>
 </resources>

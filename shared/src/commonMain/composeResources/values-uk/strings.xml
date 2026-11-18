@@ -556,4 +556,25 @@
     <string name="loudness_value">%1$s дБ</string>
     <string name="lyrics_song_artist">Автор пісні</string>
     <string name="recap">Підсумок</string>
+
+    <string name="alarm">Музичний будильник</string>
+    <string name="alarm_add">Додати будильник</string>
+    <string name="alarm_new">Новий будильник</string>
+    <string name="alarm_edit">Змінити будильник</string>
+    <string name="alarm_empty">Будильників ще немає. Додайте один і почніть день із плейлиста.</string>
+    <string name="alarm_time">Час</string>
+    <string name="alarm_playlist">Плейлист</string>
+    <string name="alarm_select_playlist">Виберіть плейлист</string>
+    <string name="alarm_no_playlists">Спочатку створіть плейлист, щоб використовувати його як будильник.</string>
+    <string name="alarm_playlist_song_count">%1$d пісень</string>
+    <string name="alarm_random_song">Відтворити випадкову пісню</string>
+    <string name="alarm_random_enabled">Випадкова пісня</string>
+    <string name="alarm_random_disabled">Порядок плейлиста</string>
+    <string name="alarm_on">Будильник увімкнено</string>
+    <string name="alarm_off">Будильник вимкнено</string>
+    <string name="alarm_not_scheduled">Не заплановано</string>
+    <string name="alarm_next_prefix">Далі: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Інший будильник уже використовує цей час.</string>
+    <string name="alarm_requires_playlist">Виберіть плейлист, щоб увімкнути будильник.</string>
+    <string name="alarm_selected">Вибрано</string>
 </resources>

@@ -2617,4 +2617,25 @@
     <string name="desktop_tray_toggle_on_click_desc_mac">Al hacer clic con el botón derecho del ratón en el ícono de la bandeja, se abrirá o se cerrará la ventana de Muzik</string>
     <string name="desktop_omarchy_unsupported">Muzik no funciona en Omarchy. Usa otra distribución de Linux, Windows 10 o una versión posterior, o macOS.</string>
     <string name="learn_more">Más información</string>
+
+    <string name="alarm">Alarma musical</string>
+    <string name="alarm_add">Añadir alarma</string>
+    <string name="alarm_new">Nueva alarma</string>
+    <string name="alarm_edit">Editar alarma</string>
+    <string name="alarm_empty">Aún no hay alarmas. Añade una para empezar el día con una lista de reproducción.</string>
+    <string name="alarm_time">Hora</string>
+    <string name="alarm_playlist">Lista de reproducción</string>
+    <string name="alarm_select_playlist">Selecciona una lista</string>
+    <string name="alarm_no_playlists">Crea primero una lista para usarla como alarma.</string>
+    <string name="alarm_playlist_song_count">%1$d canciones</string>
+    <string name="alarm_random_song">Reproducir canción aleatoria</string>
+    <string name="alarm_random_enabled">Canción aleatoria</string>
+    <string name="alarm_random_disabled">Orden de la lista</string>
+    <string name="alarm_on">Alarma activada</string>
+    <string name="alarm_off">Alarma desactivada</string>
+    <string name="alarm_not_scheduled">Sin programar</string>
+    <string name="alarm_next_prefix">Siguiente: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Otra alarma ya usa esta hora.</string>
+    <string name="alarm_requires_playlist">Elige una lista para activar la alarma.</string>
+    <string name="alarm_selected">Seleccionada</string>
 </resources>

@@ -2612,4 +2612,25 @@
     <string name="density_massive">Masivă (200%)</string>
     <string name="density_huge">Imensă (175%)</string>
     <string name="density_extra_large">Foarte mare (150%)</string>
+
+    <string name="alarm">Alarmă muzicală</string>
+    <string name="alarm_add">Adaugă alarmă</string>
+    <string name="alarm_new">Alarmă nouă</string>
+    <string name="alarm_edit">Editează alarma</string>
+    <string name="alarm_empty">Încă nu există alarme. Adaugă una și începe ziua cu un playlist.</string>
+    <string name="alarm_time">Ora</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Selectează un playlist</string>
+    <string name="alarm_no_playlists">Creează întâi un playlist pentru al folosi ca alarmă.</string>
+    <string name="alarm_playlist_song_count">%1$d melodii</string>
+    <string name="alarm_random_song">Redă o melodie aleatorie</string>
+    <string name="alarm_random_enabled">Melodie aleatorie</string>
+    <string name="alarm_random_disabled">Ordinea playlistului</string>
+    <string name="alarm_on">Alarmă activată</string>
+    <string name="alarm_off">Alarmă dezactivată</string>
+    <string name="alarm_not_scheduled">Neplanificat</string>
+    <string name="alarm_next_prefix">Următoare: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Altă alarmă folosește deja această oră.</string>
+    <string name="alarm_requires_playlist">Alege un playlist pentru a activa alarma.</string>
+    <string name="alarm_selected">Selectat</string>
 </resources>

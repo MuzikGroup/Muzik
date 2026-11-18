@@ -14,6 +14,7 @@ import com.muzik.shared.api.lyrics.AiProviderPresets
 import com.muzik.shared.constants.ActiveLyricsTextPositionKey
 import com.muzik.shared.constants.AiSlopBlocklistCacheKey
 import com.muzik.shared.constants.AiSlopBlocklistUpdatedAtKey
+import com.muzik.shared.constants.AlarmEntriesJsonKey
 import com.muzik.shared.constants.AndroidActiveFontIdKey
 import com.muzik.shared.constants.AndroidAutoPinnedPlaylistPlaybackModeKey
 import com.muzik.shared.constants.AndroidAutoPinnedPlaylistsJsonKey
@@ -681,6 +682,7 @@ class Settings(
     var devtoolsUnlocked by preference(DevtoolsUnlockedKey, false)
     var devtoolsPlaybackClient by preference(DevtoolsPlaybackClientKey, "AUTO")
     var devtoolsBenchmarkClients by preference(DevtoolsBenchmarkClientsKey, "")
+    var alarmEntriesJson by preference(AlarmEntriesJsonKey, "")
     var desktopRenderBackend by preference(DesktopRenderBackendKey, "AUTO")
 
     /** Disabling Devtools clears playback overrides because playback reads them even while Devtools are hidden. */

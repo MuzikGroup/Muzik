@@ -2577,4 +2577,25 @@
     <string name="listen_together_host_action">Oda sahibi</string>
     <string name="cast_stream_port_unavailable">Yayın aktarımı için 57643 TCP bağlantı noktası açılamadı. Bu ağın kullanılabilir olduğunu ve başka bir uygulamanın aynı bağlantı noktasını kullanmadığını kontrol edin.</string>
     <string name="cast_stream_unreachable">Hoparlör ses akışını talep etmedi. Güvenlik duvarınızın hoparlörden gelen 57643 TCP bağlantı noktasına izin verdiğini ve her iki cihazın da aynı ağda bulunduğunu kontrol edin.</string>
+
+    <string name="alarm">Müzik alarmı</string>
+    <string name="alarm_add">Alarm ekle</string>
+    <string name="alarm_new">Yeni alarm</string>
+    <string name="alarm_edit">Alarmı düzenle</string>
+    <string name="alarm_empty">Henüz alarm yok. Günün bir çalma listesiyle başlaması için bir tane ekleyin.</string>
+    <string name="alarm_time">Saat</string>
+    <string name="alarm_playlist">Çalma listesi</string>
+    <string name="alarm_select_playlist">Bir çalma listesi seçin</string>
+    <string name="alarm_no_playlists">Alarm olarak kullanmak için önce bir çalma listesi oluşturun.</string>
+    <string name="alarm_playlist_song_count">%1$d şarkı</string>
+    <string name="alarm_random_song">Rastgele şarkı çal</string>
+    <string name="alarm_random_enabled">Rastgele şarkı</string>
+    <string name="alarm_random_disabled">Çalma listesi sırası</string>
+    <string name="alarm_on">Alarm açık</string>
+    <string name="alarm_off">Alarm kapalı</string>
+    <string name="alarm_not_scheduled">Zamanlanmadı</string>
+    <string name="alarm_next_prefix">Sonraki: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Bu saatte başka bir alarm zaten var.</string>
+    <string name="alarm_requires_playlist">Alarmı kurmak için bir çalma listesi seçin.</string>
+    <string name="alarm_selected">Seçildi</string>
 </resources>

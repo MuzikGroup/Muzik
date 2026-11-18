@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.muzik.shared.db.MusicDatabase
 
 enum class SettingsPlatform {
     ANDROID,
@@ -131,6 +132,8 @@ data class SharedSettingsHost(
     val onClearSearchHistory: (() -> Unit)? = null,
     val onSpotifySignIn: (() -> Unit)? = null,
     val onSwitchYouTubeChannel: (() -> Unit)? = null,
+    /** When set, the player settings page exposes the music alarm section (platform provides the alarm engine). */
+    val alarmDatabase: MusicDatabase? = null,
     val customPageIcons: Map<SettingsPageId, @Composable (Color) -> Unit> = emptyMap(),
     val pageContent: @Composable (SettingsPageId, onBack: () -> Unit, onNavigate: (SettingsPageId) -> Unit) -> Unit = { _, _, _ -> },
     val rememberMetroEqProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,

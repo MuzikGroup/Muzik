@@ -2666,4 +2666,25 @@
     <string name="desktop_tray_toggle_on_click_desc_mac">Щелчок правой кнопкой мыши по значку в трее откроет или скроет окно Muzik</string>
     <string name="desktop_omarchy_unsupported">Muzik не работает на Omarchy. Используйте другой дистрибутив Linux, Windows 10 и выше или macOS.</string>
     <string name="learn_more">Узнать больше</string>
+
+    <string name="alarm">Музыкальный будильник</string>
+    <string name="alarm_add">Добавить будильник</string>
+    <string name="alarm_new">Новый будильник</string>
+    <string name="alarm_edit">Изменить будильник</string>
+    <string name="alarm_empty">Будильников пока нет. Добавьте один и начните день с плейлиста.</string>
+    <string name="alarm_time">Время</string>
+    <string name="alarm_playlist">Плейлист</string>
+    <string name="alarm_select_playlist">Выберите плейлист</string>
+    <string name="alarm_no_playlists">Сначала создайте плейлист, чтобы использовать его как будильник.</string>
+    <string name="alarm_playlist_song_count">%1$d песен</string>
+    <string name="alarm_random_song">Воспроизвести случайную песню</string>
+    <string name="alarm_random_enabled">Случайная песня</string>
+    <string name="alarm_random_disabled">Порядок плейлиста</string>
+    <string name="alarm_on">Будильник включён</string>
+    <string name="alarm_off">Будильник выключен</string>
+    <string name="alarm_not_scheduled">Не запланировано</string>
+    <string name="alarm_next_prefix">Далее: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Другой будильник уже использует это время.</string>
+    <string name="alarm_requires_playlist">Выберите плейлист, чтобы включить будильник.</string>
+    <string name="alarm_selected">Выбрано</string>
 </resources>

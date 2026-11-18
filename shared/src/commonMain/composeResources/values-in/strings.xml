@@ -2487,4 +2487,25 @@
     <string name="desktop_minimize_to_tray_desc">Menutup jendela akan memperkecil Muzik ke tray</string>
     <string name="desktop_tray_toggle_on_click">Sembunyikan atau tampilkan saat klik di tray</string>
     <string name="desktop_tray_toggle_on_click_desc">Klik kiri ikon tray akan membuka atau menutup jendela Muzik</string>
+
+    <string name="alarm">Alarm musik</string>
+    <string name="alarm_add">Tambah alarm</string>
+    <string name="alarm_new">Alarm baru</string>
+    <string name="alarm_edit">Edit alarm</string>
+    <string name="alarm_empty">Belum ada alarm. Tambahkan satu untuk memulai hari dengan playlist.</string>
+    <string name="alarm_time">Waktu</string>
+    <string name="alarm_playlist">Playlist</string>
+    <string name="alarm_select_playlist">Pilih playlist</string>
+    <string name="alarm_no_playlists">Buat playlist dulu untuk dijadikan alarm.</string>
+    <string name="alarm_playlist_song_count">%1$d lagu</string>
+    <string name="alarm_random_song">Putar lagu acak</string>
+    <string name="alarm_random_enabled">Lagu acak</string>
+    <string name="alarm_random_disabled">Urutan playlist</string>
+    <string name="alarm_on">Alarm aktif</string>
+    <string name="alarm_off">Alarm mati</string>
+    <string name="alarm_not_scheduled">Belum dijadwalkan</string>
+    <string name="alarm_next_prefix">Berikutnya: %1$s</string>
+    <string name="alarm_duplicate_time_warning">Alarm lain sudah menggunakan waktu ini.</string>
+    <string name="alarm_requires_playlist">Pilih playlist untuk mengaktifkan alarm.</string>
+    <string name="alarm_selected">Dipilih</string>
 </resources>
