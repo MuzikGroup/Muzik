@@ -158,7 +158,6 @@
     <string name="music_player">Müzik Çalar</string>
     <string name="settings">Ayarlar</string>
     <string name="appearance">Görünüm</string>
-    <string name="enable_dynamic_theme">Dinamik temayı etkinleştir</string>
     <string name="dark_theme">Koyu tema</string>
     <string name="dark_theme_on">Açık</string>
     <string name="dark_theme_off">Kapalı</string>

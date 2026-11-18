@@ -182,7 +182,6 @@
     <string name="settings">Innstillingar</string>
     <string name="appearance">Utsjånad</string>
     <string name="theme">Drakt</string>
-    <string name="enable_dynamic_theme">Slå på dynamisk drakt</string>
     <string name="dark_theme">Mørk drakt</string>
     <string name="dark_theme_on">På</string>
     <string name="dark_theme_off">Av</string>

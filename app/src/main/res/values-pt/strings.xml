@@ -135,7 +135,6 @@
     <string name="settings">Definições</string>
     <string name="appearance">Aparência</string>
     <string name="theme">Tema</string>
-    <string name="enable_dynamic_theme">Ativar tema dinâmico</string>
     <string name="dark_theme">Tema Escuro</string>
     <plurals name="n_month">
         <item quantity="one">%d mês</item>

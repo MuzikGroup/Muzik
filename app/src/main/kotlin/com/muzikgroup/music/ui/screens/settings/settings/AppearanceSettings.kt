@@ -60,7 +60,6 @@ import com.muzikgroup.music.constants.CropAlbumArtKey
 import com.muzikgroup.music.constants.DefaultOpenTabKey
 import com.muzikgroup.music.constants.DensityScale
 import com.muzikgroup.music.constants.DensityScaleKey
-import com.muzikgroup.music.constants.DynamicThemeKey
 import com.muzikgroup.music.constants.EnableHighRefreshRateKey
 import com.muzikgroup.music.constants.EnableLandscapeScalingKey
 import com.muzikgroup.music.constants.ExperimentalLyricsKey
@@ -116,11 +115,6 @@ fun AppearanceSettings(
     activity: Activity,
     snackbarHostState: SnackbarHostState,
 ) {
-    val (dynamicTheme, onDynamicThemeChange) =
-        rememberPreference(
-            DynamicThemeKey,
-            defaultValue = true,
-        )
     val (enableHighRefreshRate, onEnableHighRefreshRateChange) =
         rememberPreference(
             EnableHighRefreshRateKey,
@@ -136,9 +130,6 @@ fun AppearanceSettings(
             SelectedThemeColorKey,
             defaultValue = DefaultThemeColor.toArgb(),
         )
-    // Check if user has selected a custom color (not the default/dynamic color)
-    val isUsingCustomColor = selectedThemeColorInt != DefaultThemeColor.toArgb()
-
     val (useNewPlayerDesign, onUseNewPlayerDesignChange) =
         rememberPreference(
             UseNewPlayerDesignKey,
@@ -890,33 +881,6 @@ fun AppearanceSettings(
                             onClick = { onEnableLandscapeScalingChange(!enableLandscapeScaling) },
                         ),
                     )
-                    // Only show dynamic theme option when using the default/dynamic color
-                    // When a custom color is selected, dynamic theme is automatically disabled
-                    if (!isUsingCustomColor) {
-                        add(
-                            Material3SettingsItem(
-                                icon = painterResource(R.drawable.palette),
-                                title = { Text(stringResource(R.string.enable_dynamic_theme)) },
-                                trailingContent = {
-                                    Switch(
-                                        checked = dynamicTheme,
-                                        onCheckedChange = onDynamicThemeChange,
-                                        thumbContent = {
-                                            Icon(
-                                                painter =
-                                                    painterResource(
-                                                        id = if (dynamicTheme) R.drawable.check else R.drawable.close,
-                                                    ),
-                                                contentDescription = null,
-                                                modifier = Modifier.size(SwitchDefaults.IconSize),
-                                            )
-                                        },
-                                    )
-                                },
-                                onClick = { onDynamicThemeChange(!dynamicTheme) },
-                            ),
-                        )
-                    }
                     add(
                         Material3SettingsItem(
                             icon = painterResource(R.drawable.palette),

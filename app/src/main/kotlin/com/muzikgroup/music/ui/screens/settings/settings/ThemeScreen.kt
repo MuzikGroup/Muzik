@@ -74,7 +74,6 @@ import com.materialkolor.PaletteStyle
 import com.materialkolor.rememberDynamicColorScheme
 import com.muzikgroup.music.R
 import com.muzikgroup.music.constants.DarkModeKey
-import com.muzikgroup.music.constants.DynamicThemeKey
 import com.muzikgroup.music.constants.PureBlackKey
 import com.muzikgroup.music.constants.PureBlackMiniPlayerKey
 import com.muzikgroup.music.constants.SelectedThemeColorKey
@@ -131,19 +130,13 @@ fun ThemeScreen(
         SelectedThemeColorKey,
         DefaultThemeColor.toArgb()
     )
-    val (_, onDynamicThemeChange) = rememberPreference(DynamicThemeKey, defaultValue = true)
-
     val selectedThemeColor = Color(selectedThemeColorInt)
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-    // Helper function to handle color selection with dynamic theme toggle
+    // Helper function to handle color selection
     val handleColorSelection: (Color) -> Unit = { color ->
         onSelectedThemeColorChange(color.toArgb())
-        // Enable dynamic theme only when selecting the default/dynamic color
-        // Disable it when selecting any other color
-        val isDynamicColor = color == DefaultThemeColor
-        onDynamicThemeChange(isDynamicColor)
     }
 
     if (isLandscape) {

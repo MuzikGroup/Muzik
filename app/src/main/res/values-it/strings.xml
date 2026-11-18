@@ -167,7 +167,6 @@
     <string name="music_player">Riproduttore</string>
     <string name="settings">Impostazioni</string>
     <string name="appearance">Aspetto</string>
-    <string name="enable_dynamic_theme">Abilita il tema dinamico</string>
     <string name="dark_theme">Tema scuro</string>
     <string name="dark_theme_on">Attivato</string>
     <string name="dark_theme_off">Disattivato</string>

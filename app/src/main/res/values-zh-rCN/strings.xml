@@ -149,7 +149,6 @@
     <string name="music_player">音乐播放器</string>
     <string name="settings">设置</string>
     <string name="appearance">外观</string>
-    <string name="enable_dynamic_theme">启用动态主题</string>
     <string name="dark_theme">深色主题</string>
     <string name="dark_theme_on">开</string>
     <string name="dark_theme_off">关</string>

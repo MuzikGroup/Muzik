@@ -173,7 +173,6 @@
     <string name="settings">การตั้งค่า</string>
     <string name="appearance">การแสดงผล</string>
     <string name="theme">ธีม</string>
-    <string name="enable_dynamic_theme">เปิดใช้งานธีมแบบไดนามิก</string>
     <string name="dark_theme">ธีมมืด</string>
     <string name="dark_theme_on">เปิด</string>
     <string name="dark_theme_off">ปิด</string>

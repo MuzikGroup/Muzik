@@ -142,7 +142,6 @@
     <string name="settings">Seadistused</string>
     <string name="appearance">Välimus</string>
     <string name="theme">Kujundus</string>
-    <string name="enable_dynamic_theme">Kasuta dünaamilist kujundust</string>
     <string name="dark_theme">Tume kujundus</string>
     <string name="pure_black">Õige must kujundus</string>
     <string name="customize_navigation_tabs">Kohenda vahekaarte</string>

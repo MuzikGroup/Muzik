@@ -221,7 +221,6 @@
     <string name="forgotten_favorites">Unohtuneet suosikit</string>
     <string name="sample_rate">Näytteenottonopeus</string>
     <string name="queue_searched_songs">Haetut laulut</string>
-    <string name="enable_dynamic_theme">Ota dynaaminen teema käyttöön</string>
     <string name="pure_black">Puhtaan musta</string>
     <string name="customize_navigation_tabs">Mukauta navigointivälilehtiä</string>
     <string name="lyrics_text_position">Sanoitustekstin sijainti</string>

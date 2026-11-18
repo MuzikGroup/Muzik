@@ -149,7 +149,6 @@
     <string name="music_player">Trình phát nhạc</string>
     <string name="settings">Cài đặt</string>
     <string name="appearance">Hiển thị</string>
-    <string name="enable_dynamic_theme">Bật chủ đề theo màu sắc</string>
     <string name="dark_theme">Chủ đề tối</string>
     <string name="dark_theme_on">Bật</string>
     <string name="dark_theme_off">Tắt</string>

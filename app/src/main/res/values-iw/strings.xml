@@ -192,7 +192,6 @@
     <string name="settings">הגדרות</string>
     <string name="appearance">נראות</string>
     <string name="theme">עיצוב</string>
-    <string name="enable_dynamic_theme">הפעלת עיצוב דינמית</string>
     <string name="dark_theme">עיצוב כהה</string>
     <string name="dark_theme_on">פועל</string>
     <string name="dark_theme_off">כבוי</string>

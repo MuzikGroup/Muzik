@@ -189,7 +189,6 @@
     <string name="settings">Setări</string>
     <string name="appearance">Aspect</string>
     <string name="theme">Temă</string>
-    <string name="enable_dynamic_theme">Activează tema dinamică</string>
     <string name="dark_theme">Temă întunecată</string>
     <string name="dark_theme_on">Pornită</string>
     <string name="dark_theme_off">Oprită</string>

@@ -110,6 +110,17 @@ private val leadDeveloper = Contributor(
     favoriteSongVideoId = "Mh2JWGWvy_Y"
 )
 
+// Other contributors: the Pipo Team members behind Muzik's development.
+private val otherContributors =
+    listOf(
+        Contributor(
+            name = "Pipo Team",
+            roleRes = R.string.credits_development_team,
+            githubHandle = "MuzikGroup",
+            githubUrl = "https://pipo.ai",
+        ),
+    )
+
 private val communityLinks = listOf(
     CommunityLink(R.string.credits_discord, R.drawable.discord, "https://discord.gg/JMnxcXr4t"),
     CommunityLink(R.string.credits_telegram, R.drawable.telegram, "https://t.me/Muzik_ke"),
@@ -388,7 +399,38 @@ fun AboutScreen(
                 }
                 
                 Spacer(Modifier.height(24.dp))
-                
+
+                otherContributors.forEach { contributor ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        ContributorAvatar(
+                            avatarUrl = contributor.avatarUrl,
+                            sizeDp = 48,
+                            shape = contributor.polygon?.toShape() ?: CircleShape,
+                            contentDescription = contributor.name,
+                            onClick = { uriHandler.openUri(contributor.githubUrl) },
+                        )
+                        Column {
+                            Text(
+                                text = contributor.name,
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface,
+                            )
+                            Text(
+                                text = stringResource(contributor.roleRes),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                }
+
+                Spacer(Modifier.height(24.dp))
+
                 DeveloperSocials(uriHandler)
                 
                 Spacer(Modifier.height(16.dp))

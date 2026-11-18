@@ -181,7 +181,6 @@
     <string name="translation_models">Модели за превод</string>
     <string name="clear_image_cache">Изчисти кеша на изображение</string>
     <string name="backup_create_failed">Неуспешно създаване на резервно копие</string>
-    <string name="enable_dynamic_theme">Активирай динамична тема</string>
     <string name="clear_song_cache">Изчисти кеша на песен</string>
     <string name="login_failed">Неуспешно влизане</string>
     <string name="imported_playlist">Внесен плейлист</string>

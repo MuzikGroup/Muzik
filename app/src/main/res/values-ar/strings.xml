@@ -170,7 +170,6 @@
     <string name="settings">إعدادات</string>
     <string name="appearance">مظهر</string>
     <string name="theme">سمة</string>
-    <string name="enable_dynamic_theme">فعل المظهر الديناميكي</string>
     <string name="dark_theme">الوضع المظلم</string>
     <string name="dark_theme_on">مفعل</string>
     <string name="dark_theme_off">متوقف</string>

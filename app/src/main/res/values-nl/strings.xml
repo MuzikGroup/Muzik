@@ -158,7 +158,6 @@
     <string name="music_player">Muziekspeler</string>
     <string name="settings">Instellingen</string>
     <string name="appearance">Uiterlijk</string>
-    <string name="enable_dynamic_theme">Dynamisch thema inschakelen</string>
     <string name="dark_theme">Donker thema</string>
     <string name="dark_theme_on">Aan</string>
     <string name="dark_theme_off">Uit</string>

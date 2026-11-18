@@ -149,7 +149,6 @@
     <string name="music_player">Pemutar Musik</string>
     <string name="settings">Pengaturan</string>
     <string name="appearance">Tampilan</string>
-    <string name="enable_dynamic_theme">Aktifkan tema dinamis</string>
     <string name="dark_theme">Tema gelap</string>
     <string name="dark_theme_on">Aktif</string>
     <string name="dark_theme_off">Nonaktif</string>

@@ -158,7 +158,6 @@
     <string name="music_player">Zenelejátszó</string>
     <string name="settings">Beállítások</string>
     <string name="appearance">Megjelenés</string>
-    <string name="enable_dynamic_theme">Dinamikus téma bekapcsolása</string>
     <string name="dark_theme">Sötét téma</string>
     <string name="dark_theme_on">Be</string>
     <string name="dark_theme_off">Ki</string>

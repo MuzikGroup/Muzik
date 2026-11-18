@@ -163,7 +163,6 @@
     <string name="settings">Paràmetres</string>
     <string name="appearance">Aspecte</string>
     <string name="theme">Tema</string>
-    <string name="enable_dynamic_theme">Activa el tema dinàmic</string>
     <string name="dark_theme">Tema fosc</string>
     <string name="dark_theme_on">Activat</string>
     <string name="dark_theme_off">Desactivat</string>

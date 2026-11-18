@@ -176,7 +176,6 @@
     <string name="music_player">Odtwarzacz</string>
     <string name="settings">Ustawienia</string>
     <string name="appearance">Wygląd</string>
-    <string name="enable_dynamic_theme">Włącz motyw dynamiczny</string>
     <string name="dark_theme">Ciemny motyw</string>
     <string name="dark_theme_on">Włącz</string>
     <string name="dark_theme_off">Wyłącz</string>

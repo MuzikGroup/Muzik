@@ -233,7 +233,6 @@
     <string name="end_of_song">Slutten av sangen</string>
     <string name="error_unknown">Ukjent feil</string>
     <string name="action_like_all">Lik alle</string>
-    <string name="enable_dynamic_theme">Slå på dynamisk drakt</string>
     <string name="action_shuffle_on">Omstokking på</string>
     <string name="action_shuffle_off">Omstokking av</string>
     <string name="repeat_mode_off">Gjentagelse av</string>

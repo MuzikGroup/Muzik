@@ -178,7 +178,6 @@
     <string name="settings">Ρυθμίσεις</string>
     <string name="appearance">Εμφάνιση</string>
     <string name="theme">Θέμα</string>
-    <string name="enable_dynamic_theme">Ενεργοποίηση δυναμικού θέματος</string>
     <string name="dark_theme">Σκοτεινό θέμα</string>
     <string name="dark_theme_on">Ενεργό</string>
     <string name="dark_theme_off">Ανενεργό</string>

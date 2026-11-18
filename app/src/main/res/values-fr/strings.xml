@@ -167,7 +167,6 @@
     <string name="music_player">Lecteur de musique</string>
     <string name="settings">Paramètres</string>
     <string name="appearance">Apparence</string>
-    <string name="enable_dynamic_theme">Activer le thème dynamique</string>
     <string name="dark_theme">Thème sombre</string>
     <string name="dark_theme_on">Activé</string>
     <string name="dark_theme_off">Désactivé</string>

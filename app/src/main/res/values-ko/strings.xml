@@ -149,7 +149,6 @@
     <string name="music_player">음악 플레이어</string>
     <string name="settings">설정</string>
     <string name="appearance">모양</string>
-    <string name="enable_dynamic_theme">동적 테마 활성화</string>
     <string name="dark_theme">다크 테마</string>
     <string name="dark_theme_on">켬</string>
     <string name="dark_theme_off">끔</string>

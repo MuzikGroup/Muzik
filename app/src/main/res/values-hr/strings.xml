@@ -151,7 +151,6 @@
     <string name="settings">Postavke</string>
     <string name="appearance">Izgled</string>
     <string name="theme">Tema</string>
-    <string name="enable_dynamic_theme">Uključi dinamičnu temu</string>
     <string name="dark_theme">Tamna tema</string>
     <string name="dark_theme_on">Uključeno</string>
     <string name="dark_theme_off">Isključeno</string>

@@ -27,7 +27,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -82,7 +81,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -121,12 +119,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import coil3.imageLoader
-import coil3.request.CachePolicy
-import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.request.crossfade
-import coil3.toBitmap
 import com.muzikgroup.innertube.YouTube
 import com.muzikgroup.innertube.models.SongItem
 import com.muzikgroup.innertube.models.WatchEndpoint
@@ -136,7 +130,6 @@ import com.muzikgroup.music.constants.CheckForUpdatesKey
 import com.muzikgroup.music.constants.DarkModeKey
 import com.muzikgroup.music.constants.DefaultOpenTabKey
 import com.muzikgroup.music.constants.DisableScreenshotKey
-import com.muzikgroup.music.constants.DynamicThemeKey
 import com.muzikgroup.music.constants.EnableHighRefreshRateKey
 import com.muzikgroup.music.constants.EnableLandscapeScalingKey
 import com.muzikgroup.music.constants.ExperimentalLyricsKey
@@ -179,6 +172,7 @@ import com.muzikgroup.music.ui.component.LocalBottomSheetPageState
 import com.muzikgroup.music.ui.component.LocalMenuState
 import com.muzikgroup.music.ui.component.MuzikSplashHost
 import com.muzikgroup.music.ui.component.rememberBottomSheetState
+import com.muzikgroup.music.ui.component.component.SupportCoffeeButton
 import com.muzikgroup.music.ui.component.shimmer.ShimmerTheme
 import com.muzikgroup.music.ui.menu.YouTubeSongMenu
 import com.muzikgroup.music.ui.player.BottomSheetPlayer
@@ -190,7 +184,6 @@ import com.muzikgroup.music.ui.screens.settings.NavigationTab
 import com.muzikgroup.music.ui.theme.ColorSaver
 import com.muzikgroup.music.ui.theme.DefaultThemeColor
 import com.muzikgroup.music.ui.theme.MuzikTheme
-import com.muzikgroup.music.ui.theme.extractThemeColor
 import com.muzikgroup.music.ui.utils.appBarScrollBehavior
 import com.muzikgroup.music.ui.utils.resetHeightOffset
 import com.muzikgroup.music.utils.ReleaseInfo
@@ -530,7 +523,6 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val enableDynamicTheme by rememberPreference(DynamicThemeKey, defaultValue = true)
         val enableHighRefreshRate by rememberPreference(EnableHighRefreshRateKey, defaultValue = true)
 
         LaunchedEffect(enableHighRefreshRate) {
@@ -582,70 +574,16 @@ class MainActivity : ComponentActivity() {
         val (selectedThemeColorInt) = rememberPreference(SelectedThemeColorKey, defaultValue = DefaultThemeColor.toArgb())
         val selectedThemeColor = Color(selectedThemeColorInt)
 
+        val supportAskMessage = stringResource(R.string.support_ask_message)
+
         val showChangelog = rememberSaveable { mutableStateOf(false) }
 
-        var themeColor by rememberSaveable(stateSaver = ColorSaver) {
-            mutableStateOf(selectedThemeColor)
-        }
 
-        val themeColorCache = remember { mutableMapOf<String, Color>() }
-
-        LaunchedEffect(selectedThemeColor) {
-            if (!enableDynamicTheme) {
-                themeColor = selectedThemeColor
-            }
-        }
-
-        LaunchedEffect(playerConnection, enableDynamicTheme, selectedThemeColor) {
-            val playerConnection = playerConnection
-            if (!enableDynamicTheme || playerConnection == null) {
-                themeColor = selectedThemeColor
-                return@LaunchedEffect
-            }
-
-            playerConnection.service.currentMediaMetadata
-                .distinctUntilChanged { old, new -> old?.id == new?.id }
-                .collectLatest { song ->
-                    if (song?.thumbnailUrl != null) {
-                        val cached = themeColorCache[song.thumbnailUrl]
-                        if (cached != null) {
-                            withFrameNanos { }
-                            themeColor = cached
-                            return@collectLatest
-                        }
-                        withContext(Dispatchers.IO) {
-                            try {
-                                val result =
-                                    imageLoader.execute(
-                                        ImageRequest
-                                            .Builder(this@MainActivity)
-                                            .data(song.thumbnailUrl)
-                                            .allowHardware(false)
-                                            .memoryCachePolicy(CachePolicy.ENABLED)
-                                            .diskCachePolicy(CachePolicy.ENABLED)
-                                            .networkCachePolicy(CachePolicy.ENABLED)
-                                            .crossfade(false)
-                                            .build(),
-                                    )
-                                val extractedColor = result.image?.toBitmap()?.extractThemeColor() ?: selectedThemeColor
-                                themeColorCache[song.thumbnailUrl] = extractedColor
-                                withFrameNanos { }
-                                themeColor = extractedColor
-                            } catch (e: Exception) {
-                                withFrameNanos { }
-                                themeColor = selectedThemeColor
-                            }
-                        }
-                    } else {
-                        themeColor = selectedThemeColor
-                    }
-                }
-        }
 
         MuzikTheme(
             darkTheme = useDarkTheme,
             pureBlack = pureBlack,
-            themeColor = themeColor,
+            themeColor = selectedThemeColor,
         ) {
             val currentDensity = LocalDensity.current
             val windowInfo = LocalWindowInfo.current
@@ -1025,6 +963,15 @@ class MainActivity : ComponentActivity() {
                                                     )
                                                 }
                                             }
+                                            SupportCoffeeButton(
+                                                onAskForSupport = {
+                                                    coroutineScope.launch {
+                                                        snackbarHostState.showSnackbar(
+                                                            message = supportAskMessage,
+                                                        )
+                                                    }
+                                                },
+                                            )
                                             IconButton(onClick = { navController.navigate(Screens.Search.route) }) {
                                                 Icon(
                                                     painter = painterResource(R.drawable.search),

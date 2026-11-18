@@ -200,7 +200,6 @@
     <string name="settings">Nastavenia</string>
     <string name="appearance">Vzhľad</string>
     <string name="theme">Téma</string>
-    <string name="enable_dynamic_theme">Povoliť dynamickú tému</string>
     <string name="dark_theme">Tmavý režim</string>
     <string name="dark_theme_on">Zapnuté</string>
     <string name="dark_theme_off">Vypnuté</string>

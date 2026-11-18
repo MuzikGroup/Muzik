@@ -187,7 +187,6 @@
     <string name="settings">Ajustes</string>
     <string name="appearance">Apariencia</string>
     <string name="theme">Tema</string>
-    <string name="enable_dynamic_theme">Habilitar tema dinámico</string>
     <string name="dark_theme">Tema oscuro</string>
     <string name="dark_theme_on">Activado</string>
     <string name="dark_theme_off">Desactivado</string>

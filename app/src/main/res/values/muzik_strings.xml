@@ -383,6 +383,12 @@
     <string name="updater">Updater</string>
     <string name="check_for_updates">Automatically check for updates</string>
     <string name="update_notifications">Enable update notifications</string>
+    <string name="support_muzik">Support Muzik</string>
+    <string name="support_ask_message">Loving Muzik? Buy me a soda — every soda keeps the music playing and development going. Thank you!</string>
+    <string name="support_thanks_title">Thank you for your support!</string>
+    <string name="support_thanks_text">Your contribution keeps Muzik brewing. If you enjoy the app, share it with family and friends — every new listener helps.</string>
+    <string name="support_thanks_share">Share Muzik</string>
+    <string name="support_maybe_later">Maybe later</string>
     <string name="update_available_title">Update available</string>
     <string name="update_channel_name">App updates</string>
     <string name="update_channel_desc">Notifications about new app versions</string>
@@ -875,6 +881,7 @@
 
     <!-- Credits / About Screen -->
     <string name="credits_lead_developer">Lead developer</string>
+    <string name="credits_development_team">Pipo Team — contributors</string>
     <string name="credits_collaborator">Collaborator</string>
     <string name="credits_collaborators_section">Collaborators</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
