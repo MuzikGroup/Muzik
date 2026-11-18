@@ -580,7 +580,7 @@
     <string name="updates_digest_failed">डाउनलोड गरिएको अपडेट GitHub को checksum सँग मेल खाएन।</string>
     <string name="updates_installer_failed">Android को प्याकेज इन्स्टलर उपलब्ध छैन वा यो डिभाइसमा एप इन्स्टलेशन प्रतिबन्धित छ।</string>
     <string name="updates_release_unavailable">यस रिलिजमा उपयुक्त APK समावेश छैन।</string>
-    <string name="updates_release_notes_title">MetroList %1$s मा के नयाँ छ</string>
+    <string name="updates_release_notes_title">Muzik %1$s मा के नयाँ छ</string>
     <string name="device_connect_title">डिभाइस कनेक्ट</string>
     <string name="device_connect_beta">बिटा</string>
     <string name="device_connect_enable">सक्रिय गर्नुहोस्</string>

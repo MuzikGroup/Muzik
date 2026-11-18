@@ -38,8 +38,8 @@ dependencyResolutionManagement {
             setUrl("https://jitpack.io")
             content {
                 includeGroup("com.github.nyxiereal.glyphmind")
-                includeGroup("com.github.MetrolistGroup.innertubex")
-                includeGroup("com.github.MetrolistGroup.quackjs")
+                includeGroup("com.github.MuzikGroup.innertubex")
+                includeGroup("com.github.MuzikGroup.quackjs")
             }
         }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
@@ -55,7 +55,7 @@ rootProject.name = "Muzik"
 if (useLocalInnerTubeX) {
     includeBuild("../innertubex") {
         dependencySubstitution {
-            substitute(module("com.github.MetrolistGroup.innertubex:innertubex")).using(project(":"))
+            substitute(module("com.github.MuzikGroup.innertubex:innertubex")).using(project(":"))
         }
     }
 }

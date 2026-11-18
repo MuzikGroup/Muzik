@@ -255,7 +255,7 @@
     <string name="discord_status_not_initialized">प्रारंभ नहीं हुआ</string>
     <string name="discord_status_authorized">अधिकृत</string>
     <string name="discord_error_denied">Discord द्वारा अनुमति अस्वीकृत की गई।</string>
-    <string name="discord_error_connection_failed">Discord से कनेक्ट नहीं हो पाया। MetroList स्वतः पुनः प्रयास करेगा।</string>
+    <string name="discord_error_connection_failed">Discord से कनेक्ट नहीं हो पाया। Muzik स्वतः पुनः प्रयास करेगा।</string>
     <string name="discord_error_no_browser">Discord अनुमति खोलने के लिए कोई ऐप उपलब्ध नहीं है।</string>
     <string name="discord_error_token_exchange_failed">टोकन विनिमय विफल हो गया। कृपया पुनः प्रयास करें।</string>
     <string name="discord_error_token_refresh_failed">टोकन रीफ्रेशन विफल हो गया। कृपया पुनः लॉग इन करें।</string>

@@ -20,7 +20,7 @@ from xml.parsers import expat
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = Path("shared/src/commonMain/composeResources")
 KINDS = {"string", "plurals", "string-array"}
-SKIP_DIRS = {".git", ".gradle", ".kotlin", ".idea", "build", "node_modules", "__pycache__", ".venv", "metroproto", "libopus"}
+SKIP_DIRS = {".git", ".gradle", ".kotlin", ".idea", "build", "node_modules", "__pycache__", ".venv", "muzikproto", "libopus"}
 SKIP_FILES = {".git", "find_unused_strings.py", "test_find_unused_strings.py"}
 PREFIX = re.compile(r'''["']([a-z][a-z0-9_]*)(?=\$|\{|%|\\\(|["']\s*\+|["']\s*\.\s*(?:format|formatted)\s*\()''')
 XML_REFERENCE = re.compile(r"@(?:[\w.]+:)?(?:string|plurals|array)/([\w]+)")

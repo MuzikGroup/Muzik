@@ -75,7 +75,7 @@ Explain this policy and ask for a maintainer decision before coding a rejected f
 | `iosApp` | Swift/Xcode host. Shared iOS Kotlin is in `shared/src/iosMain/`. |
 | `shared` | Reusable logic and UI in `commonMain`, JVM HTTP/SABR in `jvmSharedMain`, desktop FFmpeg in `desktopMain`. |
 | `listenTogetherProto` | JVM protobuf generation. Models and codecs live in `shared`. |
-| `metroproto` | Upstream protobuf schema submodule. Do not modify it here. |
+| `muzikproto` | Upstream protobuf schema submodule. Do not modify it here. |
 | `opusDecoder` | Vendored Media3/libopus JNI decoder. `buildOpusJni` is cacheable and builds ARM ABIs only. |
 
 InnerTubeX is an external dependency maintained in a separate repository.

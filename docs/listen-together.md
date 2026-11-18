@@ -2,9 +2,9 @@
 
 ## Protocol
 
-Coordinate schema changes upstream. Do not modify `metroproto` here. Keep these representations synchronized:
+Coordinate schema changes upstream. Do not modify `muzikproto` here. Keep these representations synchronized:
 
-1. `.proto` definitions in `metroproto/`.
+1. `.proto` definitions in `muzikproto/`.
 2. JVM generation in `listenTogetherProto`.
 3. Shared models and validation in `shared/src/commonMain/kotlin/com/muzik/shared/listentogether/network/Protocol.kt`.
 4. JVM `MessageCodec.kt` and common `PortableMessageCodec.kt`.

@@ -31,7 +31,7 @@ dependencies {
 sourceSets {
     named("main") {
         proto {
-            srcDir(rootProject.file("metroproto"))
+            srcDir(rootProject.file("muzikproto"))
         }
     }
 }

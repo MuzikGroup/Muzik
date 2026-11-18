@@ -19,7 +19,7 @@ git submodule update --init --recursive
 ./scripts/setup-hooks.sh
 ```
 
-`metroproto` supplies the shared protocol definitions; coordinate schema changes in its upstream repository. `opusDecoder` needs its `libopus` submodule for native builds.
+`muzikproto` supplies the shared protocol definitions; coordinate schema changes in its upstream repository. `opusDecoder` needs its `libopus` submodule for native builds.
 
 Install the Android SDK required by `androidApp/build.gradle.kts`, accept its licenses and set `sdk.dir` in the untracked `local.properties`. `./scripts/deps.sh` can provision Temurin 25 and an Android SDK on Linux and macOS. On Windows, install both manually; the script rejects Windows. With SDK command-line tools available, `buildOpusJni` installs its pinned NDK and CMake when missing.
 
@@ -430,6 +430,6 @@ Music layouts order Previous, Play/Pause, Next and Like. Play/Pause shows a loca
 ## Troubleshooting
 
 - For missing desktop resources, check the source directory and filename case.
-- For protobuf errors, initialize `metroproto` and run `./gradlew :shared:desktopTest` to regenerate and test the codecs.
+- For protobuf errors, initialize `muzikproto` and run `./gradlew :shared:desktopTest` to regenerate and test the codecs.
 - If the configuration cache is stale, rerun the failing command with `--no-configuration-cache`.
 - Never commit heap dumps, traces, account tokens or local configuration. They can contain private data.
