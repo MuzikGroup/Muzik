@@ -72,13 +72,35 @@ jobs:
           echo "Bumped $CURRENT -> $NEW_VERSION (versionCode $NEW_CODE)"
           echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: Prepend a changelog entry for the new version
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          NEW_VERSION="${{ steps.bump.outputs.new_version }}"
+
+          # Keep the in-app changelog and the GitHub release body in lockstep:
+          # the release workflow parses notes from changelog.md by version
+          # section, so every release needs a matching ---vX.Y.Z entry.
+          # A maintainer can pre-write the entry; only a missing one is
+          # auto-created with neutral notes.
+          if ! grep -q -- "---v$NEW_VERSION" changelog.md; then
+            {
+              printf -- '---v%s\n\n## What'"'"'s New\n\n- Stability and performance improvements\n\n## Improvements\n\n- Under-the-hood refinements and fixes\n\n' "$NEW_VERSION"
+              cat changelog.md
+            } > /tmp/changelog.new
+            mv /tmp/changelog.new changelog.md
+            echo "Prepared changelog entry for v$NEW_VERSION"
+          else
+            echo "changelog.md already has a ---v$NEW_VERSION entry — keeping the maintained notes"
+          fi
+
       - name: Commit and push
         id: commit
         if: steps.gate.outputs.skip != 'true'
         run: |
           git config user.name "Ignatius"
           git config user.email "311002533+Motius@users.noreply.github.com"
-          git add app/build.gradle.kts
+          git add app/build.gradle.kts changelog.md
           git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} [no bump]"
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"

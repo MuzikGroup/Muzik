@@ -1,5 +1,17 @@
 # Changelog
 
+---v7.9.4
+
+## What's New
+
+- Brand-new loading experience: every spinner is now the Muzik "M" logo travelling in a circular motion — on the player song/video buttons, menus, dialogs and every loading screen
+- Seamless desktop install: the Windows installer now creates a Desktop shortcut and a Start Menu entry, and Linux packages register the app in the applications menu
+
+## Improvements
+
+- Version numbers stay single-digit on every component (7.9.9 rolls to 8.0.0, never 7.9.10)
+- README badges and one-click APK links always track the latest GitHub release automatically
+
 ---v7.8.4
 
 ## What's New
