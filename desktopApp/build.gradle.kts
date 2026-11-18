@@ -730,7 +730,7 @@ compose.desktop {
 
         nativeDistributions {
             when (platform) {
-                "win" -> Unit
+                "win" -> targetFormats(TargetFormat.Msi)
                 "mac" -> targetFormats(TargetFormat.Dmg)
                 else -> targetFormats(TargetFormat.Deb, TargetFormat.Rpm, TargetFormat.AppImage)
             }
