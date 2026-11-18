@@ -499,8 +499,6 @@
     <string name="autoplay">অটোপ্লে</string>
     <string name="autoplay_desc">বর্তমান গানটি শেষ হলে স্বয়ংক্রিয়ভাবে পরবর্তী গানটি বাজবে</string>
     <string name="credits_lead_developer">প্রধান ডেভেলপার</string>
-    <string name="credits_collaborator">সহযোগী</string>
-    <string name="credits_collaborators_section">সহযোগীরা</string>
     <string name="credits_license_name">GNU জেনারেল পাবলিক লাইসেন্স V3.0</string>
     <string name="credits_license_desc">বিনামূল্যের, ওপেন-সোর্স সফটওয়্যার। আপনি এটি ব্যবহার করতে, অধ্যয়ন করতে, শেয়ার করতে এবং উন্নত করতে পারেন</string>
     <string name="credits_discord">ডিসকর্ড সার্ভার</string>
@@ -516,7 +514,7 @@
     <string name="muzik">মেট্রোলিস্ট</string>
     <string name="wanna_play_favorite_song">তাদের প্রিয় গানটি বাজাতে চান?</string>
     <string name="yeah">হ্যাঁ!</string>
-    <string name="stands_with_palestine">এই প্রকল্পটি ফিলিস্তিনের পাশে আছে 🇵🇸</string>
+    <string name="built_by_pipo_team">Built by amazing developers at Pipo Team</string>
     <string name="filter_podcasts">পডকাস্ট</string>
     <string name="view_podcast">পডকাস্ট দেখুন</string>
     <string name="podcast_channels">পডকাস্ট চ্যানেল সমূহ</string>

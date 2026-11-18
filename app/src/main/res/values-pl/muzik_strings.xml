@@ -656,8 +656,6 @@
     <string name="logout_keep">Zachowaj</string>
     <string name="logout_clear">Wyczyść</string>
     <string name="credits_lead_developer">Główny Deweloper</string>
-    <string name="credits_collaborator">Współpracownik</string>
-    <string name="credits_collaborators_section">Współpracownicy</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">Darmowe oprogramowanie o otwartym kodzie źródłowym. Możesz z niego korzystać, studiować je, udostępniać i ulepszać.</string>
     <string name="credits_discord">Serwer Discorda</string>
@@ -673,7 +671,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Chcesz zagrać ich ulubioną piosenkę?</string>
     <string name="yeah">Spoko</string>
-    <string name="stands_with_palestine">Ten projekt wspiera Palestynę 🇵🇸</string>
+    <string name="built_by_pipo_team">Stworzone przez wspaniałych programistów z Pipo Team</string>
     <string name="filter_podcasts">Podcasty</string>
     <string name="view_podcast">Pokaż podcast</string>
     <string name="podcast_channels">Kanały z podcastami</string>

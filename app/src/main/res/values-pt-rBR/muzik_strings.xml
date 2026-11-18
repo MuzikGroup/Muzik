@@ -595,8 +595,6 @@
     <string name="logout_keep">Manter</string>
     <string name="logout_clear">Limpar</string>
     <string name="credits_lead_developer">Desenvolvedor Líder</string>
-    <string name="credits_collaborator">Colaborador</string>
-    <string name="credits_collaborators_section">Colaboradores</string>
     <string name="credits_license_name">Licença Pública Geral GNU v3.0</string>
     <string name="credits_license_desc">Software grátis e de código aberto. Você pode usar, estudar, compartilhar, e melhorá-lo</string>
     <string name="credits_discord">Servidor do Discord</string>
@@ -612,7 +610,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Quer tocar sua música favorita?</string>
     <string name="yeah">Sim!</string>
-    <string name="stands_with_palestine">Esse projeto apoia a Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Criado pelos incríveis desenvolvedores da Pipo Team</string>
     <string name="filter_podcasts">Podcasts</string>
     <string name="view_podcast">Ver podcast</string>
     <string name="podcast_channels">Canais de podcast</string>

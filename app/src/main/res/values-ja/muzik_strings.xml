@@ -588,8 +588,6 @@
     <string name="logout_keep">保持</string>
     <string name="logout_clear">削除</string>
     <string name="credits_lead_developer">主任開発者</string>
-    <string name="credits_collaborator">共同開発者</string>
-    <string name="credits_collaborators_section">共同開発者</string>
     <string name="credits_license_name">GNU一般公衆ライセンス v3.0</string>
     <string name="credits_license_desc">無料でオープンソースのソフトウェアで、使用、学習、共有、改良が可能です</string>
     <string name="credits_discord">Discordサーバー</string>
@@ -605,7 +603,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">お気に入りの曲を再生しますか？</string>
     <string name="yeah">はい</string>
-    <string name="stands_with_palestine">このプロジェクトはパレスチナを支持しています 🇵🇸</string>
+    <string name="built_by_pipo_team">Pipo Team の素晴らしい開発者たちによって作られています</string>
     <string name="filter_podcasts">ポッドキャスト</string>
     <string name="view_podcast">ポッドキャストを表示</string>
     <string name="podcast_channels">ポッドキャストチャンネル</string>

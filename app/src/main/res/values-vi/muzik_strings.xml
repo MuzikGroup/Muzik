@@ -446,7 +446,7 @@
     <string name="like_what_i_do">Thích những gì tôi làm?</string>
     <string name="buy_mo_a_coffee">Ủng hộ tôi một ly cà phê!</string>
     <string name="community_and_info">Cộng đồng &amp; Thông tin</string>
-    <string name="stands_with_palestine">Dự án này đứng về Palestine 🇵🇸</string>
+    <string name="built_by_pipo_team">Được xây dựng bởi những nhà phát triển tuyệt vời tại Pipo Team</string>
     <string name="podcast_channels">Kênh Podcast</string>
     <string name="latest_episodes">Tập mới Nhất</string>
     <string name="your_shows">Chương trình của bạn</string>
@@ -754,8 +754,6 @@
     <string name="logout_dialog_title">Giữ dữ liệu thư viện?</string>
     <string name="logout_dialog_message">Bạn có muốn giữ danh sách phát và dữ liệu thư viện không? Các bài hát đã tải về sẽ luôn được giữ lại</string>
     <string name="credits_lead_developer">Trưởng nhóm phát triển</string>
-    <string name="credits_collaborator">Cộng tác viên</string>
-    <string name="credits_collaborators_section">Các cộng tác viên</string>
     <string name="wanna_play_favorite_song">Muốn phát bài hát yêu thích của họ không?</string>
     <string name="yeah">Hoan hô!</string>
     <string name="upload_songs">Tải bài hát lên</string>

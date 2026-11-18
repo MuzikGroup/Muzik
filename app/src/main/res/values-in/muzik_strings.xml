@@ -621,8 +621,6 @@
     <string name="logout_keep">Simpan</string>
     <string name="logout_clear">Hapus</string>
     <string name="credits_lead_developer">Pengembang utama</string>
-    <string name="credits_collaborator">Kolaborator</string>
-    <string name="credits_collaborators_section">Para Kolaborator</string>
     <string name="credits_license_name">Lisensi Publik Umum GNU v3.0</string>
     <string name="credits_license_desc">Perangkat lunak gratis dan open-source. Anda boleh menggunakan, mempelajari, berbagi, dan meningkatkannya</string>
     <string name="credits_discord">Server Discord</string>
@@ -638,7 +636,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Ingin memutar lagu favorit mereka?</string>
     <string name="yeah">Tentu!</string>
-    <string name="stands_with_palestine">Proyek ini berpihak pada Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Dibangun oleh pengembang luar biasa di Pipo Team</string>
     <string name="filter_podcasts">Podcast</string>
     <string name="view_podcast">Lihat podcast</string>
     <string name="podcast_channels">Saluran podcast</string>

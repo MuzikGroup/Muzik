@@ -608,8 +608,6 @@
     <string name="logout_clear">مسح</string>
     <string name="credits_lead_developer">مطور رئيسي</string>
     <string name="importing_playlist">استيراد قائمة التشغيل</string>
-    <string name="credits_collaborator">متعاون</string>
-    <string name="credits_collaborators_section">المتعاونون</string>
     <string name="credits_license_name">رخصة جنو العمومية الإصدار 3.0</string>
     <string name="credits_license_desc">برنامج مجاني ومفتوح المصدر يمكنك استخدامه ودراسته ومشاركته وتحسينه.</string>
     <string name="credits_discord">خادم ديسكورد</string>
@@ -625,7 +623,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">هل تريد تشغيل أغنيتهم المفضلة؟</string>
     <string name="yeah">نعم</string>
-    <string name="stands_with_palestine">هذا المشروع يقف مع فلسطين 🇵🇸</string>
+    <string name="built_by_pipo_team">من صنع مطورين رائعين في Pipo Team</string>
     <string name="filter_podcasts">بودكاست</string>
     <string name="view_podcast">عرض البودكاست</string>
     <string name="podcast_channels">قنوات البودكاست</string>

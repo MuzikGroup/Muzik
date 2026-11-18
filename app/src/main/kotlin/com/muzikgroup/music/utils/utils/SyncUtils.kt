@@ -1,7 +1,7 @@
 /**
  * Muzik Project (C) 2026
  * OuterTune Project Copyright (C) 2025
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 package com.muzikgroup.music.utils

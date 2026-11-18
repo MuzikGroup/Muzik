@@ -616,14 +616,12 @@
     <string name="logout_keep">Conserver</string>
     <string name="logout_clear">Effacer</string>
     <string name="credits_lead_developer">Développeur Principal</string>
-    <string name="credits_collaborator">Collaborateur</string>
-    <string name="credits_collaborators_section">Collaborateurs</string>
     <string name="like_what_i_do">Vous aimez ce que je fais ?</string>
     <string name="buy_mo_a_coffee">Offrez-moi un café !</string>
     <string name="community_and_info">Communauté &amp; Informations</string>
     <string name="wanna_play_favorite_song">Envie de jouer leur titre préféré ?</string>
     <string name="yeah">Oui !</string>
-    <string name="stands_with_palestine">Ce projet soutient la Palestine 🇵🇸</string>
+    <string name="built_by_pipo_team">Réalisé par les formidables développeurs de Pipo Team</string>
     <string name="filter_podcasts">Podcasts</string>
     <string name="view_podcast">Voir le podcast</string>
     <string name="podcast_channels">Chaînes de podcast</string>

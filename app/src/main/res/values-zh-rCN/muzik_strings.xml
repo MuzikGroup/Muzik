@@ -592,8 +592,6 @@
     <string name="logout_keep">保留</string>
     <string name="logout_clear">清除</string>
     <string name="credits_lead_developer">首席开发者</string>
-    <string name="credits_collaborator">协作者</string>
-    <string name="credits_collaborators_section">协作者</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">自由开源软件。您可以使用、研究、分享和改进它</string>
     <string name="credits_discord">Discord 服务器</string>
@@ -605,7 +603,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">想播放他们最喜欢的歌曲吗？</string>
     <string name="yeah">是的！</string>
-    <string name="stands_with_palestine">本项目声援巴勒斯坦 🇵🇸</string>
+    <string name="built_by_pipo_team">由 Pipo Team 的杰出开发者倾力打造</string>
     <string name="filter_podcasts">播客</string>
     <string name="view_podcast">查看播客</string>
     <string name="podcast_channels">播客频道</string>

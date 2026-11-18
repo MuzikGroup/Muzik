@@ -605,8 +605,6 @@
     <string name="logout_keep">Păstrează</string>
     <string name="logout_clear">Elimină</string>
     <string name="credits_lead_developer">Dezvoltator principal</string>
-    <string name="credits_collaborator">Colaborator</string>
-    <string name="credits_collaborators_section">Colaboratori</string>
     <string name="credits_license_name">Licența Publică Generală GNU v3.0</string>
     <string name="credits_license_desc">Software liber, cu sursă deschisă. Poți să-l folosești, studiezi, distribui și să-l îmbunătățești</string>
     <string name="credits_discord">Server de Discord</string>
@@ -622,7 +620,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Vrei să redai melodia lui/ei preferată?</string>
     <string name="yeah">Da!</string>
-    <string name="stands_with_palestine">Acest proiect ține cu Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Creat de extraordinarii dezvoltatori de la Pipo Team</string>
     <string name="filter_podcasts">Podcasturi</string>
     <string name="view_podcast">Vezi podcastul</string>
     <string name="podcast_channels">Canale de podcasturi</string>

@@ -599,8 +599,6 @@
     <string name="logout_keep">Сохранить</string>
     <string name="logout_clear">Очистить</string>
     <string name="credits_lead_developer">Ведущий разработчик</string>
-    <string name="credits_collaborator">Соавтор</string>
-    <string name="credits_collaborators_section">Соавторы</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">Свободное программное обеспечение с открытым исходным кодом. Вы можете использовать, изучать, распространять и улучшать его</string>
     <string name="credits_discord">Сервер Discord</string>
@@ -616,7 +614,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Хотите включить их любимую песню?</string>
     <string name="yeah">Да!</string>
-    <string name="stands_with_palestine">Этот проект поддерживает Палестину 🇵🇸</string>
+    <string name="built_by_pipo_team">Создано замечательными разработчиками из Pipo Team</string>
     <string name="filter_podcasts">Подкасты</string>
     <string name="view_podcast">Перейти к подкасту</string>
     <string name="podcast_channels">Каналы подкастов</string>

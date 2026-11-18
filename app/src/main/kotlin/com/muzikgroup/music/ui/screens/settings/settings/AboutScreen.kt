@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 package com.muzikgroup.music.ui.screens.settings
@@ -471,7 +471,7 @@ fun AboutScreen(
         Spacer(Modifier.height(48.dp))
         
         Text(
-            text = stringResource(R.string.stands_with_palestine),
+            text = stringResource(R.string.built_by_pipo_team),
             style = MaterialTheme.typography.labelLarge,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSurfaceVariant,

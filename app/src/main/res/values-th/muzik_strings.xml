@@ -588,8 +588,6 @@
     <string name="logout_keep">เก็บไว้</string>
     <string name="logout_clear">ล้างข้อมูล</string>
     <string name="credits_lead_developer">หัวหน้านักพัฒนา</string>
-    <string name="credits_collaborator">ผู้ร่วมพัฒนา</string>
-    <string name="credits_collaborators_section">ผู้ร่วมพัฒนา</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">ซอฟต์แวร์โอเพนซอร์สฟรี คุณสามารถใช้งาน ศึกษา แจกจ่าย และพัฒนาเพิ่มเติมได้</string>
     <string name="credits_discord">เซิร์ฟเวอร์ Discord</string>
@@ -605,7 +603,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">อยากเล่นเพลงโปรดของพวกเขาไหม?</string>
     <string name="yeah">ใช่เลย!</string>
-    <string name="stands_with_palestine">โปรเจกต์นี้ขอยืนหยัดเคียงข้างปาเลสไตน์ 🇵🇸</string>
+    <string name="built_by_pipo_team">สร้างสรรค์โดยนักพัฒนาที่น่าทึ่งแห่ง Pipo Team</string>
     <string name="filter_podcasts">พอดแคสต์</string>
     <string name="view_podcast">ดูพอดแคสต์</string>
     <string name="podcast_channels">ช่องพอดแคสต์</string>

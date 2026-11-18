@@ -492,8 +492,6 @@
     <string name="logout_keep">보관</string>
     <string name="logout_clear">삭제</string>
     <string name="credits_lead_developer">메인 개발자</string>
-    <string name="credits_collaborator">공동 기여자</string>
-    <string name="credits_collaborators_section">기여자 목록</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">자유로운 오픈 소스 소프트웨어입니다. 누구나 사용, 연구, 공유 및 개선할 수 있습니다</string>
     <string name="credits_discord">Discord 서버</string>
@@ -509,7 +507,7 @@
     <string name="community_and_info">커뮤니티 및 정보</string>
     <string name="wanna_play_favorite_song">좋아하는 곡을 재생해 보시겠습니까?</string>
     <string name="yeah">좋습니다!</string>
-    <string name="stands_with_palestine">이 프로젝트는 팔레스타인과 연대합니다</string>
+    <string name="built_by_pipo_team">Pipo Team의 멋진 개발자들이 만들었습니다</string>
     <string name="android_auto">Android Auto</string>
     <string name="android_auto_visible_sections">표시할 섹션</string>
     <string name="android_auto_reorder_hint">섹션을 탭하여 활성화하거나 비활성화합니다.\n드래그 핸들을 길게 눌러 순서를 변경할 수 있습니다. 첫 번째 섹션이 기본으로 표시됩니다</string>

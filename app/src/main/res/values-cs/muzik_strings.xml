@@ -588,8 +588,6 @@
     <string name="logout_keep">Ponechat</string>
     <string name="logout_clear">Vymazat</string>
     <string name="credits_lead_developer">Hlavní vývojář</string>
-    <string name="credits_collaborator">Přispěvatel</string>
-    <string name="credits_collaborators_section">Přispěvatelé</string>
     <string name="credits_license_name">GNU General Public License verze 3.0</string>
     <string name="credits_license_desc">Volně dostupný open-source software. Můžete jej používat, studovat, sdílet a vylepšovat</string>
     <string name="credits_discord">Discord server</string>
@@ -605,7 +603,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Chcete přehrát autorovu oblíbenou skladbu?</string>
     <string name="yeah">Jasně!</string>
-    <string name="stands_with_palestine">Tento projekt podporuje Palestinu 🇵🇸</string>
+    <string name="built_by_pipo_team">Vytvořeno skvělými vývojáři z Pipo Team</string>
     <string name="filter_podcasts">Podcasty</string>
     <string name="view_podcast">Zobrazit podcast</string>
     <string name="podcast_channels">Podcastové kanály</string>

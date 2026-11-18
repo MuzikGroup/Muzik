@@ -629,8 +629,6 @@
     <string name="logout_keep">Mantindre</string>
     <string name="logout_clear">Eliminar</string>
     <string name="credits_lead_developer">Desenvolupador principal</string>
-    <string name="credits_collaborator">Col·laborador</string>
-    <string name="credits_collaborators_section">Col·laboradors</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">Software gratuït i de codi lliure. Vostè el pot fer servir, estudiar, compartir i millorar.</string>
     <string name="credits_discord">Servidor de Discord</string>
@@ -646,7 +644,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Vols escoltar la teua cançó preferida?</string>
     <string name="yeah">Sí</string>
-    <string name="stands_with_palestine">Aquest projecte dona suport a Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Creat pels increïbles desenvolupadors de Pipo Team</string>
     <string name="filter_podcasts">Podcasts</string>
     <string name="view_podcast">Veure el podcast</string>
     <string name="podcast_channels">Canals de Podcast</string>

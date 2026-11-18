@@ -2,7 +2,6 @@
 <resources>
     <string name="local_history">Local</string>
     <string name="remote_history">Remote</string>
-
     <string name="charts">Charts</string>
     <string name="mixes">Mixes</string>
     <string name="back_button_desc">Back</string>
@@ -10,12 +9,10 @@
     <string name="top_music_videos">Top music videos</string>
     <string name="trending">Trending</string>
     <string name="parsed_from_link">Parsed from link</string>
-
     <string name="weeks">Weeks</string>
     <string name="months">Months</string>
     <string name="years">Years</string>
     <string name="continuous">Continuous</string>
-
     <string name="liked">Liked</string>
     <string name="offline">Downloaded</string>
     <string name="my_top">My Top</string>
@@ -27,7 +24,6 @@
     <string name="sync_playlist">Sync playlist</string>
     <string name="sync_disabled">Sync disabled</string>
     <string name="allows_for_sync_witch_youtube">NOTE: This option enables syncing with YouTube Music and CANNOT be changed later</string>
-
     <string name="and">and</string>
     <string name="generating_image">Generating image…</string>
     <string name="please_wait">Please wait</string>
@@ -42,9 +38,7 @@
     <string name="text_color">Text color</string>
     <string name="secondary_text_color">Secondary text color</string>
     <string name="background_color">Background color</string>
-
     <string name="remove_from_cache">Remove from cache</string>
-
     <!-- Artist about section -->
     <string name="about_artist">About</string>
     <string name="show_more">Show more</string>
@@ -53,7 +47,6 @@
     <string name="show_artist_description">Show artist description</string>
     <string name="show_artist_subscriber_count">Show subscriber count</string>
     <string name="show_artist_monthly_listeners">Show monthly listeners</string>
-
     <!-- Menu descriptions -->
     <string name="download_playlist_desc">Download all songs for offline playback</string>
     <string name="remove_download_playlist_desc">Remove all downloaded songs from this playlist</string>
@@ -69,28 +62,22 @@
     <string name="link_copied">Link copied to clipboard</string>
     <string name="starting_radio">Starting radio…</string>
     <string name="now_playing">Now Playing</string>
-
     <string name="lyrics">Lyrics</string>
     <string name="close">Close</string>
     <string name="hide_player_thumbnail">Hide player thumbnail</string>
     <string name="hide_player_thumbnail_desc">Replace the album artwork with the app logo in the player</string>
     <string name="crop_album_art">Crop album art</string>
     <string name="crop_album_art_desc">Force a square aspect ratio by cropping video thumbnails</string>
-
     <string name="already_in_playlist">Already in playlist: </string>
-
     <plurals name="n_time">
         <item quantity="one">%d time</item>
         <item quantity="other">%d times</item>
     </plurals>
-
     <string name="seek_forward_dynamic">+%1$d seconds forward</string>
     <string name="seek_backward_dynamic">-%1$d seconds backward</string>
     <string name="seek_seconds_addup">Progressive seek</string>
     <string name="seek_seconds_addup_description">When enabled, adds 5 extra seconds incrementally with each seek</string>
-
     <string name="similar_content">Similar content</string>
-
     <string name="player_background_style">Player background style</string>
     <string name="player_background_solid">Solid</string>
     <string name="follow_theme">Follow theme</string>
@@ -162,24 +149,20 @@
     <string name="skip_silence_desc">Fast-forward through silent parts of songs</string>
     <string name="skip_silence_instant">Instantly skip silence</string>
     <string name="skip_silence_instant_desc">Jump ahead during silent moments instead of speeding up playback</string>
-
     <string name="advanced_login">Log in with token</string>
     <string name="token_hidden">Tap to show token</string>
     <string name="token_shown">Tap again to copy or edit</string>
     <string name="token_adv_login_description">This is an ADVANCED login method. Instead of using the web portal, you can enter or update your login token directly. This can be useful for signing in across multiple devices quickly. Tokens in an unrecognized format will be rejected</string>
     <string name="yt_sync">Auto-sync with account</string>
     <string name="more_content">More content</string>
-
     <string name="sort_ascending">Sort ascending</string>
     <string name="sort_descending">Sort descending</string>
-
     <!-- Playlist cover edit -->
     <string name="edit_playlist_cover">Edit playlist cover</string>
     <string name="edit_playlist_cover_note">NOTE: Your account must be linked to a phone number and verified on YouTube Music to change the playlist cover</string>
     <string name="edit_playlist_cover_note_wait">After selecting an image, please wait a moment for the new cover to appear in your playlist</string>
     <string name="choose_from_library">Choose from library</string>
     <string name="remove_custom_image">Remove custom image</string>
-
     <!-- General -->
     <string name="general">General</string>
     <string name="proxy">Proxy</string>
@@ -197,8 +180,6 @@
     <string name="proxy_username">Proxy username</string>
     <string name="proxy_password">Proxy password</string>
     <string name="enable_authentication">Enable authentication</string>
-
-
     <string name="auto_radio_queue">Auto radio queue</string>
     <string name="auto_radio_queue_desc">Automatically create a radio queue when playing a song from search or home</string>
     <string name="enable_similar_content">Enable similar content</string>
@@ -208,7 +189,6 @@
     <string name="remember_shuffle_and_repeat">Remember shuffle and repeat</string>
     <string name="remember_shuffle_and_repeat_desc">Remember shuffle and repeat settings when the app is restarted</string>
     <string name="percentage_format">%d%%</string>
-
     <string name="import_online">Import an M3U playlist</string>
     <string name="import_csv">Import a CSV playlist</string>
     <string name="playlist_add_local_to_synced_note">NOTE: Adding local songs to synced or remote playlists is not supported. Any other combination is valid</string>
@@ -219,24 +199,17 @@
     <string name="export_failed">Failed to export playlist</string>
     <string name="export_option_share">Share</string>
     <string name="export_option_save">Save to Documents</string>
-
     <string name="auto_download_on_like">Auto-download on like</string>
     <string name="auto_download_on_like_desc">Automatically download songs when you like them</string>
-
     <string name="swipe_sensitivity">Mini-player swipe sensitivity</string>
     <string name="sensitivity_percentage">%1$d%%</string>
-
     <string name="clear_song_cache_dialog">Are you sure you want to clear all cached songs?</string>
     <string name="clear_image_cache_dialog">Are you sure you want to clear all cached images?</string>
     <string name="clear_downloads_dialog">Are you sure you want to clear all downloads?</string>
-
     <string name="disable">Disable</string>
-
     <string name="not_logged_in_youtube">Not logged in to YouTube</string>
-
     <string name="default_links">Open supported links</string>
     <string name="open_app_settings_error">Couldn\'t open the app settings</string>
-
     <string name="release_notes">Release notes</string>
     <string name="changelog">Changelog</string>
     <string name="changelog_empty">No changelogs available</string>
@@ -253,7 +226,6 @@
     <string name="hide_changelog">Hide changelog</string>
     <string name="view_changelog">View changelog</string>
     <string name="failed_to_check_updates">Failed to check for updates: %s</string>
-
     <string name="all_time">All time</string>
     <string name="past_24_hours">Past 24 hours</string>
     <string name="past_week">Past week</string>
@@ -265,7 +237,6 @@
     <string name="description">Description</string>
     <string name="views">Views</string>
     <string name="likes">Likes</string>
-
     <string name="dislikes">Dislikes</string>
     <string name="subscribe">Subscribe</string>
     <string name="subscribed">Subscribed</string>
@@ -273,7 +244,6 @@
         <item quantity="one">1 second</item>
         <item quantity="other">%d seconds</item>
     </plurals>
-
     <!-- Sleep timer -->
     <string name="set_as_default">Set as default</string>
     <string name="sleep_timer_default_set">Sleep timer default set to %d minutes</string>
@@ -299,7 +269,6 @@
     <string name="sleep_timer_stop_after_current_song_description">Waits for the currently playing song to finish before stopping</string>
     <string name="sleep_timer_fade_out_title">Fade out</string>
     <string name="sleep_timer_fade_out_description">Gradually fades out the volume in the final minute</string>
-
     <!-- Alarm -->
     <string name="alarm">Alarm</string>
     <string name="alarm_enabled">Enable alarm</string>
@@ -332,14 +301,12 @@
     <string name="alarm_exact_permission_desc">Grants permission for precise alarm timing, improving reliability when the app is in the background</string>
     <string name="alarm_battery_optimization_title">Battery optimization</string>
     <string name="alarm_battery_optimization_desc">Disable battery optimization for more reliable alarm behavior in the background</string>
-
     <!-- Player Settings -->
     <string name="disable_load_more_when_repeat_all">Disable auto-load in repeat all mode</string>
     <string name="disable_load_more_when_repeat_all_desc">Don\'t automatically load more songs or similar content when repeat all is enabled</string>
     <string name="pause_music_when_media_is_muted">Pause music when media is muted</string>
     <string name="resume_on_bluetooth_connect">Resume on Bluetooth connection</string>
     <string name="keep_screen_on_when_player_is_expanded">Keep screen on when player is expanded</string>
-
     <string name="crossfade">Crossfade</string>
     <string name="crossfade_desc">Fades out the current song as the next one fades in</string>
     <string name="crossfade_duration">Crossfade duration</string>
@@ -347,7 +314,6 @@
     <string name="crossfade_gapless_desc">Skip crossfade for albums designed to play without gaps</string>
     <string name="crossfade_beta_title">Beta feature!</string>
     <string name="crossfade_beta_message">Crossfade is a new feature and may have bugs. If you experience any issues, please report them.\n\nNOTE: This feature disables audio offload due to technical limitations</string>
-
     <!-- Romanization Settings -->
     <string name="lyrics_romanization_cyrillic">Cyrillic</string>
     <string name="lyrics_romanize_title">Romanization</string>
@@ -368,17 +334,14 @@
     <string name="line_by_line_dialog_title">Are you sure?</string>
     <string name="line_by_line_dialog_desc">This is a hit-or-miss experimental feature.\n\nBy default, the language is detected from the entire song. With this option on, it will be detected line-by-line instead. This allows multi-language songs to work, BUT the detected language may not always be correct. For example, a Ukrainian line without any Ukrainian-specific characters might be romanized as Russian.\n\nIf you are not experiencing any issues, it is recommended to keep this option off</string>
     <string name="romanize_current_track">Romanize current track</string>
-
     <!-- Lyrics Offset Settings -->
     <string name="lyrics_offset">Lyrics offset</string>
-
     <!-- Material 3 Settings Sections -->
     <string name="settings_section_ui">Interface</string>
     <string name="settings_section_privacy">Privacy &amp; Security</string>
     <string name="settings_section_player_content">Player &amp; Content</string>
     <string name="settings_section_storage">Storage &amp; Data</string>
     <string name="settings_section_system">System &amp; About</string>
-
     <!-- Updater -->
     <string name="updater">Updater</string>
     <string name="check_for_updates">Automatically check for updates</string>
@@ -396,32 +359,25 @@
     <string name="kmp_upgrade_warning">Muzik KMP is in early access. Features may be broken, incomplete, or change without notice.</string>
     <string name="kmp_upgrade_action">Upgrade to KMP</string>
     <string name="kmp_upgrade_later">Not now</string>
-
     <!-- Offload -->
     <string name="audio_offload">Enable audio offload</string>
     <string name="audio_offload_description">Uses the hardware audio offload path for playback. Disabling this may increase battery usage, but can help if you experience issues with playback or audio post-processing</string>
     <string name="audio_offload_disabled_by_crossfade">Disabled because crossfade is active</string>
-
     <!-- Varispeed -->
     <string name="speed">Playback Speed</string>
     <string name="varispeed">Enable varispeed</string>
     <string name="varispeed_description">Link pitch to playback speed, resulting in tape-style speedup and slowdown effects</string>
-
     <!-- AudioTrack Playback Parameters -->
     <string name="audio_track_playback_params">Use hardware audio processing</string>
     <string name="audio_track_playback_params_description">Use Android\'s AudioTrack for speed/pitch changes instead of software processing. More reliable for extreme pitch values</string>
-
     <!-- Google Cast -->
     <string name="google_cast">Google Cast</string>
     <string name="google_cast_description">Cast audio to Chromecast and other Cast-enabled devices</string>
-
     <string name="lyrics_romanize_macedonian">Romanize Macedonian lyrics</string>
     <string name="lyrics_romanize_as_main">Show romanized lyrics as main</string>
-
     <string name="integrations">Integrations</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-
     <!-- Last.fm -->
     <string name="lastfm_integration">Last.fm integration</string>
     <string name="enable_scrobbling">Enable scrobbling</string>
@@ -429,14 +385,12 @@
     <string name="last_fm_send_likes">Sync Loved and Unloved</string>
     <string name="last_fm_send_likes_description">Love or unlove songs in Last.fm when you like or unlike them in Muzik</string>
     <string name="logging_in">Logging in…</string>
-
     <string name="scrobbling_configuration">Scrobbling configuration</string>
     <string name="scrobble_min_track_duration">Scrobble songs longer than (seconds)</string>
     <string name="scrobble_delay_percent">Scrobble delay (percentage)</string>
     <string name="scrobble_delay_minutes">Scrobble delay (minutes)</string>
     <string name="hide_video_songs">Hide video songs</string>
     <string name="hide_youtube_shorts">Hide YouTube Shorts</string>
-
     <string name="details_desc">View the song\'s details</string>
     <string name="edit_desc">Edit the title or artist</string>
     <string name="start_radio_desc">Start a radio based on this item</string>
@@ -458,7 +412,6 @@
     <string name="cache_size_warning_title">Hold on!</string>
     <string name="cache_size_warning_message">The limit you\'ve chosen (%1$s) is smaller than what the app is currently using. Continuing may cause some cached %2$s to be removed. Proceed anyway?</string>
     <string name="cache_size_warning_confirm">Continue</string>
-
     <string name="lyrics_animation_style_title">Word-by-word animation style</string>
     <string name="none">None</string>
     <string name="fade">Fade</string>
@@ -500,7 +453,6 @@
     <string name="wrapped_playlist_title">Your %s Wrapped</string>
     <string name="wrapped_create_playlist">Create playlist</string>
     <string name="wrapped_playlist_saved">Playlist saved</string>
-
     <!-- Equalizer UI -->
     <plurals name="profiles_count">
         <item quantity="one">%d profile</item>
@@ -528,7 +480,6 @@
     <string name="import_error_title">Import error</string>
     <string name="error_title">Error</string>
     <string name="error_eq_apply_failed">Failed to apply equalizer profile: %1$s</string>
-
     <!-- EQ Wizard -->
     <string name="wizard_select_model">Select Model</string>
     <string name="wizard_select_profiles">Select Profiles</string>
@@ -539,7 +490,6 @@
     <string name="wizard_multiple_variants">Multiple variants available</string>
     <string name="wizard_select_eq_profiles">Select EQ profiles for %s</string>
     <string name="wizard_save_profiles">Save Profiles</string>
-
     <!-- Hardcoded strings -->
     <string name="found_in_settings_content">Found in Settings &gt; Content</string>
     <string name="your_daily_discover">Your daily discover</string>
@@ -553,7 +503,6 @@
     <string name="copied_artist">Artist copied</string>
     <string name="error_playing">Playback error</string>
     <string name="failed_to_parse_proxy">Failed to parse proxy URL</string>
-
     <!-- Playback errors -->
     <string name="error_playback_failed">Playback failed</string>
     <string name="error_job_cancelled">The video is not available for playback. Try again or skip to the next song.</string>
@@ -562,7 +511,6 @@
     <string name="error_podcast_subscribe">Failed to subscribe to podcast</string>
     <string name="error_podcast_unsubscribe">Failed to unsubscribe from podcast</string>
     <string name="view_channel">View channel</string>
-
     <!-- Widget strings -->
     <string name="album_art">Album art</string>
     <string name="no_song_playing">No song playing</string>
@@ -577,7 +525,6 @@
     <string name="turntable_widget_description">Circular music widget with play and like controls</string>
     <string name="widget_music_player">Music Player</string>
     <string name="widget_turntable">Turntable</string>
-
     <!-- Music Recognizer Widget strings -->
     <string name="widget_recognizer_name">Music Recognizer</string>
     <string name="widget_recognizer_description">Identify songs playing around you directly from your home screen</string>
@@ -593,11 +540,8 @@
     <string name="widget_recognizer_channel_name">Music Recognition</string>
     <string name="widget_recognizer_channel_desc">Shows a notification while identifying a song from the widget</string>
     <string name="widget_recognizer_notification_text">Recording audio to identify the song…</string>
-
     <!-- Player Client Settings -->
-
     <!-- Decryption Library Settings -->
-
     <!-- Listen Together -->
     <string name="together">Together</string>
     <string name="listen_together">Listen Together</string>
@@ -690,7 +634,6 @@
     <string name="listen_together_no_blocked_users">No blocked users</string>
     <string name="unblock">Unblock</string>
     <string name="user_blocked_by_host">Blocked by host</string>
-
     <!-- AI Lyrics Translation -->
     <string name="ai_lyrics_translation">AI lyrics translation</string>
     <string name="ai_translating_lyrics">Translating lyrics…</string>
@@ -732,7 +675,6 @@
     <string name="ai_system_prompt_placeholder">Use {lineCount} as a placeholder for the number of lines to translate</string>
     <string name="ai_system_prompt_default">Default</string>
     <string name="ai_system_prompt_reset">Reset to default</string>
-
     <!-- Crash Handler -->
     <string name="crash_title">App crashed</string>
     <string name="crash_description">An unexpected error occurred. Please share the crash report to help us fix the issue</string>
@@ -741,7 +683,6 @@
     <string name="crash_report_subject">Muzik crash report</string>
     <string name="crash_close">Close</string>
     <string name="crash_no_log">No crash log available</string>
-
     <!-- Theme Palette Names -->
     <string name="palette_dynamic">Dynamic</string>
     <string name="palette_crimson">Crimson</string>
@@ -763,7 +704,6 @@
     <string name="palette_brown">Brown</string>
     <string name="palette_grey">Grey</string>
     <string name="palette_blue_grey">Blue Grey</string>
-
     <!-- Theme Content Descriptions -->
     <string name="cd_back">Back</string>
     <string name="cd_pure_black_mode">Pure black mode</string>
@@ -777,7 +717,6 @@
     <string name="enable_landscape_scaling">Landscape Scaling</string>
     <string name="enable_landscape_scaling_desc">Scale UI in landscape mode for larger screens</string>
     <string name="dynamic_theme">Dynamic Theme</string>
-
     <!-- Music Recognition -->
     <string name="recognize_music">Recognize music</string>
     <string name="tap_to_recognize">Tap to recognize</string>
@@ -800,7 +739,6 @@
     <string name="recognition_notification_no_match">No match found</string>
     <string name="recognition_notification_failed">Recognition failed</string>
     <string name="listen_on_muzik">Listen on Muzik</string>
-
     <!-- CSV Import Strings -->
     <string name="map_csv_columns">Map CSV columns</string>
     <string name="first_row_is_header">First row is header</string>
@@ -810,10 +748,8 @@
     <string name="continue_action">Continue</string>
     <string name="importing_csv">Importing CSV…</string>
     <string name="importing_playlist">Importing playlist…</string>
-
     <string name="recently_converted">Recently converted</string>
     <string name="column_label">Column %d</string>
-
     <string name="discord_connect_description">Sign in with Discord to share what you\'re listening to</string>
     <string name="discord_information_warning">Muzik uses Discord\'s public OAuth2 and Gateway APIs to share what you\'re listening to. Authorization happens through a local browser session that closes itself after capturing the code — nothing is sent to third-party servers. Your token is stored on this device in encrypted preferences and is never shared. Muzik connects directly to wss://gateway.discord.gg to publish your activity, and only requests the minimum scope required (sdk.social_layer_presence).</string>
     <string name="discord_status_connecting">Connecting to Discord…</string>
@@ -864,7 +800,6 @@
     <string name="unpin">Unpin</string>
     <string name="randomize_home_order">Randomize home screen order</string>
     <string name="randomize_home_order_desc">Randomly reorder home screen sections using weighted priorities</string>
-
     <!-- Daily Discover -->
     <string name="daily_discover_sounds_like">Sounds like %1$s</string>
     <string name="daily_discover_because_you_listen_to">Because you listen to %1$s</string>
@@ -872,18 +807,14 @@
     <string name="daily_discover_based_on">Based on %1$s</string>
     <string name="daily_discover_for_fans_of">For fans of %1$s</string>
     <string name="from_the_community">From the community</string>
-
     <!-- Logout dialog -->
     <string name="logout_dialog_title">Keep library data?</string>
     <string name="logout_dialog_message">Do you want to keep your playlists and library data? Downloaded songs will always be kept</string>
     <string name="logout_keep">Keep</string>
     <string name="logout_clear">Clear</string>
-
     <!-- Credits / About Screen -->
     <string name="credits_lead_developer">Lead developer</string>
     <string name="credits_development_team">Pipo Team — contributors</string>
-    <string name="credits_collaborator">Collaborator</string>
-    <string name="credits_collaborators_section">Collaborators</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">Free, open-source software. You may use, study, share, and improve it</string>
     <string name="credits_discord">Discord server</string>
@@ -899,8 +830,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Want to play their favorite song?</string>
     <string name="yeah">Yeah!</string>
-    <string name="stands_with_palestine">Proudly made by the amazing Kenyan Developers</string>
-
+    <string name="built_by_pipo_team">Built by amazing developers at Pipo Team</string>
     <!-- Podcasts -->
     <string name="filter_podcasts">Podcasts</string>
     <string name="view_podcast">View podcast</string>
@@ -928,7 +858,6 @@
         <item quantity="one">%d channel</item>
         <item quantity="other">%d channels</item>
     </plurals>
-
     <!-- Restore confirmation dialog -->
     <string name="restore_confirm_title">Restore backup?</string>
     <string name="restore_confirm_message">This will restore your app data from the selected backup</string>
@@ -937,9 +866,7 @@
     <string name="restore_database_incompatible">Cannot restore backup: database version incompatible. Your current data has been preserved.</string>
     <string name="checking_previous_account">Checking for previous account…</string>
     <string name="no_account_found">No account found</string>
-
     <!-- Cache settings -->
-
     <!-- Upload songs -->
     <string name="upload_songs">Upload songs</string>
     <string name="uploading">Uploading…</string>
@@ -956,7 +883,6 @@
     <string name="delete_uploaded_songs_confirm">Are you sure you want to delete %1$d uploaded songs? This action cannot be undone</string>
     <string name="deleted_n_songs">Deleted %1$d songs</string>
     <string name="deleting">Deleting…</string>
-
     <!-- Android Auto settings -->
     <string name="android_auto">Android Auto</string>
     <string name="android_auto_visible_sections">Visible sections</string>
@@ -971,7 +897,6 @@
     <string name="android_auto_search_options">Search options</string>
     <string name="android_auto_search_local_songs_limit">Songs search limit</string>
     <string name="android_auto_search_local_songs_limit_desc">Limit the number of local songs shown in the search results. It is recommended to not set unlimited to prevent memory crashes</string>
-
     <!-- Stats time transfer -->
     <string name="time_transfer_title">Time transfer</string>
     <string name="time_transfer_warning">WARNING: This action cannot be undone once completed. Create a backup before proceeding. Only songs with at least one registered play are eligible</string>
@@ -980,11 +905,9 @@
     <string name="time_transfer_listen_time_label">Listen time: </string>
     <string name="time_transfer_convert">Convert</string>
     <string name="song_dropdown_more_results">Keep typing to narrow results (%d more)</string>
-
     <!-- Player and Audio Settings -->
     <string name="autoplay">Autoplay</string>
     <string name="autoplay_desc">Automatically play the next song when the current one ends</string>
-
     <!-- Accessibility -->
     <string name="back">Back</string>
     <string name="clear_search">Clear search</string>
@@ -992,7 +915,6 @@
     <string name="switch_to_list_view">Switch to list view</string>
     <string name="switch_to_grid_view">Switch to grid view</string>
     <string name="more_options">More options</string>
-
     <!-- Loudness Level -->
     <string name="loudness_level">Loudness level</string>
     <string name="loudness_level_aggressive">Aggressive (-7 dB)</string>
@@ -1006,9 +928,7 @@
     <string name="format_player_hash">Player hash</string>
     <string name="format_cipher_support_added">Cipher support added</string>
     <string name="not_applicable">N/A</string>
-
     <!-- Stream sources -->
-    
     <string name="stream_sources">Stream sources</string>
     <string name="stream_source_order">Stream order</string>
     <string name="stream_source_web_clients">Web clients</string>

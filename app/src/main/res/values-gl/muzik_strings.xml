@@ -538,7 +538,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Queres reproducir a súa canción favorita?</string>
     <string name="yeah">Si!</string>
-    <string name="stands_with_palestine">Este proxecto apoia a Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Creado polos increíbles desenvolvedores de Pipo Team</string>
     <string name="filter_podcasts">Pódcasts</string>
     <string name="view_podcast">Ver pódcast</string>
     <string name="podcast_channels">Canles de pódcast</string>
@@ -586,8 +586,6 @@
     <string name="logout_keep">Manter</string>
     <string name="logout_clear">Limpar</string>
     <string name="credits_lead_developer">Desenvolvedor principal</string>
-    <string name="credits_collaborator">Colaborador</string>
-    <string name="credits_collaborators_section">Colaboradores</string>
     <string name="ai_api_key">Chave API</string>
     <string name="ai_model">Modelo</string>
     <string name="ai_translation_mode">Mode de tradución</string>

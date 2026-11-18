@@ -591,8 +591,6 @@
     <string name="logout_keep">Sakla</string>
     <string name="logout_clear">Temizle</string>
     <string name="credits_lead_developer">Baş geliştirici</string>
-    <string name="credits_collaborator">Katkıda bulunan</string>
-    <string name="credits_collaborators_section">Katkıda bulunanlar</string>
     <string name="credits_license_name">GNU Genel Kamu Lisansı v3.0</string>
     <string name="credits_license_desc">Ücretsiz, açık kaynaklı yazılım. Kullanabilir, inceleyebilir, paylaşabilir ve geliştirebilirsiniz</string>
     <string name="credits_discord">Discord sunucusu</string>
@@ -608,7 +606,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Onların en sevdiği şarkıyı çalmak ister misin?</string>
     <string name="yeah">Evet!</string>
-    <string name="stands_with_palestine">Bu proje Filistin\'in yanındadır 🇵🇸</string>
+    <string name="built_by_pipo_team">Pipo Team\'un harika geliştiricileri tarafından inşa edildi</string>
     <string name="filter_podcasts">Podcastler</string>
     <string name="view_podcast">Podcast\'i görüntüle</string>
     <string name="podcast_channels">Podcast kanalları</string>

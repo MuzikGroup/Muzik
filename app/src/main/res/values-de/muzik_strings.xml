@@ -599,8 +599,6 @@
     <string name="logout_keep">Behalten</string>
     <string name="logout_clear">Löschen</string>
     <string name="credits_lead_developer">Hauptentwickler</string>
-    <string name="credits_collaborator">Mitwirkender</string>
-    <string name="credits_collaborators_section">Mitwirkende</string>
     <string name="credits_license_name">GNU General Public License v3.0</string>
     <string name="credits_license_desc">Kostenlose Open-Source-Software. Du kannst sie nutzen, studieren, teilen und verbessern.</string>
     <string name="credits_discord">Discord-Server</string>
@@ -615,7 +613,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Möchten Sie ihr Lieblingslied spielen?</string>
     <string name="yeah">Ja!</string>
-    <string name="stands_with_palestine">Dieses Projekt steht hinter Palästina 🇵🇸</string>
+    <string name="built_by_pipo_team">Erstellt von den großartigen Entwicklern bei Pipo Team</string>
     <string name="filter_podcasts">Podcasts</string>
     <string name="view_podcast">Podcast anzeigen</string>
     <string name="podcast_channels">Podcast-Kanäle</string>

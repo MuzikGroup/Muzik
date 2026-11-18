@@ -344,7 +344,7 @@
     <string name="podcast_channels">播客頻道</string>
     <string name="view_podcast">查看播客</string>
     <string name="filter_podcasts">播客</string>
-    <string name="stands_with_palestine">這個計畫支持巴勒斯坦🇵🇸</string>
+    <string name="built_by_pipo_team">Built by amazing developers at Pipo Team</string>
     <string name="yeah">是的！</string>
     <string name="wanna_play_favorite_song">想播放他們最喜歡的歌曲嗎？</string>
     <string name="muzik">MUZIK</string>
@@ -360,8 +360,6 @@
     <string name="credits_discord">Discord 伺服器</string>
     <string name="credits_license_desc">免費開源軟體。您可以隨意使用、研究、分享和改進它</string>
     <string name="credits_license_name">GNU 通用公共授權 v3.0</string>
-    <string name="credits_collaborators_section">合作者</string>
-    <string name="credits_collaborator">合作者</string>
     <string name="credits_lead_developer">首席開發人員</string>
     <string name="logout_clear">清除</string>
     <string name="logout_keep">保存</string>

@@ -504,8 +504,6 @@
     <string name="logout_keep">Megtartás</string>
     <string name="logout_clear">Törlés</string>
     <string name="credits_lead_developer">Vezető fejlesztő</string>
-    <string name="credits_collaborator">Közreműködő</string>
-    <string name="credits_collaborators_section">Közreműködők</string>
     <string name="credits_license_name">GNU Általános Nyilvános Licenc v3.0</string>
     <string name="credits_license_desc">Ingyenes, nyílt forráskódú szoftver. Használja, tanulmányozza, ossza meg, és javítsa fel</string>
     <string name="credits_discord">Discord szerver</string>
@@ -521,7 +519,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Játszuk a kedvenc dalukat?</string>
     <string name="yeah">Naná!</string>
-    <string name="stands_with_palestine">Ez a projekt Palesztina mellett áll 🇵🇸</string>
+    <string name="built_by_pipo_team">Built by amazing developers at Pipo Team</string>
     <string name="filter_podcasts">Podcastok</string>
     <string name="view_podcast">Podcast megtekintése</string>
     <string name="podcast_channels">Podcast csatornák</string>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Upstream InnerTune strings -->
 <!-- Do not add new features here -->
 <!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun -->
-<!-- "InnerTune" is replaced with "Muzik" -->
 <!-- Translators: Do not modify this file directly; translations are managed via Crowdin. -->
 
 <resources>

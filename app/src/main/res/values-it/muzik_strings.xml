@@ -593,8 +593,6 @@
     <string name="logout_keep">Mantieni</string>
     <string name="logout_clear">Pulisci</string>
     <string name="credits_lead_developer">Sviluppatore principale</string>
-    <string name="credits_collaborator">Collaboratore</string>
-    <string name="credits_collaborators_section">Collaboratori</string>
     <string name="credits_license_name">Licenza GNU General Public License v3.0</string>
     <string name="credits_license_desc">Software gratuito e open source. Puoi usarlo, studiarlo, condividerlo e migliorarlo</string>
     <string name="credits_discord">Server Discord</string>
@@ -610,7 +608,7 @@
     <string name="muzik">MUZIK</string>
     <string name="wanna_play_favorite_song">Vuoi riprodurre il loro brano preferito?</string>
     <string name="yeah">Sì!</string>
-    <string name="stands_with_palestine">Questo progetto sostiene la Palestina 🇵🇸</string>
+    <string name="built_by_pipo_team">Creato dagli straordinari sviluppatori di Pipo Team</string>
     <string name="filter_podcasts">Podcast</string>
     <string name="view_podcast">Mostra podcast</string>
     <string name="podcast_channels">Canali podcast</string>
