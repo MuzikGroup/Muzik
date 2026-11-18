@@ -25,7 +25,7 @@ import com.muzikgroup.music.BuildConfig
 import com.muzikgroup.music.R
 import com.muzikgroup.music.constants.SupportPageOpenedAtKey
 import com.muzikgroup.music.constants.SupportThanksShownForKey
-import com.muzikgroup.music.utils.utils.rememberPreference
+import com.muzikgroup.music.utils.rememberPreference
 import java.time.Duration
 import java.time.Instant
 
