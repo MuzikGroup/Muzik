@@ -223,6 +223,9 @@ jobs:
           merge-multiple: true
           path: dist
 
+      - name: Drop smoke evidence from release assets
+        run: rm -f dist/app.log dist/stdout.log dist/desktop.png dist/result.txt
+
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
