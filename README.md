@@ -2,7 +2,7 @@
 
 # Muzik for Desktop
 
-**The full YouTube Music experience for your computer — Windows, macOS and Linux, exactly like Metrolist.**
+**Your entire music world on your computer — Windows, macOS and Linux. Built from scratch, made for everyone.**
 
 Search any song, stream in high quality, follow synced lyrics, manage playlists and downloads, cast to your TV — wrapped in a polished, native-feeling app.
 
@@ -35,7 +35,7 @@ Grab the installer for your system from the [latest release](../../releases/late
 
 ## What you get
 
-The desktop app is built on the **Metrolist desktop engine** (Kotlin Multiplatform + Compose), so it ships the same feature set you know from Metrolist on the desktop:
+Muzik Desktop is an original **Kotlin Multiplatform + Compose** app, designed and engineered by Ignatius (lead developer) together with the Pipo Team contributors. Here is what ships in the box:
 
 - **Search the full YouTube Music catalog** — songs, videos, albums, artists, playlists and podcasts, with live suggestions as you type
 - **Real streaming pipeline** — SABR and direct streams via the battle-tested [innertubex](https://github.com/MetrolistGroup/innertubex) client, with PO-token attestation (in-app WebView mint or the bundled `bgutil` provider) so playback keeps working when YouTube tightens bot checks
@@ -72,7 +72,7 @@ Muzik Desktop is a **Kotlin Multiplatform** app: a shared module (UI, database, 
 
 ## Credits & license
 
-Muzik Desktop is built on the desktop engine of [Metrolist](https://github.com/MetrolistGroup/Metrolist) — our thanks to the Metrolist team for their work and their blessing to build on it. Streaming internals come from [innertubex](https://github.com/MetrolistGroup/innertubex).
+**Lead developer:** Ignatius. **Contributors:** the Pipo Team. Streaming internals come from the [innertubex](https://github.com/MetrolistGroup/innertubex) library.
 
 Licensed under **GPL-3.0** — see [LICENSE](LICENSE).
 

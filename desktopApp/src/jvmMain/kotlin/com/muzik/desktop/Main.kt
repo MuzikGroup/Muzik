@@ -61,15 +61,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
@@ -85,7 +78,6 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import coil3.compose.setSingletonImageLoaderFactory
 import com.materialkolor.ktx.isLight
-import com.materialkolor.utils.ColorUtils
 import com.muzik.desktop.backup.DesktopBackupRestoreManager
 import com.muzik.desktop.crash.DesktopCrashRecovery
 import com.muzik.desktop.deviceconnect.DesktopDeviceConnect
@@ -116,7 +108,6 @@ import com.muzik.desktop.ui.components.LocalCaptionBarInsets
 import com.muzik.desktop.ui.components.MiniplayerWindow
 import com.muzik.desktop.ui.components.ShortcutsOverlay
 import com.muzik.desktop.ui.components.TokenLoginDialog
-import com.muzik.desktop.ui.components.UpdateArtworkTheme
 import com.muzik.desktop.ui.components.VideoFullscreenOverlay
 import com.muzik.desktop.ui.layouts.ExpressLayout
 import com.muzik.desktop.ui.layouts.FocusedLayout
@@ -129,6 +120,7 @@ import com.muzik.desktop.ui.screens.settings.ApplicationLogsDialog
 import com.muzik.desktop.ui.screens.settings.IntegrationsOverlay
 import com.muzik.desktop.ui.screens.settings.SettingsOverlay
 import com.muzik.desktop.ui.theme.MuzikTheme
+import com.muzik.desktop.utils.AppIcon
 import com.muzik.desktop.utils.AppLogger
 import com.muzik.desktop.utils.ComposeTrayManager
 import com.muzik.desktop.utils.DesktopImageLoader
@@ -337,7 +329,6 @@ private fun WindowScope.AppContent(
         setSingletonImageLoaderFactory { context ->
             DesktopImageLoader.create(context)
         }
-        UpdateArtworkTheme()
         LaunchedEffect(colorScheme) {
             try {
                 val bg = colorScheme.background.toArgb()
@@ -1160,66 +1151,11 @@ private fun runDesktopApp(args: Array<String>) {
             UiState.isNativeFullscreen = windowState.placement == WindowPlacement.Fullscreen
         }
 
+        // Hard-coded application icon: the bundled Muzik logo, identical in the
+        // taskbar, Alt-Tab, pinned buttons and window decorations. It never
+        // follows the theme or playback state, so the M logo is always visible.
         @Suppress("DEPRECATION")
-        val logoPainter = painterResource("logo.svg")
-        val iconColor =
-            UiState.seedColor
-
-        val dynamicIcon =
-            remember(iconColor) {
-                object : Painter() {
-                    override val intrinsicSize: Size = Size(256f, 256f)
-
-                    override fun DrawScope.onDraw() {
-                        drawCircle(
-                            brush =
-                                Brush.linearGradient(
-                                    colors =
-                                        listOf(
-                                            iconColor.copy(alpha = 0.8f),
-                                            iconColor,
-                                            iconColor.copy(alpha = 0.6f),
-                                        ),
-                                    start = Offset(0f, 0f),
-                                    end = Offset(size.width, size.height),
-                                ),
-                            radius = size.minDimension / 2,
-                            center = center,
-                        )
-
-                        drawCircle(
-                            color = iconColor,
-                            radius = size.minDimension / 2.5f,
-                            center = center,
-                        )
-
-                        with(logoPainter) {
-                            val logoSize = size * 0.75f
-                            val offset =
-                                Offset((size.width - logoSize.width) / 2f, (size.height - logoSize.height) / 2f)
-                            translate(offset.x, offset.y) {
-                                draw(
-                                    logoSize,
-                                    colorFilter =
-                                        ColorFilter
-                                            .tint(
-                                                color =
-                                                    if (ColorUtils.calculateLuminance(iconColor.toArgb()) > 0.4) {
-                                                        Color(
-                                                            red = (iconColor.red / 255) * (32 / 255),
-                                                            green = (iconColor.green / 255) * (32 / 255),
-                                                            blue = (iconColor.blue / 255) * (32 / 255),
-                                                        )
-                                                    } else {
-                                                        Color.White
-                                                    },
-                                            ),
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+        val appIcon = painterResource("logo.png")
 
         val startRoute =
             remember {
@@ -1281,8 +1217,11 @@ private fun runDesktopApp(args: Array<String>) {
             state = windowState,
             undecorated = isLinux && !useSystemWindowFrame,
             transparent = false,
-            icon = dynamicIcon,
+            icon = appIcon,
         ) {
+            LaunchedEffect(window) {
+                AppIcon.install(window)
+            }
             LaunchedEffect(window) {
                 while (!window.isShowing) delay(16L)
                 startup.windowShown.complete(Unit)

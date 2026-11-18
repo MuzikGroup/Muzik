@@ -258,8 +258,6 @@
     <string name="appearance_app_icon_credit">Alternativne ikone od Kayé (@thy_k na Discordu)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Koristi generiranu Material šemu boja</string>
-    <string name="song_artwork_colors">Boje naslovnice</string>
-    <string name="song_artwork_colors_description">Zamijeni boje aplikacije naslovnicom trenutne pjesme kada je dostupno</string>
     <string name="theme_palette_style">Stil palete</string>
     <string name="app_icon_zenith_white">Zenit Bijela</string>
     <string name="app_font_choose">Odaberi font</string>

@@ -289,8 +289,6 @@
     <string name="appearance_app_icon">Ikon aplikasi</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Gunakan skema warna Material yang dihasilkan</string>
-    <string name="song_artwork_colors">Warna dari artwork lagu</string>
-    <string name="song_artwork_colors_description">Timpa warna aplikasi dengan artwork lagu saat ini jika tersedia</string>
     <string name="theme_palette_style">Gaya palet</string>
     <string name="theme_palette_rainbow">Pelangi (Rainbow)</string>
     <string name="theme_palette_monochrome">Monokrom</string>

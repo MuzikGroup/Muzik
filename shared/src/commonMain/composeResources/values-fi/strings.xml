@@ -309,8 +309,6 @@
     <string name="appearance_app_icon_credit">Vaihtoehtoiset kuvakkeet on luonut Kayé (@thy_k Discordissa)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Luo Material-väripaletti</string>
-    <string name="song_artwork_colors">Käytä kappaleen kansikuvan värejä</string>
-    <string name="song_artwork_colors_description">Korvaa sovelluksen värit nykyisen kappaleen kannen väreillä, kun mahdollista</string>
     <string name="theme_palette_style">Paletin tyyli</string>
     <string name="theme_palette_tonal_spot">Tonal spot (Sävykäs piste)</string>
     <string name="theme_palette_vibrant">Vibrant (Värikäs)</string>

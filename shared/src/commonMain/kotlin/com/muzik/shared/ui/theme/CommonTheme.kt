@@ -69,13 +69,10 @@ fun parseThemeSeedColor(value: Long): Color {
 
 fun resolveThemeSeedColor(
     materialYouEnabled: Boolean,
-    songArtworkColorsEnabled: Boolean,
     selectedThemeColor: Long,
-    artworkSeedColor: Color?,
 ): Color =
     when {
         !materialYouEnabled -> parseThemeSeedColor(selectedThemeColor)
-        songArtworkColorsEnabled && artworkSeedColor != null -> artworkSeedColor
         else -> DefaultThemeColor
     }
 

@@ -276,8 +276,6 @@
     <string name="appearance_style">样式</string>
     <string name="appearance_app_icon">应用图标</string>
     <string name="appearance_app_icon_credit">备用图标由 Kayé 制作 (@thy_k on Discord)</string>
-    <string name="song_artwork_colors">歌曲封面颜色</string>
-    <string name="song_artwork_colors_description">如有当前歌曲封面，则将其覆盖应用颜色</string>
     <string name="theme_palette_style">调色板样式</string>
     <string name="theme_palette_tonal_spot">色调点</string>
     <string name="theme_palette_vibrant">鲜艳</string>

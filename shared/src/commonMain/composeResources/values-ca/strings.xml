@@ -312,8 +312,6 @@
     <string name="appearance_app_icon_credit">Icones alternatives de Kayé (@thy_k a Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Fes servir un esquema de color de material generat</string>
-    <string name="song_artwork_colors">Colors de la portada de la cançó</string>
-    <string name="song_artwork_colors_description">Reemplaça els colors de l’aplicació amb la portada de la cançó actual quan estigui disponible</string>
     <string name="theme_palette_style">Estil de paleta</string>
     <string name="theme_palette_tonal_spot">Punt tonal</string>
     <string name="theme_palette_vibrant">Vibrant</string>

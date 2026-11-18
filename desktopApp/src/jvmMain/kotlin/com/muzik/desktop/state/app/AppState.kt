@@ -12,6 +12,8 @@ import com.muzik.desktop.update.DesktopUpdateManager
 import com.muzik.desktop.update.GitHubDesktopRelease
 import com.muzik.desktop.update.desktopUpdateCheckIsDue
 import com.muzik.desktop.utils.AppLogger
+import com.muzik.desktop.utils.ComposeTrayManager
+import com.muzik.desktop.utils.DesktopNotifier
 import com.muzik.shared.api.artwork.AnimatedArtworkService
 import com.muzik.shared.api.artwork.DirectCanvasProvider
 import com.muzik.shared.discord.DiscordRpcManager
@@ -19,6 +21,7 @@ import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.copied
 import com.muzik.shared.generated.resources.could_not_download_update_manager
 import com.muzik.shared.generated.resources.update_failed
+import com.muzik.shared.generated.resources.update_installing_in_background
 import com.muzik.shared.generated.resources.updates_available_title
 import com.muzik.shared.generated.resources.updates_title
 import com.muzik.shared.settings.Settings
@@ -106,9 +109,32 @@ object AppState {
         if (!Settings.shared.updateNotifications || Settings.shared.lastNotifiedUpdateVersion == release.updateKey) return
         scope.launch {
             Settings.shared.lastNotifiedUpdateVersion = release.updateKey
+            val message = getString(Res.string.updates_available_title, release.version)
+
+            // The user may be away with the window hidden in the tray: a system
+            // notification carries the update message, and the update itself is
+            // prepared in the background so it is ready when they return. When
+            // the window is visible, the in-app flow takes over instead.
+            DesktopNotifier.notify(
+                title = message,
+                message = getString(Res.string.updates_title),
+                onClick = {
+                    ComposeTrayManager.showWindow()
+                    UiState.selectedSettingsPage = SettingsPageId.UPDATES
+                    UiState.showSettings = true
+                },
+            )
+            if (!ComposeTrayManager.windowVisible && UiState.canInstallUpdate) {
+                snackbarHostState.showSnackbar(
+                    message = getString(Res.string.update_installing_in_background),
+                )
+                installUpdate()
+                return@launch
+            }
+
             val result =
                 snackbarHostState.showSnackbar(
-                    message = getString(Res.string.updates_available_title, release.version),
+                    message = message,
                     actionLabel = getString(Res.string.updates_title),
                 )
             if (result == SnackbarResult.ActionPerformed) {

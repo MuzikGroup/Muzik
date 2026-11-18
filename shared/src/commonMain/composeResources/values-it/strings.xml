@@ -316,8 +316,6 @@
     <string name="appearance_app_icon">Icona dell\u0027app</string>
     <string name="appearance_app_icon_credit">Icone alternative realizzate da Kayé (@thy_k su Discord)</string>
     <string name="material_you_description">Utilizza uno schema di colori generato in stile Material</string>
-    <string name="song_artwork_colors">Colori dalla copertina del brano</string>
-    <string name="song_artwork_colors_description">Genera la palette colori della copertina del brano in riproduzione, quando possibile</string>
     <string name="theme_palette_style">Stile palette</string>
     <string name="theme_palette_tonal_spot">Tenue</string>
     <string name="theme_palette_vibrant">Vivace</string>

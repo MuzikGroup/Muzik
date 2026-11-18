@@ -316,8 +316,6 @@
     <string name="appearance_app_icon">Icône de l\u0027application</string>
     <string name="appearance_app_icon_credit">Icônes alternatives par Kayé (@thy_k sur Discord)</string>
     <string name="material_you_description">Utilise la palette de couleurs Material You</string>
-    <string name="song_artwork_colors">Couleurs tirées des pochettes</string>
-    <string name="song_artwork_colors_description">Utilise les couleurs de la pochette du titre en cours au lieu des couleurs par défaut</string>
     <string name="theme_palette_style">Style de palette</string>
     <string name="theme_palette_tonal_spot">Nuancée</string>
     <string name="theme_palette_vibrant">Vibrante</string>

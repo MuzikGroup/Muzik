@@ -17,18 +17,15 @@ import com.muzik.shared.ui.settings.SettingsPageId
 import com.muzik.shared.ui.theme.resolveThemeSeedColor
 
 object UiState {
-    internal var artworkSeedColor by mutableStateOf<Color?>(null)
     val seedColor: Color
         get() =
             resolveDesktopSeedColor(
                 configured =
                     resolveThemeSeedColor(
                         materialYouEnabled = Settings.shared.materialYouEnabled,
-                        songArtworkColorsEnabled = Settings.shared.dynamicTheme,
                         selectedThemeColor = Settings.shared.selectedThemeColor,
-                        artworkSeedColor = artworkSeedColor,
                     ),
-                useSystemAccent = Settings.shared.materialYouEnabled && (!Settings.shared.dynamicTheme || artworkSeedColor == null),
+                useSystemAccent = Settings.shared.materialYouEnabled,
             )
     var isWindowFocused by mutableStateOf(false)
     var isMaximized by mutableStateOf(false)

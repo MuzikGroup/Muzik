@@ -190,7 +190,6 @@ private val booleanKeys =
         "hideShortSongs",
         "blockAiSlopArtists",
         "materialYouEnabled",
-        "dynamicTheme",
         "animatedGradient",
         "enableHapticFeedback",
         "showMiniplayer",

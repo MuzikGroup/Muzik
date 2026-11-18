@@ -317,8 +317,6 @@
     <string name="appearance_app_icon_credit">Pictograme alternative de Kayé (@thy_k pe Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Folosește o schemă de culori generată Material</string>
-    <string name="song_artwork_colors">Culori din coperta de album a melodiei</string>
-    <string name="song_artwork_colors_description">Înlocuiește culorile aplicației cu cele din coperta de album atunci când sunt disponibile</string>
     <string name="theme_palette_style">Stilul paletei</string>
     <string name="theme_palette_tonal_spot">Pată tonală</string>
     <string name="theme_palette_vibrant">Vibrant</string>

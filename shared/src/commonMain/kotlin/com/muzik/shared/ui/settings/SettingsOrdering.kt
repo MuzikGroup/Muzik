@@ -57,7 +57,6 @@ internal fun List<SettingsGroupRegistration>.prioritized(page: SettingsPageId): 
                         "themeMode",
                         "materialYou",
                         "themeColor",
-                        "dynamicTheme",
                         "paletteStyle",
                         "fonts",
                         "appIcon",

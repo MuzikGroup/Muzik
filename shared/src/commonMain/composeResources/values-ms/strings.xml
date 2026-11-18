@@ -295,8 +295,6 @@
     <string name="appearance_app_icon_credit">Ikon alternatif oleh Kayé (@thy_k di Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Gunakan skema warna Material yang dijana</string>
-    <string name="song_artwork_colors">Warna daripada karya seni lagu</string>
-    <string name="song_artwork_colors_description">Gantikan warna aplikasi dengan karya seni lagu semasa apabila tersedia</string>
     <string name="theme_palette_style">Gaya palet</string>
     <string name="theme_palette_tonal_spot">Titik tonal</string>
     <string name="theme_palette_vibrant">Meriah</string>

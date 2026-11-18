@@ -313,8 +313,6 @@
     <string name="appearance_app_icon_credit">Alternatif simgeler: Kayé (Discord: @thy_k)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Oluşturulan dinamik Material renk düzenini kullan</string>
-    <string name="song_artwork_colors">Şarkı kapağından renkler</string>
-    <string name="song_artwork_colors_description">Mevcut olduğunda uygulama renklerini çalan şarkının kapağına göre uyarla</string>
     <string name="theme_palette_style">Palet stili</string>
     <string name="theme_palette_tonal_spot">Tonal spot</string>
     <string name="theme_palette_vibrant">Canlı (Vibrant)</string>

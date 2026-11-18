@@ -138,13 +138,6 @@ internal fun SettingsUiRegistryBuilder.registerAppearanceSettings(host: SharedSe
                     )
                 }
             }
-            switch(
-                id = "dynamicTheme",
-                title = stringResource(Res.string.song_artwork_colors),
-                description = stringResource(Res.string.song_artwork_colors_description),
-                checked = settings.dynamicTheme,
-                enabled = settings.materialYouEnabled,
-            ) { settings.dynamicTheme = it }
             choice(
                 id = "paletteStyle",
                 title = stringResource(Res.string.theme_palette_style),

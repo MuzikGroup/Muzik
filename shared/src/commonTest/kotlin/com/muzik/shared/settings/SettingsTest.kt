@@ -311,9 +311,9 @@ class SettingsTest {
         val backing = CountingSettings()
         val preferences = Settings(backing)
 
-        preferences.dynamicTheme = true
-        preferences.dynamicTheme = false
-        preferences.dynamicTheme = false
+        preferences.uiEnhancements = true
+        preferences.uiEnhancements = false
+        preferences.uiEnhancements = false
 
         assertEquals(1, backing.booleanWrites)
     }
@@ -323,8 +323,8 @@ class SettingsTest {
         val backing = CountingSettings(failWrites = true)
         val preferences = Settings(backing)
 
-        assertFailsWith<IllegalStateException> { preferences.dynamicTheme = false }
-        assertEquals(true, preferences.dynamicTheme)
+        assertFailsWith<IllegalStateException> { preferences.uiEnhancements = false }
+        assertEquals(true, preferences.uiEnhancements)
     }
 
     @Test
@@ -337,15 +337,15 @@ class SettingsTest {
         try {
             Snapshot.sendApplyNotifications()
             observer.observeReads(settings, { invalidations++ }) {
-                assertEquals(true, settings.dynamicTheme)
+                assertEquals(true, settings.uiEnhancements)
             }
 
-            settings.dynamicTheme = false
+            settings.uiEnhancements = false
             Snapshot.sendApplyNotifications()
 
             assertEquals(1, invalidations)
-            assertEquals(false, settings.dynamicTheme)
-            assertEquals(false, Settings(backing).dynamicTheme)
+            assertEquals(false, settings.uiEnhancements)
+            assertEquals(false, Settings(backing).uiEnhancements)
         } finally {
             observer.stop()
             observer.clear()
@@ -355,13 +355,13 @@ class SettingsTest {
     @Test
     fun importingAndRestoringBackupSettingsRefreshesCachedValues() {
         val settings = Settings(MapSettings())
-        val disabled = PortableSettings(entries = listOf(PortableSetting("dynamicTheme", SettingType.BOOLEAN, "false")))
-        val enabled = PortableSettings(entries = listOf(PortableSetting("dynamicTheme", SettingType.BOOLEAN, "true")))
+        val disabled = PortableSettings(entries = listOf(PortableSetting("uiEnhancements", SettingType.BOOLEAN, "false")))
+        val enabled = PortableSettings(entries = listOf(PortableSetting("uiEnhancements", SettingType.BOOLEAN, "true")))
 
         settings.importBackupSettings(disabled)
-        assertEquals(false, settings.dynamicTheme)
+        assertEquals(false, settings.uiEnhancements)
         settings.restoreBackupSettingsSnapshot(enabled)
-        assertEquals(true, settings.dynamicTheme)
+        assertEquals(true, settings.uiEnhancements)
     }
 
     @Test

@@ -317,8 +317,6 @@
     <string name="appearance_app_icon_credit">Iconos alternativos por Kayé (@thy_k on Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Usar una paleta de colores generada con Material You</string>
-    <string name="song_artwork_colors">Colores de las portadas de las canciones</string>
-    <string name="song_artwork_colors_description">Usar los colores de la portada de la canción actual si están disponibles</string>
     <string name="theme_palette_style">Estilo de la paleta</string>
     <string name="theme_palette_tonal_spot">Color tonal</string>
     <string name="theme_palette_vibrant">Vibrante</string>

@@ -301,8 +301,6 @@
     <string name="appearance_app_icon">Ikona aplikácie</string>
     <string name="appearance_app_icon_credit">Alternatívne ikony od Kayé (@thy_k na Discorde)</string>
     <string name="material_you_description">Použite vygenerovanú farebnú schému Material You</string>
-    <string name="song_artwork_colors">Farby z grafiky skladby</string>
-    <string name="song_artwork_colors_description">Nahradiť farby aplikácie grafikou aktuálnej skladby, ak je k dispozícii</string>
     <string name="app_icon_original">Originál</string>
     <string name="app_font_system">Predvolené systémom</string>
     <string name="app_font_invalid">Toto písmo sa nepodarilo použiť. Vyberte platný súbor TTF alebo OTF menší ako 20 MB.</string>

@@ -305,8 +305,6 @@
     <string name="appearance_app_icon_credit">Alternativa ikoner av Kayé (@thy_k på Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Använd ett genererat Material-färgschema</string>
-    <string name="song_artwork_colors">Färger från låtens omslagsbild</string>
-    <string name="song_artwork_colors_description">Åsidosätt appfärger med omslagsbilden för den aktuella låten när den finns tillgänglig</string>
     <string name="theme_palette_style">Palettstil</string>
     <string name="theme_palette_tonal_spot">Tonpunkt</string>
     <string name="theme_palette_vibrant">Vibrant</string>

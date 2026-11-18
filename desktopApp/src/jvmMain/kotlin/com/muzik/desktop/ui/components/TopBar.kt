@@ -252,6 +252,7 @@ fun WindowScope.CustomTitleBar(
                     colorScheme = colorScheme,
                 )
                 navItems()
+                SupportButton(colorScheme)
                 DevtoolsButton(colorScheme)
             }
 
@@ -373,6 +374,7 @@ fun WindowScope.TopBarWithPlayer(
                     colorScheme = colorScheme,
                 )
                 navItems()
+                SupportButton(colorScheme)
                 DevtoolsButton(colorScheme)
             }
 

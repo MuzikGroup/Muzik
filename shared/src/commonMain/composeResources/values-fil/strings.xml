@@ -299,8 +299,6 @@
     <string name="appearance_app_icon">Icon ng app</string>
     <string name="appearance_app_icon_credit">Mga alternate icon ni Kayé (@thy_k sa Discord)</string>
     <string name="material_you_description">Gumamit ng generated na Material color scheme</string>
-    <string name="song_artwork_colors">Mga kulay mula sa song artwork</string>
-    <string name="song_artwork_colors_description">Palitan ang mga kulay ng app gamit ang kasalukuyang song artwork kung available</string>
     <string name="theme_palette_style">Style ng palette</string>
     <string name="theme_palette_tonal_spot">Tonal spot</string>
     <string name="theme_palette_vibrant">Vibrant</string>

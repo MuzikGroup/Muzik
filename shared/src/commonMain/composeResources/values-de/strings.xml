@@ -309,8 +309,6 @@
     <string name="appearance_app_icon_credit">Alternative Icons von Kayé (@thy_k auf Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Nutze ein generiertes Material You Farbschema</string>
-    <string name="song_artwork_colors">Farben vom Song Cover</string>
-    <string name="song_artwork_colors_description">Überschreibe die App-Farben mit den Farben des derzeitigen Song-Covers, wenn verfügbar</string>
     <string name="theme_palette_style">Palettenstil</string>
     <string name="theme_palette_tonal_spot">Tonal Spot</string>
     <string name="theme_palette_vibrant">Vibrant</string>

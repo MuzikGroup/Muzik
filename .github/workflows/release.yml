@@ -119,7 +119,7 @@ jobs:
           cache-read-only: false
 
       # The Windows WebView2 login helper is built from the in-repo .NET project
-      # and shipped as an app resource (same pipeline Metrolist uses).
+      # and shipped as an app resource.
       - name: Build Windows WebView2 helper
         if: matrix.target == 'msi'
         shell: pwsh
@@ -244,4 +244,4 @@ jobs:
 
           Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*.
 
-          Built on the Metrolist desktop engine (GPL-3.0). Support Muzik: https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13"
+          Built by Ignatius and the Pipo Team (GPL-3.0). Support Muzik: https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13"

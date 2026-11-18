@@ -309,8 +309,6 @@
     <string name="appearance_app_icon_credit">Kayé (Discord par @thy_k) ke dwara dusre chinh</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Apne aap banayi gayi roop yojna istmaal kare</string>
-    <string name="song_artwork_colors">Gaane ki kala se liye gaye rang</string>
-    <string name="song_artwork_colors_description">Chal rahe gaane ki kala uplabdh hone par app ke rang ke jagah istmaal kare</string>
     <string name="theme_palette_style">Rang samuh ki shaili</string>
     <string name="theme_palette_tonal_spot">Rango ka mel</string>
     <string name="theme_palette_vibrant">Chatakh (Vibrant)</string>

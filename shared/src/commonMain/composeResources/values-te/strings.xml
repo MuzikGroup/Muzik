@@ -305,8 +305,6 @@
     <string name="appearance_style">శైలి</string>
     <string name="appearance_app_icon">యాప్ కోసం చిహ్నం</string>
     <string name="appearance_app_icon_credit">ద్వారా చిహ్నములు Kayé (Discord లో @thy_k .) రూపకల్పన చేశారు</string>
-    <string name="song_artwork_colors">పాట చిత్రాలు నుంచి రంగులు తీసి వాడండి</string>
-    <string name="song_artwork_colors_description">కుదిరితే, యాప్ రంగులను ఇప్పుడు వినే పాటను చిత్రాల రంగులు తో అంటే మార్చండి</string>
     <string name="theme_palette_style">పాలెట్ శైలి</string>
     <string name="theme_palette_tonal_spot">రంగులు కలిసే చోటు</string>
     <string name="theme_palette_vibrant">ప్రాణవంతమైన (Vibrant)</string>

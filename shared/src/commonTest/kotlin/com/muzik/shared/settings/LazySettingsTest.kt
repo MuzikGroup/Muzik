@@ -18,7 +18,7 @@ class LazySettingsTest {
         val original =
             Settings(
                 MapSettings(
-                    "dynamicTheme" to false,
+                    "uiEnhancements" to false,
                     "savedWidth" to 1440,
                     "selectedThemeColor" to 42L,
                     "volume" to 0.75f,
@@ -30,7 +30,7 @@ class LazySettingsTest {
         val settings = Settings(store)
         settings.importBackupSettings(original)
         assertEquals(original, settings.exportBackupSettings())
-        assertFalse(settings.dynamicTheme)
+        assertFalse(settings.uiEnhancements)
         assertEquals(1440, settings.savedWidth)
         assertEquals(42L, settings.selectedThemeColor)
         assertEquals(0.75f, settings.volume)
@@ -44,10 +44,10 @@ class LazySettingsTest {
             val store = MapSettings()
             val settings = Settings(store)
             val values = mutableListOf<Boolean>()
-            val observer = backgroundScope.launch { snapshotFlow { settings.dynamicTheme }.collect(values::add) }
+            val observer = backgroundScope.launch { snapshotFlow { settings.uiEnhancements }.collect(values::add) }
             runCurrent()
             assertEquals(listOf(true), values)
-            settings.dynamicTheme = false
+            settings.uiEnhancements = false
             Snapshot.sendApplyNotifications()
             runCurrent()
             assertEquals(listOf(true, false), values)
@@ -55,11 +55,11 @@ class LazySettingsTest {
             Snapshot.sendApplyNotifications()
             runCurrent()
             assertEquals(listOf(true, false), values)
-            settings.importBackupSettings(PortableSettings(entries = listOf(PortableSetting("dynamicTheme", SettingType.BOOLEAN, "true"))))
+            settings.importBackupSettings(PortableSettings(entries = listOf(PortableSetting("uiEnhancements", SettingType.BOOLEAN, "true"))))
             Snapshot.sendApplyNotifications()
             runCurrent()
             assertEquals(listOf(true, false, true), values)
-            settings.dynamicTheme = false
+            settings.uiEnhancements = false
             Snapshot.sendApplyNotifications()
             runCurrent()
             settings.restoreBackupSettingsSnapshot(PortableSettings(entries = emptyList()))

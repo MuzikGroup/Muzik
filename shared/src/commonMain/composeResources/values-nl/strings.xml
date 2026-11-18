@@ -308,8 +308,6 @@
     <string name="appearance_app_icon">App pictogram</string>
     <string name="appearance_app_icon_credit">Alternatieve iconen door Kayé (@thy_k op Discord)</string>
     <string name="material_you_description">Gebruik een gegenereerd Material You-kleurenschema</string>
-    <string name="song_artwork_colors">Kleuren van muziek kunstwerk</string>
-    <string name="song_artwork_colors_description">Overschrijf app kleuren met de huidige muziek kunstwerk wanneer beschikbaar</string>
     <string name="theme_palette_style">Palette stijl</string>
     <string name="theme_palette_tonal_spot">Tonen spot</string>
     <string name="theme_palette_vibrant">Vibrant</string>

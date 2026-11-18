@@ -308,7 +308,6 @@ class Settings(
 
     var materialYouEnabled by preference(true)
     var uiEnhancements by preference(true)
-    var dynamicTheme by preference(true)
     var themeMode by preference(ThemeMode.AUTO)
     var autoPureBlack by preference(AutoPureBlackKey, false)
     var selectedThemeColor by preference(0L)
@@ -596,6 +595,8 @@ class Settings(
     var launchesSinceUpdatePrompt by preference(0)
     var lastNotifiedUpdateVersion by preference("")
     var pendingUpdateReleaseJson by preference("")
+    var supportPageOpenedAt by preference(0L)
+    var supportThanksShownFor by preference(0L)
     var enableLogging by preference(false)
     var sentryEnabled by preference(SentryEnabledKey, false)
     var blockScreenshots by preference(false)

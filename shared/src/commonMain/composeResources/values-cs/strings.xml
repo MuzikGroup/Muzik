@@ -326,8 +326,6 @@
     <string name="appearance_app_icon_credit">Alternativní ikony od Kayé (@thy_k na Discordu)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Použít vygenerované Material barevné schéma</string>
-    <string name="song_artwork_colors">Barvy z obalu skladby</string>
-    <string name="song_artwork_colors_description">Přepíše barvy aplikace podle obalu aktuální skladby, pokud je k dispozici</string>
     <string name="theme_palette_style">Styl palety</string>
     <string name="theme_palette_tonal_spot">Tónový akcent</string>
     <string name="theme_palette_vibrant">Vibrantní</string>

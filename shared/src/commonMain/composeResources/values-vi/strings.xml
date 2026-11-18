@@ -716,8 +716,6 @@
     <string name="material_you_description">Dùng bảng màu Material được tạo tự động</string>
     <string name="ui_enhancements">Cải tiến giao diện</string>
     <string name="ui_enhancements_description">Ảnh bìa bo tròn hơn, hình nghệ sĩ biểu cảm và chỉ báo đang phát thay cho nút phát</string>
-    <string name="song_artwork_colors">Màu từ ảnh bìa bài hát</string>
-    <string name="song_artwork_colors_description">Ghi đè màu ứng dụng bằng ảnh bìa bài hát hiện tại khi có sẵn</string>
     <string name="theme_palette_content">Nội dung</string>
     <string name="theme_palette_style">Kiểu bảng màu</string>
     <string name="theme_palette_tonal_spot">Tonal Spot</string>

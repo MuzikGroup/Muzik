@@ -325,8 +325,6 @@
     <string name="appearance_app_icon_credit">Альтернативные иконки от Kayé (@thy_k в Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Использовать сгенерированную цветовую схему Material</string>
-    <string name="song_artwork_colors">Цвета из обложки песни</string>
-    <string name="song_artwork_colors_description">Переопределить цвета приложения цветами обложки текущей песни, если доступно</string>
     <string name="theme_palette_style">Стиль палитры</string>
     <string name="theme_palette_tonal_spot">Тональное пятно</string>
     <string name="theme_palette_vibrant">Яркая</string>

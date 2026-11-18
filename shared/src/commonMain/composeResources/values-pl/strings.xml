@@ -325,8 +325,6 @@
     <string name="appearance_app_icon_credit">Alternatywne ikony aplikacji zostały stworzone przez Kayé (@thy_k na Discordzie)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Użyj wygenerowanego schematu kolorów Material</string>
-    <string name="song_artwork_colors">Kolory z okładki utworu</string>
-    <string name="song_artwork_colors_description">Zastąp kolory aplikacji barwami aktualnie odtwarzanego utworu, jeśli są dostępne</string>
     <string name="theme_palette_style">Styl palety kolorów</string>
     <string name="theme_palette_tonal_spot">Punkt tonalny</string>
     <string name="theme_palette_vibrant">Wyrazista</string>

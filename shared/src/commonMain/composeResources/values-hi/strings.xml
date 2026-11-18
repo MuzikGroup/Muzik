@@ -309,8 +309,6 @@
     <string name="appearance_app_icon_credit">Kayé द्वारा वैकल्पिक आइकन (@thy_k on Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">एक जनरेटेड मटीरियल कलर स्कीम का उपयोग करें</string>
-    <string name="song_artwork_colors">गाने की कलाकृति से रंग</string>
-    <string name="song_artwork_colors_description">जब उपलब्ध हो, तो वर्तमान गाने की कलाकृति के रंग ऐप के रंगों को प्रतिस्थापित करें</string>
     <string name="theme_palette_style">पैलेट स्टाइल</string>
     <string name="theme_palette_tonal_spot">टोनल स्पॉट (Tonal spot)</string>
     <string name="theme_palette_vibrant">जीवंत (Vibrant)</string>

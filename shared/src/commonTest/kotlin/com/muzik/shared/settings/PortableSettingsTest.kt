@@ -123,7 +123,7 @@ class PortableSettingsTest {
 
         kotlin.test.assertFailsWith<IllegalArgumentException> {
             settings.importBackupSettings(
-                PortableSettings(entries = listOf(PortableSetting("dynamicTheme", SettingType.BOOLEAN, "invalid"))),
+                PortableSettings(entries = listOf(PortableSetting("uiEnhancements", SettingType.BOOLEAN, "invalid"))),
             )
         }
         assertEquals("current-cookie", Settings(backing).innerTubeCookie)
@@ -139,7 +139,7 @@ class PortableSettingsTest {
         val backing = FakeSettings()
         val settings =
             Settings(backing).apply {
-                dynamicTheme = false
+                uiEnhancements = false
                 innerTubeCookie = "original-cookie"
                 deviceConnectEnabled = true
             }
@@ -150,7 +150,7 @@ class PortableSettingsTest {
                 entries =
                     listOf(
                         PortableSetting("contentCountry", SettingType.STRING, "DE"),
-                        PortableSetting("dynamicTheme", SettingType.BOOLEAN, "true"),
+                        PortableSetting("uiEnhancements", SettingType.BOOLEAN, "true"),
                         PortableSetting("innerTubeCookie", SettingType.STRING, "replacement-cookie"),
                     ),
             ),
@@ -161,7 +161,7 @@ class PortableSettingsTest {
         assertEquals(setOf("contentCountry"), backing.removedKeys)
         val restored = Settings(backing)
         assertFalse(backing.hasKey("contentCountry"))
-        assertFalse(restored.dynamicTheme)
+        assertFalse(restored.uiEnhancements)
         assertEquals("original-cookie", restored.innerTubeCookie)
         assertTrue(restored.deviceConnectEnabled)
     }
@@ -170,7 +170,7 @@ class PortableSettingsTest {
     fun stringBackedDesktopSettingsKeepDeclaredTypes() {
         val desktop =
             Settings(FakeSettings(stringBacked = true)).apply {
-                dynamicTheme = false
+                uiEnhancements = false
                 maxSongCacheSize = 2048
                 volume = 0.5f
             }
@@ -179,7 +179,7 @@ class PortableSettingsTest {
         Settings(androidBacking).importBackupSettings(backup)
         val restored = Settings(androidBacking)
 
-        assertFalse(restored.dynamicTheme)
+        assertFalse(restored.uiEnhancements)
         assertEquals(2048, restored.maxSongCacheSize)
         assertEquals(0.5f, restored.volume)
     }
@@ -190,7 +190,7 @@ class PortableSettingsTest {
             val source = Settings(FakeSettings(stringBacked))
             source.appLanguage = "fr"
             source.appIcon = "MONOCHROME"
-            source.dynamicTheme = false
+            source.uiEnhancements = false
             source.hideShortSongs = true
             source.maxSongCacheSize = 2048
             source.seekDurationSeconds = 20
@@ -206,7 +206,7 @@ class PortableSettingsTest {
                 mapOf(
                     "appLanguage" to SettingType.STRING,
                     "appIcon" to SettingType.STRING,
-                    "dynamicTheme" to SettingType.BOOLEAN,
+                    "uiEnhancements" to SettingType.BOOLEAN,
                     "hideShortSongs" to SettingType.BOOLEAN,
                     "maxSongCacheSize" to SettingType.INT,
                     "seekDurationSeconds" to SettingType.INT,
@@ -230,7 +230,7 @@ class PortableSettingsTest {
         val backing = FakeSettings()
         val settings =
             Settings(backing).apply {
-                dynamicTheme = false
+                uiEnhancements = false
             }
 
         settings.importBackupSettings(
@@ -239,7 +239,7 @@ class PortableSettingsTest {
 
         val restored = Settings(backing)
         assertEquals("DE", restored.contentCountry)
-        assertFalse(restored.dynamicTheme)
+        assertFalse(restored.uiEnhancements)
     }
 
     @Test
@@ -253,13 +253,13 @@ class PortableSettingsTest {
                 entries =
                     listOf(
                         PortableSetting("customDownloadPath", SettingType.STRING, "content://provider/tree/primary%3AMusic"),
-                        PortableSetting("dynamicTheme", SettingType.BOOLEAN, "false"),
+                        PortableSetting("uiEnhancements", SettingType.BOOLEAN, "false"),
                     ),
             ),
         )
 
         assertEquals("/music/Muzik", settings.customDownloadPath)
-        assertFalse(settings.dynamicTheme)
+        assertFalse(settings.uiEnhancements)
         settings.restoreBackupSettingsSnapshot(snapshot)
         assertEquals("/music/Muzik", settings.customDownloadPath)
         settings.importBackupSettings(PortableSettings(entries = emptyList()))
@@ -294,7 +294,7 @@ class PortableSettingsTest {
                     entries =
                         listOf(
                             PortableSetting("contentCountry", SettingType.STRING, "DE"),
-                            PortableSetting("dynamicTheme", SettingType.BOOLEAN, "not-a-boolean"),
+                            PortableSetting("uiEnhancements", SettingType.BOOLEAN, "not-a-boolean"),
                         ),
                 ),
             )

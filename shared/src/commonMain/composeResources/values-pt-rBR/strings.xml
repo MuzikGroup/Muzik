@@ -317,8 +317,6 @@
     <string name="appearance_app_icon_credit">Ícones alternativos criados por Kayé (@thy_k no Discord)</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">Use um esquema de cores Material You gerado automaticamente</string>
-    <string name="song_artwork_colors">Cores da capa da música</string>
-    <string name="song_artwork_colors_description">Substitua as cores do aplicativo com as da capa da música atual quando disponível</string>
     <string name="theme_palette_style">Estilo de paleta</string>
     <string name="theme_palette_tonal_spot">Mancha tonal</string>
     <string name="theme_palette_vibrant">Vibrante</string>

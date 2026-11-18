@@ -2,7 +2,7 @@
 
 ## Dependency development
 
-`innerTubeXVersion` in `gradle.properties` pins the hosted artifact from [InnerTubeX](https://github.com/MetrolistGroup/innertubex). App builds do not need its source checkout.
+`innerTubeXVersion` in `gradle.properties` pins the hosted artifact from [innertubex](https://github.com/MetrolistGroup/innertubex). App builds do not need its source checkout.
 
 For dependency development, choose one substitution:
 

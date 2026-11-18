@@ -264,7 +264,6 @@ import com.muzik.shared.ui.settings.rememberIosFontActions
 import com.muzik.shared.ui.settings.rememberIosLogExportAction
 import com.muzik.shared.ui.theme.MdSpacing
 import com.muzik.shared.ui.theme.MuzikTheme
-import com.muzik.shared.ui.theme.rememberArtworkSeedColor
 import com.muzik.shared.ui.theme.resolveThemeSeedColor
 import com.muzik.shared.ui.utils.rememberFileSizeFormatter
 import com.muzik.shared.ui.utils.setText
@@ -777,19 +776,11 @@ fun MobileApp(
         }
     var playerSheetSettled by remember { mutableStateOf(false) }
     val playbackState = playerState
-    val artworkSeedColor =
-        rememberArtworkSeedColor(
-            playbackState.currentSong
-                ?.thumbnail
-                ?.takeIf { Settings.shared.materialYouEnabled && Settings.shared.dynamicTheme },
-        )
     MuzikTheme(
         seedColor =
             resolveThemeSeedColor(
                 materialYouEnabled = Settings.shared.materialYouEnabled,
-                songArtworkColorsEnabled = Settings.shared.dynamicTheme,
                 selectedThemeColor = Settings.shared.selectedThemeColor,
-                artworkSeedColor = artworkSeedColor,
             ),
         darkTheme = darkTheme,
         pureBlack = pureBlack,

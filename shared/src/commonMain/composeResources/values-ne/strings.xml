@@ -309,8 +309,6 @@
     <string name="appearance_app_icon_credit">वैकलपिक आइकन Kayé (@thy_k on Discord) द्वारा</string>
     <string name="material_you" translatable="false">Material You</string>
     <string name="material_you_description">उत्पन्न गरिएको Material रंग योजना प्रयोग गर्नुहोस्</string>
-    <string name="song_artwork_colors">गीतको आर्टवर्कबाट रङ्गहरू</string>
-    <string name="song_artwork_colors_description">उपलब्ध हुँदा वर्तमान गीतको आर्टवर्कबाट आवेक रङहरू प्रयोग गरेर एपको रङहरूलाई प्रतिस्थापन गर्नुहोस्</string>
     <string name="theme_palette_style">प्यालेट शैली</string>
     <string name="theme_palette_tonal_spot">टोनल स्पॉट</string>
     <string name="theme_palette_vibrant">चमकिलो</string>
