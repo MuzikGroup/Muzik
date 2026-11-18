@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
@@ -66,10 +67,10 @@ fun MuzikLoadingIndicator(
             when {
                 constraints.hasBoundedWidth &&
                     constraints.minWidth == constraints.maxWidth &&
-                    constraints.minWidth > 0 -> (constraints.minWidth / density).dp
+                    constraints.minWidth > 0 -> (constraints.minWidth / LocalDensity.current.density).dp
                 constraints.hasBoundedHeight &&
                     constraints.minHeight == constraints.maxHeight &&
-                    constraints.minHeight > 0 -> (constraints.minHeight / density).dp
+                    constraints.minHeight > 0 -> (constraints.minHeight / LocalDensity.current.density).dp
                 else -> DEFAULT_SIZE
             }
 
