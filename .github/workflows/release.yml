@@ -20,9 +20,9 @@ jobs:
       - name: Check if version changed
         id: check_version
         run: |
-          NEW_VERSION=$(grep -oP '^muzik\.version=\K.*' gradle.properties || echo "")
+          NEW_VERSION=$(grep -oP '^appVersion=\K.*' gradle.properties || echo "")
           if [ -z "$NEW_VERSION" ]; then
-            echo "Could not read muzik.version from gradle.properties"
+            echo "Could not read appVersion from gradle.properties"
             echo "version_changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -30,7 +30,7 @@ jobs:
           echo "Current version: $NEW_VERSION"
 
           if git show HEAD^:gradle.properties > /dev/null 2>&1; then
-            OLD_VERSION=$(git show HEAD^:gradle.properties | grep -oP '^muzik\.version=\K.*' || echo "")
+            OLD_VERSION=$(git show HEAD^:gradle.properties | grep -oP '^appVersion=\K.*' || echo "")
             echo "Previous version: $OLD_VERSION"
             if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
               echo "Version changed from $OLD_VERSION to $NEW_VERSION"
@@ -55,60 +55,90 @@ jobs:
           - os: windows-latest
             target: msi
           - os: macos-15
-            target: dmg-arm64
-            optional: true
+            target: dmg
           - os: ubuntu-latest
             target: linux
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 45
-    continue-on-error: ${{ matrix.optional == true }}
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-java@v4
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: "25"
 
-      - name: Build Windows MSI
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
+      # The Windows WebView2 login helper is built from the in-repo .NET project
+      # and shipped as an app resource (same pipeline Metrolist uses).
+      - name: Build Windows WebView2 helper
         if: matrix.target == 'msi'
-        run: .\gradlew.bat packageMsi --no-daemon
+        shell: pwsh
+        run: |
+          dotnet publish metro-wv2-helper/metro-wv2-helper.csproj `
+            --configuration Release --runtime win-x64 --self-contained true `
+            --output desktopApp/src/desktopMain/resources/windows `
+            -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=true
+
+      - name: Install rpm tooling (Linux)
+        if: matrix.target == 'linux'
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Build Windows MSI + portable ZIP
+        if: matrix.target == 'msi'
+        run: ./gradlew :desktopApp:packageReleaseMsi :desktopApp:assembleWindowsRelease --no-configuration-cache
 
       - name: Build macOS DMG (Apple Silicon)
-        if: matrix.target == 'dmg-arm64'
-        run: ./gradlew packageDmg --no-daemon
+        if: matrix.target == 'dmg'
+        run: ./gradlew :desktopApp:packageReleaseDmg --no-configuration-cache
 
-      - name: Build Linux packages and portable JAR
+      - name: Build Linux DEB, RPM and portable JAR
         if: matrix.target == 'linux'
-        run: ./gradlew packageDeb packageRpm packageUberJarForCurrentOS --no-daemon
+        run: ./gradlew :desktopApp:packageReleaseDeb :desktopApp:packageReleaseRpm :desktopApp:packageReleaseUberJarForCurrentOS --no-configuration-cache
 
       - name: Normalize artifact names
         id: rename
         shell: bash
         run: |
           VERSION=${{ needs.check-version.outputs.new_version }}
-          OUT_DIR="app/build/compose/binaries"
+          OUT_DIR="desktopApp/build/compose/binaries/main-release"
           DEST=""
           case "${{ matrix.target }}" in
             msi)
-              FILE=$(find "$OUT_DIR/main/msi" -name "*.msi" | head -1)
+              FILE=$(find "$OUT_DIR/msi" -name "*.msi" | head -1)
               DEST="Muzik-$VERSION-windows-x64.msi"
+              ZIP="dist/Muzik-Desktop-Windows.zip"
+              if [ -f "$ZIP" ]; then
+                cp "$ZIP" "Muzik-$VERSION-windows-x64.zip"
+                echo "zip=Muzik-$VERSION-windows-x64.zip" >> "$GITHUB_OUTPUT"
+              fi
               ;;
-            dmg-arm64)
-              FILE=$(find "$OUT_DIR/main/dmg" -name "*.dmg" | head -1)
+            dmg)
+              FILE=$(find "$OUT_DIR/dmg" -name "*.dmg" | head -1)
               DEST="Muzik-$VERSION-macos-arm64.dmg"
               ;;
             linux)
-              FILE=$(find "$OUT_DIR/main/deb" -name "*.deb" | head -1)
+              FILE=$(find "$OUT_DIR/deb" -name "*.deb" | head -1)
               DEST="muzik-$VERSION-linux-amd64.deb"
               if [ -n "$FILE" ]; then
                 cp "$FILE" "$DEST"
                 echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
               fi
-              RPM=$(find "$OUT_DIR/main/rpm" -name "*.rpm" | head -1)
+              RPM=$(find "$OUT_DIR/rpm" -name "*.rpm" | head -1)
               if [ -n "$RPM" ]; then
                 cp "$RPM" "muzik-$VERSION-linux-x64.rpm"
                 echo "rpm=muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
+              fi
+              JAR=$(find desktopApp/build/compose/jars -name "Muzik-*.jar" | head -1)
+              if [ -n "$JAR" ]; then
+                cp "$JAR" "muzik-$VERSION-portable.jar"
+                echo "jar=muzik-$VERSION-portable.jar" >> "$GITHUB_OUTPUT"
               fi
               if [ -z "$DEST" ] || [ ! -f "$DEST" ]; then
                 echo "No deb found for linux target"
@@ -132,14 +162,8 @@ jobs:
           path: |
             ${{ steps.rename.outputs.renamed }}
             ${{ matrix.target == 'linux' && steps.rename.outputs.rpm || '' }}
-          if-no-files-found: error
-
-      - name: Upload portable JAR (Linux job only)
-        if: matrix.target == 'linux'
-        uses: actions/upload-artifact@v4
-        with:
-          name: muzik-portable-${{ needs.check-version.outputs.new_version }}
-          path: app/build/compose/jars/Muzik-*.jar
+            ${{ matrix.target == 'linux' && steps.rename.outputs.jar || '' }}
+            ${{ matrix.target == 'msi' && steps.rename.outputs.zip || '' }}
           if-no-files-found: error
 
   release:
@@ -166,11 +190,11 @@ jobs:
             --notes "Muzik Desktop v$VERSION
 
           One-click installers for every desktop platform:
-          - **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64)
-          - **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon, when the macOS runner queue allows) — Intel and Apple Silicon Macs can always use the portable JAR with Java 21
-          - **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM and portable JAR in assets
-          - **Any OS with Java 21+**: the portable \`Muzik-$VERSION-linux-x64.jar\` — also runs on Linux ARM64 and every Mac
+          - **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64) plus a portable ZIP
+          - **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon) — Intel Macs can use the portable JAR with Java 21+
+          - **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM for Fedora/openSUSE, and a portable JAR
+          - **Any OS with Java 21+**: the portable \`muzik-$VERSION-portable.jar\`
 
           Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*.
 
-          Playback uses tokenless YouTube Music profiles; if your network is a VPN or datacenter exit, playback may be bot-gated by YouTube."
+          Built on the Metrolist desktop engine (GPL-3.0). Support Muzik: https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13"

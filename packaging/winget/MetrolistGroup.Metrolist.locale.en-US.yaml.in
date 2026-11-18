@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.9.0.schema.json
+PackageIdentifier: MuzikGroup.Muzik
+PackageVersion: '@VERSION@'
+PackageLocale: en-US
+Publisher: MuzikGroup
+PublisherUrl: https://github.com/MuzikGroup
+PublisherSupportUrl: https://github.com/MuzikGroup/MuzikDesktop/issues
+PackageName: Muzik Desktop
+PackageUrl: https://github.com/MuzikGroup/MuzikDesktop
+License: GPL-3.0
+LicenseUrl: https://github.com/MuzikGroup/MuzikDesktop/blob/v@VERSION@/LICENSE
+ShortDescription: YouTube Music desktop client
+ReleaseNotesUrl: https://github.com/MuzikGroup/MuzikDesktop/releases/tag/v@VERSION@
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

@@ -2,9 +2,9 @@
 
 # Muzik for Desktop
 
-**The premium YouTube Music client for your computer — Windows, macOS and Linux, from one codebase.**
+**The full YouTube Music experience for your computer — Windows, macOS and Linux, exactly like Metrolist.**
 
-Search any song, build playlists, keep the queue alive with endless radio — all wrapped in a clean, fast, native-feeling app.
+Search any song, stream in high quality, follow synced lyrics, manage playlists and downloads, cast to your TV — wrapped in a polished, native-feeling app.
 
 [![Release](https://img.shields.io/github/v/release/MuzikGroup/MuzikDesktop?color=7C4DFF&label=latest&logo=github)](https://github.com/MuzikGroup/MuzikDesktop/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-9D7BFF)](#-install-in-one-click)
@@ -25,80 +25,59 @@ Grab the installer for your system from the [latest release](../../releases/late
 
 | Platform | Download | Works on |
 | --- | --- | --- |
-| **Windows** | `Muzik-*-windows-x64.msi` | Windows 10 & 11, installs per-user, Start-menu shortcut included |
+| **Windows** | `Muzik-*-windows-x64.msi` (portable ZIP in assets) | Windows 10 & 11, installs per-user, Start-menu shortcut included |
 | **macOS (Apple Silicon)** | `Muzik-*-macos-arm64.dmg` | M1 / M2 / M3 / M4 Macs |
-| **macOS (Intel)** | `Muzik-*-macos-x64.dmg` | 2018–2020 Intel Macs |
 | **Linux (Debian/Ubuntu)** | `muzik-*-linux-amd64.deb` | Ubuntu, Debian, Mint, Pop!\_OS |
-| **Linux (RPM)** | `muzik-*-linux-*.rpm` in assets | Fedora, openSUSE, RHEL |
-| **Anything else** | portable `Muzik-*.jar` | Any OS with Java 21+ — including Linux ARM64 (Raspberry Pi 5-class hardware) |
+| **Linux (RPM)** | `muzik-*-linux-x64.rpm` in assets | Fedora, openSUSE, RHEL |
+| **Anything else** | portable `muzik-*-portable.jar` | Any OS with Java 21+ — including Linux ARM64 and Intel Macs |
 
 > **First-run notes (unsigned builds):** macOS: right-click → *Open* the first time. Windows SmartScreen: *More info → Run anyway*. Signed builds are planned.
 
 ## What you get
 
-- **Search the full YouTube Music catalog** — songs, videos, albums and artists, with live suggestions as you type
-- **Album & artist pages** — open any album tracklist or artist page straight from search results
-- **Endless radio** — when your queue runs out, Muzik seeds a YouTube Music radio so the music never stops (toggleable)
-- **Queue control** — play next, jump around, see what's coming
-- **Your library, locally** — favorites, playlists and history live on your machine, always yours
-- **System tray** — play/pause/skip from the tray on Windows, macOS and Linux
+The desktop app is built on the **Metrolist desktop engine** (Kotlin Multiplatform + Compose), so it ships the same feature set you know from Metrolist on the desktop:
+
+- **Search the full YouTube Music catalog** — songs, videos, albums, artists, playlists and podcasts, with live suggestions as you type
+- **Real streaming pipeline** — SABR and direct streams via the battle-tested [innertubex](https://github.com/MetrolistGroup/innertubex) client, with PO-token attestation (in-app WebView mint or the bundled `bgutil` provider) so playback keeps working when YouTube tightens bot checks
+- **FFmpeg audio engine** — gapless playback, crossfade, speed & pitch control, loudness normalization, 15-frame prebuffer pipeline, everything decoded natively for Windows, macOS and Linux
+- **Synced lyrics** — word-by-word karaoke lyrics from YouTube and multiple community providers (LRCLIB, KuGou, BetterLyrics and more), with translation and romanization
+- **Your library, locally** — favorites, playlists, history and subscriptions stored in a real SQLite database, synced to your YouTube Music account when you sign in
+- **Downloads & offline cache** — transcode and keep songs as tagged M4A files, or let the smart cache keep your recent music instantly replayable
+- **Native desktop integration** — system media keys (SMTC on Windows, Now Playing on macOS, MPRIS on Linux), tray icon with playback controls, Windows taskbar thumbnail buttons, Discord Rich Presence
+- **Queue that never stops** — endless radio, drag-to-reorder queue, play-next, sleep timer
+- **Cast & Listen Together** — cast to Chromecast/DLNA/FCast devices and build shared listening sessions
+- **Last.fm & ListenBrainz scrobbling**, SponsorBlock integration, backup & restore, 60+ interface languages
 - **Auto-updates** — Muzik checks GitHub releases and points you straight at the right installer for your OS
-- **Theme that fits** — dark, light, or follow your system, in the Muzik violet you know from mobile
-- **Audio that just works** — native AAC decoding, ~128 kbps Normal or up to 256 kbps High quality
 
 ## How it works
 
-Muzik Desktop is a **Kotlin + Compose Multiplatform** app packaged into native installers with
-`jpackage` (bundled runtime — nothing to install). Playback requests use **tokenless YouTube Music
-client profiles** with automatic fallback, following the measured, benchmarked approach documented by
-[MetrolistGroup/innertubex](https://github.com/MetrolistGroup/innertubex) (GPL-3.0).
+Muzik Desktop is a **Kotlin Multiplatform** app: a shared module (UI, database, YouTube repository, FFmpeg playback engine) plus a desktop shell, packaged into native installers with `jpackage` (bundled Java 25 runtime — nothing to install).
 
-> **Honest note on networks:** YouTube gates unauthenticated playback by IP reputation. On home or
-> office Wi-Fi it just works. On VPN or datacenter exits, YouTube may answer *"Sign in to confirm
-> you're not a bot"* — that's YouTube's policy, not a bug, and the app will tell you plainly when it
-> happens.
+- **Linux**: playback uses your system's ALSA/PipeWire/Pulse setup; WebKitGTK (`webkit2gtk-4.1`) is needed for the in-app sign-in browser. On Debian/Ubuntu: `sudo apt install libwebkit2gtk-4.1-0`.
+- **Windows**: WebView2 (preinstalled on Windows 10/11) powers sign-in; the login helper is bundled.
+- **macOS**: system WebKit is used for sign-in.
 
-## Versioning
+> **Honest note on networks:** YouTube gates unauthenticated playback by IP reputation. On home or office Wi-Fi it just works. On VPN or datacenter exits, YouTube may answer *"Sign in to confirm you're not a bot"* — that's YouTube's policy, not a bug, and the app will tell you plainly when it happens.
 
-Muzik Desktop follows the suite-wide version (`7.8.4` and up). Every push to `main` bumps the patch
-by `0.0.1` automatically and ships a fresh release with installers for all platforms — same pipeline
-as [Muzik for Android](https://github.com/MuzikGroup/Muzik).
-
-## Roadmap
-
-- [ ] Signed installers (code signing certificates for Windows + macOS)
-- [ ] Lyrics view and synced lyrics
-- [ ] Linux ARM64 + AppImage packages
-- [ ] Watch position sync with Muzik for Android
-- [ ] iOS & Android-TV companions via Kotlin Multiplatform shared core
-
-## Contributing
-
-Issues and pull requests are welcome. Build locally with:
+## Building from source
 
 ```bash
-./gradlew :app:run          # run from source
-./gradlew packageDmg        # macOS installer
-./gradlew packageMsi        # Windows installer
-./gradlew packageDeb        # Linux installer
+# Prerequisites: JDK 25 (Temurin recommended)
+./gradlew :desktopApp:run                      # run from source
+./gradlew :desktopApp:packageReleaseDmg        # macOS DMG
+./gradlew :desktopApp:packageReleaseMsi        # Windows MSI
+./gradlew :desktopApp:packageReleaseDeb :desktopApp:packageReleaseRpm   # Linux packages
+./gradlew :desktopApp:packageReleaseUberJarForCurrentOS                 # portable JAR
 ```
 
-## Support Muzik
+## Credits & license
+
+Muzik Desktop is built on the desktop engine of [Metrolist](https://github.com/MetrolistGroup/Metrolist) — our thanks to the Metrolist team for their work and their blessing to build on it. Streaming internals come from [innertubex](https://github.com/MetrolistGroup/innertubex).
+
+Licensed under **GPL-3.0** — see [LICENSE](LICENSE).
 
 <div align="center">
 
-[![Buy Me a Soda](https://img.shields.io/badge/☕_buymesoda.com-lllcuDCr25N1a1peiKOCl22Oaf13-FF5C8A?style=for-the-badge)](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13)
-
-**Muzik is free and open source, forever. Sodas fund signing certificates, build runners and new features.**
-
-Questions or ideas? [Open a Discussion](https://github.com/orgs/MuzikGroup/discussions) — we answer.
+[![Sponsor](https://img.shields.io/badge/Support_Muzik-Buy_Me_a_Soda-FF5C8A?style=for-the-badge&logo=buymeacoffee)](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13)
 
 </div>
-
-## Team
-
-Built with care by **Ignatius (Motius)** & **pipo.ai** for [MuzikGroup](https://github.com/orgs/MuzikGroup).
-
-## Disclaimer
-
-Muzik is an unofficial client. It is not affiliated with, endorsed by, or connected to YouTube, Google, or any of their subsidiaries. All catalog content is streamed from YouTube Music; please support the artists you love. Licensed under [GPL-3.0](LICENSE). Architecture and playback-profile design informed by Metrolist (GPL-3.0).

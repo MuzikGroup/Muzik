@@ -21,16 +21,13 @@ jobs:
       - name: Bump version by 0.0.1
         id: bump
         run: |
-          VERSION=$(grep -oP '^muzik\.version=\K.*' gradle.properties)
-          VERSION_CODE=$(grep -oP '^muzik\.versionCode=\K.*' gradle.properties)
+          VERSION=$(grep -oP '^appVersion=\K.*' gradle.properties)
           IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
           NEW_PATCH=$((PATCH + 1))
           NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
-          NEW_CODE=$((VERSION_CODE + 1))
-          sed -i "s/^muzik\.version=.*/muzik.version=$NEW_VERSION/" gradle.properties
-          sed -i "s/^muzik\.versionCode=.*/muzik.versionCode=$NEW_CODE/" gradle.properties
+          sed -i "s/^appVersion=.*/appVersion=$NEW_VERSION/" gradle.properties
           echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Bumped $VERSION -> $NEW_VERSION (code $NEW_CODE)"
+          echo "Bumped $VERSION -> $NEW_VERSION"
 
       - name: Commit bump and dispatch release
         env:
