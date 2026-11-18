@@ -17,7 +17,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -45,6 +44,7 @@ import com.muzik.shared.api.lyrics.lyricsTranslationFailure
 import com.muzik.shared.generated.resources.*
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.settings.canonicalAppLanguageTag
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.lyrics.messageResource
 import com.muzik.shared.ui.menu.ExpressiveSelectionMenu
 import com.muzik.shared.ui.menu.trackPressPosition
@@ -176,7 +176,7 @@ internal fun AiTranslationSetup(
                         Text(stringResource(Res.string.ai_setup_verify_description))
                         AnimatedVisibility(verifying) {
                             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                                LoadingIndicator()
+                                MuzikLoadingIndicator()
                                 Text(stringResource(Res.string.ai_setup_verifying))
                             }
                         }

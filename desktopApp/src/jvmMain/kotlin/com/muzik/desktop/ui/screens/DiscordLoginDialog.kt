@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -21,6 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.AwtWindow
 import androidx.compose.ui.platform.LocalDensity
@@ -70,6 +70,7 @@ import javax.swing.JDialog
 import javax.swing.WindowConstants
 import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 
 @Composable
 fun DiscordLoginDialog(
@@ -95,7 +96,7 @@ fun DiscordLoginDialog(
         title = { Text(title) },
         text = {
             Column {
-                if (browserLogin == null || exchanging) CircularProgressIndicator()
+                if (browserLogin == null || exchanging) MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                 Text(stringResource(Res.string.discord_continue_in_browser))
                 if (browserFailed) Text(stringResource(Res.string.discord_browser_open_failed))
             }

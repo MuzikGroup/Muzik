@@ -42,7 +42,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
@@ -104,6 +103,7 @@ import com.muzik.shared.settings.PlayerType
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.settings.displayName
 import com.muzik.shared.ui.components.LiveBadge
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.PlayerConnectedButtonGroup
 import com.muzik.shared.ui.components.PlayerLikeShareButtons
 import com.muzik.shared.ui.components.PlayerPrimaryControls
@@ -389,7 +389,7 @@ private fun VideoPlayerArea(
             )
 
             if (PlayerState.isVideoResolving) {
-                LoadingIndicator(
+                MuzikLoadingIndicator(
                     modifier = Modifier.size(48.dp),
                     color = Color.White,
                 )

@@ -802,9 +802,22 @@ compose.desktop {
 
             windows {
                 iconFile.set(project.file("src/desktopMain/resources/logo.ico"))
+                // The installer must leave the app visible like any mainstream
+                // desktop app: a Desktop shortcut, a Start Menu entry and an
+                // install-folder picker. upgradeUuid keeps upgrades replacing
+                // the previous install instead of piling up duplicates.
+                menu = true
+                menuGroup = "Muzik"
+                shortcut = true
+                dirChooser = true
+                upgradeUuid = "8f3d1c52-2a9e-4b7f-9c1d-6a5e0b7f4d21"
             }
             linux {
                 iconFile.set(project.file("src/desktopMain/resources/logo.png"))
+                // Register a menu entry so the app shows up in the applications
+                // overview right after installing the DEB/RPM.
+                shortcut = true
+                menuGroup = "Multimedia"
                 jvmArgs += listOf("-Djava.locale.providers=CLDR,SPI", "-Dwebkit.disable.dmabuf.renderer=1")
             }
             macOS {

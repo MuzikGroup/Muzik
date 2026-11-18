@@ -32,7 +32,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -83,6 +82,7 @@ import com.muzik.shared.settings.ExpressiveMiniPlayerButton
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.settings.displayName
 import com.muzik.shared.settings.expressiveMiniPlayerButtons
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.PlayerSheetSurface
 import com.muzik.shared.ui.components.WavyCircularProgressIndicator
 import com.muzik.shared.ui.components.currentSongArtworkShape
@@ -267,7 +267,7 @@ fun ExpressiveMiniPlayer(
                             }
                             if (isLoading && active) {
                                 val loadingText = stringResource(Res.string.loading)
-                                LoadingIndicator(
+                                MuzikLoadingIndicator(
                                     modifier = Modifier.size(24.dp).semantics { contentDescription = loadingText },
                                     color = if (showProgress) Color.White else onContainer,
                                 )

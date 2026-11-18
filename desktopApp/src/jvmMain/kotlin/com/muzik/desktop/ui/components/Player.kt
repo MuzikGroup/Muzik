@@ -61,7 +61,6 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Slider
@@ -133,6 +132,7 @@ import com.muzik.shared.settings.SliderStyle
 import com.muzik.shared.settings.displayName
 import com.muzik.shared.ui.components.AlertDialog
 import com.muzik.shared.ui.components.LiveBadge
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.PlayerConnectedButtonGroup
 import com.muzik.shared.ui.components.PlayerLikeShareButtons
 import com.muzik.shared.ui.components.PlayerPrimaryControls
@@ -319,7 +319,7 @@ fun MuzikPlayPauseButton(
                 },
             ) { playing ->
                 if (playing == null) {
-                    LoadingIndicator(
+                    MuzikLoadingIndicator(
                         modifier = Modifier.size(24.dp).semantics { contentDescription = loadingDescription },
                         color = colorScheme.onPrimaryContainer,
                     )
@@ -748,7 +748,7 @@ fun StandardBottomPlayer(
                                     shapes = IconButtonDefaults.shapes(),
                                 ) {
                                     if (PlayerState.isPlaybackLoading) {
-                                        LoadingIndicator(
+                                        MuzikLoadingIndicator(
                                             modifier = Modifier.size(20.dp),
                                             color = colorScheme.onPrimaryContainer,
                                         )

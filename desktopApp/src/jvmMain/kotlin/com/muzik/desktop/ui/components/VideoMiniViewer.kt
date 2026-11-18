@@ -23,7 +23,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -52,6 +51,7 @@ import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.close
 import com.muzik.shared.generated.resources.fullscreen
 import com.muzik.shared.generated.resources.more_options
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.navigation.navigationPopupSource
 import org.jetbrains.compose.resources.stringResource
@@ -150,7 +150,7 @@ private fun VideoPreview(modifier: Modifier = Modifier) {
         )
 
         if (PlayerState.isVideoResolving) {
-            LoadingIndicator(
+            MuzikLoadingIndicator(
                 modifier = Modifier.size(28.dp),
                 color = Color.White,
             )

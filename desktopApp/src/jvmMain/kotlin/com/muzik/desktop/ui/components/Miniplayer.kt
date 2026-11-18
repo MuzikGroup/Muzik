@@ -40,7 +40,6 @@ import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -103,6 +102,7 @@ import com.muzik.shared.settings.PlayerBackgroundStyle
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.ui.components.ArtistSubtitle
 import com.muzik.shared.ui.components.MetadataLink
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.playbackMarquee
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.utils.ArtworkBlurStyle
@@ -537,7 +537,7 @@ private fun FocusModeMiniplayer(
                                     Box(contentAlignment = Alignment.Center) {
                                         if (PlayerState.isPlaybackLoading) {
                                             val loadingText = stringResource(Res.string.loading)
-                                            LoadingIndicator(
+                                            MuzikLoadingIndicator(
                                                 modifier = Modifier.size(28.dp).semantics { contentDescription = loadingText },
                                                 color = Color.White,
                                             )

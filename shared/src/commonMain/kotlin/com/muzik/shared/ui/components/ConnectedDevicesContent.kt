@@ -25,7 +25,6 @@ import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -69,6 +68,7 @@ import com.muzik.shared.generated.resources.no_other_devices_nearby
 import com.muzik.shared.generated.resources.none
 import com.muzik.shared.generated.resources.scrobble_connecting
 import com.muzik.shared.settings.Settings
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.utils.toPolygonShape
 import com.muzik.shared.ui.utils.verticalScrollWithDrag
@@ -357,7 +357,7 @@ private fun ConnectedDeviceRow(
                 Text(name, style = MaterialTheme.typography.titleMedium)
                 Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            if (connecting) LoadingIndicator(Modifier.size(20.dp))
+            if (connecting) MuzikLoadingIndicator(Modifier.size(20.dp))
             if (connected) {
                 IconButton(onClick = onClick, shapes = IconButtonDefaults.shapes()) {
                     Icon(MuzikIcons.Outlined.Close, stringResource(Res.string.disconnect_cast))

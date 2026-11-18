@@ -31,7 +31,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
@@ -90,6 +89,7 @@ import com.muzik.shared.ui.components.ContainedLoadingIndicator
 import com.muzik.shared.ui.components.Dialog
 import com.muzik.shared.ui.components.ExpressiveFilterChip
 import com.muzik.shared.ui.components.LazyListScrollbar
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.playback.retainPlaybackKeyFocus
 import com.muzik.shared.ui.utils.DragScrollableColumn
 import com.muzik.shared.ui.utils.carouselScroll
@@ -337,7 +337,7 @@ fun LyricsShareDialog(
                     LazyListScrollbar(scrollState, Modifier.align(Alignment.CenterEnd))
                 }
                 if (failed) Text(stringResource(Res.string.lyrics_share_failed), color = MaterialTheme.colorScheme.error)
-                if (busy) LoadingIndicator(Modifier.size(24.dp))
+                if (busy) MuzikLoadingIndicator(Modifier.size(24.dp))
                 FlowRow(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),

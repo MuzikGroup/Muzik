@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -14,7 +15,6 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.OutputTransformation
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -100,6 +100,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import org.koin.mp.KoinPlatform
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 
 @Composable
 fun LyricsEditorScreen(
@@ -339,7 +340,7 @@ fun LyricsEditorScreen(
         ) { padding ->
             Column(Modifier.fillMaxSize().padding(padding)) {
                 if (!ready) {
-                    CircularProgressIndicator()
+                    MuzikLoadingIndicator(modifier = Modifier.size(32.dp))
                 } else {
                     if (failed) {
                         Text(

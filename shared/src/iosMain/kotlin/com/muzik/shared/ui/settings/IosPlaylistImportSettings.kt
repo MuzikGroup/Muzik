@@ -14,7 +14,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -88,6 +87,7 @@ import com.muzik.shared.playlistimport.UnifiedPlaylistImporter
 import com.muzik.shared.playlistimport.UniversalPlaylistParser
 import com.muzik.shared.playlistimport.decodePlaylistText
 import com.muzik.shared.state.GlobalYouTubeRepository
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.menu.CsvColumnMappingDialog
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
@@ -381,7 +381,7 @@ fun IosPlaylistImportSettings(
 
         if (operation != null) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                LoadingIndicator()
+                MuzikLoadingIndicator()
                 TextButton(onClick = { operation?.cancel() }, shapes = ButtonDefaults.shapes()) {
                     Text(stringResource(Res.string.import_cancel))
                 }

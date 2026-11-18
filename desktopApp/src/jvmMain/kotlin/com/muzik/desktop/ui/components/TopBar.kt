@@ -70,7 +70,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LinearWavyProgressIndicator
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -186,6 +185,7 @@ import com.muzik.shared.model.previewThumbnailUrl
 import com.muzik.shared.playlistimport.PlaylistImportProgressIndicator
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.settings.displayName
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.playbackMarquee
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.navigation.navigationPopupSource
@@ -444,7 +444,7 @@ fun WindowScope.TopBarWithPlayer(
                                 ) {
                                     val loadingText = stringResource(Res.string.loading)
                                     if (PlayerState.isPlaybackLoading) {
-                                        LoadingIndicator(
+                                        MuzikLoadingIndicator(
                                             modifier =
                                                 Modifier.size(18.dp).semantics {
                                                     contentDescription = loadingText

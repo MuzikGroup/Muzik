@@ -12,7 +12,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,6 +32,7 @@ import com.muzik.shared.generated.resources.loading
 import com.muzik.shared.generated.resources.webkit_appimage_hint
 import com.muzik.shared.generated.resources.webkit_install_command
 import com.muzik.shared.generated.resources.webkit_install_hint
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.utils.verticalScrollWithDrag
 import com.muzik.shared.utils.OsUtil
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +51,7 @@ internal fun rememberLinuxWebKitAvailable(): Boolean? {
 internal fun WebViewAvailabilityLoading() {
     val loading = stringResource(Res.string.loading)
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        LoadingIndicator(Modifier.semantics { contentDescription = loading })
+        MuzikLoadingIndicator(Modifier.semantics { contentDescription = loading })
     }
 }
 

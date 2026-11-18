@@ -33,7 +33,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -89,6 +88,7 @@ import com.muzik.shared.generated.resources.share
 import com.muzik.shared.settings.PlayerBackgroundStyle
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.ui.LocalIsTv
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.haptics.HapticEvent
 import com.muzik.shared.ui.haptics.rememberMuzikHaptics
 import com.muzik.shared.ui.icons.MuzikIcons
@@ -284,7 +284,7 @@ fun PlayerPrimaryControls(
                     ),
         ) {
             if (isLoading && showLoadingIndicator) {
-                LoadingIndicator(
+                MuzikLoadingIndicator(
                     modifier =
                         Modifier.size(if (isCompact) 20.dp else 28.dp).semantics {
                             contentDescription = loadingText

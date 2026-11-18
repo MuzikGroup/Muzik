@@ -7,6 +7,7 @@ package com.muzik.shared.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LoadingIndicatorDefaults
@@ -26,22 +27,14 @@ import com.muzik.shared.generated.resources.loading
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.material3.ContainedLoadingIndicator as MaterialContainedLoadingIndicator
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun ContainedLoadingIndicator(
     modifier: Modifier = Modifier,
-    containerColor: Color = LoadingIndicatorDefaults.containedContainerColor,
-    indicatorColor: Color = LoadingIndicatorDefaults.containedIndicatorColor,
     label: String = stringResource(Res.string.loading),
 ) {
-    MaterialContainedLoadingIndicator(
-        modifier =
-            modifier.semantics {
-                contentDescription = label
-                liveRegion = LiveRegionMode.Polite
-            },
-        containerColor = containerColor,
-        indicatorColor = indicatorColor,
+    MuzikLoadingIndicator(
+        modifier = modifier,
+        label = label,
     )
 }
 
@@ -75,7 +68,10 @@ fun LoadingScreen(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        ContainedLoadingIndicator(label = label)
+        ContainedLoadingIndicator(
+            modifier = Modifier.size(56.dp),
+            label = label,
+        )
     }
 }
 

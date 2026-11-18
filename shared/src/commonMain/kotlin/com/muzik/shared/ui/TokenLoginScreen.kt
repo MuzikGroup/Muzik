@@ -27,7 +27,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -82,6 +81,7 @@ import com.muzik.shared.settings.Settings
 import com.muzik.shared.state.GlobalInnerTube
 import com.muzik.shared.state.SongLikeState
 import com.muzik.shared.ui.components.ExpressiveSwitch
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.tv.RequestTvFocus
 import com.muzik.shared.ui.tv.tvFocusHighlight
@@ -583,7 +583,7 @@ fun TokenLoginScreen(
                                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                                 verticalAlignment = Alignment.CenterVertically,
                             ) {
-                                if (isSaving) LoadingIndicator(Modifier.size(24.dp))
+                                if (isSaving) MuzikLoadingIndicator(Modifier.size(24.dp))
                                 Text(
                                     stringResource(if (isSaving) Res.string.token_login_saving else Res.string.save_changes),
                                     style = MaterialTheme.typography.titleMedium,

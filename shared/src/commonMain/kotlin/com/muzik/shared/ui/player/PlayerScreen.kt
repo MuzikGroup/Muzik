@@ -80,7 +80,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -242,6 +241,7 @@ import kotlin.math.abs
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.TimeMark
 import kotlin.time.TimeSource
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 
 @Composable
 internal fun Modifier.artworkSwipe(
@@ -1443,7 +1443,7 @@ fun PlayerScreen(
                                                                                 .playerControlBlend(),
                                                                     ) {
                                                                         if (isResolvingToSong && LocalPlayerContentActive.current) {
-                                                                            LoadingIndicator(
+                                                                            MuzikLoadingIndicator(
                                                                                 modifier = Modifier.size(18.dp),
                                                                                 color = MaterialTheme.colorScheme.primary,
                                                                             )
@@ -1465,7 +1465,7 @@ fun PlayerScreen(
                                                                     DropdownMenuItem(
                                                                         leadingIcon = {
                                                                             if (isResolvingToSong && LocalPlayerContentActive.current) {
-                                                                                LoadingIndicator(
+                                                                                MuzikLoadingIndicator(
                                                                                     modifier = Modifier.size(20.dp),
                                                                                     color = MaterialTheme.colorScheme.primary,
                                                                                 )
@@ -1524,7 +1524,7 @@ fun PlayerScreen(
                                                                                 .playerControlBlend(),
                                                                     ) {
                                                                         if (isResolvingToVideo && LocalPlayerContentActive.current) {
-                                                                            LoadingIndicator(
+                                                                            MuzikLoadingIndicator(
                                                                                 modifier = Modifier.size(18.dp),
                                                                                 color = MaterialTheme.colorScheme.primary,
                                                                             )
@@ -1546,7 +1546,7 @@ fun PlayerScreen(
                                                                     DropdownMenuItem(
                                                                         leadingIcon = {
                                                                             if (isResolvingToVideo && LocalPlayerContentActive.current) {
-                                                                                LoadingIndicator(
+                                                                                MuzikLoadingIndicator(
                                                                                     modifier = Modifier.size(20.dp),
                                                                                     color = MaterialTheme.colorScheme.primary,
                                                                                 )

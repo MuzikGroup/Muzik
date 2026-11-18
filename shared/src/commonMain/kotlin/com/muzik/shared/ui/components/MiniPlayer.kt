@@ -38,7 +38,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -95,6 +94,7 @@ import com.muzik.shared.model.previewThumbnailUrl
 import com.muzik.shared.settings.MiniPlayerType
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.settings.displayName
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.images.AsyncImage
 import com.muzik.shared.ui.design.expressive.components.ExpressiveMiniPlayer
 import com.muzik.shared.ui.haptics.rememberMuzikHaptics
@@ -363,7 +363,7 @@ fun MiniPlayer(
 
                         if (isLoading && active) {
                             val loadingText = stringResource(Res.string.loading)
-                            LoadingIndicator(
+                            MuzikLoadingIndicator(
                                 modifier = Modifier.size(24.dp).semantics { contentDescription = loadingText },
                                 color = MaterialTheme.colorScheme.primary,
                             )
@@ -483,7 +483,7 @@ fun MiniPlayer(
                         ) {
                             if (isLoading && active) {
                                 val loadingText = stringResource(Res.string.loading)
-                                LoadingIndicator(
+                                MuzikLoadingIndicator(
                                     modifier = Modifier.size(24.dp).semantics { contentDescription = loadingText },
                                     color = contentColor,
                                 )

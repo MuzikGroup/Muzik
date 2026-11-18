@@ -31,7 +31,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedSecureTextField
 import androidx.compose.material3.OutlinedTextField
@@ -83,6 +82,7 @@ import com.muzik.shared.scrobble.ScrobbleSessions
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.state.GlobalYouTube
 import com.muzik.shared.ui.components.AlertDialog
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.PopupContent
 import com.muzik.shared.ui.components.images.AsyncImage
 import com.muzik.shared.ui.icons.MuzikIcons
@@ -1029,7 +1029,7 @@ private fun ScrobbleLoginDialog(
                 shapes = ButtonDefaults.shapes(),
             ) {
                 if (connecting) {
-                    LoadingIndicator(Modifier.size(18.dp))
+                    MuzikLoadingIndicator(Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
                 }
                 Text(stringResource(Res.string.connect))

@@ -33,7 +33,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -60,6 +59,7 @@ import androidx.compose.ui.unit.dp
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.loading
 import com.muzik.shared.ui.LocalIsTv
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.haptics.rememberMuzikHaptics
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.navigation.navigationPopupSource
@@ -167,7 +167,7 @@ fun VintageClassicControls(
         ) {
             if (isLoading && showLoadingIndicator) {
                 val loadingText = stringResource(Res.string.loading)
-                LoadingIndicator(
+                MuzikLoadingIndicator(
                     modifier = Modifier.size(36.dp).semantics { contentDescription = loadingText },
                     color = onButtonColor,
                 )
@@ -540,7 +540,7 @@ private fun VintageAudioVideoModeItem(
         contentAlignment = Alignment.Center,
     ) {
         if (showProgress) {
-            LoadingIndicator(modifier = Modifier.size(20.dp), color = iconTint)
+            MuzikLoadingIndicator(modifier = Modifier.size(20.dp), color = iconTint)
         } else {
             Icon(imageVector = icon, contentDescription = description, tint = iconTint, modifier = Modifier.size(20.dp))
         }

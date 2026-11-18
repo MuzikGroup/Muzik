@@ -63,7 +63,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -255,6 +254,7 @@ import com.muzik.shared.listentogether.network.UserInfo
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.ui.components.AlertDialog
 import com.muzik.shared.ui.components.Dialog
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 import com.muzik.shared.ui.components.PopupVisibility
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.navigation.navigationPopupSource
@@ -1262,7 +1262,7 @@ private fun JoinStatusText(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (joinRequestPending) {
-                LoadingIndicator(modifier = Modifier.size(18.dp))
+                MuzikLoadingIndicator(modifier = Modifier.size(18.dp))
                 Spacer(modifier = Modifier.width(8.dp))
             }
             Text(

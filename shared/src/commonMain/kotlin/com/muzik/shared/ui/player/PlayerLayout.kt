@@ -58,7 +58,6 @@ import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FilledTonalToggleButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -174,6 +173,7 @@ import com.muzik.shared.utils.Logger
 import com.muzik.shared.viewmodels.PlayerViewModel
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.max
+import com.muzik.shared.ui.components.MuzikLoadingIndicator
 
 // Header, metadata, actions, playback controls, fixed bottom row and outer padding.
 private val TabletPlayerChromeHeight = 574.dp
@@ -715,7 +715,7 @@ private fun LandscapePlayerModeSwitcher(
                 ),
         ) {
             if (isResolving && isVideoActive && LocalPlayerContentActive.current) {
-                LoadingIndicator(
+                MuzikLoadingIndicator(
                     modifier = Modifier.size(18.dp),
                     color = MaterialTheme.colorScheme.primary,
                 )
@@ -741,7 +741,7 @@ private fun LandscapePlayerModeSwitcher(
                 ),
         ) {
             if (isResolving && !isVideoActive && LocalPlayerContentActive.current) {
-                LoadingIndicator(
+                MuzikLoadingIndicator(
                     modifier = Modifier.size(18.dp),
                     color = MaterialTheme.colorScheme.primary,
                 )
