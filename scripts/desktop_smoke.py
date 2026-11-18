@@ -59,7 +59,17 @@ def profile_environment(profile):
 
 @contextmanager
 def packaged_command(package, work, system, stdout):
-    if system == "linux":
+    if system == "linux" and package.is_dir():
+        # An extracted DEB/RPM: run the bundled launcher directly.
+        launcher = package / "opt/muzik/bin/Muzik"
+        if not launcher.is_file():
+            candidates = sorted(package.glob("**/bin/Muzik"))
+            if not candidates:
+                raise ValueError(f"No Muzik launcher found inside {package}")
+            launcher = candidates[0]
+        launcher.chmod(0o755)
+        yield [str(launcher)]
+    elif system == "linux":
         # The AppImage runtime extracts and runs without requiring a FUSE mount.
         yield [str(package), "--appimage-extract-and-run"]
     elif system == "win32":
@@ -197,17 +207,25 @@ def quit_app(process, launcher, system, java_trace=False):
                 )
             subprocess.run(powershell(close), check=True, timeout=15)
         elif system == "linux":
-            # Extract-and-run waits for AppRun in a child. Let it reap and clean up.
+            # AppImage extract-and-run waits for AppRun in a child; a direct jpackage
+            # launcher execs the JVM in place and has no child process.
             children = Path(f"/proc/{process.pid}/task/{process.pid}/children").read_text().split()
-            if len(children) != 1:
-                raise RuntimeError(f"Expected one AppImage child, found {len(children)}")
-            pidfd = os.pidfd_open(int(children[0]))
-            try:
-                signal.pidfd_send_signal(pidfd, signal.SIGTERM)
-                if not select.select([pidfd], [], [], SHUTDOWN_SECONDS)[0]:
-                    raise RuntimeError("Packaged app exceeded the shutdown watchdog")
-            finally:
-                os.close(pidfd)
+            if len(children) > 1:
+                raise RuntimeError(f"Expected at most one packaged-app child, found {len(children)}")
+            if children:
+                pidfd = os.pidfd_open(int(children[0]))
+                try:
+                    signal.pidfd_send_signal(pidfd, signal.SIGTERM)
+                    if not select.select([pidfd], [], [], SHUTDOWN_SECONDS)[0]:
+                        raise RuntimeError("Packaged app exceeded the shutdown watchdog")
+                finally:
+                    os.close(pidfd)
+            else:
+                process.send_signal(signal.SIGTERM)
+                try:
+                    process.wait(timeout=SHUTDOWN_SECONDS)
+                except subprocess.TimeoutExpired as exc:
+                    raise RuntimeError("Packaged app exceeded the shutdown watchdog") from exc
         else:
             os.killpg(process.pid, signal.SIGTERM)
         # AppImage removes its extracted files after the app exits.
