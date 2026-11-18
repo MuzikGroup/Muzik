@@ -29,7 +29,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -97,6 +96,7 @@ import com.muzikgroup.music.ui.component.ExpandableText
 import com.muzikgroup.music.ui.component.IconButton
 import com.muzikgroup.music.ui.component.LocalMenuState
 import com.muzikgroup.music.ui.component.YouTubeListItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.menu.YouTubePlaylistMenu
 import com.muzikgroup.music.ui.menu.YouTubeSelectionSongMenu
 import com.muzikgroup.music.ui.menu.YouTubeSongMenu
@@ -205,7 +205,7 @@ fun OnlinePlaylistScreen(
                                     .padding(32.dp),
                             contentAlignment = Alignment.Center,
                         ) {
-                            ContainedLoadingIndicator()
+                            MuzikLoadingIndicator()
                         }
                     }
                 } else if (error != null) {
@@ -351,7 +351,7 @@ fun OnlinePlaylistScreen(
                                         .padding(16.dp),
                                 contentAlignment = Alignment.Center,
                             ) {
-                                ContainedLoadingIndicator()
+                                MuzikLoadingIndicator()
                             }
                         }
                     }

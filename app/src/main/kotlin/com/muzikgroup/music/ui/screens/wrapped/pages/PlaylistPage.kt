@@ -15,7 +15,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.muzikgroup.music.R
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.screens.wrapped.LocalWrappedManager
 import com.muzikgroup.music.ui.screens.wrapped.PlaylistCreationState
 import com.muzikgroup.music.ui.screens.wrapped.WrappedConstants
@@ -125,11 +125,7 @@ fun PlaylistPage() {
                         text = stringResource(R.string.wrapped_create_playlist),
                         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
                     )
-                    is PlaylistCreationState.Creating -> CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = Color.Black,
-                        strokeWidth = 2.dp
-                    )
+                    is PlaylistCreationState.Creating -> MuzikLoadingIndicator(modifier = Modifier.size(24.dp), color = Color.Black)
                     is PlaylistCreationState.Success -> Text(
                         text = stringResource(R.string.wrapped_playlist_saved),
                         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)

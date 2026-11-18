@@ -24,7 +24,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -68,6 +67,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.resize
 import com.muzikgroup.innertube.models.PodcastItem
 import timber.log.Timber
@@ -143,7 +143,7 @@ fun OnlinePodcastScreen(
                             .padding(32.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        ContainedLoadingIndicator()
+                        MuzikLoadingIndicator()
                     }
                 }
             } else if (error != null) {

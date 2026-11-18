@@ -37,7 +37,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -100,6 +99,7 @@ import com.muzikgroup.music.ui.component.Material3MenuItemData
 import com.muzikgroup.music.ui.component.NewAction
 import com.muzikgroup.music.ui.component.NewActionGrid
 import com.muzikgroup.music.ui.component.VolumeSlider
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -557,10 +557,7 @@ fun PlayerMenu(
                                 Material3MenuItemData(
                                     title = { Text(text = stringResource(R.string.downloading)) },
                                     icon = {
-                                        CircularProgressIndicator(
-                                            modifier = Modifier.size(24.dp),
-                                            strokeWidth = 2.dp,
-                                        )
+                                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                                     },
                                     onClick = {
                                         DownloadService.sendRemoveDownload(
@@ -1958,11 +1955,7 @@ fun ListenTogetherDialog(
                                 horizontalArrangement = Arrangement.Center,
                                 modifier = Modifier.fillMaxWidth(),
                             ) {
-                                CircularProgressIndicator(
-                                    modifier = Modifier.size(18.dp),
-                                    strokeWidth = 2.dp,
-                                    color = MaterialTheme.colorScheme.primary,
-                                )
+                                MuzikLoadingIndicator(modifier = Modifier.size(18.dp), color = MaterialTheme.colorScheme.primary)
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
                                     text = waitingForApprovalText,

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.muzikgroup.music.constants.ThumbnailCornerRadius
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -113,10 +113,7 @@ fun RandomizeGridItem(
 
         // Loading Indicator overlay
         Box(modifier = Modifier.alpha(loadingAlpha)) {
-            LoadingIndicator(
-                modifier = Modifier.size(48.dp),
-                color = MaterialTheme.colorScheme.onSecondaryContainer,
-            )
+            MuzikLoadingIndicator(modifier = Modifier.size(48.dp), color = MaterialTheme.colorScheme.onSecondaryContainer)
         }
     }
 }

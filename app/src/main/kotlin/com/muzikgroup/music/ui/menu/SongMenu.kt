@@ -25,7 +25,6 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -95,6 +94,7 @@ import com.muzikgroup.music.ui.component.NewAction
 import com.muzikgroup.music.ui.component.NewActionGrid
 import com.muzikgroup.music.ui.component.SongListItem
 import com.muzikgroup.music.ui.component.TextFieldDialog
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.ShowMediaInfo
 import com.muzikgroup.music.viewmodels.CachePlaylistViewModel
 import kotlinx.coroutines.Dispatchers
@@ -355,10 +355,7 @@ fun SongMenu(
                     enabled = !isDeleting,
                 ) {
                     if (isDeleting) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(16.dp),
-                            strokeWidth = 2.dp,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(16.dp))
                     } else {
                         Text(
                             text = stringResource(R.string.delete),
@@ -926,10 +923,7 @@ fun SongMenu(
                                 Material3MenuItemData(
                                     title = { Text(text = stringResource(R.string.downloading)) },
                                     icon = {
-                                        CircularProgressIndicator(
-                                            modifier = Modifier.size(24.dp),
-                                            strokeWidth = 2.dp,
-                                        )
+                                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                                     },
                                     onClick = {
                                         DownloadService.sendRemoveDownload(

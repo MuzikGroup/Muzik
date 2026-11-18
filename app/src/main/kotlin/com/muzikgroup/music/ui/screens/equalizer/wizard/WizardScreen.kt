@@ -20,6 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.res.stringResource
 import com.muzikgroup.music.LocalPlayerAwareWindowInsets
 import com.muzikgroup.music.R
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 
 /**
  * EQ Wizard - Device Setup Flow
@@ -165,7 +166,7 @@ private fun ModelSelectionStep(
         ) {
             if (isLoading) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CircularProgressIndicator()
+                    MuzikLoadingIndicator()
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = stringResource(R.string.eq_downloading),
@@ -218,7 +219,7 @@ private fun ModelSelectionStep(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                MuzikLoadingIndicator()
             }
         } else if (models.isEmpty() && searchQuery.isNotBlank()) {
             Box(
@@ -346,10 +347,7 @@ private fun VariantSelectionStep(
                     .height(56.dp)
             ) {
                 if (isLoading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
+                    MuzikLoadingIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
                 } else {
                     Text(
                         text = stringResource(R.string.wizard_save_profiles),

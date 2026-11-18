@@ -20,7 +20,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -66,6 +65,7 @@ import com.muzikgroup.music.ui.component.DefaultDialog
 import com.muzikgroup.music.ui.component.IconButton
 import com.muzikgroup.music.ui.component.Material3SettingsGroup
 import com.muzikgroup.music.ui.component.Material3SettingsItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.backToMain
 import com.muzikgroup.music.utils.makeTimeString
 import com.muzikgroup.music.utils.rememberPreference
@@ -182,9 +182,7 @@ fun LastFMSettings(
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(16.dp)
-                            )
+                            MuzikLoadingIndicator(modifier = Modifier.size(16.dp))
                             Spacer(modifier = Modifier.size(8.dp))
                             Text(
                                 text = stringResource(R.string.logging_in),

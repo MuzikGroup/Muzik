@@ -48,7 +48,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
@@ -99,6 +98,7 @@ import com.muzikgroup.music.listentogether.SuggestionReceivedPayload
 import com.muzikgroup.music.listentogether.UserInfo
 import com.muzikgroup.music.ui.component.DefaultDialog
 import com.muzikgroup.music.ui.component.IconButton
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.backToMain
 import com.muzikgroup.music.utils.rememberPreference
 import kotlinx.coroutines.launch
@@ -1178,11 +1178,7 @@ private fun JoinCreateRoomSection(
                                 .fillMaxWidth()
                                 .padding(16.dp),
                     ) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(20.dp),
-                            strokeWidth = 2.dp,
-                            color = MaterialTheme.colorScheme.primary,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(20.dp), color = MaterialTheme.colorScheme.primary)
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
                             text = waitingForApprovalText,

@@ -39,7 +39,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -119,6 +118,7 @@ import com.muzikgroup.music.db.entities.Song
 import com.muzikgroup.music.extensions.toMediaItem
 import com.muzikgroup.music.models.MediaMetadata
 import com.muzikgroup.music.playback.queues.LocalAlbumRadio
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.resize
 import com.muzikgroup.music.utils.joinByBullet
 import com.muzikgroup.music.utils.joinToArtistString
@@ -1939,12 +1939,9 @@ object Icon {
                     .size(18.dp)
                     .padding(end = 2.dp)
             )
-            STATE_QUEUED, STATE_DOWNLOADING -> CircularProgressIndicator(
-                strokeWidth = 2.dp,
-                modifier = Modifier
+            STATE_QUEUED, STATE_DOWNLOADING -> MuzikLoadingIndicator(modifier = Modifier
                     .size(16.dp)
-                    .padding(end = 2.dp)
-            )
+                    .padding(end = 2.dp))
             else -> { /* no icon */ }
         }
     }

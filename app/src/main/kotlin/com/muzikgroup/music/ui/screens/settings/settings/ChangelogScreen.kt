@@ -32,6 +32,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.muzikgroup.music.R
 import com.muzikgroup.music.BuildConfig
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.utils.ReleaseInfo
 import com.muzikgroup.music.utils.Updater
 
@@ -111,7 +112,7 @@ fun ChangelogScreen(
                 if (isLoading) {
                     item {
                         Box(modifier = Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center) {
-                            CircularProgressIndicator()
+                            MuzikLoadingIndicator()
                         }
                     }
                 } else if (releases.isEmpty()) {

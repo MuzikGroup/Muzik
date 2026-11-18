@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -64,6 +63,7 @@ import com.muzikgroup.music.ui.component.Material3MenuGroup
 import com.muzikgroup.music.ui.component.Material3MenuItemData
 import com.muzikgroup.music.ui.component.NewAction
 import com.muzikgroup.music.ui.component.NewActionGrid
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -539,10 +539,7 @@ fun SelectionSongMenu(
                                     Material3MenuItemData(
                                         title = { Text(text = stringResource(R.string.downloading)) },
                                         icon = {
-                                            CircularProgressIndicator(
-                                                modifier = Modifier.size(24.dp),
-                                                strokeWidth = 2.dp,
-                                            )
+                                            MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                                         },
                                         onClick = {
                                             showRemoveDownloadDialog = true
@@ -953,10 +950,7 @@ fun SelectionMediaMetadataMenu(
                                     Material3MenuItemData(
                                         title = { Text(text = stringResource(R.string.downloading)) },
                                         icon = {
-                                            CircularProgressIndicator(
-                                                modifier = Modifier.size(24.dp),
-                                                strokeWidth = 2.dp,
-                                            )
+                                            MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                                         },
                                         onClick = {
                                             showRemoveDownloadDialog = true

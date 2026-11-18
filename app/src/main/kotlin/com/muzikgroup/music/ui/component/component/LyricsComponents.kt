@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.text.Layout
 import android.widget.Toast
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import timber.log.Timber
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -102,7 +103,7 @@ internal fun LyricsTranslationHeader(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 ) {
-                    androidx.compose.material3.CircularProgressIndicator(
+                    MuzikLoadingIndicator(
                         modifier = Modifier.size(16.dp),
                         strokeWidth = 2.dp,
                         color = MaterialTheme.colorScheme.onPrimaryContainer

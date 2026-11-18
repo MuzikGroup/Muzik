@@ -54,6 +54,15 @@ jobs:
           MINOR=$(echo "$CURRENT" | cut -d. -f2)
           PATCH=$(echo "$CURRENT" | cut -d. -f3)
           NEW_PATCH=$((PATCH + 1))
+          # Keep every component a single digit: 7.9.9 -> 8.0.0, never 7.9.10.
+          if [ "$NEW_PATCH" -gt 9 ]; then
+            NEW_PATCH=0
+            MINOR=$((MINOR + 1))
+          fi
+          if [ "$MINOR" -gt 9 ]; then
+            MINOR=0
+            MAJOR=$((MAJOR + 1))
+          fi
           NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
           NEW_CODE=$((MAJOR * 10000 + MINOR * 100 + NEW_PATCH))
 

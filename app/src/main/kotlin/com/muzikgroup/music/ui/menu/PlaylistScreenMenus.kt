@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -40,6 +39,7 @@ import com.muzikgroup.music.db.entities.Song
 import com.muzikgroup.music.ui.component.DefaultDialog
 import com.muzikgroup.music.ui.component.Material3MenuGroup
 import com.muzikgroup.music.ui.component.Material3MenuItemData
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.utils.PlaylistExporter
 import com.muzikgroup.music.utils.getExportFileUri
 import com.muzikgroup.music.utils.saveToPublicDocuments
@@ -92,10 +92,7 @@ fun LocalPlaylistMenu(
                     title = { Text(stringResource(R.string.downloading)) },
                     description = { Text(stringResource(R.string.download_in_progress_desc)) },
                     icon = {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(24.dp),
-                            strokeWidth = 2.dp,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                     },
                     onClick = {
                         onDownload()
@@ -351,10 +348,7 @@ fun AutoPlaylistMenu(
                     title = { Text(stringResource(R.string.downloading)) },
                     description = { Text(stringResource(R.string.download_in_progress_desc)) },
                     icon = {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(24.dp),
-                            strokeWidth = 2.dp,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                     },
                     onClick = {
                         onDownload()
@@ -531,10 +525,7 @@ fun TopPlaylistMenu(
                     title = { Text(stringResource(R.string.downloading)) },
                     description = { Text(stringResource(R.string.download_in_progress_desc)) },
                     icon = {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(24.dp),
-                            strokeWidth = 2.dp,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                     },
                     onClick = {
                         onDownload()
@@ -695,10 +686,7 @@ fun CachePlaylistMenu(
                     title = { Text(stringResource(R.string.downloading)) },
                     description = { Text(stringResource(R.string.download_in_progress_desc)) },
                     icon = {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(24.dp),
-                            strokeWidth = 2.dp,
-                        )
+                        MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                     },
                     onClick = {
                         onDownload()

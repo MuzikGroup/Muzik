@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -50,6 +49,7 @@ import com.muzikgroup.music.playback.queues.ListQueue
 import com.muzikgroup.music.ui.component.DefaultDialog
 import com.muzikgroup.music.ui.component.Material3MenuGroup
 import com.muzikgroup.music.ui.component.Material3MenuItemData
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -357,10 +357,7 @@ fun YouTubeSelectionSongMenu(
                             Material3MenuItemData(
                                 title = { Text(text = stringResource(R.string.downloading)) },
                                 icon = {
-                                    CircularProgressIndicator(
-                                        modifier = Modifier.size(24.dp),
-                                        strokeWidth = 2.dp,
-                                    )
+                                    MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                                 },
                                 onClick = {
                                     showRemoveDownloadDialog = true

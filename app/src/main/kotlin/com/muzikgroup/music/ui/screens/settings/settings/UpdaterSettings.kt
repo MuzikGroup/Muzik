@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -44,6 +43,7 @@ import com.muzikgroup.music.constants.UpdateNotificationsEnabledKey
 import com.muzikgroup.music.ui.component.IconButton
 import com.muzikgroup.music.ui.component.Material3SettingsGroup
 import com.muzikgroup.music.ui.component.Material3SettingsItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.utils.backToMain
 import com.muzikgroup.music.utils.Updater
 import com.muzikgroup.music.utils.rememberPreference
@@ -187,10 +187,7 @@ fun UpdaterScreen(
                         },
                         trailingContent = {
                             if (isChecking) {
-                                CircularProgressIndicator(
-                                    modifier = Modifier.padding(end = 16.dp),
-                                    strokeWidth = 2.dp,
-                                )
+                                MuzikLoadingIndicator(modifier = Modifier.padding(end = 16.dp))
                             } else if (updateAvailable) {
                                 Icon(
                                     painter = painterResource(R.drawable.download),

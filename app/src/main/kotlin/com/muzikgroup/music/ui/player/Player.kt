@@ -59,7 +59,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
@@ -173,6 +172,7 @@ import com.muzikgroup.music.ui.component.PlayerSliderTrack
 import com.muzikgroup.music.ui.component.ResizableIconButton
 import com.muzikgroup.music.ui.component.SquigglySlider
 import com.muzikgroup.music.ui.component.WavySlider
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.component.rememberBottomSheetState
 import com.muzikgroup.music.ui.menu.PlayerMenu
 import com.muzikgroup.music.ui.screens.settings.DarkMode
@@ -2115,7 +2115,7 @@ fun InlineLyricsView(
     ) {
         when {
             lyrics == null -> {
-                ContainedLoadingIndicator()
+                MuzikLoadingIndicator()
             }
 
             lyrics == LyricsEntity.LYRICS_NOT_FOUND -> {

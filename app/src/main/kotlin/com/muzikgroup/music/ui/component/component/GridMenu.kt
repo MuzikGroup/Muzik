@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -38,6 +37,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.media3.exoplayer.offline.Download
 import com.muzikgroup.music.R
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.utils.makeTimeString
 
 val GridMenuItemHeight = 108.dp
@@ -135,10 +135,7 @@ fun LazyGridScope.DownloadGridMenu(
         Download.STATE_QUEUED, Download.STATE_DOWNLOADING -> {
             GridMenuItem(
                 icon = {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        strokeWidth = 2.dp
-                    )
+                    MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                 },
                 title = R.string.downloading,
                 onClick = onRemoveDownload

@@ -30,7 +30,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -87,6 +86,7 @@ import com.muzikgroup.music.ui.component.LocalMenuState
 import com.muzikgroup.music.ui.component.NavigationTitle
 import com.muzikgroup.music.ui.component.SongListItem
 import com.muzikgroup.music.ui.component.YouTubeGridItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.menu.AlbumMenu
 import com.muzikgroup.music.ui.menu.SelectionSongMenu
 import com.muzikgroup.music.ui.menu.SongMenu
@@ -514,7 +514,7 @@ fun AlbumScreen(
                             .padding(32.dp),
                     contentAlignment = Alignment.Center,
                 ) {
-                    ContainedLoadingIndicator()
+                    MuzikLoadingIndicator()
                 }
             }
         }

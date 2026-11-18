@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -57,6 +56,7 @@ import com.muzikgroup.music.ui.component.DefaultDialog
 import com.muzikgroup.music.ui.component.IconButton
 import com.muzikgroup.music.ui.component.Material3SettingsGroup
 import com.muzikgroup.music.ui.component.Material3SettingsItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.menu.AddToPlaylistDialogOnline
 import com.muzikgroup.music.ui.menu.CsvColumnMappingDialog
 import com.muzikgroup.music.ui.menu.CsvImportProgressDialog
@@ -370,10 +370,7 @@ fun BackupAndRestore(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        strokeWidth = 2.dp,
-                    )
+                    MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                     Spacer(modifier = Modifier.size(16.dp))
                     Text(
                         text = stringResource(R.string.checking_previous_account),

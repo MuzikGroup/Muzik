@@ -164,6 +164,7 @@ import com.muzikgroup.music.lyrics.LyricsUtils.romanizeHindi
 import com.muzikgroup.music.lyrics.LyricsUtils.romanizeJapanese
 import com.muzikgroup.music.lyrics.LyricsUtils.romanizeKorean
 import com.muzikgroup.music.lyrics.lyricsTextLooksSynced
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.component.shimmer.ShimmerHost
 import com.muzikgroup.music.ui.component.shimmer.TextPlaceholder
 import com.muzikgroup.music.ui.screens.settings.DarkMode
@@ -712,7 +713,7 @@ fun OriginalLyrics(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
-                            androidx.compose.material3.CircularProgressIndicator(
+                            MuzikLoadingIndicator(
                                 modifier = Modifier.size(16.dp),
                                 strokeWidth = 2.dp,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer,

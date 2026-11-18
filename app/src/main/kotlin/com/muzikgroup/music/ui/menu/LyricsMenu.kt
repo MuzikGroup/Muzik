@@ -31,7 +31,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -75,6 +74,7 @@ import com.muzikgroup.music.ui.component.Material3MenuItemData
 import com.muzikgroup.music.ui.component.NewAction
 import com.muzikgroup.music.ui.component.NewActionGrid
 import com.muzikgroup.music.ui.component.TextFieldDialog
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.viewmodels.LyricsMenuViewModel
 import com.muzikgroup.music.constants.OpenRouterApiKey
 import com.muzikgroup.music.constants.DeeplApiKey
@@ -343,7 +343,7 @@ fun LyricsMenu(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        CircularProgressIndicator()
+                        MuzikLoadingIndicator()
                     }
                 }
             }

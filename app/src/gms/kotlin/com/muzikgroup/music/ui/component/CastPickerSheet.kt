@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.mediarouter.media.MediaRouter
 import com.muzikgroup.music.R
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 
 @Composable
 fun CastPickerSheet(
@@ -64,10 +64,7 @@ fun CastPickerSheet(
                     .fillMaxWidth()
                     .padding(vertical = 16.dp)
             ) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(24.dp),
-                    strokeWidth = 2.dp
-                )
+                MuzikLoadingIndicator(modifier = Modifier.size(24.dp))
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
                     text = "Connecting...",

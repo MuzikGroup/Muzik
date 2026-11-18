@@ -46,7 +46,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -146,6 +145,7 @@ import com.muzikgroup.music.ui.component.SongListItem
 import com.muzikgroup.music.ui.component.SpeedDialGridItem
 import com.muzikgroup.music.ui.component.YouTubeGridItem
 import com.muzikgroup.music.ui.component.YouTubeListItem
+import com.muzikgroup.music.ui.component.component.MuzikLoadingIndicator
 import com.muzikgroup.music.ui.component.shimmer.GridItemPlaceHolder
 import com.muzikgroup.music.ui.component.shimmer.ShimmerHost
 import com.muzikgroup.music.ui.component.shimmer.TextPlaceholder
@@ -1419,7 +1419,7 @@ fun HomeScreen(
                                             }
                                         }
                                     } else {
-                                        ContainedLoadingIndicator()
+                                        MuzikLoadingIndicator()
                                     }
                                 }
                             }
