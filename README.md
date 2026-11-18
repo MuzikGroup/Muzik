@@ -25,7 +25,7 @@ Grab the installer for your system from the [latest release](../../releases/late
 
 | Platform | Download | Works on |
 | --- | --- | --- |
-| **Windows** | `Muzik-*-windows-x64.msi` (portable ZIP in assets) | Windows 10 & 11, installs per-user, Start-menu shortcut included |
+| **Windows** | `Muzik-*-windows-x64.msi` (portable ZIP in assets) | Windows 10 & 11, Desktop + Start Menu shortcuts included |
 | **macOS (Apple Silicon)** | `Muzik-*-macos-arm64.dmg` | M1 / M2 / M3 / M4 Macs |
 | **Linux (Debian/Ubuntu)** | `muzik-*-linux-amd64.deb` | Ubuntu, Debian, Mint, Pop!\_OS |
 | **Linux (RPM)** | `muzik-*-linux-x64.rpm` in assets | Fedora, openSUSE, RHEL |
