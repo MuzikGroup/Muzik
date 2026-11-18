@@ -66,10 +66,10 @@ fun MuzikLoadingIndicator(
             when {
                 constraints.hasBoundedWidth &&
                     constraints.minWidth == constraints.maxWidth &&
-                    constraints.minWidth > 0 -> constraints.minWidth.toDp()
+                    constraints.minWidth > 0 -> (constraints.minWidth / density).dp
                 constraints.hasBoundedHeight &&
                     constraints.minHeight == constraints.maxHeight &&
-                    constraints.minHeight > 0 -> constraints.minHeight.toDp()
+                    constraints.minHeight > 0 -> (constraints.minHeight / density).dp
                 else -> DEFAULT_SIZE
             }
 
