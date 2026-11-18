@@ -715,8 +715,7 @@ fun OriginalLyrics(
                         ) {
                             MuzikLoadingIndicator(
                                 modifier = Modifier.size(16.dp),
-                                strokeWidth = 2.dp,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer,
                             )
                             Text(
                                 text = stringResource(R.string.ai_translating_lyrics),
