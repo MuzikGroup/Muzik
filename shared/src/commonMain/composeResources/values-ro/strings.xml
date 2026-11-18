@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Acasă</string>
     <string name="offline_mode">Mod offline</string>
     <string name="songs">Melodii</string>
@@ -246,16 +246,6 @@
     <string name="dismiss">Închide</string>
     <string name="preview">Previzualizează</string>
     <string name="about">Despre</string>
-    <string name="credits_android_lead">Dezvoltator Android principal</string>
-    <string name="credits_desktop_lead">Dezvoltator desktop principal</string>
-    <string name="credits_creator">Creatorul Muzik</string>
-    <string name="credits_android_developer">Dezvoltator Android</string>
-    <string name="credits_desktop_developer">Dezvoltator desktop</string>
-    <string name="credits_macos_developer">Dezvoltator macOS</string>
-    <string name="credits_windows_developer">Dezvoltator Windows</string>
-    <string name="credits_lyrics_ui_services">Interfața utilizator pentru versuri și servicii</string>
-    <string name="credits_android_designer">Designer IU</string>
-    <string name="credits_wearos_designer">Designer WearOS</string>
     <string name="open_website">Deschide website-ul</string>
     <string name="open_github_profile">Deschide profilul de GitHub</string>
     <string name="sponsor_developer">Sponsorizează dezvoltatorul</string>
@@ -1993,7 +1983,7 @@
     <string name="try_again">Încearcă din nou</string>
     <string name="play_on_app">Redă pe Muzik</string>
     <string name="re_listen">Ascultă din nou</string>
-    <string name="stands_with_palestine">Acest proiect ține cu Palestina</string>
+    <string name="built_by_pipo_team">Creat de extraordinarii dezvoltatori de la Pipo Team</string>
     <string name="mini_player_subscribe_artist">Abonează-te la artist</string>
     <string name="mini_player_unsubscribe_artist">Dezabonează-te de la artist</string>
     <string name="subscribed_to_artist">Te-ai abonat la %1$s</string>
@@ -2146,9 +2136,9 @@
     <string name="discord_preview_buttons_adjusted">Discord scurtează etichetele lungi ale butoanelor și omite butoanele cu linkuri prea lungi. Această previzualizare arată butoanele care vor fi trimise.</string>
     <string name="discord_presence_status_warning">Atunci când această opțiune este activată, Rich Presence va trimite statusul Online către Discord. Poate înlocui Invizibil sau Nu deranja, inclusiv când redarea se oprește.</string>
     <string name="discord_refresh_queued">Actualizarea prezenței a fost pusă în coadă.</string>
-    <string name="metroeq_delete_profile_confirm">Ștergi profilul salvat „%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Salvezi modificările înainte de a schimba profilul?</string>
-    <string name="metroeq_discard_changes">Renunță</string>
+    <string name="muzikeq_delete_profile_confirm">Ștergi profilul salvat „%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Salvezi modificările înainte de a schimba profilul?</string>
+    <string name="muzikeq_discard_changes">Renunță</string>
     <string name="listen_together_suggestion_submitted">Sugestie trimisă gazdei</string>
     <string name="listen_together_suggestion_approved">Sugestia ta de melodie a fost aprobată</string>
     <string name="listen_together_suggestion_rejected">Sugestia ta de melodie a fost respinsă</string>
@@ -2188,8 +2178,8 @@
     <string name="top_period_past_month">Luna trecută</string>
     <string name="top_period_past_year">Anul trecut</string>
     <string name="new_badge">Nou</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podcasturi)</string>
     <string name="sponsorblock_podcasts_description">Omite sponsorizările, autopromovarea și îndemnurile la interacțiune doar în episoadele de podcast. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Segment promoțional omis</string>
@@ -2200,10 +2190,6 @@
     <string name="disable_animated_artwork_on_mobile_data">Dezactivează copertele animate atunci când ești pe date mobile</string>
     <string name="disable_animated_artwork_on_mobile_data_desc">Afișează coperți statice pe date mobile chiar și când acestea sunt în cache</string>
     <string name="hide_recent_searches">Ascunde „Din căutări recente”</string>
-    <string name="credits_multiplatform_developer">Dezvoltator multiplatformă</string>
-    <string name="credits_collaborators_section">Colaboratori</string>
-    <string name="credits_leads_section">Coordonatori</string>
-    <string name="credits_creator_section">Creator</string>
     <string name="advanced">Avansat</string>
     <string name="integration_on">Pornit(ă)</string>
     <string name="integration_off">Oprit(ă)</string>
@@ -2256,7 +2242,7 @@
     <string name="playback_event_log_raw_description">Diagnosticele de redare sunt mereu pornite. Copiază sau emisia acestjurnal brut atunci când redarea se defectează.</string>
     <string name="playback_event_log_raw_empty">Nociv eveniment de redare înregistrat încă. Redă o piesă pentru a captura diagnostice.</string>
     <string name="audio_boost">Preamplificare</string>
-    <string name="equalizer_usage_warning">Echipa Muzik nu își asumă nicio responsabilitate pentru utilizarea ta a MetroEQ.</string>
+    <string name="equalizer_usage_warning">Echipa Muzik nu își asumă nicio responsabilitate pentru utilizarea ta a MuzikEQ.</string>
     <string name="playlist_cover_updated">Coperta playlistului a fost actualizată</string>
     <string name="playlist_cover_removed">Coperta personalizată a fost eliminată</string>
     <string name="login">Autentificare</string>
@@ -2316,19 +2302,19 @@
     <string name="canvas">Canvas</string>
     <string name="canvas_cache">Cache Canvas</string>
     <string name="library_grid_columns">Coloane grilă bibliotecă</string>
-    <string name="metroeq_profiles">Profiluri salvate</string>
-    <string name="metroeq_preset_treble">Amplificare înalte</string>
-    <string name="metroeq_preset_flat">Plat</string>
-    <string name="metroeq_unsaved_changes">Modificări nesalvate</string>
-    <string name="metroeq_preset_v_shape">În formă de V</string>
-    <string name="metroeq_profile_name">Nume profil</string>
-    <string name="metroeq_custom_profile">Profil personalizat</string>
-    <string name="metroeq_preset_vocal">Voci</string>
-    <string name="metroeq">MetroEQ</string>
-    <string name="metroeq_preset_rock">Rock</string>
-    <string name="metroeq_save_as">Salvează ca</string>
-    <string name="metroeq_preset_bass">Amplificare joase</string>
-    <string name="metroeq_presets">Presetări</string>
+    <string name="muzikeq_profiles">Profiluri salvate</string>
+    <string name="muzikeq_preset_treble">Amplificare înalte</string>
+    <string name="muzikeq_preset_flat">Plat</string>
+    <string name="muzikeq_unsaved_changes">Modificări nesalvate</string>
+    <string name="muzikeq_preset_v_shape">În formă de V</string>
+    <string name="muzikeq_profile_name">Nume profil</string>
+    <string name="muzikeq_custom_profile">Profil personalizat</string>
+    <string name="muzikeq_preset_vocal">Voci</string>
+    <string name="muzikeq">MuzikEQ</string>
+    <string name="muzikeq_preset_rock">Rock</string>
+    <string name="muzikeq_save_as">Salvează ca</string>
+    <string name="muzikeq_preset_bass">Amplificare joase</string>
+    <string name="muzikeq_presets">Presetări</string>
     <string name="download_error_incomplete">YouTube nu a furnizat un fișier audio complet. Încearcă din nou sau folosește o rețea diferită.</string>
     <string name="chip_content_description">%1$s, chip</string>
     <string name="global_lyrics_offset">Decalaj global al versurilor</string>
@@ -2491,7 +2477,7 @@
     <string name="lyrics_plus_lighter">Plus lighter</string>
     <string name="lyrics_plus_lighter_desc">Crește luminozitatea versurilor folosind modul de amestecare Plus Lighter pe fundaluri Liquid</string>
     <string name="player_type_expressive">Expresiv</string>
-    <string name="edit_in_metroeq">Editează în MetroEQ</string>
+    <string name="edit_in_muzikeq">Editează în MuzikEQ</string>
     <string name="updates_share_app">Distribuie aplicația</string>
     <string name="updates_share_apk">Distribuie APK-ul aplicației</string>
     <string name="updates_share_apk_error">Nu s-a putut pregăti fișierul APK al aplicației pentru distribuire.</string>
@@ -2501,7 +2487,7 @@
         <item quantity="few">Se importă %1$s din %2$d playlisturi. Importul va continua în fundal și vei primi o notificare când se încheie.</item>
         <item quantity="other">Se importă %1$s din %2$d de playlisturi. Importul va continua în fundal și vei primi o notificare când se încheie.</item>
     </plurals>
-    <string name="metroeq_peak_reduction">Protecție la vârf: %1$s dB</string>
+    <string name="muzikeq_peak_reduction">Protecție la vârf: %1$s dB</string>
     <string name="android_auto_quick_add_playlist">Playlist pentru adăugare rapidă</string>
     <string name="android_auto_quick_add_playlist_not_set">Alege un playlist pentru adăugare rapidă din setările Android Auto.</string>
     <string name="mini_player_cookie_artwork">Copertă în formă de biscuit</string>

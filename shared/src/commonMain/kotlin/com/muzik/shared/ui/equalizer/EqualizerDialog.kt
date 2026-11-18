@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -55,7 +55,7 @@ import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.cancel
 import com.muzik.shared.generated.resources.close
 import com.muzik.shared.generated.resources.delete
-import com.muzik.shared.generated.resources.edit_in_metroeq
+import com.muzik.shared.generated.resources.edit_in_muzikeq
 import com.muzik.shared.generated.resources.eq_disabled
 import com.muzik.shared.generated.resources.eq_wizard
 import com.muzik.shared.generated.resources.equalizer
@@ -64,11 +64,11 @@ import com.muzik.shared.generated.resources.equalizer_profile_count
 import com.muzik.shared.generated.resources.equalizer_stream_unavailable
 import com.muzik.shared.generated.resources.import_from_file
 import com.muzik.shared.generated.resources.import_profile
-import com.muzik.shared.generated.resources.metroeq
-import com.muzik.shared.generated.resources.metroeq_delete_profile_confirm
-import com.muzik.shared.generated.resources.metroeq_discard_changes
-import com.muzik.shared.generated.resources.metroeq_switch_profile_confirm
-import com.muzik.shared.generated.resources.metroeq_unsaved_changes
+import com.muzik.shared.generated.resources.muzikeq
+import com.muzik.shared.generated.resources.muzikeq_delete_profile_confirm
+import com.muzik.shared.generated.resources.muzikeq_discard_changes
+import com.muzik.shared.generated.resources.muzikeq_switch_profile_confirm
+import com.muzik.shared.generated.resources.muzikeq_unsaved_changes
 import com.muzik.shared.generated.resources.more_options
 import com.muzik.shared.generated.resources.no_profiles
 import com.muzik.shared.generated.resources.save
@@ -257,7 +257,7 @@ private fun EqualizerProfileDialog(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     FilledTonalButton(onClick = { onOpenMetroEq(false) }, shapes = ButtonDefaults.shapes()) {
-                        Text(stringResource(Res.string.metroeq))
+                        Text(stringResource(Res.string.muzikeq))
                     }
                     onOpenSystemEqualizer?.let { open ->
                         FilledTonalButton(onClick = open, shapes = ButtonDefaults.shapes()) {
@@ -297,7 +297,7 @@ private fun EqualizerProfileDialog(
     PopupContent(deletingProfile) { profile ->
         AlertDialog(
             onDismissRequest = { deletingProfile = null },
-            text = { Text(stringResource(Res.string.metroeq_delete_profile_confirm, profile.name)) },
+            text = { Text(stringResource(Res.string.muzikeq_delete_profile_confirm, profile.name)) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -339,7 +339,7 @@ private fun EqualizerProfileRow(
                 DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                     Text(name, Modifier.padding(horizontal = 16.dp, vertical = 8.dp), style = MaterialTheme.typography.labelLarge)
                     DropdownMenuItem(
-                        text = { Text(stringResource(Res.string.edit_in_metroeq)) },
+                        text = { Text(stringResource(Res.string.edit_in_muzikeq)) },
                         leadingIcon = { Icon(MuzikIcons.Outlined.Tune, null) },
                         onClick = {
                             expanded = false
@@ -367,8 +367,8 @@ internal fun ConfirmEqualizerProfileChange(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(Res.string.metroeq_unsaved_changes)) },
-        text = { Text(stringResource(Res.string.metroeq_switch_profile_confirm)) },
+        title = { Text(stringResource(Res.string.muzikeq_unsaved_changes)) },
+        text = { Text(stringResource(Res.string.muzikeq_switch_profile_confirm)) },
         confirmButton = {
             TextButton(
                 onClick = {
@@ -384,7 +384,7 @@ internal fun ConfirmEqualizerProfileChange(
                 TextButton(onClick = {
                     onDismiss()
                     action()
-                }, shapes = ButtonDefaults.shapes()) { Text(stringResource(Res.string.metroeq_discard_changes)) }
+                }, shapes = ButtonDefaults.shapes()) { Text(stringResource(Res.string.muzikeq_discard_changes)) }
                 TextButton(onClick = onDismiss, shapes = ButtonDefaults.shapes()) { Text(stringResource(Res.string.cancel)) }
             }
         },

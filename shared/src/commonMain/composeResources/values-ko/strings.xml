@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">홈</string>
     <string name="songs">노래</string>
     <string name="artists">아티스트</string>
@@ -349,9 +349,9 @@
     <string name="discord_preview_buttons_adjusted">Discord는 긴 버튼 이름을 줄이고 링크가 너무 긴 버튼은 제외합니다. 이 미리보기에는 전송될 버튼이 표시됩니다.</string>
     <string name="discord_presence_status_warning">리치 프레즌스는 Discord에 온라인 상태를 전송합니다. 재생이 멈춘 경우에도 오프라인 표시나 방해 금지 상태를 덮어쓸 수 있습니다.</string>
     <string name="discord_refresh_queued">활동 상태 새로고침이 대기열에 추가되었습니다.</string>
-    <string name="metroeq_delete_profile_confirm">저장된 프로필 “%1$s”을(를) 삭제할까요?</string>
-    <string name="metroeq_switch_profile_confirm">프로필을 전환하기 전에 변경 사항을 저장할까요?</string>
-    <string name="metroeq_discard_changes">변경 사항 버리기</string>
+    <string name="muzikeq_delete_profile_confirm">저장된 프로필 “%1$s”을(를) 삭제할까요?</string>
+    <string name="muzikeq_switch_profile_confirm">프로필을 전환하기 전에 변경 사항을 저장할까요?</string>
+    <string name="muzikeq_discard_changes">변경 사항 버리기</string>
     <string name="listen_together_suggestion_submitted">호스트에게 제안을 보냈습니다</string>
     <string name="listen_together_suggestion_approved">노래 제안이 승인되었습니다</string>
     <string name="listen_together_suggestion_rejected">노래 제안이 거절되었습니다</string>
@@ -420,8 +420,8 @@
     <string name="new_badge">신규</string>
     <string name="start_typing_to_search_music">YouTube Music에서 검색하려면 입력하세요</string>
     <string name="filter_episodes">에피소드</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (팟캐스트)</string>
     <string name="sponsorblock_podcasts_description">팟캐스트 에피소드에서만 스폰서, 자기 홍보 및 참여 요청 구간을 건너뜁니다. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">홍보 구간을 건너뛰었습니다</string>

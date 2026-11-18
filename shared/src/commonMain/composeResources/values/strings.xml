@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Upstream InnerTune strings -->
 <!-- Do not add new features here -->
 <!-- Try to re-use strings here, but be careful on its usage e.g. verb vs noun -->
-<!-- "InnerTune" is replaced with "Muzik" -->
-
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Bottom navigation -->
     <!-- Translators: Label for app name in the multiple app screens. -->
@@ -26,14 +22,12 @@
     <!-- Translators: Label for similar artists; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for playlists in the multiple app screens. -->
     <string name="playlists">Playlists</string>
-
     <!-- Top bar -->
     <!-- Translators: Pluralized count or status for selected in the playback queue. %1$d is the selected-item count. -->
     <plurals name="n_selected">
         <item quantity="one">%1$d selected</item>
         <item quantity="other">%1$d selected</item>
     </plurals>
-
     <!-- Home -->
     <!-- Translators: Home-screen destination that opens listening history. -->
     <string name="history">Listening history</string>
@@ -61,7 +55,6 @@
     <string name="recap">Recap</string>
     <!-- Translators: Error message about unavailable in the Home. -->
     <string name="home_unavailable">Home unavailable</string>
-
     <!-- History -->
     <!-- Translators: Label for today in the listening history. -->
     <string name="today">Today</string>
@@ -71,10 +64,8 @@
     <string name="this_week">This week</string>
     <!-- Translators: Label for last week in the listening history. -->
     <string name="last_week">Last week</string>
-
     <!-- Translators: Label for most viewed videos in the Home and browse screens. -->
     <string name="most_viewed_videos">Most viewed music videos</string>
-
     <!-- Search -->
     <!-- Translators: Imperative action label for search in the multiple app screens. -->
     <string name="search">Search</string>
@@ -92,17 +83,14 @@
     <string name="filter_community_playlists">Community playlists</string>
     <!-- Translators: Label for filter featured playlists in the Home and browse screens. -->
     <string name="filter_featured_playlists">Featured playlists</string>
-
     <!-- Album screen -->
     <!-- Translators: Label for other versions in the Home and browse screens. -->
     <string name="other_versions">Other versions</string>
-
     <!-- Playlist -->
     <!-- Translators: Label for liked songs in the multiple app screens. -->
     <string name="liked_songs">Liked songs</string>
     <!-- Translators: Option or section label for downloaded songs in the settings. -->
     <string name="downloaded_songs">Downloaded songs</string>
-
     <!-- Button -->
     <!-- Translators: Imperative action label for retry in the multiple app screens. -->
     <string name="retry">Retry</string>
@@ -115,7 +103,6 @@
     <string name="settings_reset_to_default">Reset to default</string>
     <!-- Translators: Label for mix in the Home and browse screens. -->
     <string name="mix">Mix</string>
-
     <!-- Menu -->
     <!-- Translators: Menu action that opens details for the selected media item. -->
     <string name="details">Details</string>
@@ -198,7 +185,6 @@
     <string name="remove_from_queue">Remove from queue</string>
     <!-- Translators: Imperative action label for online in the search. -->
     <string name="search_online">Search online</string>
-
     <!-- Sort menu -->
     <!-- Translators: Label for sort by create date in the Home and browse screens and Library. -->
     <string name="sort_by_create_date">Date added</string>
@@ -206,7 +192,6 @@
     <string name="sort_by_name">Name</string>
     <!-- Translators: Label for sort by year in the Home and browse screens. -->
     <string name="sort_by_year">Year</string>
-
     <!-- Dialog -->
     <!-- Translators: Label for media ID in the song details. -->
     <string name="media_id">Media ID</string>
@@ -230,7 +215,6 @@
     <string name="unknown">Unknown</string>
     <!-- Translators: Confirmation message about copied in the multiple app screens. -->
     <string name="copied">Copied to clipboard</string>
-
     <!-- Translators: Imperative action label for edit lyrics in the player menu and lyrics view. -->
     <string name="edit_lyrics">Edit lyrics</string>
     <string name="lyrics_song_artist">Song artist</string>
@@ -244,7 +228,6 @@
     <string name="search_lyrics">Search lyrics</string>
     <!-- Translators: Imperative action label for select songs in the media item menus. -->
     <string name="select_songs">Select songs</string>
-
     <!-- Translators: Imperative action label for edit song in the edit-song dialog. -->
     <string name="edit_song">Edit song</string>
     <!-- Translators: Field label in the edit-song dialog. -->
@@ -253,7 +236,6 @@
     <string name="song_artists">Song artists</string>
     <!-- Translators: Imperative action label for save in the multiple app screens. -->
     <string name="save">Save</string>
-
     <!-- Translators: Imperative action label for edit playlist in the playlist screen. -->
     <string name="edit_playlist">Edit playlist</string>
     <!-- Translators: Action label for editing the playlist cover image. -->
@@ -275,12 +257,10 @@
     <!-- Translators: Error message about could not create playlist; retained for translation compatibility but not currently referenced by app code. %1$s is the error details. -->
     <!-- Translators: Error message about playlist name empty in the Android app. -->
     <string name="error_playlist_name_empty">Playlist name cannot be empty.</string>
-
     <!-- Translators: Label for duplicates in the song menu. -->
     <string name="duplicates">Duplicates</string>
     <!-- Translators: Imperative action label for add anyway in the song menu and playlist screen. -->
     <string name="add_anyway">Add anyway</string>
-
     <!-- Noun -->
     <!-- Translators: Pluralized count or status for artist in the listening statistics. %1$d is the artist count. -->
     <plurals name="n_artist">
@@ -307,11 +287,9 @@
         <item quantity="one">%1$d year</item>
         <item quantity="other">%1$d years</item>
     </plurals>
-
     <!-- Snackbar -->
     <!-- Translators: Label for undo in the playback queue and desktop player. -->
     <string name="undo">Undo</string>
-
     <!-- Player -->
     <!-- Translators: Empty-state message for not found in the lyrics. -->
     <string name="lyrics_not_found">Lyrics not found</string>
@@ -414,7 +392,6 @@
     <string name="devtools_playback_benchmark_assert_watchtime" translatable="false">non-overlapping watchtime</string>
     <!-- Translators: Option or section label for assert final in the playback benchmark settings. -->
     <string name="devtools_playback_benchmark_assert_final" translatable="false">final close</string>
-
     <!-- Player action -->
     <!-- Translators: Imperative action label for like in the multiple app screens. -->
     <string name="action_like">Like</string>
@@ -424,7 +401,6 @@
     <string name="repeat_mode_one">Repeat current song</string>
     <!-- Translators: Label for repeat mode all in the playback queue and full player. -->
     <string name="repeat_mode_all">Repeat queue</string>
-
     <!-- Queue Title -->
     <!-- Translators: Label for up next in the playback queue and desktop player. -->
     <string name="up_next">Up next</string>
@@ -441,11 +417,9 @@
     </plurals>
     <!-- Translators: Label for suggested tracks in the playback queue. -->
     <string name="suggested_tracks">Suggested</string>
-
     <!-- Notification name -->
     <!-- Translators: Android notification-channel name for media playback. -->
     <string name="playback_notification_channel_name">Playback</string>
-
     <!-- Settings -->
     <!-- Translators: Navigation label for settings in the multiple app screens. -->
     <string name="settings">Settings</string>
@@ -463,7 +437,6 @@
     <string name="lyrics_auto_scroll_btn">Auto scroll</string>
     <!-- Translators: Option or section label for squiggly in the settings. -->
     <string name="squiggly">Squiggly</string>
-
     <!-- Translators: Imperative action label for logout in the account menu. -->
     <string name="action_logout">Log out</string>
     <!-- Translators: Imperative action label for login in the multiple app screens. -->
@@ -475,7 +448,6 @@
     <string name="youtube_session_expired_title">You may have been signed out</string>
     <!-- Translators: Dialog or notice body text for YouTube session expired in the app-wide dialogs. -->
     <string name="youtube_session_expired_message">Sign in again to restore YouTube account features. You can continue using downloaded and cached content offline.</string>
-
     <!-- Translators: Option or section label for audio quality in the settings. -->
     <string name="audio_quality">Audio quality</string>
     <!-- Translators: Audio-quality option that chooses quality automatically. -->
@@ -506,7 +478,6 @@
     <string name="auto_skip_next_on_error_desc">Continue playback when a song fails to play</string>
     <!-- Translators: Imperative action label for stop music on task clear in the settings. -->
     <string name="stop_music_on_task_clear">Stop music on task clear</string>
-
     <!-- Translators: Settings-home destination for cache and download storage. -->
     <string name="storage">Storage</string>
     <!-- Translators: Label for quality in the music video playback. -->
@@ -530,7 +501,6 @@
     <string name="clear_music_video_cache" tools:ignore="MissingTranslation">Clear music video cache</string>
     <!-- Translators: Supporting text beneath the clear music video cache option in the settings. -->
     <string name="clear_music_video_cache_desc" tools:ignore="MissingTranslation">Remove cached song-to-video resolution matches</string>
-
     <!-- Translators: Option or section label for image cache in the settings. -->
     <string name="image_cache">Image cache</string>
     <!-- Translators: Option or section label for song cache in the settings. -->
@@ -628,7 +598,6 @@
     <string name="enable_animated_covers_desc">Show animated covers from Spotify and Apple Music when available. Uses more storage and mobile data.</string>
     <!-- Translators: Label for the iTunes (Apple Music) artist artwork source; keep the brand name untranslated. -->
     <string name="settings_artist_source_itunes" translatable="false">Apple Music</string>
-
     <!-- Translators: Imperative action label for pause listen history in the settings. -->
     <string name="pause_listen_history">Pause listening history</string>
     <!-- Translators: Label for enabling weekly and monthly playlists generated from listening history. -->
@@ -694,7 +663,6 @@
     <string name="explicit_only">Explicit songs only</string>
     <!-- Translators: Supporting text beneath the explicit only option in the settings. -->
     <string name="explicit_only_desc">Hide songs that are not marked explicit</string>
-
     <!-- Translators: Imperative action label for backup in the Backup & Restore. -->
     <string name="action_backup">Back up</string>
     <!-- Translators: Imperative action label for restore in the Backup & Restore. -->
@@ -705,40 +673,27 @@
     <string name="backup_create_failed">Couldn\u0027t create backup</string>
     <!-- Translators: Error message about restore in the Backup & Restore. -->
     <string name="restore_failed">Failed to restore backup</string>
-
     <!-- Translators: Imperative action label for dismiss in the playlist import and integration settings. -->
     <string name="dismiss">Dismiss</string>
     <string name="bottom_sheet_pane_title">Bottom sheet</string>
     <!-- Translators: Label for preview; retained for translation compatibility but not currently referenced by app code. -->
     <string name="preview">Preview</string>
-
     <!-- Translators: Settings destination containing app information and credits. -->
     <string name="about">About</string>
     <!-- Translators: Label for app version; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for credits lead developer; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for credits android lead in the About screen. -->
-    <string name="credits_android_lead">Lead Android developer</string>
     <!-- Translators: Label for credits desktop lead in the About screen. -->
-    <string name="credits_desktop_lead">Lead desktop developer</string>
     <!-- Translators: Label for credits creator in the About screen. -->
-    <string name="credits_creator">Creator of Muzik</string>
     <!-- Translators: Heading for Rich Presence in the Discord integration. -->
     <string name="discord_rpc_title" translatable="false">Discord Rich Presence</string>
     <!-- Translators: Label for credits android developer in the About screen. -->
-    <string name="credits_android_developer">Android developer</string>
     <!-- Translators: Label for credits desktop developer in the About screen. -->
-    <string name="credits_desktop_developer">Desktop developer</string>
-    <string name="credits_multiplatform_developer">Multiplatform developer</string>
     <!-- Translators: Label for credits macOS developer in the About screen. -->
-    <string name="credits_macos_developer">macOS developer</string>
     <!-- Translators: Label for credits windows developer in the About screen. -->
-    <string name="credits_windows_developer">Windows developer</string>
     <!-- Translators: Label for credits lyrics ui services in the About screen. -->
-    <string name="credits_lyrics_ui_services">Lyrics UI and services</string>
     <!-- Translators: Label for credits UI designer in the About screen. -->
-    <string name="credits_android_designer">UI designer</string>
     <!-- Translators: Label for credits wearos designer in the About screen. -->
-    <string name="credits_wearos_designer">WearOS designer</string>
     <!-- Translators: Label for sponsor android development; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for open website in the About screen. -->
     <string name="open_website">Open website</string>
@@ -761,18 +716,16 @@
     <!-- Translators: Confirmation prompt for wanna play favorite song; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Message explaining yeah; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for credits collaborators section in the About screen. -->
-    <string name="credits_collaborators_section">Collaborators</string>
-    <string name="credits_leads_section">Leads</string>
-    <string name="credits_creator_section">Creator</string>
+    <string name="credits_lead_developer">Lead developer</string>
+    <string name="credits_team_section">Pipo Team</string>
+    <string name="credits_other_contributors">Other contributors</string>
     <!-- Translators: Label for community and info in the About screen. -->
     <!-- Translators: Label for buy mo a coffee; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Translators: Label for devmode already active in the About screen. -->
     <string name="devmode_already_active" translatable="true">Developer mode is already active</string>
     <!-- Translators: Pluralized contribution count in the About screen. %1$d is the contribution count. -->
     <!-- Translators: Label for about tab team in the About screen. -->
     <!-- Translators: Label for about tab info in the About screen. -->
-
     <!-- Discord Settings -->
     <!-- Translators: Imperative action label for enable rich presence in the Discord integration. -->
     <string name="discord_enable_rich_presence">Discord Rich Presence</string>
@@ -827,7 +780,6 @@
     <string name="discord_refresh_rate_limited">Wait a moment before refreshing again</string>
     <!-- Translators: Error message about refresh in the Discord integration. -->
     <string name="discord_refresh_error">Failed to refresh presence</string>
-
     <!-- Integrations Screen -->
     <!-- Translators: Option or section label for integrations in the integration settings and account menu. -->
     <string name="advanced">Advanced</string>
@@ -847,7 +799,6 @@
     <string name="brand_listenbrainz" translatable="false">ListenBrainz</string>
     <!-- Translators: Supporting text beneath the integration option; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Supporting text beneath the integration option; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Settings Screen -->
     <!-- Translators: Option or section label for interface in the settings. -->
     <string name="settings_interface">Interface</string>
@@ -855,7 +806,7 @@
     <string name="settings_playback">Playback</string>
     <!-- Translators: Supporting text beneath the player audio option in the settings. -->
     <string name="settings_player_audio_description">Audio, transitions, queue</string>
-    <!-- Translators: Heading for loudness normalization, MetroEQ and crossfade in the Player settings. -->
+    <!-- Translators: Heading for loudness normalization, MuzikEQ and crossfade in the Player settings. -->
     <string name="settings_sound">Sound</string>
     <!-- Translators: Supporting text beneath the track transition fade option in the settings. -->
     <string name="track_transition_fade_desc">Fade smoothly between the current and next track</string>
@@ -960,7 +911,6 @@
     <string name="search_no_results">No results found</string>
     <!-- Translators: Label for back in the multiple app screens. -->
     <string name="back">Back</string>
-
     <!-- Appearance Settings -->
     <!-- Translators: Heading for appearance in the Appearance settings. -->
     <string name="appearance_title">Appearance</string>
@@ -1021,7 +971,6 @@
     <string name="app_font_picker_desc">Select a TTF or OTF file. Muzik copies it to private app storage.</string>
     <!-- Translators: Font option that uses the Android system font. -->
     <string name="app_font_system">System default</string>
-
     <!-- Translators: Option or section label for applied in the font settings. %1$s is the font family name. -->
     <string name="app_font_applied">Using %1$s</string>
     <!-- Translators: Option or section label for invalid in the font settings. -->
@@ -1146,11 +1095,9 @@
     <string name="appearance_show_uploaded_playlist">"Uploaded" playlist</string>
     <!-- Translators: Imperative action label for show cached playlist in the Appearance settings. -->
     <string name="appearance_show_cached_playlist">"Cached" playlist</string>
-
     <!-- Player Settings -->
     <!-- Translators: Heading for player settings in the settings. -->
     <string name="player_settings_title">Player and audio</string>
-
     <!-- Lyrics Settings -->
     <!-- Translators: Title of the Lyrics settings screen. -->
     <string name="lyrics_settings_title">Lyrics</string>
@@ -1223,7 +1170,6 @@
     <string name="lyrics_plus_lighter">Plus lighter</string>
     <!-- Translators: Supporting text beneath the plus lighter option in lyrics settings. -->
     <string name="lyrics_plus_lighter_desc">Brighten lyrics with plus-lighter blending on liquid backgrounds</string>
-
     <!-- Privacy Settings -->
     <!-- Translators: Heading for privacy settings in the Privacy settings. -->
     <string name="privacy_settings_title">Privacy</string>
@@ -1260,7 +1206,6 @@
         <item quantity="one">%1$d artist blocked</item>
         <item quantity="other">%1$d artists blocked</item>
     </plurals>
-
     <!-- Settings: Android Auto -->
     <!-- Translators: Heading for android auto in the Android Auto settings. -->
     <string name="android_auto_title" translatable="false">Android Auto</string>
@@ -1309,7 +1254,6 @@
     <string name="voice_search_unavailable">Voice search is not available on this device.</string>
     <!-- Translators: Supporting text beneath the voice search setting option in the settings. -->
     <string name="voice_search_setting_desc">Use the microphone button to search by voice. Hold the Search navigation item to recognize music playing nearby.</string>
-
     <!-- Settings: Backup & Restore -->
     <!-- Translators: Heading for restore in the Backup & Restore. -->
     <string name="backup_restore_title">Backup &amp; import</string>
@@ -1481,7 +1425,6 @@
     <string name="widget_playlists_description">Playlist shortcuts with mini-player controls</string>
     <!-- Translators: Imperative action label for choose something below in the Android home-screen widget. -->
     <string name="choose_something_below">Choose something below</string>
-
     <!-- Settings: Content Filters -->
     <!-- Translators: Heading for content filters; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Option or section label for content filters filtering in the settings. -->
@@ -1512,7 +1455,6 @@
     <string name="block_ai_slop_artists">Block known AI-generated artists</string>
     <!-- Translators: Supporting text beneath the block AI slop artists option in the settings. -->
     <string name="block_ai_slop_artists_desc">Hide channels on Override92/AiSList. The CC BY-NC 4.0 list updates daily and stays available offline.</string>
-
     <!-- Settings: Listen Together -->
     <!-- Translators: Imperative action label for create room; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for join room; retained for translation compatibility but not currently referenced by app code. -->
@@ -1571,7 +1513,6 @@
     <string name="listen_together_host">Host</string>
     <!-- Verb for the tab that starts a room. listen_together_host names the host role. -->
     <string name="listen_together_host_action">Host</string>
-
     <!-- Settings: Player Style -->
     <!-- Translators: Option or section label for player type in the settings. -->
     <string name="player_type">Player type</string>
@@ -1622,7 +1563,7 @@
     <string name="no_profiles">No equalizer profiles</string>
     <!-- Translators: Button in the equalizer dialog that opens the profile import options. -->
     <string name="import_profile">Import profile</string>
-    <string name="edit_in_metroeq">Edit in MetroEQ</string>
+    <string name="edit_in_muzikeq">Edit in MuzikEQ</string>
     <!-- Translators: Button in the equalizer dialog that opens Android's built-in equalizer. -->
     <string name="system_equalizer">System equalizer</string>
     <!-- Translators: Import option that searches the AutoEQ headphone database. AutoEQ is a project name. -->
@@ -1655,7 +1596,6 @@
     <string name="artwork">Artwork</string>
     <!-- Translators: Heading for artwork in the Apple Music playlist import. -->
     <!-- Translators: Supporting text beneath the artwork option in the Apple Music playlist import. -->
-
     <!-- Settings: Updates -->
     <!-- Translators: Heading for updates in the update settings. -->
     <string name="updates_title">App update</string>
@@ -1745,7 +1685,6 @@
     <string name="updates_release_unavailable">This release does not include a compatible APK.</string>
     <!-- Translators: Heading for release notes in the update settings. %1$s is the app version. -->
     <string name="updates_release_notes_title">What\u0027s new in Muzik %1$s</string>
-
     <!-- Device Connect (LAN P2P, Spotify Connect-like) -->
     <!-- Translators: Heading for device connect in the Device Connect. -->
     <string name="device_connect_title">Device Connect</string>
@@ -1805,7 +1744,6 @@
     <string name="device_connect_device_type_and_model">%1$s · %2$s</string>
     <string name="device_connect_picker_title">Connect to a device</string>
     <string name="device_connect_available">Available</string>
-
     <!-- Crash report -->
     <!-- Translators: Message explaining upload disclosure in the crash reporting. -->
     <string name="crash_upload_disclosure" translatable="false">Crash logs can contain sensitive device and account details. Review the log before uploading it to the public paste service.</string>
@@ -1815,7 +1753,6 @@
     <string name="crash_upload_failed" translatable="false">Could not upload the crash log. You can still share it manually.</string>
     <!-- Translators: Label for paste ID in the crash reporting. %1$s is the uploaded paste identifier. -->
     <string name="crash_paste_id" translatable="false">Paste ID: %1$s</string>
-
     <!-- Side Menu -->
     <!-- Translators: Label for welcome; retained for translation compatibility but not currently referenced by app code. -->
     <string name="side_menu_welcome">Welcome to Muzik</string>
@@ -1832,7 +1769,6 @@
     <!-- Translators: Error message about friends in the Last.fm settings. -->
     <!-- Translators: Imperative action label for pin to app bar; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for unpin from app bar; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Android UI strings -->
     <!-- Translators: Imperative action label for cannot be undone in the multiple app screens. -->
     <string name="action_cannot_be_undone">This action cannot be undone.</string>
@@ -2664,7 +2600,6 @@
     <string name="youtube_music" translatable="false">YouTube Music</string>
     <!-- Translators: Label for you in the Android app. -->
     <string name="you">You</string>
-
     <!-- Shared Compose UI -->
     <!-- Translators: Label for sort updated in the Library. -->
     <string name="library_sort_updated">Updated</string>
@@ -2707,7 +2642,6 @@
     <!-- Translators: Label for hour eleven pm in the listening statistics. -->
     <!-- Translators: Label for repeat in the playback queue and full player. -->
     <string name="repeat">Repeat</string>
-
     <!-- Translators: Pluralized count or status for added songs to playlist in the Home screen. %1$d is the song count; %2$s is the playlist name. -->
     <plurals name="added_songs_to_playlist">
         <item quantity="one">Added %1$d song to %2$s</item>
@@ -2813,7 +2747,6 @@
         <item quantity="one">Remove %1$d song from this device?</item>
         <item quantity="other">Remove %1$d songs from this device?</item>
     </plurals>
-
     <!-- Translators: Option or section label for fonts in the settings. -->
     <string name="fonts">Fonts</string>
     <!-- Translators: Name of the automatic playlist containing liked songs. -->
@@ -2824,7 +2757,6 @@
     <string name="cached_playlist">Cached</string>
     <!-- Translators: Imperative action label for cancel in the multiple app screens. -->
     <string name="cancel">Cancel</string>
-
     <!-- Artist about section -->
     <!-- Translators: Imperative action label for show more in the artist screen and Home and browse screens. -->
     <string name="show_more">Show more</string>
@@ -2837,19 +2769,16 @@
     <!-- Translators: Heading for no bio; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Input hint for no bio; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Option or section label for link text; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Menu descriptions -->
     <!-- Translators: Confirmation message about link copied; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for now playing; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for close in the multiple app screens. -->
     <string name="close">Close</string>
-
     <!-- Translators: Pluralized count or status for time in the listening statistics. %1$d is the occurrence count. -->
     <plurals name="n_time">
         <item quantity="one">%1$d time</item>
         <item quantity="other">%1$d times</item>
     </plurals>
-
     <!-- Translators: Option or section label for seek duration in the settings. -->
     <string name="seek_duration">Seek duration</string>
     <!-- Translators: Supporting text beneath the seek duration option in the settings. -->
@@ -2878,7 +2807,6 @@
     <string name="skip_silence_desc">Fast forward through silent parts of songs</string>
     <string name="skip_silence_instant">Instant silence skip</string>
     <string name="skip_silence_instant_desc">After 2 seconds of silence, jump forward up to 15 seconds. May skip quiet audio.</string>
-
     <!-- Translators: Heading for token login in the advanced YouTube sign-in. -->
     <string name="token_login_title">Login token</string>
     <!-- Translators: Imperative action label for show token in the advanced YouTube sign-in. -->
@@ -2899,7 +2827,6 @@
     <string name="statistics">Statistics</string>
     <!-- Translators: Imperative action label for save changes in the sign-in flow and app-wide dialogs. -->
     <string name="save_changes">Save changes</string>
-
     <!-- Translators: Label for general in the multiple app screens. -->
     <string name="general">General</string>
     <!-- Translators: Player setting for the original Muzik shuffle behavior. -->
@@ -2955,10 +2882,8 @@
         <item quantity="one">%1$d second</item>
         <item quantity="other">%1$d seconds</item>
     </plurals>
-
     <!-- Sleep timer -->
     <!-- Translators: Sleep-timer option for entering a custom duration. -->
-
     <!-- Player Settings -->
     <!-- Translators: Label for player settings category; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for disable load more when repeat all in the settings. -->
@@ -2981,7 +2906,6 @@
     <string name="crossfade_gapless">Disable for gapless albums</string>
     <!-- Translators: Supporting text beneath the crossfade gapless option in the settings. -->
     <string name="crossfade_gapless_desc">Don\u0027t crossfade if the album is gapless</string>
-
     <!-- Romanization Settings -->
     <!-- Translators: Option to show translations included with lyrics. -->
     <string name="lyrics_show_translations">Translations</string>
@@ -2993,19 +2917,15 @@
     <!-- Translators: Progress or status message for downloading in the lyrics romanization. %1$d is the percentage; %2$s is the percent symbol. -->
     <!-- Translators: Label for installed in the lyrics romanization. -->
     <!-- Translators: Error message about download in the lyrics romanization. -->
-
     <!-- Lyrics Offset Settings -->
     <!-- Translators: Label for offset in the lyrics. -->
     <string name="lyrics_offset">Lyrics offset</string>
-
     <!-- Settings home items -->
     <!-- Translators: Option or section label for lyrics translation in the settings. -->
     <string name="settings_ai_lyrics_translation">AI lyrics translation</string>
-
     <!-- Updater -->
     <!-- Translators: Heading for available in the app updates. -->
     <string name="update_available_title">Update available</string>
-
     <!-- Casting -->
     <!-- Translators: Label for cast in the connected-player controls and full player. -->
     <string name="cast">Play on TVs and speakers</string>
@@ -3045,7 +2965,6 @@
     <string name="username">Username</string>
     <!-- Translators: Option or section label for password in the integration settings. -->
     <string name="password">Password</string>
-
     <!-- Translators: Supporting text beneath the details option in the playback queue. -->
     <string name="details_desc">View song information</string>
     <!-- Translators: Supporting text beneath the play next option in the media item menus and playback queue. -->
@@ -3060,7 +2979,6 @@
     <string name="cache_size_warning_title">Reduce cache limit?</string>
     <!-- Translators: Confirmation prompt for size warning in the download and cache management. %1$s is the current cache use; %2$s is the cached media type. -->
     <string name="cache_size_warning_message">The new cache limit is smaller than the current usage (%1$s). The app may remove some files from %2$s to meet the new limit. Continue?</string>
-
     <!-- Lyrics Animation Styles -->
     <!-- Translators: Label for animation style in the lyrics. -->
     <string name="lyrics_animation_style">Word-by-word animation style</string>
@@ -3082,12 +3000,10 @@
     <string name="lyrics_line_spacing">Lyrics line spacing</string>
     <!-- Translators: Option or section label for subtitle text size in the settings. -->
     <string name="subtitle_text_size">Video subtitle text size</string>
-
     <!-- Translators: Generic error-dialog title used outside playback errors. -->
     <string name="error_title">Error</string>
     <!-- Translators: Label for guest; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Error message about playback; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Widget strings -->
     <!-- Translators: Label for album art in the multiple app screens. -->
     <string name="album_art">Album art</string>
@@ -3127,7 +3043,6 @@
     <string name="widget_recognizer_channel_desc">Shows a notification while identifying a song from the widget</string>
     <!-- Translators: Notification text shown while the home-screen widget records audio to identify a song. -->
     <string name="widget_recognizer_notification_text">Recording audio to identify the song…</string>
-
     <!-- Listen Together -->
     <!-- Translators: Label for listen together in the multiple app screens. -->
     <string name="listen_together">Listen Together</string>
@@ -3206,7 +3121,6 @@
     <string name="listen_together_no_blocked_users">No blocked users</string>
     <!-- Translators: Imperative action label for unblock in the Listen Together and media item menus. -->
     <string name="unblock">Unblock</string>
-
     <!-- AI Lyrics Translation -->
     <!-- Translators: Option or section label for provider in the AI lyrics translation settings. -->
     <string name="ai_provider">Provider</string>
@@ -3228,7 +3142,6 @@
     <!-- Translators: Option or section label for DeepL formality less in the AI lyrics translation settings. -->
     <string name="ai_deepl_formality_less">Less formal</string>
     <!-- Translators: Option or section label for system prompt; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Crash Handler -->
     <!-- Translators: Heading for crash in the crash reporting. -->
     <string name="crash_title" translatable="false">App crashed</string>
@@ -3242,9 +3155,7 @@
     <string name="crash_report_subject" translatable="false">Muzik crash report</string>
     <!-- Translators: Label for no log in the crash reporting. -->
     <string name="crash_no_log" translatable="false">No crash log available</string>
-
     <!-- Translators: Imperative action label for play all in the Home screen. -->
-
     <!-- Music Recognition -->
     <!-- Translators: Imperative action label for recognize music in the multiple app screens. -->
     <string name="recognize_music">Recognize music</string>
@@ -3254,10 +3165,8 @@
     <string name="recognition_history">Recognition history</string>
     <!-- Translators: Label for notification no match in the music recognition. -->
     <string name="recognition_notification_no_match">No match found</string>
-
     <!-- Translators: Imperative action label for continue in the multiple app screens. -->
     <string name="continue_action">Continue</string>
-
     <!-- Discord Integration Redesign -->
     <!-- Translators: Label for button 1 in the Discord integration. -->
     <string name="discord_button_1">Button 1</string>
@@ -3283,25 +3192,21 @@
     <string name="pin_to_speed_dial">Pin to Speed dial</string>
     <!-- Translators: Imperative action label for unpin from speed dial in the multiple app screens. -->
     <string name="unpin_from_speed_dial">Unpin from Speed dial</string>
-
     <!-- Translators: Dialog or notice body text for logout dialog; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for view podcast in the media item menus and media item menu. -->
     <string name="view_podcast">View podcast</string>
     <!-- Translators: Label for auto playlist in the Library and Home screen. -->
     <string name="auto_playlist">Auto playlist</string>
-
     <!-- Restore confirmation dialog -->
     <!-- Translators: Confirmation prompt for confirm in the Backup & Restore. -->
     <string name="restore_confirm_title">Restore backup?</string>
     <!-- Translators: Dialog or notice body text for confirm in the Backup & Restore. -->
     <string name="restore_confirm_message">This will restore your app data from the backup.</string>
-
     <!-- Upload songs -->
     <!-- Translators: Progress or status message for uploading in the playlist screen. -->
     <string name="uploading">Uploading…</string>
     <!-- Translators: Error message about upload in the song upload. -->
     <string name="upload_failed">Upload failed</string>
-
     <!-- Temporary onboarding design lab -->
     <!-- Translators: Label for tagline in the onboarding. -->
     <!-- Translators: Supporting text beneath the welcome option in the onboarding. -->
@@ -3364,11 +3269,9 @@
     <string name="migrated">Migrated</string>
     <!-- Translators: Label for ready to migrate in the onboarding. -->
     <string name="ready_to_migrate">Ready to migrate</string>
-
     <!-- Discord Rich Presence (Gateway) -->
     <!-- Translators: Label for logout in the Discord integration. -->
     <string name="discord_logout">Log out</string>
-
     <!-- Last.fm Activity -->
     <!-- Translators: Option or section label for profile; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Option or section label for on; retained for translation compatibility but not currently referenced by app code. -->
@@ -3402,7 +3305,6 @@
     <string name="filter_episodes">Episodes</string>
     <!-- Translators: Label for filter channels in the Library. -->
     <string name="filter_channels">Channels</string>
-
     <!-- Shared desktop strings -->
     <!-- Translators: Label for content artist display; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Supporting text beneath the content show subscriber count option; retained for translation compatibility but not currently referenced by app code. -->
@@ -3538,7 +3440,6 @@
     <string name="spotify_import_alert_title">Spotify import</string>
     <!-- Translators: Supporting text beneath the client diagnostics option in the playback developer tools. -->
     <string name="devtools_playback_client_diagnostics_description" translatable="false">Force a playback client for diagnostics. Downloads and background caching still use Automatic.</string>
-
     <!-- Shared settings UI -->
     <!-- Translators: Option or section label for localization in the settings. -->
     <string name="settings_localization">Language and region</string>
@@ -3623,7 +3524,6 @@
     <!-- Translators: Supporting text beneath the advanced lyrics option; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for manage blocklists; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Supporting text beneath the manage blocklists option; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- macOS Application Menu Bar strings -->
     <!-- Translators: Label for file in the desktop application menu. -->
     <string name="menu_file">File</string>
@@ -3772,7 +3672,6 @@
     <!-- Translators: Label for history in the desktop application menu. -->
     <string name="menu_history">History</string>
     <!-- Translators: Label for stats in the desktop application menu. -->
-
     <!-- Desktop: player / sleep timer -->
     <!-- Translators: Label for end of song in the sleep timer. -->
     <string name="sleep_timer_end_of_song">End of song</string>
@@ -3844,14 +3743,12 @@
     <string name="start">Start</string>
     <!-- Translators: Field or option label for form; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for form URL; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Translators: Pluralized count or status for remove songs from device in the downloaded and cached songs. %1$d is the song count. -->
     <plurals name="remove_songs_from_device_confirm">
         <item quantity="one">Remove %1$d song from this device?</item>
         <item quantity="other">Remove %1$d songs from this device?</item>
     </plurals>
     <!-- Translators: Pluralized count or status for delete history items; retained for translation compatibility but not currently referenced by app code. %1$d is the item count. -->
-
     <!-- Desktop: integrations overlay (Discord / ListenBrainz) -->
     <!-- Translators: Imperative action label for show artist icons; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Supporting text beneath the show artist icons option; retained for translation compatibility but not currently referenced by app code. -->
@@ -3861,7 +3758,6 @@
     <!-- Translators: Label for user token; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Option or section label for check for updates in the settings. -->
     <!-- Translators: Supporting text beneath the check for updates option in the settings. -->
-
     <!-- Desktop: Listen Together settings -->
     <!-- Translators: Label for blocked users; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for server; retained for translation compatibility but not currently referenced by app code. -->
@@ -3883,13 +3779,11 @@
     <!-- Translators: Label for display name; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for custom ws URL; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for add custom server; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: storage settings -->
     <!-- Translators: Imperative action label for enable song cache in the settings. -->
     <string name="enable_song_cache">Song cache</string>
     <!-- Translators: Supporting text beneath the enable song cache option in the settings. -->
     <string name="enable_song_cache_desc">Automatically cache songs during playback</string>
-
     <!-- Desktop: application logs -->
     <!-- Translators: Label for app logs in the desktop app. -->
     <string name="app_logs">Application logs</string>
@@ -3897,7 +3791,6 @@
     <string name="no_logs_available">No logs available</string>
     <!-- Translators: Imperative action label for export logs in the desktop app. -->
     <string name="export_logs">Export logs</string>
-
     <!-- Desktop: backup & restore -->
     <!-- Translators: Label for restore; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for create backup in the Backup & Restore. -->
@@ -3918,14 +3811,12 @@
     <string name="restore">Restore</string>
     <!-- Translators: Message explaining restoring backup in the Backup & Restore. -->
     <string name="restoring_backup">Restoring your backup…\nMuzik will restart automatically.</string>
-
     <!-- Desktop: history -->
     <!-- Translators: Imperative action label for cannot undone; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for also delete from YouTube; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Confirmation prompt for delete history item; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Legacy confirmation text for removing a song from listening history; retained for translation compatibility but not currently referenced by app code. %1$s is the song title. -->
     <!-- Translators: Error message about remote deletion unavailable; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: library -->
     <!-- Translators: Label for hidden items count in the Library. %1$d is the item count. -->
     <string name="hidden_items_count">Hidden items (%1$d)</string>
@@ -3934,7 +3825,6 @@
     <!-- Translators: Confirmation prompt for delete playlist in the Library and playlist screen. -->
     <string name="delete_playlist_confirm">Delete playlist?</string>
     <!-- Translators: Supporting text beneath the delete playlist option; retained for translation compatibility but not currently referenced by app code. %1$s is the playlist name. -->
-
     <!-- Desktop: Listen Together -->
     <!-- Translators: Confirmation prompt for leave room; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for leave; retained for translation compatibility but not currently referenced by app code. -->
@@ -3953,7 +3843,6 @@
     <!-- Translators: Label for wants to join; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Heading for track; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for album optional; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: onboarding -->
     <!-- Translators: Option or section label for policy in the Privacy settings. -->
     <string name="privacy_policy">Read our privacy policy</string>
@@ -3968,14 +3857,12 @@
     <!-- Translators: Error message about backup restart in the onboarding. %1$s is the error details. -->
     <!-- Translators: Error message about backup restore in the onboarding. %1$s is the error details. -->
     <string name="onboarding_backup_restore_failed">Restore failed: %1$s</string>
-
     <!-- Desktop: misc -->
     <!-- Translators: Empty-state message for no items found; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for all; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for warnings; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Error message about errors; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for export; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: ui/components internationalization -->
     <!-- Product name used for the compact desktop navigation destination. -->
     <string name="desktop_navigation_together" translatable="false">Together</string>
@@ -4059,7 +3946,6 @@
     <string name="or">or</string>
     <!-- Translators: Empty-state message for no lyrics for this track in the lyrics view. -->
     <string name="no_lyrics_for_this_track">No lyrics for this track</string>
-
     <!-- Desktop: keyboard shortcuts sheet -->
     <!-- Translators: Label for shortcuts playback in the desktop app. -->
     <string name="shortcuts_playback">Playback</string>
@@ -4113,7 +3999,6 @@
     <string name="shortcut_dismiss_dialogs">Dismiss / close dialogs or fullscreen</string>
     <!-- Translators: Label for reload app in the desktop keyboard shortcuts. -->
     <string name="shortcut_reload_app">Reload application</string>
-
     <!-- Desktop player & lyrics menu -->
     <!-- Translators: Imperative action label for add romanization below lyrics in the player menu. -->
     <string name="add_romanization_below_lyrics">Add romanization below lyrics</string>
@@ -4172,7 +4057,6 @@
     <string name="stop_music_after_set_time">Stop music after a set time</string>
     <!-- Translators: Label for unsubscribe in the media item menus. -->
     <string name="unsubscribe">Unsubscribe</string>
-
     <!-- Desktop media details dialog -->
     <!-- Translators: Imperative action label for add token in the desktop player. -->
     <string name="detail_add_token">Add token</string>
@@ -4189,12 +4073,10 @@
     <string name="dislike_this_song_on_youtube_music">Dislike this song on YouTube Music</string>
     <!-- Translators: Label for technical information in the desktop player. -->
     <string name="technical_information">Technical information</string>
-
     <!-- Desktop queue / context menu descriptions -->
     <!-- Translators: Imperative action label for add to bottom of queue in the media item menu. -->
     <!-- Translators: Imperative action label for add to top of queue in the media item menu. -->
     <!-- Translators: Imperative action label for change playlist name; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Translators: Playlist header count. %1$s is the playlist's song count, such as "489 songs"; %2$s is the hidden count, such as "18 hidden". -->
     <string name="song_count_with_hidden">%1$s, %2$s</string>
     <!-- Translators: Number of playlist songs hidden by content filters such as Hide video songs. %1$d is the count. -->
@@ -4207,7 +4089,6 @@
         <item quantity="one">%1$d song</item>
         <item quantity="other">%1$d songs</item>
     </plurals>
-
     <!-- Desktop: misc additions for i18n -->
     <!-- Translators: Label for app data in the Backup & Restore. -->
     <string name="app_data">App data</string>
@@ -4229,7 +4110,6 @@
     <string name="backup_filename_prefix" translatable="false">muzik-backup</string>
     <!-- Translators: Imperative action label for create backup countdown in the Backup & Restore. %1$d is the seconds remaining before backup creation. -->
     <string name="create_backup_countdown">Create backup (%1$d)</string>
-
     <!-- Desktop: Listen Together settings -->
     <!-- Translators: Label for paired devices; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Heading for listen together; retained for translation compatibility but not currently referenced by app code. -->
@@ -4250,7 +4130,6 @@
     <string name="remove_server">Remove server</string>
     <!-- Translators: Label for selected; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for choose server or add custom; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: integrations overlay -->
     <!-- Translators: Heading for rich presence; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for connected; retained for translation compatibility but not currently referenced by app code. -->
@@ -4302,7 +4181,6 @@
     <!-- Translators: Error message about connect in the ListenBrainz settings. -->
     <string name="listenbrainz_connect_failed">Connection failed</string>
     <!-- Translators: Error message about connect ListenBrainz; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: history screen -->
     <!-- Translators: Imperative action label for refresh history; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Empty-state message for no play history yet; retained for translation compatibility but not currently referenced by app code. -->
@@ -4314,7 +4192,6 @@
     <!-- Translators: Label for group yesterday; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for group this week; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for group last week; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: artist screen -->
     <!-- Translators: Label for unknown artist fallback; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for subscribers short; retained for translation compatibility but not currently referenced by app code. -->
@@ -4335,7 +4212,6 @@
     <!-- Translators: Label for subscribed with count; retained for translation compatibility but not currently referenced by app code. %1$s is the optional subscriber count. -->
     <!-- Translators: Label for subscribe with count; retained for translation compatibility but not currently referenced by app code. %1$s is the optional subscriber count. -->
     <!-- Translators: Option or section label for photo source; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: library screen -->
     <!-- Translators: Label for filter playlists; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for filter albums; retained for translation compatibility but not currently referenced by app code. -->
@@ -4363,7 +4239,6 @@
     <string name="playlist_create_action">Create</string>
     <!-- Translators: Imperative action label for playlist rename in the Library and playlist screen. -->
     <string name="playlist_rename_action">Rename</string>
-
     <!-- Desktop: local playlist screens -->
     <!-- Translators: Heading for liked songs in the playlist screen. -->
     <string name="liked_songs_title">Liked songs</string>
@@ -4414,7 +4289,6 @@
     <string name="menu">Menu</string>
     <!-- Translators: Supporting text beneath the remove from device option in the downloaded and cached songs. -->
     <string name="remove_from_device_desc">Remove from device</string>
-
     <!-- Desktop: podcast screen -->
     <!-- Translators: Label for actions in the podcasts. -->
     <string name="podcast_actions">Podcast actions</string>
@@ -4434,13 +4308,11 @@
     <!-- Translators: Imperative action label for save episode; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Confirmation message about remove saved episode; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Error message about unable to load podcast default; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: overlay scaffold -->
     <!-- Translators: Accessibility label for the close control in the desktop app. -->
     <!-- Translators: Accessibility label for the clear search control in the desktop app. -->
     <!-- Translators: Accessibility label for the back to categories control in the desktop app. -->
     <!-- Translators: Label for searching for in the desktop app. %1$s is the search query. -->
-
     <!-- Desktop: tray menu / system (limited: requires @Composable) -->
     <!-- Translators: Label for playing; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for paused; retained for translation compatibility but not currently referenced by app code. -->
@@ -4479,7 +4351,6 @@
     <string name="tray_settings">Settings</string>
     <!-- Translators: Label for quit muzik in the desktop system tray. -->
     <string name="tray_quit_muzik">Quit Muzik</string>
-
     <!-- Desktop: Discord login -->
     <!-- Translators: Imperative action label for sign in discord in the sign-in flow. -->
     <string name="sign_in_discord">Sign in to Discord</string>
@@ -4488,7 +4359,6 @@
     <string name="discord_browser_open_failed">The browser could not be opened. Try opening it again.</string>
     <!-- Translators: Error message about sign in unavailable in the Discord integration. -->
     <string name="discord_sign_in_unavailable">Discord sign-in unavailable</string>
-
     <!-- Desktop: YouTube login -->
     <!-- Translators: Imperative action label for sign in YouTube music in the sign-in flow. -->
     <string name="sign_in_youtube_music">Sign in to YouTube Music</string>
@@ -4522,7 +4392,6 @@
     <string name="login_window_closed_or_failed">Login window closed or failed.</string>
     <!-- Translators: Error message about login helper in the sign-in flow. %1$s is the helper error details. -->
     <string name="login_helper_failed">Helper failed: %1$s</string>
-
     <!-- Desktop: Listen Together -->
     <!-- Translators: Confirmation message about saved as paired room; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for pair this room; retained for translation compatibility but not currently referenced by app code. -->
@@ -4533,7 +4402,6 @@
     <!-- Translators: Confirmation message about paired room saved autojoin on; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Confirmation message about paired room saved autojoin off; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Input hint for paired room save; retained for translation compatibility but not currently referenced by app code. -->
-
     <!-- Desktop: Storage settings -->
     <!-- Translators: Option or section label for downloads storage in the settings. -->
     <!-- Translators: Option or section label for total storage used in the settings. -->
@@ -4550,7 +4418,6 @@
     <!-- Translators: Field or option label for total size in the settings. %1$s is the formatted total size. -->
     <!-- Translators: Option or section label for cached resolutions in the settings. %1$d is the resolution count. -->
     <string name="cached_resolutions">Cached resolutions: %1$d</string>
-
     <!-- Shared UI components -->
     <!-- Translators: Label for pinned in the media badges. -->
     <string name="pinned">Pinned</string>
@@ -4564,7 +4431,6 @@
     <!-- Translators: Supporting text beneath the artist videos option in the Apple Music playlist import. -->
     <!-- Translators: Heading for artist video quality in the Apple Music playlist import. -->
     <!-- Translators: Supporting text beneath the artist video quality option in the Apple Music playlist import. -->
-
     <!-- Playback errors -->
     <!-- Translators: Error message about sabr attestation in the playback. -->
     <string name="playback_error_sabr_attestation">YouTube rejected the SABR stream attestation.</string>
@@ -4590,7 +4456,6 @@
     <string name="playback_error_track_not_found">The requested track could not be found.</string>
     <!-- Translators: Error message about unable to play link in the playback. -->
     <string name="playback_error_unable_to_play_link">Unable to play the requested link.</string>
-
     <!-- Desktop state / cache / update / sidebar / logs -->
     <!-- Translators: Heading for liked song in the desktop app. -->
     <!-- Translators: Error message about could not download update manager in the desktop app. -->
@@ -4615,7 +4480,6 @@
     <string name="imported_playlist">Imported playlist</string>
     <!-- Translators: Label for song type in the media cards and search. -->
     <string name="song_type">Song</string>
-
     <!-- Playlist Imports -->
     <!-- Translators: Heading for playlist imports in the Backup & Restore. -->
     <string name="playlist_imports_title">Playlist imports</string>
@@ -4811,7 +4675,6 @@
     <!-- Translators: Heading for startup error; retained for translation compatibility but not currently referenced by app code. -->
     <string name="startup_error_title">Muzik startup error</string>
     <!-- Translators: Error message about startup error; retained for translation compatibility but not currently referenced by app code. %1$s is the temporary-storage location; %2$s is the initialization error details. -->
-
     <!-- Player control button labels -->
     <!-- Translators: Label for viewer in the music video playback. -->
     <string name="video_viewer">Video viewer</string>
@@ -4821,7 +4684,6 @@
     <string name="open_miniplayer">Open miniplayer</string>
     <!-- Translators: Label for active in the connected-player controls. -->
     <string name="active">Active</string>
-
     <!-- Video stats for nerds labels -->
     <!-- Translators: Label for stats video ID cpn in the music video playback. -->
     <string name="video_stats_video_id_cpn">Video ID / CPN</string>
@@ -4855,7 +4717,6 @@
     <string name="video_stats_position_vol">Position / volume</string>
     <!-- Translators: Label for stats date in the music video playback. -->
     <string name="video_stats_date">Date</string>
-
     <!-- Album / item type fallbacks -->
     <!-- Translators: Label for album type in the media cards. -->
     <string name="album_type">Album</string>
@@ -4965,7 +4826,6 @@
     <string name="cast_description">Play music on your TV, Chromecast or Sonos speakers using the same Wi-Fi</string>
     <!-- Translators: Short heading and switch label for TV and speaker playback in the Player settings. -->
     <string name="settings_cast_title">Cast</string>
-
     <!-- Statistics chart units and legend. -->
     <string name="statistics_chart_listens">Listens</string>
     <string name="statistics_chart_less">Less</string>
@@ -4977,7 +4837,6 @@
     <string name="small">Small</string>
     <string name="big">Big</string>
     <string name="artist_play_all">Play all</string>
-
     <!-- Music Recognition screen -->
     <!-- Translators: Imperative action label for tap to recognize in the music recognition. -->
     <string name="tap_to_recognize">Tap to recognize</string>
@@ -4993,12 +4852,11 @@
     <string name="play_on_app">Play in Muzik</string>
     <!-- Translators: Imperative action label for re-listen in the music recognition. -->
     <string name="re_listen">Re-listen</string>
-
     <!-- About screen -->
     <!-- Translators: Imperative action label for buy me a coffee in the About screen. -->
     <!-- Translators: Message explaining want to play their favorite song in the About screen. -->
-    <!-- Translators: Message explaining project stands with Palestine in the About screen. -->
-    <string name="stands_with_palestine">This project stands with Palestine</string>
+    <!-- Translators: Footer credit on the About screen. -->
+    <string name="built_by_pipo_team">Built by amazing developers at Pipo Team</string>
     <!-- Translators: Snackbar shown after long-pressing a contributor in the About screen. -->
     <string name="about_play_favorite_song">Do you want to play their favorite song?</string>
     <!-- Translators: Label for about mini player follow artist in the mini player. -->
@@ -5071,7 +4929,7 @@
     <string name="import_error_playlist_tracks_unavailable">Could not load the playlist's tracks from %1$s. Export the playlist and paste the track list.</string>
     <string name="import_error_album_tracks_unavailable">Could not load the album's tracks from %1$s. Export the album and paste the track list.</string>
 <string name="audio_boost">Preamp</string>
-<string name="equalizer_usage_warning">The Muzik team assumes no responsibility for your use of MetroEQ.</string>
+<string name="equalizer_usage_warning">The Muzik team assumes no responsibility for your use of MuzikEQ.</string>
 <string name="playlist_cover_updated">Playlist cover updated</string>
 <string name="playlist_cover_removed">Custom cover removed</string>
 <string name="login">Login</string>
@@ -5083,8 +4941,8 @@
 <string name="together">Together</string>
 <string name="equalizer_create_custom">Create custom EQ</string>
 <string name="equalizer_band_gain">%1$s Hz · %2$s dB</string>
-<string name="metroeq_q_value">Q: %1$s</string>
-<string name="metroeq_frequency_value">%1$s Hz</string>
+<string name="muzikeq_q_value">Q: %1$s</string>
+<string name="muzikeq_frequency_value">%1$s Hz</string>
 <string name="api_key">API key</string>
 <string name="credits">Credits</string>
 <string name="genre">Genre</string>
@@ -5133,20 +4991,20 @@
 <string name="canvas">Canvas</string>
 <string name="canvas_cache">Canvas cache</string>
 <string name="library_grid_columns">Library grid columns</string>
-<string name="metroeq_profiles">Saved profiles</string>
-<string name="metroeq_preset_treble">Treble boost</string>
-<string name="metroeq_preset_flat">Flat</string>
-<string name="metroeq_unsaved_changes">Unsaved changes</string>
-<string name="metroeq_preset_v_shape">V-shaped</string>
-<string name="metroeq_profile_name">Profile name</string>
-<string name="metroeq_custom_profile">Custom profile</string>
-<string name="metroeq_peak_reduction">Peak protection: %1$s dB</string>
-<string name="metroeq_preset_vocal">Vocals</string>
-<string name="metroeq">MetroEQ</string>
-<string name="metroeq_preset_rock">Rock</string>
-<string name="metroeq_save_as">Save as</string>
-<string name="metroeq_preset_bass">Bass boost</string>
-<string name="metroeq_presets">Presets</string>
+<string name="muzikeq_profiles">Saved profiles</string>
+<string name="muzikeq_preset_treble">Treble boost</string>
+<string name="muzikeq_preset_flat">Flat</string>
+<string name="muzikeq_unsaved_changes">Unsaved changes</string>
+<string name="muzikeq_preset_v_shape">V-shaped</string>
+<string name="muzikeq_profile_name">Profile name</string>
+<string name="muzikeq_custom_profile">Custom profile</string>
+<string name="muzikeq_peak_reduction">Peak protection: %1$s dB</string>
+<string name="muzikeq_preset_vocal">Vocals</string>
+<string name="muzikeq">MuzikEQ</string>
+<string name="muzikeq_preset_rock">Rock</string>
+<string name="muzikeq_save_as">Save as</string>
+<string name="muzikeq_preset_bass">Bass boost</string>
+<string name="muzikeq_presets">Presets</string>
     <string name="cast_discovery_failed">Could not search for Cast devices. Close and reopen the device picker to try again.</string>
     <string name="listen_together_pending_approvals">Pending approvals</string>
     <string name="onboarding_library_migrated_title">Your library was migrated.</string>
@@ -5214,9 +5072,9 @@
     <string name="discord_preview_buttons_adjusted">Discord shortens long button labels and omits buttons whose links are too long. This preview shows the buttons that will be sent.</string>
     <string name="discord_presence_status_warning">When enabled, rich presence sends Online status to Discord. It may override Invisible or Do Not Disturb, including when playback stops.</string>
     <string name="discord_refresh_queued">Presence refresh queued.</string>
-    <string name="metroeq_delete_profile_confirm">Delete the saved profile “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Save your changes before switching profiles?</string>
-    <string name="metroeq_discard_changes">Discard</string>
+    <string name="muzikeq_delete_profile_confirm">Delete the saved profile “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Save your changes before switching profiles?</string>
+    <string name="muzikeq_discard_changes">Discard</string>
     <string name="listen_together_suggestion_submitted">Suggestion sent to the host</string>
     <string name="listen_together_suggestion_approved">Your song suggestion was approved</string>
     <string name="listen_together_suggestion_rejected">Your song suggestion was rejected</string>
@@ -5402,7 +5260,6 @@
     <string name="lyrics_editor_invalid_timestamp">Invalid timestamp on line %1$d. Use [mm:ss.cc]. Your draft is kept until you correct it.</string>
     <string name="lyrics_editor_save_error">Could not save your lyrics. Retry before leaving the editor.</string>
     <string name="lyrics_editor_limit_error">These lyrics exceed the supported size. Your draft is kept. Shorten it before exporting or syncing.</string>
-
     <!-- Settings page contents and explanations for controls. -->
     <string name="settings_appearance_overview">Theme, fonts and player appearance</string>
     <string name="settings_android_auto_overview">Driving playlists and quick-add destination</string>

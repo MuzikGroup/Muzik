@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -38,23 +38,11 @@ import com.muzik.shared.generated.resources.about
 import com.muzik.shared.generated.resources.brand_discord
 import com.muzik.shared.generated.resources.brand_github
 import com.muzik.shared.generated.resources.brand_telegram
-import com.muzik.shared.generated.resources.credits_android_designer
-import com.muzik.shared.generated.resources.credits_android_developer
-import com.muzik.shared.generated.resources.credits_android_lead
-import com.muzik.shared.generated.resources.credits_collaborators_section
-import com.muzik.shared.generated.resources.credits_creator
-import com.muzik.shared.generated.resources.credits_creator_section
-import com.muzik.shared.generated.resources.credits_desktop_developer
-import com.muzik.shared.generated.resources.credits_desktop_lead
-import com.muzik.shared.generated.resources.credits_leads_section
+import com.muzik.shared.generated.resources.credits_lead_developer
+import com.muzik.shared.generated.resources.credits_other_contributors
+import com.muzik.shared.generated.resources.credits_team_section
 import com.muzik.shared.generated.resources.credits_license_desc
 import com.muzik.shared.generated.resources.credits_license_name
-import com.muzik.shared.generated.resources.credits_lyrics_ui_services
-import com.muzik.shared.generated.resources.credits_macos_developer
-import com.muzik.shared.generated.resources.credits_multiplatform_developer
-import com.muzik.shared.generated.resources.credits_wearos_designer
-import com.muzik.shared.generated.resources.credits_windows_developer
-import com.muzik.shared.generated.resources.discord_rpc_title
 import com.muzik.shared.generated.resources.open_github_profile
 import com.muzik.shared.generated.resources.open_website
 import com.muzik.shared.generated.resources.sponsor_developer
@@ -70,21 +58,10 @@ import org.jetbrains.compose.resources.stringResource as sharedStringResource
 fun rememberAboutScreenText(): AboutScreenText =
     AboutScreenText(
         title = sharedStringResource(Res.string.about),
-        creatorSection = sharedStringResource(Res.string.credits_creator_section),
-        leadsSection = sharedStringResource(Res.string.credits_leads_section),
-        collaborators = sharedStringResource(Res.string.credits_collaborators_section),
-        creatorRole = sharedStringResource(Res.string.credits_creator),
-        androidLeadRole = sharedStringResource(Res.string.credits_android_lead),
-        desktopLeadRole = sharedStringResource(Res.string.credits_desktop_lead),
-        discordRichPresenceRole = sharedStringResource(Res.string.discord_rpc_title),
-        androidDevelopmentRole = sharedStringResource(Res.string.credits_android_developer),
-        desktopDevelopmentRole = sharedStringResource(Res.string.credits_desktop_developer),
-        multiplatformDevelopmentRole = sharedStringResource(Res.string.credits_multiplatform_developer),
-        macosDevelopmentRole = sharedStringResource(Res.string.credits_macos_developer),
-        windowsDevelopmentRole = sharedStringResource(Res.string.credits_windows_developer),
-        lyricsUiServicesRole = sharedStringResource(Res.string.credits_lyrics_ui_services),
-        androidDesignerRole = sharedStringResource(Res.string.credits_android_designer),
-        wearOsDesignerRole = sharedStringResource(Res.string.credits_wearos_designer),
+        leadSection = sharedStringResource(Res.string.credits_lead_developer),
+        teamSection = sharedStringResource(Res.string.credits_team_section),
+        leadDeveloperRole = sharedStringResource(Res.string.credits_lead_developer),
+        pipoTeamRole = sharedStringResource(Res.string.credits_other_contributors),
         discord = sharedStringResource(Res.string.brand_discord),
         telegram = sharedStringResource(Res.string.brand_telegram),
         github = sharedStringResource(Res.string.brand_github),
@@ -93,18 +70,8 @@ fun rememberAboutScreenText(): AboutScreenText =
     )
 
 enum class AboutContributorRole {
-    CREATOR,
-    ANDROID_LEAD,
-    DESKTOP_LEAD,
-    DISCORD_RICH_PRESENCE,
-    ANDROID_DEVELOPMENT,
-    DESKTOP_DEVELOPMENT,
-    MULTIPLATFORM_DEVELOPMENT,
-    MACOS_DEVELOPMENT,
-    WINDOWS_DEVELOPMENT,
-    LYRICS_UI_SERVICES,
-    ANDROID_DESIGNER,
-    WEAROS_DESIGNER,
+    LEAD_DEVELOPER,
+    PIPO_TEAM,
 }
 
 enum class AboutAvatarShape {
@@ -134,99 +101,30 @@ data class AboutContributor(
     val githubUrl: String? = githubHandle?.let { "https://github.com/$it" }
 }
 
+// Muzik is built by Ignatius (lead developer) together with the Pipo Team.
 object AboutContributors {
-    val lead: AboutContributor =
+    val leadDeveloper: AboutContributor =
         AboutContributor(
-            name = "Mo Agamy",
-            role = AboutContributorRole.CREATOR,
-            githubHandle = "mostafaalagamy",
-            sponsorUrl = "https://buymeacoffee.com/mostafaalagamy",
+            name = "Ignatius",
+            role = AboutContributorRole.LEAD_DEVELOPER,
+            githubHandle = "Motius",
+            sponsorUrl = "https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13",
             avatarShape = AboutAvatarShape.COOKIE_9_SIDED,
             favoriteSongVideoId = "Mh2JWGWvy_Y",
         )
 
-    val leads: List<AboutContributor> =
+    val otherContributors: List<AboutContributor> =
         listOf(
             AboutContributor(
-                name = "Lamp",
-                role = AboutContributorRole.DESKTOP_LEAD,
-                githubHandle = "l6t9",
-                websiteUrl = "https://lampu.dev",
-                sponsorUrl = "https://github.com/sponsors/l6t9",
-                avatarShape = AboutAvatarShape.COOKIE_9_SIDED,
-            ),
-            AboutContributor(
-                name = "Nyx",
-                role = AboutContributorRole.ANDROID_LEAD,
-                githubHandle = "nyxiereal",
-                websiteUrl = "https://nyx.meowery.eu",
-                sponsorUrl = "https://github.com/sponsors/nyxiereal",
-                avatarShape = AboutAvatarShape.COOKIE_9_SIDED,
-            ),
-        ).sortedBy { it.name.lowercase() }
-
-    val collaborators: List<AboutContributor> =
-        listOf(
-            AboutContributor(
-                name = "Adriel O'Connel",
-                role = AboutContributorRole.MULTIPLATFORM_DEVELOPMENT,
-                githubHandle = "adrielGGmotion",
-                sponsorUrl = "https://github.com/sponsors/adrielGGmotion",
-                avatarShape = AboutAvatarShape.COOKIE_4_SIDED,
-                favoriteSongVideoId = "m2zUrruKjDQ",
-            ),
-            AboutContributor(
-                name = "Show",
-                role = AboutContributorRole.ANDROID_DESIGNER,
-                githubHandle = "showtc",
-                avatarShape = AboutAvatarShape.COOKIE_6_SIDED,
-            ),
-            AboutContributor(
-                name = "Ibra Al Tabian",
-                role = AboutContributorRole.LYRICS_UI_SERVICES,
-                githubHandle = "ibratabian17",
-                sponsorUrl = "https://ko-fi.com/ibratabian17",
-                avatarShape = AboutAvatarShape.SUNNY,
-            ),
-            AboutContributor(
-                name = "Ismail Tiryaki",
-                role = AboutContributorRole.MULTIPLATFORM_DEVELOPMENT,
-                githubHandle = "isotjs",
-                websiteUrl = "https://ismailtiryaki.dev",
-                avatarShape = AboutAvatarShape.GEM,
-                favoriteSongVideoId = "NdAYM9Voudg",
-            ),
-            AboutContributor(
-                name = "Alessio Attilio",
-                role = AboutContributorRole.MULTIPLATFORM_DEVELOPMENT,
-                githubHandle = "kairosci",
-                websiteUrl = "https://kairosci.vercel.app",
-                sponsorUrl = "https://github.com/sponsors/kairosci",
-                avatarShape = AboutAvatarShape.COOKIE_6_SIDED,
-            ),
-            AboutContributor(
-                name = "Applxcake",
-                role = AboutContributorRole.MACOS_DEVELOPMENT,
-                githubHandle = "applxcake",
-                sponsorUrl = "https://github.com/sponsors/applxcake",
-                avatarShape = AboutAvatarShape.PUFFY_DIAMOND,
-            ),
-            AboutContributor(
-                name = "AlexxBytes",
-                role = AboutContributorRole.DESKTOP_DEVELOPMENT,
-                githubHandle = "alexxbytes",
-                sponsorUrl = "https://github.com/sponsors/alexxbytes",
+                name = "Pipo Team",
+                role = AboutContributorRole.PIPO_TEAM,
+                githubHandle = "MuzikGroup",
+                websiteUrl = "https://pipo.ai",
                 avatarShape = AboutAvatarShape.COOKIE_4_SIDED,
             ),
-            AboutContributor(
-                name = "Tryfle",
-                role = AboutContributorRole.MACOS_DEVELOPMENT,
-                githubHandle = "Tryflle",
-                avatarShape = AboutAvatarShape.BURST,
-            ),
-        ).sortedBy { it.name.lowercase() }
+        )
 
-    val all: List<AboutContributor> = listOf(lead) + leads + collaborators
+    val all: List<AboutContributor> = listOf(leadDeveloper) + otherContributors
 }
 
 enum class AboutCommunityLinkKind {
@@ -244,7 +142,7 @@ data class AboutCommunityLink(
 val aboutCommunityLinks: List<AboutCommunityLink> =
     listOf(
         AboutCommunityLink(AboutCommunityLinkKind.DISCORD, "https://discord.com/invite/zrdbeRG2Mt"),
-        AboutCommunityLink(AboutCommunityLinkKind.TELEGRAM, "https://t.me/muzikapp"),
+        AboutCommunityLink(AboutCommunityLinkKind.TELEGRAM, "https://t.me/Muzik_ke"),
         AboutCommunityLink(AboutCommunityLinkKind.REPOSITORY, "https://github.com/MuzikGroup/MuzikDesktop"),
     )
 
@@ -253,21 +151,10 @@ val aboutLicenseLink: AboutCommunityLink =
 
 data class AboutScreenText(
     val title: String,
-    val creatorSection: String,
-    val leadsSection: String,
-    val collaborators: String,
-    val creatorRole: String,
-    val androidLeadRole: String,
-    val desktopLeadRole: String,
-    val discordRichPresenceRole: String,
-    val androidDevelopmentRole: String,
-    val desktopDevelopmentRole: String,
-    val multiplatformDevelopmentRole: String,
-    val macosDevelopmentRole: String,
-    val windowsDevelopmentRole: String,
-    val lyricsUiServicesRole: String,
-    val androidDesignerRole: String,
-    val wearOsDesignerRole: String,
+    val leadSection: String,
+    val teamSection: String,
+    val leadDeveloperRole: String,
+    val pipoTeamRole: String,
     val discord: String,
     val telegram: String,
     val github: String,
@@ -276,18 +163,8 @@ data class AboutScreenText(
 ) {
     fun roleLabel(role: AboutContributorRole): String =
         when (role) {
-            AboutContributorRole.CREATOR -> creatorRole
-            AboutContributorRole.ANDROID_LEAD -> androidLeadRole
-            AboutContributorRole.DESKTOP_LEAD -> desktopLeadRole
-            AboutContributorRole.DISCORD_RICH_PRESENCE -> discordRichPresenceRole
-            AboutContributorRole.ANDROID_DEVELOPMENT -> androidDevelopmentRole
-            AboutContributorRole.DESKTOP_DEVELOPMENT -> desktopDevelopmentRole
-            AboutContributorRole.MULTIPLATFORM_DEVELOPMENT -> multiplatformDevelopmentRole
-            AboutContributorRole.MACOS_DEVELOPMENT -> macosDevelopmentRole
-            AboutContributorRole.WINDOWS_DEVELOPMENT -> windowsDevelopmentRole
-            AboutContributorRole.LYRICS_UI_SERVICES -> lyricsUiServicesRole
-            AboutContributorRole.ANDROID_DESIGNER -> androidDesignerRole
-            AboutContributorRole.WEAROS_DESIGNER -> wearOsDesignerRole
+            AboutContributorRole.LEAD_DEVELOPER -> leadDeveloperRole
+            AboutContributorRole.PIPO_TEAM -> pipoTeamRole
         }
 
     fun communityLabel(kind: AboutCommunityLinkKind): String =
@@ -332,18 +209,8 @@ fun AuthorInfoSheet(
 ) {
     val roleLabel =
         when (contributor.role) {
-            AboutContributorRole.CREATOR -> sharedStringResource(Res.string.credits_creator)
-            AboutContributorRole.ANDROID_LEAD -> sharedStringResource(Res.string.credits_android_lead)
-            AboutContributorRole.DESKTOP_LEAD -> sharedStringResource(Res.string.credits_desktop_lead)
-            AboutContributorRole.DISCORD_RICH_PRESENCE -> sharedStringResource(Res.string.discord_rpc_title)
-            AboutContributorRole.ANDROID_DEVELOPMENT -> sharedStringResource(Res.string.credits_android_developer)
-            AboutContributorRole.DESKTOP_DEVELOPMENT -> sharedStringResource(Res.string.credits_desktop_developer)
-            AboutContributorRole.MULTIPLATFORM_DEVELOPMENT -> sharedStringResource(Res.string.credits_multiplatform_developer)
-            AboutContributorRole.MACOS_DEVELOPMENT -> sharedStringResource(Res.string.credits_macos_developer)
-            AboutContributorRole.WINDOWS_DEVELOPMENT -> sharedStringResource(Res.string.credits_windows_developer)
-            AboutContributorRole.LYRICS_UI_SERVICES -> sharedStringResource(Res.string.credits_lyrics_ui_services)
-            AboutContributorRole.ANDROID_DESIGNER -> sharedStringResource(Res.string.credits_android_designer)
-            AboutContributorRole.WEAROS_DESIGNER -> sharedStringResource(Res.string.credits_wearos_designer)
+            AboutContributorRole.LEAD_DEVELOPER -> sharedStringResource(Res.string.credits_lead_developer)
+            AboutContributorRole.PIPO_TEAM -> sharedStringResource(Res.string.credits_other_contributors)
         }
 
     ModalBottomSheet(
@@ -462,7 +329,10 @@ fun AuthorInfoSheet(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center,
                         ) {
-                            if (url.contains("buymeacoffee.com", ignoreCase = true)) {
+                            if (
+                                url.contains("buymeacoffee.com", ignoreCase = true) ||
+                                url.contains("buymesoda.com", ignoreCase = true)
+                            ) {
                                 Icon(
                                     imageVector = MuzikIconsBrand.BuyMeACoffee,
                                     contentDescription = null,

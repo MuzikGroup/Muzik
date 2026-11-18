@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="bitrate_value">%1$d kbit/s</string>
     <string name="sample_rate_value">%1$d Hz</string>
     <string name="import_error_unsupported_playlist_entries">Šajā atskaņošanas sarakstā ir lokāli faili vai tiešas saites, kam Android nevar piekļūt. Importējiet sarakstu ar YouTube saitēm vai izvēlieties lokālos failus datorā.</string>
@@ -181,9 +181,9 @@
     <string name="discord_preview_buttons_adjusted">Discord saīsina garus pogu nosaukumus un izlaiž pogas ar pārāk garām saitēm. Šajā priekšskatījumā ir redzamas pogas, kas tiks nosūtītas.</string>
     <string name="discord_presence_status_warning">Paplašinātais statuss nosūta Discord statusu Tiešsaistē. Tas var aizstāt Neredzams vai Netraucēt, arī pēc atskaņošanas apturēšanas.</string>
     <string name="discord_refresh_queued">Statusa atsvaidzināšana ievietota rindā.</string>
-    <string name="metroeq_delete_profile_confirm">Dzēst saglabāto profilu “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Saglabāt izmaiņas pirms profila pārslēgšanas?</string>
-    <string name="metroeq_discard_changes">Atmest</string>
+    <string name="muzikeq_delete_profile_confirm">Dzēst saglabāto profilu “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Saglabāt izmaiņas pirms profila pārslēgšanas?</string>
+    <string name="muzikeq_discard_changes">Atmest</string>
     <string name="listen_together_suggestion_submitted">Ieteikums nosūtīts saimniekam</string>
     <string name="listen_together_suggestion_approved">Jūsu dziesmas ieteikums ir apstiprināts</string>
     <string name="listen_together_suggestion_rejected">Jūsu dziesmas ieteikums ir noraidīts</string>
@@ -252,8 +252,8 @@
     <string name="new_badge">Jauns</string>
     <string name="start_typing_to_search_music">Sāciet rakstīt, lai meklētu pakalpojumā YouTube Music</string>
     <string name="filter_episodes">Sērijas</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (raidieraksti)</string>
     <string name="sponsorblock_podcasts_description">Izlaist sponsorus, pašreklāmu un aicinājumus iesaistīties tikai raidierakstu epizodēs. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Reklāmas segments izlaists</string>

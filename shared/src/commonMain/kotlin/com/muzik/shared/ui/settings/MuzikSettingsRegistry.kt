@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(
@@ -106,8 +106,8 @@ fun rememberMuzikSettingsRegistry(
 
                     SettingsPageId.EQUALIZER -> {
                         listOf(
-                            Res.string.metroeq_presets,
-                            Res.string.metroeq_profiles,
+                            Res.string.muzikeq_presets,
+                            Res.string.muzikeq_profiles,
                             Res.string.equalizer_create_custom,
                             Res.string.import_profile,
                             Res.string.eq_wizard,
@@ -140,8 +140,8 @@ fun rememberMuzikSettingsRegistry(
 
                     SettingsPageId.ABOUT -> {
                         listOf(
-                            Res.string.credits_creator_section,
-                            Res.string.credits_collaborators_section,
+                            Res.string.credits_lead_developer,
+                            Res.string.credits_team_section,
                             Res.string.brand_github,
                             Res.string.brand_discord,
                             Res.string.brand_telegram,
@@ -161,7 +161,7 @@ fun rememberMuzikSettingsRegistry(
 
     customPage(
         SettingsPageId.EQUALIZER,
-        stringResource(Res.string.metroeq),
+        stringResource(Res.string.muzikeq),
         stringResource(Res.string.settings_equalizer_overview),
         MuzikIcons.Outlined.BarChart,
         SettingsTone.PURPLE,

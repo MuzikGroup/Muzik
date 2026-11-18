@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  *
  * LAN discovery via Android NsdManager. The local service advertises its opaque id,
  * display name, and coarse device type; authenticated metadata is exchanged after pairing.

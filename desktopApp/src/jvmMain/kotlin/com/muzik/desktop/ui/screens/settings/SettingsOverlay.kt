@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 package com.muzik.desktop.ui.screens.settings
@@ -144,6 +144,7 @@ fun SettingsOverlay(colorScheme: ColorScheme) {
                 SettingsPageId.LYRICS_ROMANIZATION,
                 SettingsPageId.PLAYER_ARTWORK,
                 SettingsPageId.PLAYER_STYLE,
+                SettingsPageId.MINI_PLAYER_STYLE,
             )
     val systemDefaultLabel = stringResource(Res.string.app_language_system)
     val systemLocale = Locale.getDefault()

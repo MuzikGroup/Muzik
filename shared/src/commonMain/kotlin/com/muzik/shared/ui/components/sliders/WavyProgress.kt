@@ -16,7 +16,7 @@
 
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  *
  * Determinate drawing adapted from Material 3's LinearWavyProgressIndicator.
  */

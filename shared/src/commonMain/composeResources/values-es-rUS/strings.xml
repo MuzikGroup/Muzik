@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Inicio</string>
     <string name="offline_mode">Modo sin conexión</string>
     <string name="songs">Canciones</string>
@@ -244,16 +244,6 @@
     <string name="dismiss">Descartar</string>
     <string name="preview">Vista previa</string>
     <string name="about">Acerca de</string>
-    <string name="credits_android_lead">Desarrollador principal de Android</string>
-    <string name="credits_desktop_lead">Desarrollador principal de escritorio</string>
-    <string name="credits_creator">Creador de Muzik</string>
-    <string name="credits_android_developer">Desarrollador de Android</string>
-    <string name="credits_desktop_developer">Desarrollador de escritorio</string>
-    <string name="credits_macos_developer">Desarrollador de macOS</string>
-    <string name="credits_windows_developer">Desarrollador de Windows</string>
-    <string name="credits_lyrics_ui_services">Interfaz de usuario y servicios de letras</string>
-    <string name="credits_android_designer">Diseñador de Android</string>
-    <string name="credits_wearos_designer">Diseñador de WearOS</string>
     <string name="open_website">Abrir sitio web</string>
     <string name="open_github_profile">Abrir perfil de GitHub</string>
     <string name="sponsor_developer">Patrocinar al desarrollador</string>
@@ -2041,9 +2031,9 @@
     <string name="discord_preview_buttons_adjusted">Discord acorta las etiquetas largas de los botones y omite los botones con enlaces demasiado largos. Esta vista previa muestra los botones que se enviarán.</string>
     <string name="discord_presence_status_warning">Rich Presence envía el estado En línea a Discord. Puede reemplazar Invisible o No molestar, incluso cuando se detiene la reproducción.</string>
     <string name="discord_refresh_queued">Actualización de presencia en espera.</string>
-    <string name="metroeq_delete_profile_confirm">¿Eliminar el perfil guardado “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">¿Guardar tus cambios antes de cambiar de perfil?</string>
-    <string name="metroeq_discard_changes">Descartar</string>
+    <string name="muzikeq_delete_profile_confirm">¿Eliminar el perfil guardado “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">¿Guardar tus cambios antes de cambiar de perfil?</string>
+    <string name="muzikeq_discard_changes">Descartar</string>
     <string name="listen_together_suggestion_submitted">Sugerencia enviada al anfitrión</string>
     <string name="listen_together_suggestion_approved">Se aprobó tu sugerencia de canción</string>
     <string name="listen_together_suggestion_rejected">Se rechazó tu sugerencia de canción</string>
@@ -2083,8 +2073,8 @@
     <string name="top_period_past_month">Último mes</string>
     <string name="top_period_past_year">Último año</string>
     <string name="new_badge">Nuevo</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (pódcasts)</string>
     <string name="sponsorblock_podcasts_description">Omitir patrocinadores, autopromoción y solicitudes de interacción solo en episodios de pódcast. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Segmento promocional omitido</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Početna</string>
     <string name="offline_mode">Režim bez interneta</string>
     <string name="songs">Pesme</string>
@@ -237,12 +237,6 @@
     <string name="dismiss">Odbaci</string>
     <string name="preview">Pregled</string>
     <string name="about">Opis</string>
-    <string name="credits_android_developer">Android programer</string>
-    <string name="credits_desktop_developer">Desktop programer</string>
-    <string name="credits_macos_developer">macOS programer</string>
-    <string name="credits_windows_developer">Windows programer</string>
-    <string name="credits_android_designer">Android dizajner</string>
-    <string name="credits_wearos_designer">WearOS dizajner</string>
     <string name="open_website">Otvori vebsajt</string>
     <string name="sponsor_developer">Podrži programera</string>
     <string name="credits_license_name">Licenca</string>
@@ -830,7 +824,6 @@
     <string name="device_connect_paired">Upareno</string>
     <string name="device_connect_device_type_ios">iOS</string>
     <string name="device_connect_available">Dostupno</string>
-    <string name="credits_creator">Kreator Muzik-a</string>
     <string name="settings_color_hex">Hex boja</string>
     <string name="startup_error_title">Грешка при покретању апликације Muzik</string>
     <string name="lyrics_show_translations">Prikaži prevode</string>
@@ -983,9 +976,9 @@
     <string name="discord_preview_buttons_adjusted">Discord skraćuje duge oznake dugmadi i izostavlja dugmad s predugim linkovima. Ovaj pregled prikazuje dugmad koja će biti poslata.</string>
     <string name="discord_presence_status_warning">Detaljni status šalje status Na mreži na Discord. Može zameniti Nevidljiv ili Ne uznemiravaj, čak i kada se reprodukcija zaustavi.</string>
     <string name="discord_refresh_queued">Osvežavanje statusa je stavljeno u red.</string>
-    <string name="metroeq_delete_profile_confirm">Izbrisati sačuvani profil „%1$s“?</string>
-    <string name="metroeq_switch_profile_confirm">Sačuvati promene pre promene profila?</string>
-    <string name="metroeq_discard_changes">Odbaci</string>
+    <string name="muzikeq_delete_profile_confirm">Izbrisati sačuvani profil „%1$s“?</string>
+    <string name="muzikeq_switch_profile_confirm">Sačuvati promene pre promene profila?</string>
+    <string name="muzikeq_discard_changes">Odbaci</string>
     <string name="listen_together_suggestion_submitted">Predlog je poslat domaćinu</string>
     <string name="listen_together_suggestion_approved">Vaš predlog pesme je odobren</string>
     <string name="listen_together_suggestion_rejected">Vaš predlog pesme je odbijen</string>
@@ -1050,8 +1043,8 @@
     <string name="onboarding_backup_restore_failed">Vraćanje nije uspelo: %1$s</string>
     <string name="new_badge">Novo</string>
     <string name="start_typing_to_search_music">Почни да куцаш за претрагу на YouTube Music-у</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (подкасти)</string>
     <string name="sponsorblock_podcasts_description">Прескочи спонзоре, самопромоцију и позиве на интеракцију само у епизодама подкаста. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Промотивни сегмент прескочен</string>
@@ -1156,15 +1149,8 @@
     <string name="explicit_only">Samo eksplicitne pesme</string>
     <string name="explicit_only_desc">Prikaži samo pesme označene kao eksplicitne</string>
     <string name="bottom_sheet_pane_title">Donji panel</string>
-    <string name="credits_android_lead">Vodeći Android programer</string>
-    <string name="credits_desktop_lead">Vodeći desktop programer</string>
-    <string name="credits_multiplatform_developer">Multiplatformski programer</string>
-    <string name="credits_lyrics_ui_services">Interfejs za tekstove pesama i servisi</string>
     <string name="open_github_profile">Otvori GitHub profil</string>
     <string name="credits_license_desc">Muzik je licenciran pod GPL-3.0</string>
-    <string name="credits_collaborators_section">Saradnici</string>
-    <string name="credits_leads_section">Vodiči</string>
-    <string name="credits_creator_section">Autor</string>
     <string name="devmode_already_active" translatable="true">Režim za programere je već uključen</string>
     <string name="discord_enable_rich_presence">Discord Rich Presence</string>
     <string name="discord_listen_to_muzik">Slušaj Muzik</string>

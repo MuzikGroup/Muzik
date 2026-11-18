@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">首页</string>
     <string name="offline_mode">离线模式</string>
     <string name="songs">歌曲</string>
@@ -215,12 +215,6 @@
     <string name="dismiss">关闭</string>
     <string name="preview">预览</string>
     <string name="about">关于</string>
-    <string name="credits_desktop_lead">首席桌面开发者</string>
-    <string name="credits_creator">Muzik 创建者</string>
-    <string name="credits_desktop_developer">桌面开发者</string>
-    <string name="credits_macos_developer">macOS 开发者</string>
-    <string name="credits_lyrics_ui_services">歌词界面及服务</string>
-    <string name="credits_android_designer">Android 设计师</string>
     <string name="open_website">打开网站</string>
     <string name="open_github_profile">打开 GitHub 个人资料</string>
     <string name="sponsor_developer">赞助开发者</string>
@@ -612,9 +606,9 @@
     <string name="discord_preview_buttons_adjusted">Discord 会缩短过长的按钮文字，并省略链接过长的按钮。此预览显示实际将发送的按钮。</string>
     <string name="discord_presence_status_warning">详细活动状态会向 Discord 发送“在线”状态。它可能覆盖“隐身”或“请勿打扰”，即使播放停止后也是如此。</string>
     <string name="discord_refresh_queued">状态刷新已加入队列。</string>
-    <string name="metroeq_delete_profile_confirm">删除已保存的配置“%1$s”？</string>
-    <string name="metroeq_switch_profile_confirm">切换配置前保存更改？</string>
-    <string name="metroeq_discard_changes">放弃</string>
+    <string name="muzikeq_delete_profile_confirm">删除已保存的配置“%1$s”？</string>
+    <string name="muzikeq_switch_profile_confirm">切换配置前保存更改？</string>
+    <string name="muzikeq_discard_changes">放弃</string>
     <string name="listen_together_suggestion_submitted">建议已发送给房主</string>
     <string name="listen_together_suggestion_approved">您的歌曲建议已获批准</string>
     <string name="listen_together_suggestion_rejected">您的歌曲建议已被拒绝</string>
@@ -683,14 +677,13 @@
     <string name="new_badge">新</string>
     <string name="start_typing_to_search_music">开始输入以搜索 YouTube Music</string>
     <string name="filter_episodes">单集</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s 赫兹</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s 赫兹</string>
     <string name="sponsorblock_podcasts">SponsorBlock（播客）</string>
     <string name="sponsorblock_podcasts_description">仅在播客单集中跳过赞助、自我推广和互动请求片段。 (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">已跳过推广片段</string>
     <string name="episode_played">已播放</string>
     <string name="lastfm_service_error">暂时无法登录 Last.fm。请稍后重试。</string>
-
     <string name="settings_appearance_overview">主题、字体和播放器外观</string>
     <string name="settings_android_auto_overview">车载播放列表和快速添加的目标列表</string>
     <string name="settings_about_overview">贡献者、社区链接和许可证</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Heim</string>
     <string name="songs">Songar</string>
     <string name="artists">Artistar</string>
@@ -348,9 +348,9 @@
     <string name="discord_preview_buttons_adjusted">Discord kortar ned lange knappetekstar og utelèt knappar med for lange lenkjer. Denne førehandsvisinga syner knappane som vert sende.</string>
     <string name="discord_presence_status_warning">Utvida status sender Pålogga-status til Discord og kan overstyre Usynleg eller Ikkje forstyrr, òg når avspelinga stoppar</string>
     <string name="discord_refresh_queued">Statusoppdateringa er sett i kø.</string>
-    <string name="metroeq_delete_profile_confirm">Ta bort den lagra profilen «%1$s»?</string>
-    <string name="metroeq_switch_profile_confirm">Lagre endringane før du byter profil?</string>
-    <string name="metroeq_discard_changes">Forkast</string>
+    <string name="muzikeq_delete_profile_confirm">Ta bort den lagra profilen «%1$s»?</string>
+    <string name="muzikeq_switch_profile_confirm">Lagre endringane før du byter profil?</string>
+    <string name="muzikeq_discard_changes">Forkast</string>
     <string name="listen_together_suggestion_submitted">Framlegget er sendt til verten</string>
     <string name="listen_together_suggestion_approved">Songframlegget ditt vart godkjent</string>
     <string name="listen_together_suggestion_rejected">Songframlegget ditt vart avvist</string>
@@ -419,8 +419,8 @@
     <string name="new_badge">Ny</string>
     <string name="start_typing_to_search_music">Byrj å skrive for å søkje på YouTube Music</string>
     <string name="filter_episodes">Episodar</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podkastar)</string>
     <string name="sponsorblock_podcasts_description">Hopp over sponsorar, eigenreklame og oppmodingar til samhandling berre i podkastepisodar. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Reklamesegment hoppa over</string>

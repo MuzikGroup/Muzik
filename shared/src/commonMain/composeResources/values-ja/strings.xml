@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">ホーム</string>
     <string name="songs">曲</string>
     <string name="artists">アーティスト</string>
@@ -349,9 +349,9 @@
     <string name="discord_preview_buttons_adjusted">Discord は長いボタン名を短縮し、リンクが長すぎるボタンを省略します。このプレビューには送信されるボタンが表示されます。</string>
     <string name="discord_presence_status_warning">リッチプレゼンスを有効にすると、Discord にオンライン状態が送信され、「オンライン状態を隠す」や「取り込み中」が上書きされることがあります。再生停止時にも影響する場合があります。</string>
     <string name="discord_refresh_queued">アクティビティ情報の更新を予約しました。</string>
-    <string name="metroeq_delete_profile_confirm">保存済みのプロファイル「%1$s」を削除しますか？</string>
-    <string name="metroeq_switch_profile_confirm">プロファイルを切り替える前に変更を保存しますか？</string>
-    <string name="metroeq_discard_changes">破棄</string>
+    <string name="muzikeq_delete_profile_confirm">保存済みのプロファイル「%1$s」を削除しますか？</string>
+    <string name="muzikeq_switch_profile_confirm">プロファイルを切り替える前に変更を保存しますか？</string>
+    <string name="muzikeq_discard_changes">破棄</string>
     <string name="listen_together_suggestion_submitted">ホストに曲の提案を送信しました</string>
     <string name="listen_together_suggestion_approved">提案した曲が承認されました</string>
     <string name="listen_together_suggestion_rejected">提案した曲が拒否されました</string>
@@ -420,8 +420,8 @@
     <string name="new_badge">新着</string>
     <string name="start_typing_to_search_music">入力してYouTube Musicを検索</string>
     <string name="filter_episodes">エピソード</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock（ポッドキャスト）</string>
     <string name="sponsorblock_podcasts_description">ポッドキャストのエピソードでのみ、スポンサー、自己宣伝、反応を促す案内をスキップします。 (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">宣伝区間をスキップしました</string>

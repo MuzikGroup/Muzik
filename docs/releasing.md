@@ -54,7 +54,7 @@ Both architectures normally package on Apple Silicon; x64 runtime tools run unde
 
 ## Release notes and metadata
 
-`docs/changelog.md` supplies stable release notes. `.github/scripts/parse_changelog.sh vX.Y.Z` reads it by default and extracts the exact `---vX.Y.Z` entry up to the next version marker. It rejects missing or empty entries and TODO markers, ignoring case. Preserve released entries and contributor credits.
+`docs/changelog.md` supplies stable release notes. Release notes on GitHub are auto-generated (`--generate-notes`) with a custom intro; keep `docs/changelog.md` updated with one `---vX.Y.Z` entry per release.
 
 The stable prepare job validates that entry and requires a nonempty `fastlane/metadata/android/en-US/changelogs/<versionCode>.txt`, using the value in `androidApp/build.gradle.kts`. These checks run before the verification gate and all packaging jobs. Publication uses the extracted notes for new releases and refreshes existing drafts; it never falls back to generated notes or changes a published release. Tester notes keep their separate generation flow.
 

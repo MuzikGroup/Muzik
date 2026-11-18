@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">මුල් පිටුව</string>
     <string name="songs">සිංදු</string>
     <string name="bitrate_value">%1$d කිලෝබිට්/තත්පර</string>
@@ -180,9 +180,9 @@
     <string name="discord_preview_buttons_adjusted">Discord දිගු බොත්තම් පෙළ කෙටි කරන අතර සබැඳි ඉතා දිගු බොත්තම් අත්හරියි. මෙම පෙරදසුනේ යවනු ලබන බොත්තම් පෙන්වයි.</string>
     <string name="discord_presence_status_warning">විස්තරාත්මක ක්‍රියාකාරකම් තත්ත්වය සක්‍රිය කිරීමෙන් Discord වෙත මාර්ගගත තත්ත්වය යැවෙන අතර නොපෙනෙන හෝ බාධා නොකරන්න තත්ත්ව වෙනස් විය හැක. වාදනය නවත්වන විටත් මෙය සිදු විය හැක.</string>
     <string name="discord_refresh_queued">ක්‍රියාකාරකම් තත්ත්වය නැවුම් කිරීම පෝලිමට එක් කර ඇත.</string>
-    <string name="metroeq_delete_profile_confirm">සුරැකි “%1$s” පැතිකඩ මකන්නද?</string>
-    <string name="metroeq_switch_profile_confirm">පැතිකඩ මාරු කිරීමට පෙර වෙනස්කම් සුරකින්නද?</string>
-    <string name="metroeq_discard_changes">ඉවත දමන්න</string>
+    <string name="muzikeq_delete_profile_confirm">සුරැකි “%1$s” පැතිකඩ මකන්නද?</string>
+    <string name="muzikeq_switch_profile_confirm">පැතිකඩ මාරු කිරීමට පෙර වෙනස්කම් සුරකින්නද?</string>
+    <string name="muzikeq_discard_changes">ඉවත දමන්න</string>
     <string name="listen_together_suggestion_submitted">යෝජනාව සත්කාරකයාට යවන ලදි</string>
     <string name="listen_together_suggestion_approved">ඔබ යෝජනා කළ සිංදුව අනුමත කරන ලදි</string>
     <string name="listen_together_suggestion_rejected">ඔබ යෝජනා කළ සිංදුව ප්‍රතික්ෂේප කරන ලදි</string>
@@ -251,8 +251,8 @@
     <string name="new_badge">නව</string>
     <string name="start_typing_to_search_music">YouTube Music තුළ සෙවීමට ටයිප් කිරීම අරඹන්න</string>
     <string name="filter_episodes">කථාංග</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s හර්ට්ස්</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s හර්ට්ස්</string>
     <string name="sponsorblock_podcasts">SponsorBlock (පොඩ්කාස්ට්)</string>
     <string name="sponsorblock_podcasts_description">පොඩ්කාස්ට් කථාංගවල පමණක් අනුග්‍රාහකයන්, ස්වයං ප්‍රචාරණය සහ ප්‍රතිචාර ඉල්ලීම් මඟ හරින්න. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">ප්‍රචාරක කොටස මඟ හැරිණි</string>

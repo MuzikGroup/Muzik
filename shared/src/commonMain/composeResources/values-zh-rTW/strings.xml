@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">首頁</string>
     <string name="offline_mode">離線模式</string>
     <string name="songs">歌曲</string>
@@ -225,16 +225,6 @@
     <string name="dismiss">關閉</string>
     <string name="preview">預覽</string>
     <string name="about">關於</string>
-    <string name="credits_android_lead">Android 開發主管</string>
-    <string name="credits_desktop_lead">桌面開發主管</string>
-    <string name="credits_creator">Muzik 創作者</string>
-    <string name="credits_android_developer">Android 開發人員</string>
-    <string name="credits_desktop_developer">桌面開發人員</string>
-    <string name="credits_macos_developer">macOS 開發人員</string>
-    <string name="credits_windows_developer">Windows 開發人員</string>
-    <string name="credits_lyrics_ui_services">歌詞介面與服務</string>
-    <string name="credits_android_designer">使用者介面設計師</string>
-    <string name="credits_wearos_designer">WearOS 設計師</string>
     <string name="open_website">開啟網站</string>
     <string name="open_github_profile">開啟GitHub個人資料</string>
     <string name="sponsor_developer">贊助開發者</string>
@@ -512,9 +502,9 @@
     <string name="discord_preview_buttons_adjusted">Discord 會縮短過長的按鈕文字，並省略連結過長的按鈕。這個預覽顯示即將被傳送的按鈕。</string>
     <string name="discord_presence_status_warning">詳細活動狀態會向 Discord 傳送「線上」狀態。它可能覆蓋「隱形」或「請勿打擾」，即使播放停止也一樣。</string>
     <string name="discord_refresh_queued">活動狀態更新已加入佇列。</string>
-    <string name="metroeq_delete_profile_confirm">要刪除已儲存的設定檔「%1$s」嗎？</string>
-    <string name="metroeq_switch_profile_confirm">要在切換設定檔前儲存變更嗎？</string>
-    <string name="metroeq_discard_changes">捨棄</string>
+    <string name="muzikeq_delete_profile_confirm">要刪除已儲存的設定檔「%1$s」嗎？</string>
+    <string name="muzikeq_switch_profile_confirm">要在切換設定檔前儲存變更嗎？</string>
+    <string name="muzikeq_discard_changes">捨棄</string>
     <string name="listen_together_suggestion_submitted">已將推薦傳送給主持人</string>
     <string name="listen_together_suggestion_approved">您的歌曲推薦已獲核准</string>
     <string name="listen_together_suggestion_rejected">您的歌曲推薦已遭拒絕</string>
@@ -583,8 +573,8 @@
     <string name="new_badge">新</string>
     <string name="start_typing_to_search_music">開始輸入以搜尋 YouTube Music</string>
     <string name="filter_episodes">單集</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s 赫茲</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s 赫茲</string>
     <string name="sponsorblock_podcasts">SponsorBlock（播客）</string>
     <string name="sponsorblock_podcasts_description">僅在播客單集中略過贊助、自我推廣及互動請求片段。 (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">已略過推廣片段</string>
@@ -699,9 +689,6 @@
     <string name="explicit_only">只顯示兒童不宜歌曲</string>
     <string name="explicit_only_desc">隱藏沒有兒童不宜標記的歌曲</string>
     <string name="bottom_sheet_pane_title">底下張</string>
-    <string name="credits_multiplatform_developer">跨平台開發人員</string>
-    <string name="credits_collaborators_section">合作者</string>
-    <string name="credits_creator_section">創作者</string>
     <string name="advanced">進階</string>
     <string name="integration_on">啟用</string>
     <string name="integration_off">停用</string>
@@ -765,7 +752,6 @@
     <string name="unblock_artist_title">確定要解除封鎖這位藝人嗎？</string>
     <string name="song_details">歌曲詳細資訊</string>
     <string name="unblock_artist_message">允許「%1$s」再次在佇列，推薦的歌曲與統計中出現嗎？</string>
-    <string name="credits_leads_section">領頭開發人員</string>
     <string name="device_connect_peer_details">%1$s\n%2$s</string>
     <string name="devtools_render_backend">渲染後端</string>
     <string name="devtools_render_backend_description">重啟應用程式以套用變更。</string>

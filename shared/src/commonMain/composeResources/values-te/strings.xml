@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">ఇల్లు</string>
     <string name="offline_mode">ఆఫ్‌లైన్ పాషకం</string>
     <string name="songs">పాటలు</string>
@@ -237,16 +237,6 @@
     <string name="dismiss">తొలగించు</string>
     <string name="preview">పరిదృశ్యం</string>
     <string name="about">గురించి</string>
-    <string name="credits_android_lead">Android ముఖ్య డెవలపర్</string>
-    <string name="credits_desktop_lead">Desktop ముఖ్య డెవలపర్</string>
-    <string name="credits_creator">Muzik సృష్టికర్త</string>
-    <string name="credits_android_developer">Android డెవలపర్</string>
-    <string name="credits_desktop_developer">డెస్కటాప్ డెవలపర్</string>
-    <string name="credits_macos_developer">macOS డెవలపర్</string>
-    <string name="credits_windows_developer">Windows డెవలపర్</string>
-    <string name="credits_lyrics_ui_services">పాట సాహిత్యం కి UI మరియు సేవలు</string>
-    <string name="credits_android_designer">యు.ఐ నిర్మాత</string>
-    <string name="credits_wearos_designer">WearOS నిర్మాత</string>
     <string name="open_website">వెబ్‌సైట్ ని తీయండి</string>
     <string name="open_github_profile">GitHub ప్రొఫైల్‌ను తీయండి</string>
     <string name="sponsor_developer">డెవలపర్‌కి మద్దతు ఇవ్వండి</string>
@@ -567,9 +557,9 @@
     <string name="discord_preview_buttons_adjusted">Discord పొడవైన బటన్ పేర్లను కుదిస్తుంది. లింకులు మరీ పొడవుగా ఉన్న బటన్‌లను వదిలేస్తుంది. పంపబోయే బటన్‌లు ఈ ముందస్తు వీక్షణలో కనిపిస్తాయి.</string>
     <string name="discord_presence_status_warning">Rich Presence ప్రారంభిస్తే Discord‌కు ఆన్‌లైన్ స్థితి పంపబడుతుంది. ఇది అదృశ్య లేదా అంతరాయం కలిగించవద్దు స్థితులను మార్చవచ్చు, ప్లేబ్యాక్ ఆగినప్పుడు కూడా.</string>
     <string name="discord_refresh_queued">ఉనికి స్థితి రిఫ్రెష్ వరుసలో చేర్చబడింది.</string>
-    <string name="metroeq_delete_profile_confirm">సేవ్ చేసిన “%1$s” ప్రొఫైల్‌ను తొలగించాలా?</string>
-    <string name="metroeq_switch_profile_confirm">ప్రొఫైల్ మార్చే ముందు మీ మార్పులను సేవ్ చేయాలా?</string>
-    <string name="metroeq_discard_changes">మార్పులను విస్మరించండి</string>
+    <string name="muzikeq_delete_profile_confirm">సేవ్ చేసిన “%1$s” ప్రొఫైల్‌ను తొలగించాలా?</string>
+    <string name="muzikeq_switch_profile_confirm">ప్రొఫైల్ మార్చే ముందు మీ మార్పులను సేవ్ చేయాలా?</string>
+    <string name="muzikeq_discard_changes">మార్పులను విస్మరించండి</string>
     <string name="listen_together_suggestion_submitted">సూచన హోస్ట్‌కు పంపబడింది</string>
     <string name="listen_together_suggestion_approved">మీ పాట సూచన ఆమోదించబడింది</string>
     <string name="listen_together_suggestion_rejected">మీ పాట సూచన తిరస్కరించబడింది</string>
@@ -638,8 +628,8 @@
     <string name="new_badge">కొత్తది</string>
     <string name="start_typing_to_search_music">YouTube Musicలో వెతకడానికి టైప్ చేయడం ప్రారంభించండి</string>
     <string name="filter_episodes">ఎపిసోడ్‌లు</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s హెర్ట్జ్</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s హెర్ట్జ్</string>
     <string name="sponsorblock_podcasts">SponsorBlock (పాడ్‌కాస్ట్‌లు)</string>
     <string name="sponsorblock_podcasts_description">పాడ్‌కాస్ట్ ఎపిసోడ్‌లలో మాత్రమే స్పాన్సర్లు, స్వీయ ప్రచారం మరియు ప్రతిస్పందన అభ్యర్థనలను దాటవేయండి. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">ప్రచార భాగం దాటవేయబడింది</string>
@@ -697,9 +687,6 @@
     <string name="unblock_artist_title">కళాకార మిద నిరోధం తొలగించండి?</string>
     <string name="unblock_artist_message">క్యు, సిఫారసులు, మరియు గణాంకశాస్త్రములో %1$s ని మళ్ళీ అనుమతించాలా?</string>
     <string name="bottom_sheet_pane_title">కిందున్న షీట్</string>
-    <string name="credits_multiplatform_developer">మల్టీప్లాట్‌ఫారమ్ అభివృద్ధిదారు</string>
-    <string name="credits_collaborators_section">సహకారులు</string>
-    <string name="credits_creator_section">సృష్టికర్త</string>
     <string name="discord_error_invalid_scope">తప్పు పరిధి. మళ్లీ లాగిన్ చేయండి≥</string>
     <string name="advanced">అధునాతన</string>
     <string name="integration_on">ఆన్</string>
@@ -722,7 +709,6 @@
     <string name="appearance_floating_top_bar_description">పైన ఉన్న బార్ ను</string>
     <string name="lyrics_provider_unison_description">ఈ</string>
     <string name="lyrics_provider_lrclib_description">సమaజం నుండి వచ్చిన గీత-సమకాలీకరించిన లేదా సాధారణ పాటల సాహిత్యాల డేటాబేస్</string>
-    <string name="credits_leads_section">నాయకులు</string>
     <string name="devtools_render_backend">బ్యాకెండ్ సృష్టించండి</string>
     <string name="devtools_render_backend_description">మార్చినవి రీస్టార్ట్ అయ్యాక పనిచేస్తాయి. ఎన్విరాన్‌మెంట్ మరియు జే.వి.ఎం(JVM) రెండర్ ఎ.పి.ఐ (API) అధిగమించడం ముందుగా అవుతాయి. బ్యాకెండ్ ప్రారంభించకపోతే స్కికో (Skiko) మీద పడుతుంది.</string>
     <string name="devtools_render_backend_auto">ఆటో</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">मुख्य</string>
     <string name="offline_mode">ऑफलाइन मोड</string>
     <string name="songs">गाने</string>
@@ -238,16 +238,6 @@
     <string name="dismiss">खारिज करें</string>
     <string name="preview">पूर्वावलोकन</string>
     <string name="about">Muzik के बारे में</string>
-    <string name="credits_android_lead">मुख्य एंड्रॉयड डेवलपर</string>
-    <string name="credits_desktop_lead">मुख्य डेस्कटॉप डेवेलपर</string>
-    <string name="credits_creator">Muzik का निर्माता</string>
-    <string name="credits_android_developer">एंड्राइड डेवलपर</string>
-    <string name="credits_desktop_developer">डेस्कटॉप डेवेलपर</string>
-    <string name="credits_macos_developer">macOS डेवलपर</string>
-    <string name="credits_windows_developer">Windows डेवलपर</string>
-    <string name="credits_lyrics_ui_services">लिरिक्स UI और सेवाएं</string>
-    <string name="credits_android_designer">UI डिज़ाइनर</string>
-    <string name="credits_wearos_designer">WearOS डिज़ाइनर</string>
     <string name="open_website">वेबसाइट खोलें</string>
     <string name="open_github_profile">GitHub प्रोफ़ाइल खोलें</string>
     <string name="sponsor_developer">डेवलपर को प्रायोजित करें</string>
@@ -1023,9 +1013,9 @@
     <string name="discord_preview_buttons_adjusted">Discord बटनों के लंबे लेबल छोटे करता है और बहुत लंबे लिंक वाले बटन हटा देता है। इस पूर्वावलोकन में वे बटन दिखते हैं जो भेजे जाएँगे।</string>
     <string name="discord_presence_status_warning">विस्तृत उपस्थिति चालू करने पर Discord को ऑनलाइन स्थिति भेजी जाती है, जो अदृश्य या परेशान न करें स्थिति को बदल सकती है, तब भी जब प्लेबैक रुक जाए।</string>
     <string name="discord_refresh_queued">उपस्थिति रीफ़्रेश करने का अनुरोध कतार में है।</string>
-    <string name="metroeq_delete_profile_confirm">सहेजी गई प्रोफ़ाइल “%1$s” मिटाएँ?</string>
-    <string name="metroeq_switch_profile_confirm">प्रोफ़ाइल बदलने से पहले अपने बदलाव सहेजें?</string>
-    <string name="metroeq_discard_changes">बदलाव छोड़ें</string>
+    <string name="muzikeq_delete_profile_confirm">सहेजी गई प्रोफ़ाइल “%1$s” मिटाएँ?</string>
+    <string name="muzikeq_switch_profile_confirm">प्रोफ़ाइल बदलने से पहले अपने बदलाव सहेजें?</string>
+    <string name="muzikeq_discard_changes">बदलाव छोड़ें</string>
     <string name="listen_together_suggestion_submitted">होस्ट को सुझाव भेज दिया गया</string>
     <string name="listen_together_suggestion_approved">आपके गाने का सुझाव मंज़ूर कर लिया गया</string>
     <string name="listen_together_suggestion_rejected">आपके गाने का सुझाव नामंज़ूर कर दिया गया</string>
@@ -1091,8 +1081,8 @@
     <string name="new_badge">नया</string>
     <string name="start_typing_to_search_music">YouTube Music पर खोजने के लिए टाइप करना शुरू करें</string>
     <string name="filter_episodes">एपिसोड</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s हर्ट्ज़</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s हर्ट्ज़</string>
     <string name="sponsorblock_podcasts">SponsorBlock (पॉडकास्ट)</string>
     <string name="sponsorblock_podcasts_description">केवल पॉडकास्ट एपिसोड में प्रायोजक, आत्म-प्रचार और सहभागिता के अनुरोध छोड़ें। (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">प्रचार वाला हिस्सा छोड़ा गया</string>
@@ -1184,7 +1174,6 @@
     <string name="ai_provider_group_services">अनुवाद सेवाएं</string>
     <string name="ai_connection">कनेक्शन</string>
     <string name="itag">Itag</string>
-
     <string name="settings_appearance_overview">थीम, फ़ॉन्ट और प्लेयर का रूप</string>
     <string name="settings_android_auto_overview">कार की प्लेलिस्ट और झटपट जोड़ने की मंज़िल</string>
     <string name="settings_about_overview">योगदानकर्ता, समुदाय के लिंक और लाइसेंस</string>

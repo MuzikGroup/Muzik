@@ -1,6 +1,6 @@
 # Romanization and language detection
 
-Muzik uses [glyphmind 0.1.0](https://github.com/nyxiereal/glyphmind) for common Kotlin romanization and local language detection. Android consumes its JVM variant through Gradle module metadata. Desktop and iOS use the same rules, dictionary formats and model. There is no JavaScript engine or platform transliteration API in this path.
+Muzik uses glyphmind 0.1.0 for common Kotlin romanization and local language detection. Android consumes its JVM variant through Gradle module metadata. Desktop and iOS use the same rules, dictionary formats and model. There is no JavaScript engine or platform transliteration API in this path.
 
 ## Display and timing
 
@@ -22,7 +22,7 @@ Storage paths are:
 - Desktop: `$XDG_DATA_HOME/muzik/glyphmind`, resolved by `XdgUtils`.
 - iOS: `Application Support/muzik/glyphmind`, excluded from backup.
 
-After successful preparation, Muzik removes the retired `japanese-dictionary` directory on that platform. Packs stay outside evictable caches. Glyphmind's [pack documentation](https://github.com/nyxiereal/glyphmind/blob/main/docs/packs.md) describes generation, formats and notices.
+After successful preparation, Muzik removes the retired `japanese-dictionary` directory on that platform. Packs stay outside evictable caches. Glyphmind's pack documentation describes generation, formats and notices.
 
 ## Local detection and translation
 

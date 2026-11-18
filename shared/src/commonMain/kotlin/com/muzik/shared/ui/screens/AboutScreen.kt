@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -83,7 +83,7 @@ import com.muzik.shared.generated.resources.build_type_release
 import com.muzik.shared.generated.resources.devmode_already_active
 import com.muzik.shared.generated.resources.devtools_enabled
 import com.muzik.shared.generated.resources.play
-import com.muzik.shared.generated.resources.stands_with_palestine
+import com.muzik.shared.generated.resources.built_by_pipo_team
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.ui.components.images.AsyncImage
 import com.muzik.shared.ui.icons.MuzikIcons
@@ -216,9 +216,9 @@ fun AboutScreen(
             )
 
             CollaboratorsList(
-                contributors = listOf(AboutContributors.lead),
+                contributors = listOf(AboutContributors.leadDeveloper),
                 text = text,
-                title = text.creatorSection,
+                title = text.leadSection,
                 avatarSize = 64.dp,
                 colorScheme = colorScheme,
                 onContributorClick = { selectedContributor = it },
@@ -226,18 +226,10 @@ fun AboutScreen(
             )
 
             CollaboratorsList(
-                contributors = AboutContributors.leads,
+                contributors = AboutContributors.otherContributors,
                 text = text,
-                title = text.leadsSection,
+                title = text.teamSection,
                 avatarSize = 64.dp,
-                colorScheme = colorScheme,
-                onContributorClick = { selectedContributor = it },
-                onContributorLongClick = onContributorLongClick,
-            )
-
-            CollaboratorsList(
-                contributors = AboutContributors.collaborators,
-                text = text,
                 colorScheme = colorScheme,
                 onContributorClick = { selectedContributor = it },
                 onContributorLongClick = onContributorLongClick,
@@ -257,7 +249,7 @@ fun AboutScreen(
             )
 
             Text(
-                text = stringResource(Res.string.stands_with_palestine),
+                text = stringResource(Res.string.built_by_pipo_team),
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -435,7 +427,7 @@ private fun CollaboratorsList(
     colorScheme: ColorScheme,
     onContributorClick: (AboutContributor) -> Unit,
     onContributorLongClick: ((AboutContributor) -> Unit)?,
-    title: String? = text.collaborators,
+    title: String? = null,
     avatarSize: Dp = 48.dp,
 ) {
     Column(Modifier.fillMaxWidth()) {

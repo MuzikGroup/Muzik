@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">வீடு</string>
     <string name="songs">பாடல்கள்</string>
     <string name="artists">கலைஞர்கள்</string>
@@ -345,9 +345,9 @@
     <string name="discord_preview_buttons_adjusted">Discord நீண்ட பொத்தான் பெயர்களைச் சுருக்கி, மிக நீண்ட இணைப்புகளைக் கொண்ட பொத்தான்களைத் தவிர்க்கிறது. அனுப்பப்படும் பொத்தான்கள் இந்த முன்னோட்டத்தில் காட்டப்படுகின்றன.</string>
     <string name="discord_presence_status_warning">விரிவான செயல்பாட்டு நிலை Discord சேவைக்கு இணையத்தில் உள்ள நிலையை அனுப்பும். மறைவு அல்லது தொந்தரவு செய்யாதே நிலைகளை மாற்றக்கூடும். இசையை நிறுத்திய பிறகும் இது நிகழலாம்.</string>
     <string name="discord_refresh_queued">செயல்பாட்டு நிலைப் புதுப்பிப்பு வரிசையில் சேர்க்கப்பட்டது.</string>
-    <string name="metroeq_delete_profile_confirm">சேமித்த “%1$s” சுயவிவரத்தை நீக்கவா?</string>
-    <string name="metroeq_switch_profile_confirm">சுயவிவரத்தை மாற்றும் முன் உங்கள் மாற்றங்களைச் சேமிக்கவா?</string>
-    <string name="metroeq_discard_changes">கைவிடு</string>
+    <string name="muzikeq_delete_profile_confirm">சேமித்த “%1$s” சுயவிவரத்தை நீக்கவா?</string>
+    <string name="muzikeq_switch_profile_confirm">சுயவிவரத்தை மாற்றும் முன் உங்கள் மாற்றங்களைச் சேமிக்கவா?</string>
+    <string name="muzikeq_discard_changes">கைவிடு</string>
     <string name="listen_together_suggestion_submitted">பரிந்துரை நடத்துநருக்கு அனுப்பப்பட்டது</string>
     <string name="listen_together_suggestion_approved">உங்கள் பாடல் பரிந்துரை ஏற்கப்பட்டது</string>
     <string name="listen_together_suggestion_rejected">உங்கள் பாடல் பரிந்துரை நிராகரிக்கப்பட்டது</string>
@@ -416,8 +416,8 @@
     <string name="new_badge">புதியது</string>
     <string name="start_typing_to_search_music">YouTube Music-இல் தேடத் தட்டச்சு செய்யத் தொடங்குங்கள்</string>
     <string name="filter_episodes">அத்தியாயங்கள்</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s ஹெர்ட்ஸ்</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s ஹெர்ட்ஸ்</string>
     <string name="sponsorblock_podcasts">SponsorBlock (பாட்காஸ்ட்கள்)</string>
     <string name="sponsorblock_podcasts_description">பாட்காஸ்ட் அத்தியாயங்களில் மட்டும் ஆதரவாளர்கள், சுய விளம்பரம் மற்றும் கருத்துப் பகிர்வுக்கான கோரிக்கைகளைத் தவிர்க்கவும். (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">விளம்பரப் பகுதி தவிர்க்கப்பட்டது</string>

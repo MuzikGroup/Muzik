@@ -38,7 +38,7 @@ Grab the installer for your system from the [latest release](../../releases/late
 Muzik Desktop is an original **Kotlin Multiplatform + Compose** app, designed and engineered by Ignatius (lead developer) together with the Pipo Team contributors. Here is what ships in the box:
 
 - **Search the full YouTube Music catalog** — songs, videos, albums, artists, playlists and podcasts, with live suggestions as you type
-- **Real streaming pipeline** — SABR and direct streams via the battle-tested [innertubex](https://github.com/MetrolistGroup/innertubex) client, with PO-token attestation (in-app WebView mint or the bundled `bgutil` provider) so playback keeps working when YouTube tightens bot checks
+- **Real streaming pipeline** — SABR and direct streams via the battle-tested `innertubex` client, with PO-token attestation (in-app WebView mint or the bundled `bgutil` provider) so playback keeps working when YouTube tightens bot checks
 - **FFmpeg audio engine** — gapless playback, crossfade, speed & pitch control, loudness normalization, 15-frame prebuffer pipeline, everything decoded natively for Windows, macOS and Linux
 - **Synced lyrics** — word-by-word karaoke lyrics from YouTube and multiple community providers (LRCLIB, KuGou, BetterLyrics and more), with translation and romanization
 - **Your library, locally** — favorites, playlists, history and subscriptions stored in a real SQLite database, synced to your YouTube Music account when you sign in
@@ -72,7 +72,7 @@ Muzik Desktop is a **Kotlin Multiplatform** app: a shared module (UI, database, 
 
 ## Credits & license
 
-**Lead developer:** Ignatius. **Contributors:** the Pipo Team. Streaming internals come from the [innertubex](https://github.com/MetrolistGroup/innertubex) library.
+**Lead developer:** Ignatius. **Contributors:** the Pipo Team. Streaming internals come from the `innertubex` library.
 
 Licensed under **GPL-3.0** — see [LICENSE](LICENSE).
 

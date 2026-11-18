@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="bitrate_value">%1$d kbit/s</string>
     <string name="sample_rate_value">%1$d Hz</string>
     <string name="import_error_unsupported_playlist_entries">Šiame grojaraštyje yra vietinių failų arba tiesioginių nuorodų, kurių „Android“ negali pasiekti. Importuokite grojaraštį su „YouTube“ nuorodomis arba pasirinkite vietinius failus kompiuteryje.</string>
@@ -186,9 +186,9 @@
     <string name="discord_preview_buttons_adjusted">„Discord“ trumpina ilgus mygtukų užrašus ir praleidžia mygtukus su per ilgomis nuorodomis. Šioje peržiūroje rodomi mygtukai, kurie bus išsiųsti.</string>
     <string name="discord_presence_status_warning">Įjungus išsamią veiklos būseną, „Discord“ siunčiama būsena „Prisijungęs“. Ji gali pakeisti būsenas „Nematomas“ ar „Netrukdyti“, net sustabdžius atkūrimą.</string>
     <string name="discord_refresh_queued">Būsenos atnaujinimas įtrauktas į eilę.</string>
-    <string name="metroeq_delete_profile_confirm">Ištrinti išsaugotą profilį „%1$s“?</string>
-    <string name="metroeq_switch_profile_confirm">Išsaugoti pakeitimus prieš perjungiant profilį?</string>
-    <string name="metroeq_discard_changes">Atmesti</string>
+    <string name="muzikeq_delete_profile_confirm">Ištrinti išsaugotą profilį „%1$s“?</string>
+    <string name="muzikeq_switch_profile_confirm">Išsaugoti pakeitimus prieš perjungiant profilį?</string>
+    <string name="muzikeq_discard_changes">Atmesti</string>
     <string name="listen_together_suggestion_submitted">Pasiūlymas išsiųstas šeimininkui</string>
     <string name="listen_together_suggestion_approved">Jūsų pasiūlyta daina patvirtinta</string>
     <string name="listen_together_suggestion_rejected">Jūsų pasiūlyta daina atmesta</string>
@@ -257,8 +257,8 @@
     <string name="new_badge">Nauja</string>
     <string name="start_typing_to_search_music">Pradėkite rašyti, kad ieškotumėte „YouTube Music“</string>
     <string name="filter_episodes">Epizodai</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (tinklalaidės)</string>
     <string name="sponsorblock_podcasts_description">Praleisti rėmėjus, savireklamą ir raginimus bendrauti tik tinklalaidžių epizoduose. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Reklaminis segmentas praleistas</string>

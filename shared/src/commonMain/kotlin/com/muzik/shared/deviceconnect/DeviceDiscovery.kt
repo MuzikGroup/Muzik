@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  *
  * LAN service discovery (mDNS/NSD). The platform actual uses Android NsdManager /
  * desktop JmDNS. The [context] is the platform application context (Android: Context).

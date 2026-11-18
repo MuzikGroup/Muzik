@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">صفحه اصلی</string>
     <string name="offline_mode">حالت آفلاین</string>
     <string name="songs">آهنگ‌ها</string>
@@ -262,16 +262,6 @@
     <string name="explicit_only">فقط نمایش آهنگ‌های دارای محتوای 18+</string>
     <string name="dismiss">صرف‌نظر</string>
     <string name="preview">پیش‌نمایش</string>
-    <string name="credits_android_lead">ارشد برنامه‌نویسی اندروید</string>
-    <string name="credits_desktop_lead">ارشد برنامه‌نویسی کامپیوتر</string>
-    <string name="credits_creator">سازنده مترولیست</string>
-    <string name="credits_android_developer">برنامه‌نویس اندروید</string>
-    <string name="credits_desktop_developer">برنامه‌نویس کامپیوتر</string>
-    <string name="credits_macos_developer">برنامه‎‌نویس مَک</string>
-    <string name="credits_windows_developer">برنامه‌نویس ویندوز</string>
-    <string name="credits_lyrics_ui_services">متن ترانه و خدمات</string>
-    <string name="credits_android_designer">طراح رابط کاربری اندروید</string>
-    <string name="credits_wearos_designer">طراح رابط کاربری نسخه ساعت هوشمند</string>
     <string name="open_website">ورود به وبسایت</string>
     <string name="open_github_profile">ورود به صفحه گیت‌هاب</string>
     <string name="credits_license_name">مجوز</string>
@@ -447,9 +437,9 @@
     <string name="discord_preview_buttons_adjusted">Discord متن بلند دکمه‌ها را کوتاه می‌کند و دکمه‌هایی با پیوند بیش‌ازحد بلند را حذف می‌کند. این پیش‌نمایش دکمه‌هایی را نشان می‌دهد که ارسال خواهند شد.</string>
     <string name="discord_presence_status_warning">نمایش جزئیات فعالیت، وضعیت آنلاین را به Discord می‌فرستد. ممکن است جایگزین نامرئی یا مزاحم نشوید شود، حتی وقتی پخش متوقف می‌شود.</string>
     <string name="discord_refresh_queued">به‌روزرسانی وضعیت فعالیت در صف قرار گرفت.</string>
-    <string name="metroeq_delete_profile_confirm">نمایهٔ ذخیره‌شدهٔ «%1$s» حذف شود؟</string>
-    <string name="metroeq_switch_profile_confirm">پیش از تعویض نمایه، تغییرات ذخیره شوند؟</string>
-    <string name="metroeq_discard_changes">دور انداختن</string>
+    <string name="muzikeq_delete_profile_confirm">نمایهٔ ذخیره‌شدهٔ «%1$s» حذف شود؟</string>
+    <string name="muzikeq_switch_profile_confirm">پیش از تعویض نمایه، تغییرات ذخیره شوند؟</string>
+    <string name="muzikeq_discard_changes">دور انداختن</string>
     <string name="listen_together_suggestion_submitted">پیشنهاد به میزبان فرستاده شد</string>
     <string name="listen_together_suggestion_approved">پیشنهاد آهنگ شما تأیید شد</string>
     <string name="listen_together_suggestion_rejected">پیشنهاد آهنگ شما رد شد</string>
@@ -518,8 +508,8 @@
     <string name="new_badge">جدید</string>
     <string name="start_typing_to_search_music">برای جستجو در YouTube Music شروع به تایپ کنید</string>
     <string name="filter_episodes">قسمت‌ها</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s هرتز</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s هرتز</string>
     <string name="sponsorblock_podcasts">SponsorBlock (پادکست‌ها)</string>
     <string name="sponsorblock_podcasts_description">رد کردن حامیان مالی، تبلیغ شخصی و درخواست‌های تعامل فقط در قسمت‌های پادکست. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">بخش تبلیغاتی رد شد</string>
@@ -527,7 +517,6 @@
     <string name="lastfm_service_error">ورود به Last.fm در دسترس نیست. لطفاً بعداً دوباره تلاش کنید.</string>
     <string name="song_cache_location_custom">پوشه سفارشی</string>
     <string name="song_cache_location_custom_desc">پوشه سفارشی انتخاب‌شده از طریق Storage Access Framework</string>
-
     <string name="settings_appearance_overview">پوسته، قلم‌ها و ظاهر پخش‌کننده</string>
     <string name="settings_android_auto_overview">فهرست‌های پخش خودرو و مقصد افزودن سریع</string>
     <string name="settings_about_overview">مشارکت‌کنندگان، پیوندهای انجمن و مجوزها</string>

@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -119,22 +119,22 @@ import com.muzik.shared.generated.resources.equalizer_stream_unavailable
 import com.muzik.shared.generated.resources.equalizer_usage_warning
 import com.muzik.shared.generated.resources.import_from_file
 import com.muzik.shared.generated.resources.loudness_value
-import com.muzik.shared.generated.resources.metroeq_custom_profile
-import com.muzik.shared.generated.resources.metroeq_delete_profile_confirm
-import com.muzik.shared.generated.resources.metroeq_frequency_value
-import com.muzik.shared.generated.resources.metroeq_peak_reduction
-import com.muzik.shared.generated.resources.metroeq_preset_bass
-import com.muzik.shared.generated.resources.metroeq_preset_flat
-import com.muzik.shared.generated.resources.metroeq_preset_rock
-import com.muzik.shared.generated.resources.metroeq_preset_treble
-import com.muzik.shared.generated.resources.metroeq_preset_v_shape
-import com.muzik.shared.generated.resources.metroeq_preset_vocal
-import com.muzik.shared.generated.resources.metroeq_presets
-import com.muzik.shared.generated.resources.metroeq_profile_name
-import com.muzik.shared.generated.resources.metroeq_profiles
-import com.muzik.shared.generated.resources.metroeq_q_value
-import com.muzik.shared.generated.resources.metroeq_save_as
-import com.muzik.shared.generated.resources.metroeq_unsaved_changes
+import com.muzik.shared.generated.resources.muzikeq_custom_profile
+import com.muzik.shared.generated.resources.muzikeq_delete_profile_confirm
+import com.muzik.shared.generated.resources.muzikeq_frequency_value
+import com.muzik.shared.generated.resources.muzikeq_peak_reduction
+import com.muzik.shared.generated.resources.muzikeq_preset_bass
+import com.muzik.shared.generated.resources.muzikeq_preset_flat
+import com.muzik.shared.generated.resources.muzikeq_preset_rock
+import com.muzik.shared.generated.resources.muzikeq_preset_treble
+import com.muzik.shared.generated.resources.muzikeq_preset_v_shape
+import com.muzik.shared.generated.resources.muzikeq_preset_vocal
+import com.muzik.shared.generated.resources.muzikeq_presets
+import com.muzik.shared.generated.resources.muzikeq_profile_name
+import com.muzik.shared.generated.resources.muzikeq_profiles
+import com.muzik.shared.generated.resources.muzikeq_q_value
+import com.muzik.shared.generated.resources.muzikeq_save_as
+import com.muzik.shared.generated.resources.muzikeq_unsaved_changes
 import com.muzik.shared.generated.resources.more_options
 import com.muzik.shared.generated.resources.remove
 import com.muzik.shared.generated.resources.rename
@@ -255,7 +255,7 @@ private fun ProfilesPage(
     val activeId = activeProfile?.id
     val preset = EqualizerPreset.entries.firstOrNull { it.profileId == activeId }
     val currentTitle = if (preset != null) presetName(preset) else activeProfile?.name
-    val customProfileName = stringResource(Res.string.metroeq_custom_profile)
+    val customProfileName = stringResource(Res.string.muzikeq_custom_profile)
     val equalizerLabel = stringResource(Res.string.equalizer)
     val savedProfile = profiles.any { it.id == activeId }
     var namingProfile by remember { mutableStateOf(false) }
@@ -305,7 +305,7 @@ private fun ProfilesPage(
                     }
                     DropdownMenu(expanded = selectingProfile, onDismissRequest = { selectingProfile = false }) {
                         Text(
-                            stringResource(Res.string.metroeq_presets),
+                            stringResource(Res.string.muzikeq_presets),
                             modifier = Modifier.padding(start = 16.dp, top = 12.dp, end = 16.dp, bottom = 4.dp),
                             color = MaterialTheme.colorScheme.primary,
                             style = MaterialTheme.typography.labelLarge,
@@ -323,7 +323,7 @@ private fun ProfilesPage(
                         if (profiles.isNotEmpty()) {
                             HorizontalDivider(Modifier.padding(vertical = 8.dp))
                             Text(
-                                stringResource(Res.string.metroeq_profiles),
+                                stringResource(Res.string.muzikeq_profiles),
                                 modifier = Modifier.padding(start = 16.dp, top = 4.dp, end = 16.dp, bottom = 4.dp),
                                 color = MaterialTheme.colorScheme.primary,
                                 style = MaterialTheme.typography.labelLarge,
@@ -379,7 +379,7 @@ private fun ProfilesPage(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    stringResource(if (EqualizerProfiles.hasUnsavedChanges) Res.string.metroeq_unsaved_changes else Res.string.saved),
+                    stringResource(if (EqualizerProfiles.hasUnsavedChanges) Res.string.muzikeq_unsaved_changes else Res.string.saved),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.weight(1f).padding(end = 8.dp),
@@ -402,7 +402,7 @@ private fun ProfilesPage(
                     }
                     DropdownMenu(expanded = actionsExpanded, onDismissRequest = { actionsExpanded = false }) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(Res.string.metroeq_save_as)) },
+                            text = { Text(stringResource(Res.string.muzikeq_save_as)) },
                             onClick = {
                                 actionsExpanded = false
                                 requestSave(true)
@@ -467,12 +467,12 @@ private fun ProfilesPage(
     PopupVisibility(visible = namingProfile) {
         AlertDialog(
             onDismissRequest = { namingProfile = false },
-            title = { Text(stringResource(if (saveAs) Res.string.metroeq_save_as else Res.string.save)) },
+            title = { Text(stringResource(if (saveAs) Res.string.muzikeq_save_as else Res.string.save)) },
             text = {
                 OutlinedTextField(
                     value = profileName,
                     onValueChange = { profileName = it },
-                    label = { Text(stringResource(Res.string.metroeq_profile_name)) },
+                    label = { Text(stringResource(Res.string.muzikeq_profile_name)) },
                     singleLine = true,
                     shape = MaterialTheme.shapes.large,
                     modifier = Modifier.fillMaxWidth(),
@@ -503,7 +503,7 @@ private fun ProfilesPage(
         AlertDialog(
             onDismissRequest = { confirmingProfileDelete = false },
             text = {
-                Text(stringResource(Res.string.metroeq_delete_profile_confirm, activeProfile.name))
+                Text(stringResource(Res.string.muzikeq_delete_profile_confirm, activeProfile.name))
             },
             confirmButton = {
                 TextButton(
@@ -533,12 +533,12 @@ private data class MeterReadout(
 private fun presetName(preset: EqualizerPreset): String =
     stringResource(
         when (preset) {
-            EqualizerPreset.FLAT -> Res.string.metroeq_preset_flat
-            EqualizerPreset.BASS -> Res.string.metroeq_preset_bass
-            EqualizerPreset.TREBLE -> Res.string.metroeq_preset_treble
-            EqualizerPreset.VOCAL -> Res.string.metroeq_preset_vocal
-            EqualizerPreset.ROCK -> Res.string.metroeq_preset_rock
-            EqualizerPreset.V_SHAPE -> Res.string.metroeq_preset_v_shape
+            EqualizerPreset.FLAT -> Res.string.muzikeq_preset_flat
+            EqualizerPreset.BASS -> Res.string.muzikeq_preset_bass
+            EqualizerPreset.TREBLE -> Res.string.muzikeq_preset_treble
+            EqualizerPreset.VOCAL -> Res.string.muzikeq_preset_vocal
+            EqualizerPreset.ROCK -> Res.string.muzikeq_preset_rock
+            EqualizerPreset.V_SHAPE -> Res.string.muzikeq_preset_v_shape
         },
     )
 
@@ -842,7 +842,7 @@ private fun EqualizerGraph(
                             band.frequency.toInt().toString(),
                             band.gain.toString(),
                         )
-                    val frequencyLabel = stringResource(Res.string.metroeq_frequency_value, band.frequency.toInt().toString())
+                    val frequencyLabel = stringResource(Res.string.muzikeq_frequency_value, band.frequency.toInt().toString())
                     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
                         if (band.supportsGain) {
                             val gainSliderState =
@@ -911,7 +911,7 @@ private fun EqualizerGraph(
                 }
                 if (editableBand(selectedBand)) {
                     TextButton(onClick = { editingQ = true }, shapes = ButtonDefaults.shapes()) {
-                        Text(stringResource(Res.string.metroeq_q_value, (round(band.q * 100) / 100).toString()))
+                        Text(stringResource(Res.string.muzikeq_q_value, (round(band.q * 100) / 100).toString()))
                     }
                     Text(
                         stringResource(Res.string.settings_filter_q_summary),
@@ -930,7 +930,7 @@ private fun EqualizerGraph(
             qSliderState.value = qFraction
             AlertDialog(
                 onDismissRequest = { editingQ = false },
-                title = { Text(stringResource(Res.string.metroeq_q_value, (round(qValue * 100) / 100).toString())) },
+                title = { Text(stringResource(Res.string.muzikeq_q_value, (round(qValue * 100) / 100).toString())) },
                 text = {
                     Slider(
                         state = qSliderState,
@@ -1057,7 +1057,7 @@ private fun PreampControl(reduction: Float) {
             Box(Modifier.fillMaxWidth().height(24.dp)) {
                 if (reduction >= 0.5f) {
                     Text(
-                        stringResource(Res.string.metroeq_peak_reduction, (-reduction).roundToInt().toString()),
+                        stringResource(Res.string.muzikeq_peak_reduction, (-reduction).roundToInt().toString()),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Hem</string>
     <string name="offline_mode">Offline-läge</string>
     <string name="songs">Låtar</string>
@@ -234,16 +234,6 @@
     <string name="dismiss">Avfärda</string>
     <string name="preview">Förhandsvisa</string>
     <string name="about">Om</string>
-    <string name="credits_android_lead">Ledande Android-utvecklare</string>
-    <string name="credits_desktop_lead">Ledande skrivbordsutvecklare</string>
-    <string name="credits_creator">Skapare av Muzik</string>
-    <string name="credits_android_developer">Android-utvecklare</string>
-    <string name="credits_desktop_developer">Skrivbordsutvecklare</string>
-    <string name="credits_macos_developer">macOS-utvecklare</string>
-    <string name="credits_windows_developer">Windows-utvecklare</string>
-    <string name="credits_lyrics_ui_services">Gränssnitt och tjänster för låttexter</string>
-    <string name="credits_android_designer">Android-designer</string>
-    <string name="credits_wearos_designer">WearOS-designer</string>
     <string name="open_website">Öppna hemsida</string>
     <string name="open_github_profile">Öppna GitHub-profil</string>
     <string name="sponsor_developer">Stöd utvecklaren</string>
@@ -1545,9 +1535,9 @@
     <string name="discord_preview_buttons_adjusted">Discord kortar ned långa knapptexter och utelämnar knappar med för långa länkar. Den här förhandsvisningen visar knapparna som kommer att skickas.</string>
     <string name="discord_presence_status_warning">Rich presence skickar statusen Online till Discord. Den kan åsidosätta Osynlig eller Stör ej, även när uppspelningen stoppas.</string>
     <string name="discord_refresh_queued">Närvarouppdatering köad.</string>
-    <string name="metroeq_delete_profile_confirm">Ta bort den sparade profilen ”%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Spara ändringarna innan du byter profil?</string>
-    <string name="metroeq_discard_changes">Förkasta</string>
+    <string name="muzikeq_delete_profile_confirm">Ta bort den sparade profilen ”%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Spara ändringarna innan du byter profil?</string>
+    <string name="muzikeq_discard_changes">Förkasta</string>
     <string name="listen_together_suggestion_submitted">Förslaget har skickats till värden</string>
     <string name="listen_together_suggestion_approved">Ditt låtförslag har godkänts</string>
     <string name="listen_together_suggestion_rejected">Ditt låtförslag har avvisats</string>
@@ -1590,8 +1580,8 @@
     <string name="onboarding_backup_picker_error">Kunde inte öppna väljaren för säkerhetskopior: %1$s</string>
     <string name="onboarding_backup_restore_failed">Återställning misslyckades: %1$s</string>
     <string name="new_badge">Nytt</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (poddar)</string>
     <string name="sponsorblock_podcasts_description">Hoppa över sponsorer, egenreklam och uppmaningar till interaktion endast i poddavsnitt. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Reklamsegment överhoppat</string>

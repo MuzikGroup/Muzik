@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Início</string>
     <string name="offline_mode">Modo offline</string>
     <string name="songs">Músicas</string>
@@ -246,16 +246,6 @@
     <string name="dismiss">Ignorar</string>
     <string name="preview">Prévia</string>
     <string name="about">Sobre</string>
-    <string name="credits_android_lead">Desenvolvedor Android principal</string>
-    <string name="credits_desktop_lead">Desenvolvedor desktop principal</string>
-    <string name="credits_creator">Criador do Muzik</string>
-    <string name="credits_android_developer">Desenvolvedor Android</string>
-    <string name="credits_desktop_developer">Desenvolvedor Desktop</string>
-    <string name="credits_macos_developer">Desenvolvedor macOS</string>
-    <string name="credits_windows_developer">Desenvolvedor Windows</string>
-    <string name="credits_lyrics_ui_services">Interface de letras e serviços</string>
-    <string name="credits_android_designer">Designer Android</string>
-    <string name="credits_wearos_designer">Designer WearOS</string>
     <string name="open_website">Abrir website</string>
     <string name="open_github_profile">Abrir perfil do GitHub</string>
     <string name="sponsor_developer">Patrocinar desenvolvedor</string>
@@ -1976,7 +1966,7 @@
     <string name="try_again">Tente novamente</string>
     <string name="play_on_app">Reproduzir no Muzik</string>
     <string name="re_listen">Ouvir novamente</string>
-    <string name="stands_with_palestine">Este projeto está com a Palestina</string>
+    <string name="built_by_pipo_team">Criado pelos incríveis desenvolvedores da Pipo Team</string>
     <string name="mini_player_subscribe_artist">Inscrever-se no artista</string>
     <string name="mini_player_unsubscribe_artist">Cancelar inscrição no artista</string>
     <string name="ai_test_connection_description">Envie uma solicitação de letra de exemplo usando suas configurações atuais</string>
@@ -2130,9 +2120,9 @@
     <string name="discord_preview_buttons_adjusted">O Discord encurta rótulos longos de botões e omite botões com links muito longos. Esta prévia mostra os botões que serão enviados.</string>
     <string name="discord_presence_status_warning">O status de atividade detalhado envia o status Online ao Discord. Pode substituir Invisível ou Não perturbe, mesmo quando a reprodução parar.</string>
     <string name="discord_refresh_queued">Atualização do status de atividade adicionada à fila.</string>
-    <string name="metroeq_delete_profile_confirm">Excluir o perfil salvo “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Salvar suas alterações antes de trocar de perfil?</string>
-    <string name="metroeq_discard_changes">Descartar</string>
+    <string name="muzikeq_delete_profile_confirm">Excluir o perfil salvo “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Salvar suas alterações antes de trocar de perfil?</string>
+    <string name="muzikeq_discard_changes">Descartar</string>
     <string name="listen_together_suggestion_submitted">Sugestão enviada ao anfitrião</string>
     <string name="listen_together_suggestion_approved">Sua sugestão de música foi aprovada</string>
     <string name="listen_together_suggestion_rejected">Sua sugestão de música foi rejeitada</string>
@@ -2172,8 +2162,8 @@
     <string name="top_period_past_month">Último mês</string>
     <string name="top_period_past_year">Último ano</string>
     <string name="new_badge">Novo</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podcasts)</string>
     <string name="sponsorblock_podcasts_description">Pular patrocinadores, autopromoção e pedidos de interação apenas em episódios de podcasts. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Segmento promocional pulado</string>
@@ -2184,10 +2174,6 @@
     <string name="disable_animated_artwork_on_mobile_data">Desativar artes animadas nos dados móveis</string>
     <string name="disable_animated_artwork_on_mobile_data_desc">Mostra arte estática nos dados móveis, mesmo quando as animações estiverem no cache</string>
     <string name="hide_recent_searches">Esconder o "Das pesquisas recentes"</string>
-    <string name="credits_multiplatform_developer">Desenvolvedor multiplataforma</string>
-    <string name="credits_collaborators_section">Colaboradores</string>
-    <string name="credits_leads_section">Líderes</string>
-    <string name="credits_creator_section">Criador</string>
     <string name="advanced">Avançado</string>
     <string name="integration_on">Ligado</string>
     <string name="integration_off">Desligado</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">ഹോം</string>
     <string name="songs">പാട്ടുകൾ</string>
     <string name="artists">കലാകാരന്മാർ</string>
@@ -345,9 +345,9 @@
     <string name="discord_preview_buttons_adjusted">Discord നീളമുള്ള ബട്ടൺ ലേബലുകൾ ചുരുക്കുകയും വളരെ നീളമുള്ള ലിങ്കുകളുള്ള ബട്ടണുകൾ ഒഴിവാക്കുകയും ചെയ്യുന്നു. അയയ്ക്കുന്ന ബട്ടണുകളാണ് ഈ പ്രിവ്യൂവിൽ കാണിക്കുന്നത്.</string>
     <string name="discord_presence_status_warning">വിശദമായ പ്രവർത്തനനില പ്രവർത്തനക്ഷമമാക്കുന്നത് Discord-ലേക്ക് ഓൺലൈൻ നില അയയ്ക്കും. പ്ലേബാക്ക് നിർത്തുമ്പോഴും അദൃശ്യം അല്ലെങ്കിൽ ശല്യപ്പെടുത്തരുത് നിലകളെ ഇത് മാറ്റിയേക്കാം.</string>
     <string name="discord_refresh_queued">പ്രവർത്തനനില പുതുക്കൽ ക്യൂവിൽ ചേർത്തു.</string>
-    <string name="metroeq_delete_profile_confirm">സൂക്ഷിച്ച “%1$s” പ്രൊഫൈൽ ഇല്ലാതാക്കണോ?</string>
-    <string name="metroeq_switch_profile_confirm">പ്രൊഫൈൽ മാറ്റുന്നതിനുമുമ്പ് മാറ്റങ്ങൾ സൂക്ഷിക്കണോ?</string>
-    <string name="metroeq_discard_changes">ഉപേക്ഷിക്കുക</string>
+    <string name="muzikeq_delete_profile_confirm">സൂക്ഷിച്ച “%1$s” പ്രൊഫൈൽ ഇല്ലാതാക്കണോ?</string>
+    <string name="muzikeq_switch_profile_confirm">പ്രൊഫൈൽ മാറ്റുന്നതിനുമുമ്പ് മാറ്റങ്ങൾ സൂക്ഷിക്കണോ?</string>
+    <string name="muzikeq_discard_changes">ഉപേക്ഷിക്കുക</string>
     <string name="listen_together_suggestion_submitted">നിർദ്ദേശം ഹോസ്റ്റിന് അയച്ചു</string>
     <string name="listen_together_suggestion_approved">നിങ്ങൾ നിർദ്ദേശിച്ച പാട്ട് അംഗീകരിച്ചു</string>
     <string name="listen_together_suggestion_rejected">നിങ്ങൾ നിർദ്ദേശിച്ച പാട്ട് നിരസിച്ചു</string>
@@ -416,8 +416,8 @@
     <string name="new_badge">പുതിയത്</string>
     <string name="start_typing_to_search_music">YouTube Music-ൽ തിരയാൻ ടൈപ്പ് ചെയ്യാൻ തുടങ്ങുക</string>
     <string name="filter_episodes">എപ്പിസോഡുകൾ</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s ഹെർട്സ്</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s ഹെർട്സ്</string>
     <string name="sponsorblock_podcasts">SponsorBlock (പോഡ്‌കാസ്റ്റുകൾ)</string>
     <string name="sponsorblock_podcasts_description">പോഡ്‌കാസ്റ്റ് എപ്പിസോഡുകളിൽ മാത്രം സ്പോൺസർമാർ, സ്വയംപ്രചാരണം, പ്രതികരണ അഭ്യർത്ഥനകൾ എന്നിവ ഒഴിവാക്കുക. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">പ്രചാരണ ഭാഗം ഒഴിവാക്കി</string>

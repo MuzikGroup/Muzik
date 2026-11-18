@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Dom</string>
     <string name="offline_mode">Način brez povezave</string>
     <string name="songs">Skladbe</string>
@@ -253,16 +253,6 @@
     <string name="dismiss">Zavrni</string>
     <string name="preview">Predogled</string>
     <string name="about">O aplikaciji</string>
-    <string name="credits_android_lead">Glavni razvijalec za Android</string>
-    <string name="credits_desktop_lead">Glavni razvijalec za računalnik</string>
-    <string name="credits_creator">Ustvarjalec Muzika</string>
-    <string name="credits_android_developer">Razvijalec za Android</string>
-    <string name="credits_desktop_developer">Razvijalec za računalnik</string>
-    <string name="credits_macos_developer">macOS razvijalec</string>
-    <string name="credits_windows_developer">Windows razvijalec</string>
-    <string name="credits_lyrics_ui_services">Vmesnik in storitve za besedila</string>
-    <string name="credits_android_designer">Oblikovalec za Android</string>
-    <string name="credits_wearos_designer">WearOS oblikovalec</string>
     <string name="open_website">Odpri spletno stran</string>
     <string name="open_github_profile">Odpri GitHub profil</string>
     <string name="sponsor_developer">Sponzoriraj razvijalca</string>
@@ -469,9 +459,9 @@
     <string name="discord_preview_buttons_adjusted">Discord skrajša dolge napise gumbov in izpusti gumbe s predolgimi povezavami. Ta predogled prikazuje gumbe, ki bodo poslani.</string>
     <string name="discord_presence_status_warning">Obogatena prisotnost pošlje Discordu stanje »Na spletu«. Lahko preglasi »Neviden« ali »Ne moti«, tudi ko se predvajanje ustavi.</string>
     <string name="discord_refresh_queued">Osvežitev prisotnosti je v čakalni vrsti.</string>
-    <string name="metroeq_delete_profile_confirm">Izbrišem shranjeni profil »%1$s«?</string>
-    <string name="metroeq_switch_profile_confirm">Shranim spremembe pred zamenjavo profila?</string>
-    <string name="metroeq_discard_changes">Zavrzi</string>
+    <string name="muzikeq_delete_profile_confirm">Izbrišem shranjeni profil »%1$s«?</string>
+    <string name="muzikeq_switch_profile_confirm">Shranim spremembe pred zamenjavo profila?</string>
+    <string name="muzikeq_discard_changes">Zavrzi</string>
     <string name="listen_together_suggestion_submitted">Predlog je poslan gostitelju</string>
     <string name="listen_together_suggestion_approved">Vaš predlog skladbe je odobren</string>
     <string name="listen_together_suggestion_rejected">Vaš predlog skladbe je zavrnjen</string>
@@ -540,8 +530,8 @@
     <string name="new_badge">Novo</string>
     <string name="start_typing_to_search_music">Začni pisati za iskanje v YouTube Music</string>
     <string name="filter_episodes">Epizode</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podkasti)</string>
     <string name="sponsorblock_podcasts_description">Preskoči sponzorje, samopromocijo in pozive k sodelovanju samo v epizodah podkastov. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Promocijski odsek preskočen</string>

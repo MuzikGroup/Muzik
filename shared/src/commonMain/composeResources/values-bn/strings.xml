@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">হোম</string>
     <string name="offline_mode">অফলাইন মোড</string>
     <string name="songs">গান</string>
@@ -402,9 +402,9 @@
     <string name="discord_preview_buttons_adjusted">Discord লম্বা বোতামের লেখা ছোট করে এবং অতিরিক্ত লম্বা লিংকের বোতাম বাদ দেয়। এই প্রিভিউতে পাঠানো হবে এমন বোতামগুলো দেখানো হচ্ছে।</string>
     <string name="discord_presence_status_warning">বিস্তারিত কার্যকলাপের স্ট্যাটাস Discord-এ অনলাইন স্ট্যাটাস পাঠায়। এটি অদৃশ্য বা বিরক্ত করবেন না স্ট্যাটাস বদলাতে পারে, এমনকি গান বন্ধ থাকলেও।</string>
     <string name="discord_refresh_queued">স্ট্যাটাস রিফ্রেশ কিউতে রাখা হয়েছে।</string>
-    <string name="metroeq_delete_profile_confirm">সংরক্ষিত প্রোফাইল “%1$s” ডিলিট করবেন?</string>
-    <string name="metroeq_switch_profile_confirm">প্রোফাইল বদলানোর আগে পরিবর্তনগুলো সংরক্ষণ করবেন?</string>
-    <string name="metroeq_discard_changes">বাতিল করুন</string>
+    <string name="muzikeq_delete_profile_confirm">সংরক্ষিত প্রোফাইল “%1$s” ডিলিট করবেন?</string>
+    <string name="muzikeq_switch_profile_confirm">প্রোফাইল বদলানোর আগে পরিবর্তনগুলো সংরক্ষণ করবেন?</string>
+    <string name="muzikeq_discard_changes">বাতিল করুন</string>
     <string name="listen_together_suggestion_submitted">হোস্টকে প্রস্তাব পাঠানো হয়েছে</string>
     <string name="listen_together_suggestion_approved">আপনার গানের প্রস্তাব অনুমোদিত হয়েছে</string>
     <string name="listen_together_suggestion_rejected">আপনার গানের প্রস্তাব প্রত্যাখ্যাত হয়েছে</string>
@@ -473,8 +473,8 @@
     <string name="new_badge">নতুন</string>
     <string name="start_typing_to_search_music">YouTube Music-এ খুঁজতে টাইপ করা শুরু করুন</string>
     <string name="filter_episodes">পর্বগুলি</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s হার্টজ</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s হার্টজ</string>
     <string name="sponsorblock_podcasts">SponsorBlock (পডকাস্ট)</string>
     <string name="sponsorblock_podcasts_description">শুধু পডকাস্ট পর্বে স্পনসর, আত্মপ্রচার এবং প্রতিক্রিয়ার অনুরোধ এড়িয়ে যান। (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">প্রচারমূলক অংশ এড়িয়ে যাওয়া হয়েছে</string>

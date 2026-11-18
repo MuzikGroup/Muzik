@@ -95,6 +95,6 @@ The file names identify the request pairs. They cover en/US, de/DE, fr/FR, es/ES
 
 ## Glyphmind dictionary downloads
 
-`shared/src/jvmSharedTest/resources/glyphmind/mandarin.bin` is the unmodified [dict-v1 Mandarin pack](https://github.com/nyxiereal/glyphmind/releases/download/dict-v1/mandarin.bin). It is 264,352 bytes with SHA-256 `ed3f75c21aadf72819f226ab47d17ccc35166c1acc2e2d0ae1d0801ea77f4fa0`. The backend wiring tests serve it through Ktor MockEngine and install it in temporary storage. Only test runtimes include this fixture; production still downloads it on demand.
+`shared/src/jvmSharedTest/resources/glyphmind/mandarin.bin` is the unmodified dict-v1 Mandarin pack. It is 264,352 bytes with SHA-256 `ed3f75c21aadf72819f226ab47d17ccc35166c1acc2e2d0ae1d0801ea77f4fa0`. The backend wiring tests serve it through Ktor MockEngine and install it in temporary storage. Only test runtimes include this fixture; production still downloads it on demand.
 
 The table combines Unicode Unihan 17.0.0 and houbb/pinyin 0.4.0 data. Its attribution and retained Unicode and Apache license texts are in [glyphmind's bundled notice](../shared/src/commonMain/composeResources/files/licenses/glyphmind/NOTICE.md) and the adjacent `licenses/` directory. Replacing the fixture requires verifying the published pack against glyphmind's pinned manifest.

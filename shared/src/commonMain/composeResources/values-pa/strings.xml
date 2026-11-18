@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">ਘਰ</string>
     <string name="songs">ਗੀਤ</string>
     <string name="artists">ਕਲਾਕਾਰ</string>
@@ -323,9 +323,9 @@
     <string name="discord_preview_buttons_adjusted">Discord ਬਟਨਾਂ ਦੇ ਲੰਬੇ ਲੇਬਲ ਛੋਟੇ ਕਰਦਾ ਹੈ ਅਤੇ ਬਹੁਤ ਲੰਬੇ ਲਿੰਕ ਵਾਲੇ ਬਟਨ ਛੱਡ ਦਿੰਦਾ ਹੈ। ਇਹ ਝਲਕ ਭੇਜੇ ਜਾਣ ਵਾਲੇ ਬਟਨ ਦਿਖਾਉਂਦੀ ਹੈ।</string>
     <string name="discord_presence_status_warning">ਵਿਸਤ੍ਰਿਤ ਸਰਗਰਮੀ ਦੀ ਜਾਣਕਾਰੀ ਚਾਲੂ ਕਰਨ ਨਾਲ Discord ਨੂੰ ਆਨਲਾਈਨ ਹਾਲਤ ਭੇਜੀ ਜਾਂਦੀ ਹੈ। ਇਹ ਅਦਿੱਖ ਜਾਂ ਪਰੇਸ਼ਾਨ ਨਾ ਕਰੋ ਹਾਲਤ ਨੂੰ ਬਦਲ ਸਕਦੀ ਹੈ, ਭਾਵੇਂ ਪਲੇਬੈਕ ਰੁਕ ਗਿਆ ਹੋਵੇ।</string>
     <string name="discord_refresh_queued">ਮੌਜੂਦਗੀ ਦੀ ਜਾਣਕਾਰੀ ਤਾਜ਼ਾ ਕਰਨ ਦੀ ਬੇਨਤੀ ਕਤਾਰ ਵਿੱਚ ਹੈ।</string>
-    <string name="metroeq_delete_profile_confirm">ਸੰਭਾਲੀ ਪ੍ਰੋਫ਼ਾਈਲ “%1$s” ਮਿਟਾਉਣੀ ਹੈ?</string>
-    <string name="metroeq_switch_profile_confirm">ਪ੍ਰੋਫ਼ਾਈਲ ਬਦਲਣ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਬਦਲਾਅ ਸੰਭਾਲਣੇ ਹਨ?</string>
-    <string name="metroeq_discard_changes">ਬਦਲਾਅ ਛੱਡੋ</string>
+    <string name="muzikeq_delete_profile_confirm">ਸੰਭਾਲੀ ਪ੍ਰੋਫ਼ਾਈਲ “%1$s” ਮਿਟਾਉਣੀ ਹੈ?</string>
+    <string name="muzikeq_switch_profile_confirm">ਪ੍ਰੋਫ਼ਾਈਲ ਬਦਲਣ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਬਦਲਾਅ ਸੰਭਾਲਣੇ ਹਨ?</string>
+    <string name="muzikeq_discard_changes">ਬਦਲਾਅ ਛੱਡੋ</string>
     <string name="listen_together_suggestion_submitted">ਮੇਜ਼ਬਾਨ ਨੂੰ ਸੁਝਾਅ ਭੇਜ ਦਿੱਤਾ ਗਿਆ</string>
     <string name="listen_together_suggestion_approved">ਤੁਹਾਡੇ ਗੀਤ ਦਾ ਸੁਝਾਅ ਮਨਜ਼ੂਰ ਹੋ ਗਿਆ</string>
     <string name="listen_together_suggestion_rejected">ਤੁਹਾਡੇ ਗੀਤ ਦਾ ਸੁਝਾਅ ਰੱਦ ਹੋ ਗਿਆ</string>
@@ -394,8 +394,8 @@
     <string name="new_badge">ਨਵਾਂ</string>
     <string name="start_typing_to_search_music">YouTube Music ਉੱਤੇ ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ</string>
     <string name="filter_episodes">ਐਪੀਸੋਡ</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s ਹਰਟਜ਼</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s ਹਰਟਜ਼</string>
     <string name="sponsorblock_podcasts">SponsorBlock (ਪੌਡਕਾਸਟ)</string>
     <string name="sponsorblock_podcasts_description">ਸਿਰਫ਼ ਪੌਡਕਾਸਟ ਐਪੀਸੋਡਾਂ ਵਿੱਚ ਸਪਾਂਸਰ, ਸਵੈ-ਪ੍ਰਚਾਰ ਅਤੇ ਪ੍ਰਤੀਕਿਰਿਆ ਦੀਆਂ ਬੇਨਤੀਆਂ ਛੱਡੋ। (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">ਪ੍ਰਚਾਰ ਵਾਲਾ ਹਿੱਸਾ ਛੱਡਿਆ ਗਿਆ</string>

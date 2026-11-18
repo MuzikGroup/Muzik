@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  */
 
 @file:OptIn(
@@ -236,7 +236,7 @@ internal fun SettingsUiRegistryBuilder.registerPlaybackSettings(host: SharedSett
             if (SettingsPageId.EQUALIZER in host.availablePages) {
                 navigation(
                     "equalizer",
-                    stringResource(Res.string.metroeq),
+                    stringResource(Res.string.muzikeq),
                     SettingsPageId.EQUALIZER,
                     description = stringResource(Res.string.settings_equalizer_overview),
                 )

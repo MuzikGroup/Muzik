@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources>
+<resources>
     <string name="home">Ana sayfa</string>
     <string name="offline_mode">Çevrimdışı mod</string>
     <string name="songs">Şarkılar</string>
@@ -242,16 +242,6 @@
     <string name="dismiss">İptal</string>
     <string name="preview">Ön izleme</string>
     <string name="about">Hakkında</string>
-    <string name="credits_android_lead">Android geliştirme lideri</string>
-    <string name="credits_desktop_lead">Masaüstü geliştirme lideri</string>
-    <string name="credits_creator">Muzik’in yaratıcısı</string>
-    <string name="credits_android_developer">Android geliştiricisi</string>
-    <string name="credits_desktop_developer">Masaüstü geliştiricisi</string>
-    <string name="credits_macos_developer">macOS geliştiricisi</string>
-    <string name="credits_windows_developer">Windows geliştiricisi</string>
-    <string name="credits_lyrics_ui_services">Şarkı sözü arayüzü ve hizmetleri</string>
-    <string name="credits_android_designer">Arayüz tasarımcısı</string>
-    <string name="credits_wearos_designer">WearOS tasarımcısı</string>
     <string name="open_website">Web sitesini aç</string>
     <string name="open_github_profile">GitHub profilini aç</string>
     <string name="sponsor_developer">Geliştiriciye destek ol</string>
@@ -1906,9 +1896,9 @@
     <string name="discord_preview_buttons_adjusted">Discord uzun düğme etiketlerini kısaltır ve bağlantıları çok uzun olan düğmeleri çıkarır. Bu önizleme, gönderilecek düğmeleri gösterir.</string>
     <string name="discord_presence_status_warning">Zengin durum bilgisi Discord'a Çevrimiçi durumunu gönderir. Oynatma durduğunda da Görünmez veya Rahatsız Etmeyin durumlarını geçersiz kılabilir.</string>
     <string name="discord_refresh_queued">Durum yenileme sıraya alındı.</string>
-    <string name="metroeq_delete_profile_confirm">Kaydedilen “%1$s” profili silinsin mi?</string>
-    <string name="metroeq_switch_profile_confirm">Profil değiştirmeden önce değişiklikleriniz kaydedilsin mi?</string>
-    <string name="metroeq_discard_changes">Değişiklikleri at</string>
+    <string name="muzikeq_delete_profile_confirm">Kaydedilen “%1$s” profili silinsin mi?</string>
+    <string name="muzikeq_switch_profile_confirm">Profil değiştirmeden önce değişiklikleriniz kaydedilsin mi?</string>
+    <string name="muzikeq_discard_changes">Değişiklikleri at</string>
     <string name="listen_together_suggestion_submitted">Öneri oda sahibine gönderildi</string>
     <string name="listen_together_suggestion_approved">Şarkı öneriniz onaylandı</string>
     <string name="listen_together_suggestion_rejected">Şarkı öneriniz reddedildi</string>
@@ -1948,8 +1938,8 @@
     <string name="top_period_past_month">Son ay</string>
     <string name="top_period_past_year">Son yıl</string>
     <string name="new_badge">Yeni</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podcastler)</string>
     <string name="sponsorblock_podcasts_description">Sponsorları, öz tanıtımı ve etkileşim çağrılarını yalnızca podcast bölümlerinde atla. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Tanıtım bölümü atlandı</string>
@@ -2057,10 +2047,6 @@
     <string name="disable_animated_artwork_on_mobile_data_desc">Animasyonlar önbelleğe alınmış olsa bile mobil veride statik kapak görseli göster</string>
     <string name="hide_recent_searches">“Son aramalardan” ögesini gizle</string>
     <string name="bottom_sheet_pane_title">Alt sayfa</string>
-    <string name="credits_multiplatform_developer">Çoklu platform geliştiricisi</string>
-    <string name="credits_collaborators_section">Katkıda bulunanlar</string>
-    <string name="credits_leads_section">Liderler</string>
-    <string name="credits_creator_section">Kurucu</string>
     <string name="advanced">Gelişmiş</string>
     <string name="integration_on">Açık</string>
     <string name="integration_off">Kapalı</string>
@@ -2108,7 +2094,7 @@
     <string name="eq_disabled">Devre dışı</string>
     <string name="no_profiles">Ekolayzer profili yok</string>
     <string name="import_profile">Profili aktar</string>
-    <string name="edit_in_metroeq">MetroEQ'da Düzenle</string>
+    <string name="edit_in_muzikeq">MuzikEQ'da Düzenle</string>
     <string name="system_equalizer">Sistem ekolayzeri</string>
     <string name="eq_wizard">AutoEQ sihirbazı</string>
     <string name="import_from_file">Dosyadan aktar</string>
@@ -2277,7 +2263,7 @@
     <string name="try_again">Tekrar deneyin</string>
     <string name="play_on_app">Muzik'te çal</string>
     <string name="re_listen">Tekrar dinle</string>
-    <string name="stands_with_palestine">Bu proje Filistin'i desteklemektedir</string>
+    <string name="built_by_pipo_team">Pipo Team'un harika geliştiricileri tarafından inşa edildi</string>
     <string name="about_play_favorite_song">En sevdikleri şarkıyı çalmak ister misiniz?</string>
     <string name="recognition_match_found">Eşleşme bulundu</string>
     <string name="recognition_listening_hint">Telefonunuzu müziğe yakın tutun</string>
@@ -2304,7 +2290,7 @@
     <string name="playback_event_log_raw_description">Her zaman açık oynatma tanılamaları. Oynatma bozulduğunda bu ham günlüğü kopyalayın veya dışa aktarın.</string>
     <string name="playback_event_log_raw_empty">Henüz kaydedilmiş oynatma olayı yok. Tanılama verilerini yakalamak için bir parça çalın.</string>
     <string name="audio_boost">Ön amfi</string>
-    <string name="equalizer_usage_warning">Muzik ekibi MetroEQ kullanımınız için sorumluluk kabul etmez.</string>
+    <string name="equalizer_usage_warning">Muzik ekibi MuzikEQ kullanımınız için sorumluluk kabul etmez.</string>
     <string name="playlist_cover_updated">Çalma listesi kapağı güncellendi</string>
     <string name="playlist_cover_removed">Özel kapak kaldırıldı</string>
     <string name="login">Oturum aç</string>
@@ -2364,20 +2350,20 @@
     <string name="canvas">Canvas</string>
     <string name="canvas_cache">Canvas önbelleği</string>
     <string name="library_grid_columns">Kitaplık ızgara sütunları</string>
-    <string name="metroeq_profiles">Kaydedilen profiller</string>
-    <string name="metroeq_preset_treble">Tiz güçlendirme</string>
-    <string name="metroeq_preset_flat">Düz</string>
-    <string name="metroeq_unsaved_changes">Kaydedilmemiş değişiklikler</string>
-    <string name="metroeq_preset_v_shape">V şeklinde</string>
-    <string name="metroeq_profile_name">Profil adı</string>
-    <string name="metroeq_custom_profile">Özel profil</string>
-    <string name="metroeq_peak_reduction">Tepe koruması: %1$s dB</string>
-    <string name="metroeq_preset_vocal">Vokal</string>
-    <string name="metroeq">MetroEQ</string>
-    <string name="metroeq_preset_rock">Rock</string>
-    <string name="metroeq_save_as">Farklı kaydet</string>
-    <string name="metroeq_preset_bass">Bas güçlendirme</string>
-    <string name="metroeq_presets">Ön ayarlar</string>
+    <string name="muzikeq_profiles">Kaydedilen profiller</string>
+    <string name="muzikeq_preset_treble">Tiz güçlendirme</string>
+    <string name="muzikeq_preset_flat">Düz</string>
+    <string name="muzikeq_unsaved_changes">Kaydedilmemiş değişiklikler</string>
+    <string name="muzikeq_preset_v_shape">V şeklinde</string>
+    <string name="muzikeq_profile_name">Profil adı</string>
+    <string name="muzikeq_custom_profile">Özel profil</string>
+    <string name="muzikeq_peak_reduction">Tepe koruması: %1$s dB</string>
+    <string name="muzikeq_preset_vocal">Vokal</string>
+    <string name="muzikeq">MuzikEQ</string>
+    <string name="muzikeq_preset_rock">Rock</string>
+    <string name="muzikeq_save_as">Farklı kaydet</string>
+    <string name="muzikeq_preset_bass">Bas güçlendirme</string>
+    <string name="muzikeq_presets">Ön ayarlar</string>
     <string name="download_error_incomplete">YouTube ses dosyasının tamamını sağlamadı. Daha sonra tekrar deneyin veya farklı bir ağ kullanın.</string>
     <string name="chip_content_description">%1$s, çip</string>
     <string name="global_lyrics_offset_description">Bu kaydırma, her şarkının kendi ayarına ek olarak tüm şarkılara uygulanır. Pozitif değerler şarkı sözlerini daha erken, negatif değerler daha geç gösterir.</string>

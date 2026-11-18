@@ -4,7 +4,7 @@ Glyphmind code is GPL-3.0-only. The licenses below apply to the corresponding up
 
 ## Muzik
 
-The romanization rules, word alignment, Mandarin decoder and regression tests come from [Muzik](https://github.com/MuzikGroup/MuzikDesktop), revision `1404ba751491965ae943ff1845d8d7e08a6f2093`, following the history behind tag `v14.0.0`. Copyright 2026 Muzik contributors, including **l6t9**. Original file headers remain in the port. Contributor history is available at the linked repository; these changes do not claim sole authorship. The GPL version 3 text is in `LICENSE`. Glyphmind selects GPL-3.0-only, not a permissive relicensing of those contributions.
+The romanization rules, word alignment, Mandarin decoder and regression tests come from [Muzik](https://github.com/MuzikGroup/MuzikDesktop), revision `1404ba751491965ae943ff1845d8d7e08a6f2093`, following the history behind tag `v14.0.0`. Copyright 2026 the Muzik Project (Ignatius and the Pipo Team). Original file headers remain in the port. The GPL version 3 text is in `LICENSE`. Glyphmind selects GPL-3.0-only, not a permissive relicensing of those contributions.
 
 ## Kuromoji and IPADIC
 

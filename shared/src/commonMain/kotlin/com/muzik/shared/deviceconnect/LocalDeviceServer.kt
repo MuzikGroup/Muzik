@@ -1,6 +1,6 @@
 /**
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  *
  * Local WebSocket server that accepts incoming DeviceConnect links from peers on
  * the LAN. The platform actual hosts it (Ktor CIO on Android).

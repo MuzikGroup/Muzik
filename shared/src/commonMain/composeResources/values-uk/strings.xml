@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Головна</string>
     <string name="songs">Музика</string>
     <string name="artists">Виконавці</string>
@@ -373,9 +373,9 @@
     <string name="discord_preview_buttons_adjusted">Discord скорочує довгі написи на кнопках і пропускає кнопки із задовгими посиланнями. Цей попередній перегляд показує кнопки, які буде надіслано.</string>
     <string name="discord_presence_status_warning">Розширений статус надсилає до Discord статус У мережі. Може замінити Невидимий або Не турбувати, навіть коли відтворення зупинено.</string>
     <string name="discord_refresh_queued">Оновлення статусу додано до черги.</string>
-    <string name="metroeq_delete_profile_confirm">Видалити збережений профіль «%1$s»?</string>
-    <string name="metroeq_switch_profile_confirm">Зберегти зміни перед перемиканням профілю?</string>
-    <string name="metroeq_discard_changes">Відкинути</string>
+    <string name="muzikeq_delete_profile_confirm">Видалити збережений профіль «%1$s»?</string>
+    <string name="muzikeq_switch_profile_confirm">Зберегти зміни перед перемиканням профілю?</string>
+    <string name="muzikeq_discard_changes">Відкинути</string>
     <string name="listen_together_suggestion_submitted">Пропозицію надіслано ведучому</string>
     <string name="listen_together_suggestion_approved">Вашу пропозицію треку схвалено</string>
     <string name="listen_together_suggestion_rejected">Вашу пропозицію треку відхилено</string>
@@ -444,8 +444,8 @@
     <string name="new_badge">Нове</string>
     <string name="start_typing_to_search_music">Почніть вводити текст для пошуку в YouTube Music</string>
     <string name="filter_episodes">Епізоди</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Гц</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Гц</string>
     <string name="sponsorblock_podcasts">SponsorBlock (подкасти)</string>
     <string name="sponsorblock_podcasts_description">Пропускати спонсорські вставки, саморекламу та заклики до взаємодії лише в епізодах подкастів. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Рекламний сегмент пропущено</string>

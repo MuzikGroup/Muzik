@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="bitrate_value">%1$d کلو بٹ/سیکنڈ</string>
     <string name="sample_rate_value">%1$d ہرٹز</string>
     <string name="import_error_unsupported_playlist_entries">اس پلے لسٹ میں مقامی فائلیں یا براہ راست روابط ہیں جن تک Android رسائی حاصل نہیں کر سکتا۔ YouTube روابط والی پلے لسٹ درآمد کریں، یا ڈیسک ٹاپ پر مقامی فائلیں منتخب کریں۔</string>
@@ -179,9 +179,9 @@
     <string name="discord_preview_buttons_adjusted">Discord بٹنوں کے طویل لیبل مختصر کرتا ہے اور بہت طویل روابط والے بٹن ہٹا دیتا ہے۔ اس پیش منظر میں وہ بٹن دکھائے گئے ہیں جو بھیجے جائیں گے۔</string>
     <string name="discord_presence_status_warning">تفصیلی سرگرمی کی نمائش فعال کرنے سے Discord کو آن لائن حالت بھیجی جاتی ہے۔ یہ پوشیدہ یا تنگ نہ کریں کی حالت کو بدل سکتی ہے، یہاں تک کہ پلے بیک رکنے پر بھی۔</string>
     <string name="discord_refresh_queued">موجودگی کی معلومات تازہ کرنے کی درخواست قطار میں ہے۔</string>
-    <string name="metroeq_delete_profile_confirm">محفوظ کردہ پروفائل ”%1$s“ حذف کریں؟</string>
-    <string name="metroeq_switch_profile_confirm">پروفائل بدلنے سے پہلے اپنی تبدیلیاں محفوظ کریں؟</string>
-    <string name="metroeq_discard_changes">تبدیلیاں چھوڑ دیں</string>
+    <string name="muzikeq_delete_profile_confirm">محفوظ کردہ پروفائل ”%1$s“ حذف کریں؟</string>
+    <string name="muzikeq_switch_profile_confirm">پروفائل بدلنے سے پہلے اپنی تبدیلیاں محفوظ کریں؟</string>
+    <string name="muzikeq_discard_changes">تبدیلیاں چھوڑ دیں</string>
     <string name="listen_together_suggestion_submitted">تجویز میزبان کو بھیج دی گئی</string>
     <string name="listen_together_suggestion_approved">آپ کے گانے کی تجویز منظور ہو گئی</string>
     <string name="listen_together_suggestion_rejected">آپ کے گانے کی تجویز مسترد ہو گئی</string>
@@ -250,8 +250,8 @@
     <string name="new_badge">نیا</string>
     <string name="start_typing_to_search_music">YouTube Music پر تلاش کرنے کے لیے ٹائپ کرنا شروع کریں</string>
     <string name="filter_episodes">اقساط</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s ہرٹز</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s ہرٹز</string>
     <string name="sponsorblock_podcasts">SponsorBlock (پوڈکاسٹ)</string>
     <string name="sponsorblock_podcasts_description">صرف پوڈکاسٹ اقساط میں اسپانسرز، ذاتی تشہیر اور ردعمل کی درخواستیں چھوڑیں۔ (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">تشہیری حصہ چھوڑ دیا گیا</string>

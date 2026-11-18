@@ -1,6 +1,6 @@
 /*
  * Muzik Project (C) 2026
- * Licensed under GPL-3.0 | See git history for contributors
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
  *
  * Word animation are replicated and ported from Braccato (https://github.com/better-lyrics/braccato, MIT).
  * behavior may not 1:1, but atleast it work

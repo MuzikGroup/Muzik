@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Utama</string>
     <string name="offline_mode">Mod luar talian</string>
     <string name="songs">Lagu</string>
@@ -225,16 +225,6 @@
     <string name="dismiss">Ketepikan</string>
     <string name="preview">Pratonton</string>
     <string name="about">Tentang</string>
-    <string name="credits_android_lead">Pembangun Android utama</string>
-    <string name="credits_desktop_lead">Pembangun desktop utama</string>
-    <string name="credits_creator">Pencipta Muzik</string>
-    <string name="credits_android_developer">Pembangun Android</string>
-    <string name="credits_desktop_developer">Pembangun aplikasi desktop</string>
-    <string name="credits_macos_developer">Pembangun macOS</string>
-    <string name="credits_windows_developer">Pembangun Windows</string>
-    <string name="credits_lyrics_ui_services">UI dan perkhidmatan lirik</string>
-    <string name="credits_android_designer">Pereka UI</string>
-    <string name="credits_wearos_designer">Pereka WearOS</string>
     <string name="open_website">Buka laman web</string>
     <string name="open_github_profile">Buka profil GitHub</string>
     <string name="sponsor_developer">Taja pembangun</string>
@@ -1031,9 +1021,9 @@
     <string name="discord_preview_buttons_adjusted">Discord memendekkan label butang yang panjang dan mengabaikan butang dengan pautan yang terlalu panjang. Pratonton ini menunjukkan butang yang akan dihantar.</string>
     <string name="discord_presence_status_warning">Status aktiviti terperinci menghantar status Dalam Talian ke Discord. Status ini mungkin menggantikan Halimunan atau Jangan Ganggu, termasuk apabila main balik berhenti.</string>
     <string name="discord_refresh_queued">Kemas kini status aktiviti dimasukkan dalam baris gilir.</string>
-    <string name="metroeq_delete_profile_confirm">Padam profil tersimpan “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Simpan perubahan anda sebelum menukar profil?</string>
-    <string name="metroeq_discard_changes">Buang</string>
+    <string name="muzikeq_delete_profile_confirm">Padam profil tersimpan “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Simpan perubahan anda sebelum menukar profil?</string>
+    <string name="muzikeq_discard_changes">Buang</string>
     <string name="listen_together_suggestion_submitted">Cadangan dihantar kepada hos</string>
     <string name="listen_together_suggestion_approved">Cadangan lagu anda diluluskan</string>
     <string name="listen_together_suggestion_rejected">Cadangan lagu anda ditolak</string>
@@ -1102,8 +1092,8 @@
     <string name="new_badge">Baharu</string>
     <string name="start_typing_to_search_music">Mula menaip untuk mencari di YouTube Music</string>
     <string name="filter_episodes">Episod</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podcast)</string>
     <string name="sponsorblock_podcasts_description">Langkau penaja, promosi diri dan ajakan berinteraksi dalam episod podcast sahaja. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Segmen promosi dilangkau</string>

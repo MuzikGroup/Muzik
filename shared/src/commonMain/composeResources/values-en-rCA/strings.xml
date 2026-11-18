@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. -->
-<!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 -->
-<!-- See docs/translation-attribution.md for credits and licensing. -->
 <resources>
     <string name="forgotten_favorites">Forgotten favourites</string>
     <string name="audio_boost">Preamp</string>
-    <string name="equalizer_usage_warning">The Muzik team assumes no responsibility for your use of MetroEQ.</string>
+    <string name="equalizer_usage_warning">The Muzik team assumes no responsibility for your use of MuzikEQ.</string>
     <string name="song_cache_location_custom">Custom folder</string>
     <string name="song_cache_location_custom_desc">Folder selected with the Storage Access Framework</string>
     <string name="lyrics_text_position_center">Centre</string>
@@ -103,23 +100,20 @@
     <string name="upload_already_exists">This song is already in your YouTube Music uploads.</string>
     <string name="delete_upload">Delete upload</string>
     <string name="delete_upload_question">Delete this upload from YouTube Music?</string>
-    <string name="credits_collaborators_section">Collaborators</string>
-    <string name="credits_leads_section">Leads</string>
-    <string name="credits_creator_section">Creator</string>
-    <string name="metroeq">MetroEQ</string>
-    <string name="metroeq_peak_reduction">Peak protection: %1$s dB</string>
-    <string name="metroeq_preset_flat">Flat</string>
-    <string name="metroeq_preset_bass">Bass boost</string>
-    <string name="metroeq_preset_treble">Treble boost</string>
-    <string name="metroeq_preset_vocal">Vocals</string>
-    <string name="metroeq_preset_rock">Rock</string>
-    <string name="metroeq_preset_v_shape">V-shaped</string>
-    <string name="metroeq_presets">Presets</string>
-    <string name="metroeq_profiles">Saved profiles</string>
-    <string name="metroeq_save_as">Save as</string>
-    <string name="metroeq_profile_name">Profile name</string>
-    <string name="metroeq_custom_profile">Custom profile</string>
-    <string name="metroeq_unsaved_changes">Unsaved changes</string>
+    <string name="muzikeq">MuzikEQ</string>
+    <string name="muzikeq_peak_reduction">Peak protection: %1$s dB</string>
+    <string name="muzikeq_preset_flat">Flat</string>
+    <string name="muzikeq_preset_bass">Bass boost</string>
+    <string name="muzikeq_preset_treble">Treble boost</string>
+    <string name="muzikeq_preset_vocal">Vocals</string>
+    <string name="muzikeq_preset_rock">Rock</string>
+    <string name="muzikeq_preset_v_shape">V-shaped</string>
+    <string name="muzikeq_presets">Presets</string>
+    <string name="muzikeq_profiles">Saved profiles</string>
+    <string name="muzikeq_save_as">Save as</string>
+    <string name="muzikeq_profile_name">Profile name</string>
+    <string name="muzikeq_custom_profile">Custom profile</string>
+    <string name="muzikeq_unsaved_changes">Unsaved changes</string>
     <string name="verified_artists">Verified artists</string>
     <string name="onboarding_welcome_privacy_description">Set up your privacy preferences before your first listen.</string>
     <string name="import_notification_progress_channel_name">Playlist import progress</string>
@@ -187,9 +181,9 @@
     <string name="discord_preview_buttons_adjusted">Discord shortens long button labels and omits buttons whose links are too long. This preview shows the buttons that will be sent.</string>
     <string name="discord_presence_status_warning">When enabled, rich presence sends Online status to Discord. It may override Invisible or Do Not Disturb, including when playback stops.</string>
     <string name="discord_refresh_queued">Presence refresh queued.</string>
-    <string name="metroeq_delete_profile_confirm">Delete the saved profile “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">Save your changes before switching profiles?</string>
-    <string name="metroeq_discard_changes">Discard</string>
+    <string name="muzikeq_delete_profile_confirm">Delete the saved profile “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">Save your changes before switching profiles?</string>
+    <string name="muzikeq_discard_changes">Discard</string>
     <string name="listen_together_suggestion_submitted">Suggestion sent to the host</string>
     <string name="listen_together_suggestion_approved">Your song suggestion was approved</string>
     <string name="listen_together_suggestion_rejected">Your song suggestion was rejected</string>
@@ -258,14 +252,13 @@
     <string name="new_badge">New</string>
     <string name="start_typing_to_search_music">Start typing to search YouTube Music</string>
     <string name="filter_episodes">Episodes</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (podcasts)</string>
     <string name="sponsorblock_podcasts_description">Skip sponsors, self-promotion and interaction reminders in podcast episodes only. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Skipped promotional segment</string>
     <string name="episode_played">Played</string>
     <string name="lastfm_service_error">Last.fm sign-in is unavailable. Please try again later.</string>
-
     <string name="settings_appearance_overview">Theme, fonts and player appearance</string>
     <string name="settings_android_auto_overview">Driving playlists and quick-add destination</string>
     <string name="settings_about_overview">Contributors, community links and licenses</string>

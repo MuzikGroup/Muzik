@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">Home</string>
     <string name="songs">Mga kanta</string>
     <string name="artists">Mga artista</string>
@@ -235,11 +235,6 @@
     <string name="dismiss">Balewalain</string>
     <string name="preview">Pasilip</string>
     <string name="about">Tungkol sa</string>
-    <string name="credits_android_lead">Pangunahing Android developer</string>
-    <string name="credits_desktop_lead">Pangunahing desktop developer</string>
-    <string name="credits_creator">Tagalikha ng Muzik</string>
-    <string name="credits_lyrics_ui_services">Liriko at mga serbisyo</string>
-    <string name="credits_android_designer">Android designer</string>
     <string name="open_website">Buksan ang website</string>
     <string name="open_github_profile">Buksan ang GitHub profile</string>
     <string name="credits_license_name">Lisensya</string>
@@ -1861,9 +1856,9 @@
     <string name="discord_preview_buttons_adjusted">Pinaiikli ng Discord ang mahahabang label ng button at inaalis ang mga button na masyadong mahaba ang link. Ipinapakita sa preview na ito ang mga button na ipapadala.</string>
     <string name="discord_presence_status_warning">Kapag in-on ang detalyadong katayuan, ipinapadala sa Discord ang katayuang Online. Maaaring mapalitan ang Hindi nakikita o Huwag istorbohin, kahit huminto ang pag-playback.</string>
     <string name="discord_refresh_queued">Nakapila na ang pag-refresh ng katayuan.</string>
-    <string name="metroeq_delete_profile_confirm">Burahin ang naka-save na profile na “%1$s”?</string>
-    <string name="metroeq_switch_profile_confirm">I-save ang mga pagbabago mo bago lumipat ng profile?</string>
-    <string name="metroeq_discard_changes">Itapon</string>
+    <string name="muzikeq_delete_profile_confirm">Burahin ang naka-save na profile na “%1$s”?</string>
+    <string name="muzikeq_switch_profile_confirm">I-save ang mga pagbabago mo bago lumipat ng profile?</string>
+    <string name="muzikeq_discard_changes">Itapon</string>
     <string name="listen_together_suggestion_submitted">Naipadala na sa host ang mungkahi</string>
     <string name="listen_together_suggestion_approved">Naaprubahan ang mungkahi mong kanta</string>
     <string name="listen_together_suggestion_rejected">Tinanggihan ang mungkahi mong kanta</string>
@@ -1903,14 +1898,13 @@
     <string name="top_period_past_month">Nakaraang buwan</string>
     <string name="top_period_past_year">Nakaraang taon</string>
     <string name="new_badge">Bago</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s Hz</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s Hz</string>
     <string name="sponsorblock_podcasts">SponsorBlock (mga podcast)</string>
     <string name="sponsorblock_podcasts_description">Laktawan ang mga sponsor, sariling promosyon at mga paanyayang makipag-ugnayan sa mga episode ng podcast lamang. (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">Nilaktawan ang bahaging pampromosyon</string>
     <string name="episode_played">Napakinggan</string>
     <string name="lastfm_service_error">Hindi available ang pag-sign in sa Last.fm. Pakisubukan muli mamaya.</string>
-
     <string name="settings_appearance_overview">Tema, mga font, at hitsura ng player</string>
     <string name="settings_android_auto_overview">Mga playlist sa sasakyan at patutunguhan ng mabilisang pagdagdag</string>
     <string name="settings_about_overview">Mga nag-ambag, link ng komunidad, at lisensya</string>

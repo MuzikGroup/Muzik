@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Imported from the official Muzik Android translations. --><!-- Source revision: 6ee482cbe3a076092436a3cb1b53571ffead3097 --><!-- See docs/translation-attribution.md for credits and licensing. --><resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="home">होम</string>
     <string name="offline_mode">अफलाइन मोड</string>
     <string name="songs">गीतहरू</string>
@@ -238,16 +238,6 @@
     <string name="dismiss">हटाउनुहोस्</string>
     <string name="preview">पूर्वावलोकन</string>
     <string name="about">बारेमा</string>
-    <string name="credits_android_lead">मुख्य Android विकासकर्ता</string>
-    <string name="credits_desktop_lead">मुख्य desktop विकासकर्ता</string>
-    <string name="credits_creator">Muzik को सिर्जनाकर्ता</string>
-    <string name="credits_android_developer">Android विकासकर्ता</string>
-    <string name="credits_desktop_developer">Desktop विकसकर्ता</string>
-    <string name="credits_macos_developer">macOS विकासकर्ता</string>
-    <string name="credits_windows_developer">Windows विकासकर्ता</string>
-    <string name="credits_lyrics_ui_services">लिरिक्स इन्टरफेस र सेवाहरू</string>
-    <string name="credits_android_designer">प्रयोगकर्ता इन्टरफेस डिजाइनर</string>
-    <string name="credits_wearos_designer">WearOS डिजाइनर</string>
     <string name="open_website">वेबसाइट खोल्नुहोस्</string>
     <string name="open_github_profile">GitHub प्रोफाइल खोल्नुहोस्</string>
     <string name="sponsor_developer">विकासकर्तालाई प्रायोजन गर्नुहोस्</string>
@@ -1059,9 +1049,9 @@
     <string name="discord_preview_buttons_adjusted">Discord ले बटनका लामा नामहरू छोट्याउँछ र धेरै लामा लिङ्क भएका बटनहरू हटाउँछ। यो पूर्वावलोकनमा पठाइने बटनहरू देखाइएका छन्।</string>
     <string name="discord_presence_status_warning">रिच प्रेजेन्सले Discord मा अनलाइन स्थिति पठाउँछ। यसले अदृश्य वा बाधा नदिनुहोस् स्थिति बदल्न सक्छ, गीत बज्न रोकिएपछि पनि।</string>
     <string name="discord_refresh_queued">उपस्थिति रिफ्रेस गर्ने अनुरोध क्युमा राखियो।</string>
-    <string name="metroeq_delete_profile_confirm">सुरक्षित गरिएको प्रोफाइल “%1$s” मेटाउने हो?</string>
-    <string name="metroeq_switch_profile_confirm">प्रोफाइल बदल्नुअघि परिवर्तनहरू सुरक्षित गर्ने हो?</string>
-    <string name="metroeq_discard_changes">परिवर्तनहरू त्याग्नुहोस्</string>
+    <string name="muzikeq_delete_profile_confirm">सुरक्षित गरिएको प्रोफाइल “%1$s” मेटाउने हो?</string>
+    <string name="muzikeq_switch_profile_confirm">प्रोफाइल बदल्नुअघि परिवर्तनहरू सुरक्षित गर्ने हो?</string>
+    <string name="muzikeq_discard_changes">परिवर्तनहरू त्याग्नुहोस्</string>
     <string name="listen_together_suggestion_submitted">सिफारिस होस्टलाई पठाइयो</string>
     <string name="listen_together_suggestion_approved">तपाईंको गीतको सिफारिस स्वीकृत भयो</string>
     <string name="listen_together_suggestion_rejected">तपाईंको गीतको सिफारिस अस्वीकृत भयो</string>
@@ -1125,8 +1115,8 @@
     <string name="new_badge">नयाँ</string>
     <string name="start_typing_to_search_music">YouTube Music मा खोज्न टाइप गर्न सुरु गर्नुहोस्</string>
     <string name="filter_episodes">एपिसोडहरू</string>
-    <string name="metroeq_q_value">Q: %1$s</string>
-    <string name="metroeq_frequency_value">%1$s हर्ट्ज</string>
+    <string name="muzikeq_q_value">Q: %1$s</string>
+    <string name="muzikeq_frequency_value">%1$s हर्ट्ज</string>
     <string name="sponsorblock_podcasts">SponsorBlock (पोडकास्ट)</string>
     <string name="sponsorblock_podcasts_description">पोडकास्ट एपिसोडहरूमा मात्र प्रायोजक, आत्मप्रचार र अन्तरक्रियाका अनुरोधहरू छोड्नुहोस्। (https://sponsor.ajay.app)</string>
     <string name="sponsorblock_skipped">प्रचारात्मक खण्ड छोडियो</string>
@@ -1156,10 +1146,6 @@
     <string name="disable_animated_artwork_on_mobile_data">मोबाइल डेटामा एनिमेटेड कलाकृति असक्षम पार्नुहोस्</string>
     <string name="disable_animated_artwork_on_mobile_data_desc">एनिमेसनहरू क्यास हुँदा पनि मोबाइल डेटामा स्थिर कलाकृति देखाउनुहोस्</string>
     <string name="hide_recent_searches">"हालका खोजहरूबाट" लुकाउनुहोस्</string>
-    <string name="credits_multiplatform_developer">बहु प्लेटफार्म विकासकर्ता</string>
-    <string name="credits_collaborators_section">सहयोगीहरू</string>
-    <string name="credits_leads_section">प्रमुखहरू</string>
-    <string name="credits_creator_section">निर्माता</string>
     <string name="advanced">उन्नत</string>
     <string name="integration_on">चालु</string>
     <string name="integration_off">बन्द</string>
