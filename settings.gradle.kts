@@ -3,6 +3,7 @@
 pluginManagement {
     repositories {
         google()
+        maven { setUrl("https://repo.huaweicloud.com/repository/maven/") }
         mavenCentral()
         gradlePluginPortal()
     }
@@ -14,6 +15,7 @@ dependencyResolutionManagement {
     repositories {
         mavenLocal()
         google()
+        maven { setUrl("https://repo.huaweicloud.com/repository/maven/") }
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
         maven { setUrl("https://maven.aliyun.com/repository/public") }
