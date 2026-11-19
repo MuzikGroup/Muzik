@@ -418,6 +418,22 @@ fun AccountSettings(
 
             Spacer(Modifier.height(4.dp))
 
+            // About Muzik lives directly below the Settings button, outside the
+            // settings page itself.
+            PreferenceEntry(
+                title = { Text(stringResource(R.string.about)) },
+                icon = { Icon(painterResource(R.drawable.info), contentDescription = null) },
+                onClick = {
+                    onClose()
+                    navController.navigate("settings/about")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+            )
+
+            Spacer(Modifier.height(4.dp))
+
             if (BuildConfig.UPDATER_AVAILABLE && latestVersionName != BuildConfig.VERSION_NAME) {
                 val releaseInfo = Updater.getCachedLatestRelease()
                 val downloadUrl = releaseInfo?.let { Updater.getDownloadUrlForCurrentVariant(it) }
