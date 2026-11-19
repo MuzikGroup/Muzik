@@ -2,7 +2,7 @@
 """Write an AltStore/SideStore source for a stable release IPA.
 
 The release publishes it as `muzik-altstore.json`, so the stable source URL is
-https://github.com/MuzikGroup/MuzikDesktop/releases/latest/download/muzik-altstore.json.
+https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-altstore.json.
 """
 
 import argparse

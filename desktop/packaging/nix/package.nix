@@ -1,28 +1,37 @@
-{ lib, stdenv, appimageTools, fetchurl, glib-networking, release }:
+{ lib, stdenv, fetchurl, makeWrapper, openjdk21, gtk3, webkitgtk_4_1, libsecret
+, dbus, glib-networking, release }:
 let
   pname = "muzik";
   version = release.version;
+  # The portable JAR is architecture-independent, so both x86_64 and aarch64
+  # consume the same release asset pinned by packaging/release.json.
   asset = release.linux.${stdenv.hostPlatform.system};
   src = fetchurl { inherit (asset) url hash; };
-  contents = appimageTools.extract { inherit pname version src; };
+  runtimeLibs = [ gtk3 webkitgtk_4_1 libsecret dbus glib-networking ];
 in
-appimageTools.wrapType2 {
+stdenv.mkDerivation {
   inherit pname version src;
-  # alsa-plugins would hide the host's /etc/alsa and its PipeWire configuration in the FHS sandbox.
-  extraPkgs = pkgs: with pkgs; [
-    gtk3 webkitgtk_4_1 libsecret dbus glib-networking
-  ];
-  profile = ''
-    export GIO_EXTRA_MODULES="${glib-networking}/lib/gio/modules''${GIO_EXTRA_MODULES:+:$GIO_EXTRA_MODULES}"
+
+  nativeBuildInputs = [ makeWrapper ];
+  buildInputs = runtimeLibs;
+
+  dontUnpack = true;
+
+  installPhase = ''
+    runHook preInstall
+
+    install -Dm644 ${src} $out/share/muzik/muzik-${version}.jar
+    makeWrapper ${openjdk21}/bin/java $out/bin/muzik \
+      --add-flags "-jar $out/share/muzik/muzik-${version}.jar" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath runtimeLibs}" \
+      --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules"
+
+    runHook postInstall
   '';
-  extraInstallCommands = ''
-    install -Dm644 ${contents}/Muzik.desktop $out/share/applications/Muzik.desktop
-    sed -i "s|^Exec=.*|Exec=$out/bin/muzik %u|" $out/share/applications/Muzik.desktop
-    install -Dm644 ${contents}/Muzik.png $out/share/icons/hicolor/512x512/apps/Muzik.png
-  '';
+
   meta = {
     description = "YouTube Music desktop client";
-    homepage = "https://github.com/MuzikGroup/MuzikDesktop";
+    homepage = "https://github.com/MuzikGroup/Muzik";
     license = lib.licenses.gpl3;
     platforms = [ "x86_64-linux" "aarch64-linux" ];
     mainProgram = pname;

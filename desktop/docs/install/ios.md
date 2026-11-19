@@ -2,7 +2,7 @@
 
 ## Requirements and download
 
-Use iOS or iPadOS 17 or later. Get `Muzik.ipa` through [the project channels](README.md#get-the-package) and [verify its checksum](README.md#verify-a-download). The workflow produces an unsigned IPA; sign it for your device before installation.
+Use iOS or iPadOS 17 or later. Stable releases do not publish an IPA: build it locally from the `iosApp` target (`make ios-build`) and [verify its checksum](README.md#verify-a-download) before signing it for your device. The build produces an unsigned IPA; sign it for your device before installation.
 
 ## Sideloading
 
@@ -15,7 +15,7 @@ Follow your tool's setup and refresh instructions. Its OS support and signing li
 
 Use the same signing account and resulting bundle ID for updates. Check the expiry shown by the tool and refresh before it expires. Refresh renews signing; download a new IPA separately to update Muzik. Keep pairing files private.
 
-To receive updates in AltStore or SideStore, add the source `https://github.com/MuzikGroup/MuzikDesktop/releases/latest/download/muzik-altstore.json`. Each stable release regenerates it. Muzik also shows a notice once per new stable release and opens its release page; it does not install anything.
+AltStore and SideStore refresh a sideloaded app's signing automatically; they cannot fetch updates for Muzik itself, so download a freshly built IPA and install it over the old one to update. Muzik also shows a notice once per new stable release and opens its release page; it does not install anything.
 
 ## Signing and entitlements
 

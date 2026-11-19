@@ -1,22 +1,17 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.9.0.schema.json
 PackageIdentifier: MuzikGroup.Muzik
 PackageVersion: '@VERSION@'
-InstallerType: exe
-Scope: user
+InstallerType: msi
 InstallModes:
   - interactive
   - silent
-InstallerSwitches:
-  Silent: --silent --launch=false
-  SilentWithProgress: --silent --launch=false
-  Custom: --launch=false
+  - silentWithProgress
 UpgradeBehavior: install
 Protocols:
   - muzik
 AppsAndFeaturesEntries:
   - DisplayName: Muzik Desktop
     Publisher: MuzikGroup
-    ProductCode: Muzik
 Installers:
   - Architecture: x64
     InstallerUrl: '@WINDOWS_URL@'

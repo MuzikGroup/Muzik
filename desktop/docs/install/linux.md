@@ -2,44 +2,38 @@
 
 ## Requirements and download
 
-Release AppImages target x64 and ARM64 on glibc-based distributions. The packaging workflow builds on Ubuntu 24.04; that does not establish compatibility with every older distribution. Packages include Java and FFmpeg.
+Stable releases ship `muzik-VERSION-linux-amd64.deb` and `muzik-VERSION-linux-x64.rpm` for x86_64, plus the architecture-independent `muzik-VERSION-portable.jar` for any distribution with Java 21 or later. The packaging workflow builds on Ubuntu 24.04; that does not establish compatibility with every older distribution. The DEB and RPM packages include Java and FFmpeg.
 
-Choose x64 for `uname -m` output `x86_64`, or ARM64 for `aarch64`. Get the matching package through [the download channels](README.md#get-the-package).
+Check your architecture with `uname -m` (`x86_64`). Get the matching package through [the download channels](README.md#get-the-package).
 
 Use X11 or XWayland. Login needs GTK3/WebKitGTK 4.1. Saved credentials need Secret Service, libsecret, `secret-tool` and `dbus-send`. Audio needs ALSA integration with your audio server. See [Linux setup](../desktop.md#linux-login) and [audio setup](../desktop.md#linux-audio-setup). Startup rejects Omarchy, detected from its packages, install directories, environment, pacman repository or `os-release`, and links to [stopomarchy.org](https://stopomarchy.org/).
 
 ## Install and verify
 
 1. [Verify the checksum](README.md#verify-a-download).
-2. Move the AppImage to a directory you own and keep its filename for the commands below.
-3. Mark it executable and run it:
+2. Install the system package with your distribution's tooling:
 
 ```sh
-chmod u+x -- ./Muzik.AppImage
-./Muzik.AppImage
+sudo apt install ./muzik-VERSION-linux-amd64.deb
 ```
 
-Substitute the downloaded filename. Check playback, sign-in and retained credentials after restart.
-
-On Arch Linux, install the community-maintained [`muzik-desktop-bin`](https://aur.archlinux.org/packages/muzik-desktop-bin) package, which wraps the x86_64 release AppImage, for example with `yay -S muzik-desktop-bin`. Update it through your AUR helper instead of replacing the AppImage.
-
-## Homebrew
-
-On x86_64 or ARM64 Linux with [Homebrew](https://brew.sh), the [Muzik tap](https://github.com/MuzikGroup/homebrew-tap) unpacks the release AppImage, so FUSE is not needed:
+or on RPM-based distributions:
 
 ```sh
-brew trust muzikgroup/tap
-brew install muzikgroup/tap/muzik
-muzik
+sudo dnf install ./muzik-VERSION-linux-x64.rpm
 ```
 
-Homebrew only installs from trusted taps, so `brew trust` is needed once.
+3. Launch Muzik from your application menu, or run the portable JAR directly:
 
-`brew info muzikgroup/tap/muzik` shows how to add the desktop entry to your application menu. Update with `brew upgrade muzik`.
+```sh
+java -jar muzik-VERSION-portable.jar
+```
+
+Check playback, sign-in and retained credentials after restart.
 
 ## Nix
 
-The repository flake wraps the release AppImage for x86_64 and aarch64 Linux. Run it once, or install it into your profile:
+The repository flake builds the architecture-independent release JAR with OpenJDK 21 for x86_64 and aarch64 Linux, pinned by `packaging/release.json`. Run it once, or install it into your profile:
 
 ```sh
 nix run github:MuzikGroup/Muzik
@@ -48,21 +42,9 @@ nix profile install github:MuzikGroup/Muzik
 
 To use it from a NixOS or Home Manager configuration, add `github:MuzikGroup/Muzik` as an input and include `inputs.muzik.packages.${pkgs.stdenv.hostPlatform.system}.default` in your packages. The flake follows the latest stable release; run `nix flake update muzik` or `nix profile upgrade` to update.
 
-## Flatpak
-
-[flatpark](https://flatpark.org/apps/com.muzik.desktop/) repackages the release AppImage as the Flatpak `com.muzik.desktop` for x86_64 and aarch64:
-
-```sh
-flatpak --user remote-add --if-not-exists flatpark https://dl.flatpark.org/flatpark.flatpakrepo
-flatpak --user install flatpark com.muzik.desktop
-flatpak run com.muzik.desktop
-```
-
-Inside the sandbox, the download folder can only be Downloads or Music. Update with `flatpak update`.
-
 ## Update and uninstall
 
-Back up, quit, then replace the AppImage with a verified download of the same architecture. Deleting an AppImage leaves profile data and music outside it. Sign out first to remove saved sessions, and preserve backups before clearing data.
+Back up, quit, then install the new DEB or RPM over the old one, or replace the portable JAR with a verified download. Removing the packages leaves profile data and music outside them; the portable JAR keeps everything next to itself. Sign out first to remove saved sessions, and preserve backups before clearing data.
 
 ## Common problems
 

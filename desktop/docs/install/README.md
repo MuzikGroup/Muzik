@@ -1,23 +1,21 @@
-# Install Muzik KMP
+# Install Muzik
 
-Choose your platform: [Android](android.md), [iOS and iPadOS](ios.md), [Windows](windows.md), [macOS](macos.md), or [Linux](linux.md).
+Choose your platform: [Android](android.md), [macOS](macos.md), or [Linux](linux.md). iOS and iPadOS builds are not published in stable releases; the iOS target builds locally ([ios.md](ios.md)).
 
 ## Get the package
 
-Use [Muzik releases](https://github.com/MuzikGroup/Muzik/releases) for downloads. The table describes workflow outputs, not a guarantee that every package is published.
-
-The [release workflow](../../.github/workflows/release.yml) defines these packages. `VERSION` below means the version in the download's filename.
+Use [Muzik releases](https://github.com/MuzikGroup/Muzik/releases) for downloads. The [release workflow](../../.github/workflows/release.yml) publishes these packages together in one release. `VERSION` below means the version in the download's filename.
 
 | Platform | Release asset |
 | --- | --- |
-| Android | `Muzik.apk` |
-| iOS | `Muzik.ipa` |
-| Windows x64 | `Muzik-Desktop-windows.zip`, `muzik-installer-windows-x64-VERSION.exe` |
-| Windows ARM64 | `muzik-desktop-windows-arm64-VERSION.zip` |
-| macOS | `muzik-desktop-macos-arm64-VERSION.dmg`, `muzik-desktop-macos-x64-VERSION.dmg` |
-| Linux | `muzik-desktop-linux-x64-VERSION.AppImage`, `muzik-desktop-linux-arm64-VERSION.AppImage` |
+| Android | `Muzik.apk` (universal FOSS build), `Muzik-with-Google-Cast.apk`, `Muzik-izzy.apk` |
+| Windows x64 | `Muzik-VERSION-windows-x64.msi` plus a portable `Muzik-VERSION-windows-x64.zip` |
+| macOS (Apple Silicon) | `Muzik-VERSION-macos-arm64.dmg` |
+| macOS (Intel) | portable `muzik-VERSION-portable.jar` with Java 21+ |
+| Linux x64 | `muzik-VERSION-linux-amd64.deb`, `muzik-VERSION-linux-x64.rpm`, portable `muzik-VERSION-portable.jar` |
+| Any OS with Java 21+ | portable `muzik-VERSION-portable.jar` |
 
-The workflows do not publish MSI, DEB, RPM or Flatpak files. DEB/RPM Gradle targets and a local Flatpak build exist, but they are not release downloads; the Flatpak comes from [flatpark](linux.md#flatpak). See the [desktop reference](../desktop.md#native-packages) for local packaging.
+Every release also publishes `SHA256SUMS` covering all assets. Flatpak and AppImage files are not release downloads; AppImage packaging remains available locally for development (`make build-appimage`). See the [desktop reference](../desktop.md#native-packages) for local packaging.
 
 ## Verify a download
 
@@ -50,7 +48,7 @@ Compare all 64 hexadecimal characters with the matching entry in the checksum fi
 
 A mismatch means you should download the file again. Do not install a mismatched file. If the publisher supplies no checksum, you cannot perform this comparison. A checksum confirms that the file matches the publisher's copy; it is not a code-signing certificate.
 
-For Android or iOS, you can verify the APK or IPA on a computer before transferring it unchanged to the device. After installation, check the version in Muzik's settings, open a song and confirm audible playback. Platform guides add checks for login and signing.
+For Android, you can verify the APK on a computer before transferring it unchanged to the device. After installation, check the version in Muzik's settings, open a song and confirm audible playback. Platform guides add checks for login and signing.
 
 ## Before updating or uninstalling
 

@@ -51,7 +51,7 @@ class AiTranslationSetupTest {
                     assertEquals("existing-model", settings.lyricsAiModel)
                     assertEquals("Bearer oauth-key", request.headers["Authorization"])
                     assertEquals("Muzik", request.headers["X-Title"])
-                    assertEquals("https://github.com/MuzikGroup/MuzikDesktop", request.headers["HTTP-Referer"])
+                    assertEquals("https://github.com/MuzikGroup/Muzik", request.headers["HTTP-Referer"])
                     assertEquals("https://openrouter.ai/api/v1/chat/completions", request.url.toString())
                     val body = Json.parseToJsonElement((request.body as TextContent).text).jsonObject
                     assertEquals("128", body["max_tokens"]?.jsonPrimitive?.content)

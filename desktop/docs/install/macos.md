@@ -2,7 +2,7 @@
 
 ## Download
 
-Choose the ARM64 DMG for Apple Silicon or x64 for Intel from [the download channels](README.md#get-the-package). Packaging runs on macOS 15; compatibility with older systems needs platform verification. The package includes Java.
+Choose the ARM64 DMG for Apple Silicon Macs from [the download channels](README.md#get-the-package). Intel Macs run the portable JAR with Java 21 or later instead — no DMG is published for Intel. Packaging runs on macOS 15; compatibility with older systems needs platform verification. The DMG includes Java.
 
 ## Install and verify
 
@@ -16,16 +16,9 @@ Packages are unsigned and unnotarized. Do not disable Gatekeeper globally.
 
 ## Homebrew
 
-The [Muzik tap](https://github.com/MuzikGroup/homebrew-tap) installs the matching DMG for your Mac and follows stable releases:
+No official tap is published yet. `packaging/homebrew/muzik.rb.in` is the generator's cask template for the Apple Silicon DMG; when a `MuzikGroup/homebrew-tap` repository exists, render the cask with `scripts/generate_distribution.py` and submit it there. Until then, install the DMG by hand as above.
 
-```sh
-brew trust muzikgroup/tap
-brew install --cask muzikgroup/tap/muzik
-```
-
-Homebrew only installs from trusted taps, so `brew trust` is needed once.
-
-Update with `brew upgrade --cask muzik`. The first launch still needs Open Anyway as in step 4. `brew uninstall --zap --cask muzik` also deletes settings, the library database and downloads, so export a backup first.
+Intel Macs follow the portable JAR path from the [download table](README.md#get-the-package) and update by replacing the JAR with a verified download.
 
 ## Update and uninstall
 

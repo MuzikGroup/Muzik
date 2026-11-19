@@ -143,11 +143,11 @@ val aboutCommunityLinks: List<AboutCommunityLink> =
     listOf(
         AboutCommunityLink(AboutCommunityLinkKind.DISCORD, "https://discord.com/invite/zrdbeRG2Mt"),
         AboutCommunityLink(AboutCommunityLinkKind.TELEGRAM, "https://t.me/Muzik_ke"),
-        AboutCommunityLink(AboutCommunityLinkKind.REPOSITORY, "https://github.com/MuzikGroup/MuzikDesktop"),
+        AboutCommunityLink(AboutCommunityLinkKind.REPOSITORY, "https://github.com/MuzikGroup/Muzik"),
     )
 
 val aboutLicenseLink: AboutCommunityLink =
-    AboutCommunityLink(AboutCommunityLinkKind.LICENSE, "https://github.com/MuzikGroup/MuzikDesktop/blob/main/LICENSE")
+    AboutCommunityLink(AboutCommunityLinkKind.LICENSE, "https://github.com/MuzikGroup/Muzik/blob/main/LICENSE")
 
 data class AboutScreenText(
     val title: String,

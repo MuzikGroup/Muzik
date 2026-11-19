@@ -344,6 +344,12 @@ jobs:
       - name: Drop smoke evidence from release assets
         run: rm -f dist/app.log dist/stdout.log dist/desktop.png dist/result.txt
 
+      - name: Generate SHA256SUMS
+        run: |
+          cd dist
+          find . -maxdepth 1 -type f ! -name 'SHA256SUMS*' -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS
+          cat SHA256SUMS
+
       - name: Parse release notes from changelog
         run: |
           VERSION="${{ needs.check-version.outputs.new_version }}"
@@ -374,6 +380,7 @@ jobs:
             echo "- **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon) — Intel Macs can use the portable JAR with Java 21+"
             echo "- **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM for Fedora/openSUSE, and a portable JAR"
             echo "- **Any OS with Java 21+**: the portable \`muzik-$VERSION-portable.jar\`"
+            echo "- Verify any download with the attached \`SHA256SUMS\` checksum file"
             echo ""
             echo "Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*."
             echo ""

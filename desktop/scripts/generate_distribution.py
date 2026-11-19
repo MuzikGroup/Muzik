@@ -16,12 +16,13 @@ REPOSITORY = "MuzikGroup/Muzik"
 
 
 def release_assets(version):
+    # The portable JAR is architecture-independent, so both Linux targets (and
+    # Intel Macs, via the documented JAR path) resolve to the same asset.
     return {
-        "WINDOWS": f"muzik-installer-windows-x64-{version}.exe",
-        "MACOS_ARM64": f"muzik-desktop-macos-arm64-{version}.dmg",
-        "MACOS_X64": f"muzik-desktop-macos-x64-{version}.dmg",
-        "LINUX_X64": f"muzik-desktop-linux-x64-{version}.AppImage",
-        "LINUX_ARM64": f"muzik-desktop-linux-arm64-{version}.AppImage",
+        "WINDOWS": f"Muzik-{version}-windows-x64.msi",
+        "MACOS_ARM64": f"Muzik-{version}-macos-arm64.dmg",
+        "LINUX_X64": f"muzik-{version}-portable.jar",
+        "LINUX_ARM64": f"muzik-{version}-portable.jar",
     }
 
 
@@ -107,10 +108,6 @@ def generate(assets_dir, metadata, output):
         shutil.copyfile(ROOT / "flake.nix", nix / "flake.nix")
         shutil.copyfile(ROOT / "packaging/nix/package.nix", nix / "packaging/nix/package.nix")
         (nix / "packaging/release.json").write_text(json.dumps(release, indent=2) + "\n")
-        aur = stage / "aur"
-        aur.mkdir()
-        (aur / "release.json").write_text(json.dumps(release, indent=2) + "\n")
-        shutil.copyfile(ROOT / "packaging/aur/README.md", aur / "README.md")
         (stage / "release.json").write_text(json.dumps(release, indent=2) + "\n")
         stage.rename(output)
 

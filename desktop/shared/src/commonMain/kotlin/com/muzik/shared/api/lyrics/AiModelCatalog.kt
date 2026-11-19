@@ -168,7 +168,7 @@ class AiModelCatalog(
                     .prepareGet(url) {
                         timeout { requestTimeoutMillis = 20_000 }
                         if (preset.id == "OpenRouter" || url.contains("openrouter.ai")) {
-                            header("HTTP-Referer", "https://github.com/MuzikGroup/MuzikDesktop")
+                            header("HTTP-Referer", "https://github.com/MuzikGroup/Muzik")
                             header("X-Title", "Muzik")
                         }
                         if (apiKey.isNotBlank()) {

@@ -524,7 +524,7 @@ class LyricsTranslationClient(
             parse = ::extractOpenAiContent,
             applyHeaders = {
                 header("Authorization", "Bearer ${apiKey.trim()}")
-                header("HTTP-Referer", "https://github.com/MuzikGroup/MuzikDesktop")
+                header("HTTP-Referer", "https://github.com/MuzikGroup/Muzik")
                 header("X-Title", "Muzik")
             },
         )

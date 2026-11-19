@@ -16,7 +16,7 @@ class GenerateAltStoreSourceTest(unittest.TestCase):
                 {
                     "version": "14.0.0",
                     "date": "2026-11-14",
-                    "downloadURL": "https://github.com/MuzikGroup/MuzikDesktop/releases/download/v14.0.0/Muzik.ipa",
+                    "downloadURL": "https://github.com/MuzikGroup/Muzik/releases/download/v14.0.0/Muzik.ipa",
                     "size": 42,
                     "minOSVersion": "17.0",
                 },

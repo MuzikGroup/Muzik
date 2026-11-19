@@ -614,7 +614,7 @@ class Settings(
     var discordButton1Url by preference("{song.url}")
     var discordButton2Enabled by preference(true)
     var discordButton2Text by preference("Visit Muzik")
-    var discordButton2Url by preference("https://github.com/MuzikGroup/MuzikDesktop")
+    var discordButton2Url by preference("https://github.com/MuzikGroup/Muzik")
     var discordUsername by preference("")
     var discordName by preference("")
     var discordAvatar by preference("")

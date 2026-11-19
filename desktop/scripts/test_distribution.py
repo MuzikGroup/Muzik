@@ -23,8 +23,10 @@ class DistributionTest(unittest.TestCase):
         self.assets = self.root / 'assets'
         self.assets.mkdir()
         self.output = self.root / 'output'
-        self.version = '14.0.0'
-        names = release_assets(self.version).values()
+        self.version = '8.1.0'
+        # A real SHA256SUMS and release asset list contain each file once,
+        # even when several platforms resolve to the same portable JAR.
+        names = sorted(set(release_assets(self.version).values()))
         checksums = []
         for name in names:
             content = name.encode()
@@ -32,8 +34,8 @@ class DistributionTest(unittest.TestCase):
             checksums.append(f'{hashlib.sha256(content).hexdigest()}  {name}')
         (self.assets / 'SHA256SUMS').write_text('\n'.join(checksums) + '\n')
         self.release = {
-            'tagName': 'v14.0.0', 'isDraft': False, 'isPrerelease': False,
-            'url': f'https://github.com/{REPOSITORY}/releases/tag/v14.0.0',
+            'tagName': 'v8.1.0', 'isDraft': False, 'isPrerelease': False,
+            'url': f'https://github.com/{REPOSITORY}/releases/tag/v8.1.0',
             'publishedAt': '2026-10-31T12:00:00Z',
             'body': 'Fix playback & <login>.\n\nPreserve playlists.',
             'assets': [{'name': name} for name in names],
@@ -45,13 +47,13 @@ class DistributionTest(unittest.TestCase):
     def test_rendered_recipes_use_verified_assets_and_actual_notes(self):
         self.generate()
         installer = next((self.output / 'winget').rglob('*.installer.yaml')).read_text()
-        self.assertIn('--silent --launch=false', installer)
-        self.assertIn('muzik-installer-windows-x64-14.0.0.exe', installer)
+        self.assertIn('InstallerType: msi', installer)
+        self.assertIn('Muzik-8.1.0-windows-x64.msi', installer)
         self.assertNotIn('Muzik-Desktop-windows.zip', installer)
         data = json.loads((self.output / 'nix/packaging/release.json').read_text())
         self.assertEqual(set(data['linux']), {'x86_64-linux', 'aarch64-linux'})
         nix_recipe = (self.output / 'nix/packaging/nix/package.nix').read_text()
-        self.assertNotIn('alsa-plugins', nix_recipe.split('extraPkgs =', 1)[1].split('];', 1)[0])
+        self.assertNotIn('alsa-plugins', nix_recipe)
         for asset in data['linux'].values():
             self.assertEqual(asset['sha256'], hashlib.sha256((self.assets / asset['name']).read_bytes()).hexdigest())
             self.assertTrue(asset['hash'].startswith('sha256-'))
@@ -61,9 +63,9 @@ class DistributionTest(unittest.TestCase):
             subprocess.run(['ruby', '-c', str(self.output / 'homebrew/Casks/muzik.rb')], check=True, capture_output=True)
 
     def test_rejects_unpublished_wrong_repository_and_nonstable_releases(self):
-        for key, value in [('tagName', 'v14.0.0-rc7'), ('tagName', '../14.0.0'),
+        for key, value in [('tagName', 'v8.1.0-rc7'), ('tagName', '../8.1.0'),
                            ('isDraft', True), ('isPrerelease', True),
-                           ('url', 'https://github.com/other/repo/releases/tag/v14.0.0'),
+                           ('url', 'https://github.com/other/repo/releases/tag/v8.1.0'),
                            ('body', ''), ('publishedAt', '2026-10-31')]:
             with self.subTest(key=key, value=value), patch.dict(self.release, {key: value}):
                 with self.assertRaises(ValueError):
@@ -125,14 +127,14 @@ class DistributionTest(unittest.TestCase):
                 if "symbolic-ref" in args:
                     return "origin/main"
                 if "ls-remote" in args:
-                    return "abc refs/heads/build/muzik-14.0.0" if state == "OPEN" else ""
+                    return "abc refs/heads/build/muzik-8.1.0" if state == "OPEN" else ""
                 if "diff" in args:
                     return "Casks/muzik.rb"
                 if args[:3] == ("gh", "pr", "create"):
                     self.assertIn("--draft", args)
                     self.assertEqual(args[args.index("--base") + 1], "main")
                     body = Path(args[args.index("--body-file") + 1]).read_text()
-                    self.assertIn("14.0.0", body)
+                    self.assertIn("8.1.0", body)
                 return ""
 
             with self.subTest(state=state), patch.dict(os.environ, {"GH_TOKEN": "test"}), patch('propose_distribution.run', side_effect=fake_run):
@@ -142,7 +144,7 @@ class DistributionTest(unittest.TestCase):
             self.assertEqual(len(pushes), int(state in ('', 'OPEN')))
             self.assertEqual(len(creations), int(state == ''))
             for args in pushes:
-                self.assertEqual(args[-2:], ('origin', 'build/muzik-14.0.0'))
+                self.assertEqual(args[-2:], ('origin', 'build/muzik-8.1.0'))
                 self.assertFalse(any(arg.startswith('--force') for arg in args))
 
     def test_sparse_checkout_can_create_and_update_a_review_branch(self):
@@ -181,7 +183,7 @@ class DistributionTest(unittest.TestCase):
             cask.write_text(cask.read_text() + "# Updated recipe\n")
             propose('homebrew', self.output, 'owner/tap', self.version)
         self.assertEqual(len(created), 1)
-        branch = "build/muzik-14.0.0"
+        branch = "build/muzik-8.1.0"
         self.assertIn("# Updated recipe", run("git", "show", f"{branch}:Casks/muzik.rb", cwd=remote))
         self.assertEqual(run("git", "show", f"{branch}:unrelated", cwd=remote), "keep this file")
         self.assertEqual(run("git", "rev-list", "--count", f"main..{branch}", cwd=remote), "2")

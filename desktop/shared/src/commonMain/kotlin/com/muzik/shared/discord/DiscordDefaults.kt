@@ -13,7 +13,7 @@ object DiscordDefaults {
     const val BUTTON1_URL_TEMPLATE = "{song.url}"
 
     const val BUTTON2_LABEL = "Visit Muzik"
-    const val BUTTON2_URL = "https://github.com/MuzikGroup/MuzikDesktop"
+    const val BUTTON2_URL = "https://github.com/MuzikGroup/Muzik"
 
     const val STATE_TEMPLATE = "{artist.name}"
     const val DETAILS_TEMPLATE = "{song.name}"

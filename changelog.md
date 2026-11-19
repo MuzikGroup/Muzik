@@ -1,3 +1,14 @@
+---v8.1.1
+
+## What's New
+
+- Every in-app link now points at the one Muzik monorepo: the About screen repository and license links, the Discord profile button and the AI service referers
+
+## Improvements
+
+- Every release now publishes a SHA256SUMS file so any download can be verified with one command
+- The desktop packaging recipes (WinGet, Homebrew, Nix) now match the real release assets: the MSI, the Apple Silicon DMG and the portable JAR
+
 ---v8.1.0
 
 ## What's New
