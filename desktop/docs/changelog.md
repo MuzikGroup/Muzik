@@ -3,6 +3,11 @@
 Release notes for Muzik Desktop. Muzik is built by Ignatius (lead developer)
 together with the Pipo Team contributors and is released under GPL-3.0.
 
+---v8.1.0
+# One Muzik, every platform
+- Desktop now lives inside MuzikGroup/Muzik alongside Android: one repo, one version line, and one release that ships the Windows, macOS and Linux installers together with the Android APKs
+- About Muzik moved out of the settings page: it sits directly below the Together button in the sidebar rail
+
 ---v8.0.0
 # Eight, in step with Android
 - Desktop joins the Android app in the 8.0.x series: one Muzik, one version line everywhere
