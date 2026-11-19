@@ -1,4 +1,9 @@
-name: Bump to new version
+name: Build and release Muzik
+
+# One release, every platform: signed Android APKs (FOSS / Google Cast / Izzy)
+# plus the Windows, macOS and Linux desktop installers, all cut from a single
+# version line in app/build.gradle.kts (mirrored into desktop/gradle.properties
+# by version_bump.yml).
 on:
   push:
     branches:
@@ -6,6 +11,9 @@ on:
     paths:
       - "app/build.gradle.kts"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   check-version:
@@ -19,7 +27,6 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          submodules: recursive
 
       - name: Check if version changed
         id: check_version
@@ -44,34 +51,21 @@ jobs:
           if git show HEAD^:app/build.gradle.kts > /dev/null 2>&1; then
             OLD_VERSION=$(git show HEAD^:app/build.gradle.kts | grep -oP 'versionName\s*=\s*"\K[^"]+' || echo "")
             echo "Previous version: $OLD_VERSION"
-            
             if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
               echo "Version changed from $OLD_VERSION to $NEW_VERSION"
               echo "version_changed=true" >> $GITHUB_OUTPUT
-              echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-              echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
             else
               echo "Version unchanged: $NEW_VERSION"
               echo "version_changed=false" >> $GITHUB_OUTPUT
-              echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-              echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
             fi
           else
             echo "First version detected: $NEW_VERSION"
             echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-            echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
           fi
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
 
-      - name: Debug output
-        run: |
-          echo "Debug Information:"
-          echo "  - version_changed: ${{ steps.check_version.outputs.version_changed }}"
-          echo "  - new_version: ${{ steps.check_version.outputs.new_version }}"
-          echo "  - version_code: ${{ steps.check_version.outputs.version_code }}"
-          echo "  - event_name: ${{ github.event_name }}"
-
-  build:
+  android-build:
     needs: check-version
     if: needs.check-version.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -158,8 +152,179 @@ jobs:
           name: ${{ matrix.variant == 'gms' && 'Muzik-with-Google-Cast' || matrix.variant == 'izzy' && 'Muzik-izzy' || 'Muzik' }}
           path: app/build/outputs/apk/${{ matrix.variant }}/release/out/*.apk
 
-  create-release:
-    needs: [check-version, build]
+  desktop-smoke:
+    needs: check-version
+    if: needs.check-version.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
+      - name: Install smoke runtime libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb scrot rpm \
+            libasound2t64 libdrm2 libegl1 libfontconfig1 libfreetype6 libgl1 \
+            libpulse0 libva-drm2 libva2 libx11-6 libxcb-shm0
+
+      - name: Build Linux DEB
+        run: ./gradlew :desktopApp:packageReleaseDeb --no-configuration-cache
+
+      - name: Launch smoke test (real app under Xvfb)
+        run: |
+          DEB=$(find desktopApp/build/compose/binaries/main-release/deb -name "*.deb" | head -1)
+          rm -rf smoke-pkg && mkdir smoke-pkg
+          dpkg-deb -x "$DEB" smoke-pkg
+          xvfb-run -a -s '-screen 0 1440x1000x24' python3 scripts/desktop_smoke.py smoke-pkg --output "$RUNNER_TEMP/desktop-smoke"
+
+      - name: Collect smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: muzik-smoke-${{ needs.check-version.outputs.new_version }}
+          path: ${{ runner.temp }}/desktop-smoke
+          if-no-files-found: ignore
+
+  desktop-build:
+    needs: [check-version, desktop-smoke]
+    if: needs.check-version.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            target: msi
+          - os: macos-15
+            target: dmg
+          - os: ubuntu-latest
+            target: linux
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
+      # The Windows WebView2 login helper is built from the in-repo .NET project
+      # and shipped as an app resource.
+      - name: Build Windows WebView2 helper
+        if: matrix.target == 'msi'
+        shell: pwsh
+        run: |
+          dotnet publish metro-wv2-helper/metro-wv2-helper.csproj `
+            --configuration Release --runtime win-x64 --self-contained true `
+            --output desktopApp/src/desktopMain/resources/windows `
+            -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=true
+
+      - name: Install rpm tooling (Linux)
+        if: matrix.target == 'linux'
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Build Windows MSI + portable ZIP
+        if: matrix.target == 'msi'
+        run: ./gradlew :desktopApp:packageReleaseMsi :desktopApp:assembleWindowsRelease --no-configuration-cache
+
+      - name: Build macOS DMG (Apple Silicon)
+        if: matrix.target == 'dmg'
+        run: ./gradlew :desktopApp:packageReleaseDmg --no-configuration-cache
+
+      - name: Build Linux DEB, RPM and portable JAR
+        if: matrix.target == 'linux'
+        run: ./gradlew :desktopApp:packageReleaseDeb :desktopApp:packageReleaseRpm :desktopApp:packageReleaseUberJarForCurrentOS --no-configuration-cache
+
+      - name: Normalize artifact names
+        id: rename
+        shell: bash
+        run: |
+          VERSION=${{ needs.check-version.outputs.new_version }}
+          OUT_DIR="desktopApp/build/compose/binaries/main-release"
+          DEST=""
+          case "${{ matrix.target }}" in
+            msi)
+              FILE=$(find "$OUT_DIR/msi" -name "*.msi" | head -1)
+              DEST="Muzik-$VERSION-windows-x64.msi"
+              ZIP="dist/Muzik-Desktop-Windows.zip"
+              if [ -f "$ZIP" ]; then
+                cp "$ZIP" "Muzik-$VERSION-windows-x64.zip"
+                echo "zip=Muzik-$VERSION-windows-x64.zip" >> "$GITHUB_OUTPUT"
+              fi
+              ;;
+            dmg)
+              FILE=$(find "$OUT_DIR/dmg" -name "*.dmg" | head -1)
+              DEST="Muzik-$VERSION-macos-arm64.dmg"
+              ;;
+            linux)
+              FILE=$(find "$OUT_DIR/deb" -name "*.deb" | head -1)
+              DEST="muzik-$VERSION-linux-amd64.deb"
+              if [ -n "$FILE" ]; then
+                cp "$FILE" "$DEST"
+                echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+              fi
+              RPM=$(find "$OUT_DIR/rpm" -name "*.rpm" | head -1)
+              if [ -n "$RPM" ]; then
+                cp "$RPM" "muzik-$VERSION-linux-x64.rpm"
+                echo "rpm=muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
+              fi
+              JAR=$(find desktopApp/build/compose/jars -name "Muzik-*.jar" | head -1)
+              if [ -n "$JAR" ]; then
+                cp "$JAR" "muzik-$VERSION-portable.jar"
+                echo "jar=muzik-$VERSION-portable.jar" >> "$GITHUB_OUTPUT"
+              fi
+              if [ -z "$DEST" ] || [ ! -f "$DEST" ]; then
+                echo "No deb found for linux target"
+                exit 1
+              fi
+              exit 0
+              ;;
+          esac
+          if [ -n "$FILE" ]; then
+            cp "$FILE" "$DEST"
+            echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+          else
+            echo "No installer found for ${{ matrix.target }}"
+            exit 1
+          fi
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: muzik-${{ matrix.target }}-${{ needs.check-version.outputs.new_version }}
+          path: |
+            ${{ steps.rename.outputs.renamed }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.rpm || '' }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.jar || '' }}
+            ${{ matrix.target == 'msi' && steps.rename.outputs.zip || '' }}
+          if-no-files-found: error
+
+  release:
+    needs: [check-version, android-build, desktop-build]
     if: needs.check-version.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -167,20 +332,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download all APKs
-        uses: actions/download-artifact@v7
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
         with:
-          path: downloaded_artifacts/
+          merge-multiple: true
+          path: dist
 
-      - name: Organize APKs for release
-        run: |
-          echo "Organizing APK files..."
-          mkdir -p release_files
-
-          find downloaded_artifacts -name "*.apk" -exec cp {} release_files/ \;
-
-          echo "APKs ready for release:"
-          ls -la release_files/
+      - name: Drop smoke evidence from release assets
+        run: rm -f dist/app.log dist/stdout.log dist/desktop.png dist/result.txt
 
       - name: Parse release notes from changelog
         run: |
@@ -189,8 +348,6 @@ jobs:
 
           if bash .github/scripts/parse_changelog.sh "$VERSION" changelog.md > release_notes.md; then
             echo "Release notes sourced from changelog.md for v$VERSION"
-            echo "--- Preview (first 20 lines) ---"
-            head -20 release_notes.md
           else
             echo "::warning::v$VERSION not found in changelog.md — falling back to git log"
             {
@@ -199,15 +356,32 @@ jobs:
               git log "$(git describe --tags --abbrev=0 2>/dev/null || echo "HEAD~10")..HEAD" \
                 --pretty=format:"- %s" --no-merges | head -10 || echo "- Initial release"
             } > release_notes.md
-            echo "--- Fallback notes ---"
-            cat release_notes.md
           fi
+
+          {
+            echo ""
+            echo "## Android"
+            echo "- \`Muzik.apk\` — universal APK (FOSS build, no Google services)"
+            echo "- \`Muzik-with-Google-Cast.apk\` — with Google Cast support"
+            echo "- \`Muzik-izzy.apk\` — IzzyOnDroid build"
+            echo ""
+            echo "## Desktop"
+            echo "One-click installers for every desktop platform:"
+            echo "- **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64) plus a portable ZIP"
+            echo "- **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon) — Intel Macs can use the portable JAR with Java 21+"
+            echo "- **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM for Fedora/openSUSE, and a portable JAR"
+            echo "- **Any OS with Java 21+**: the portable \`muzik-$VERSION-portable.jar\`"
+            echo ""
+            echo "Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*."
+            echo ""
+            echo "Built by Ignatius and the Pipo Team (GPL-3.0). Support Muzik: https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13"
+          } >> release_notes.md
 
       - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          echo "Creating release v${{ needs.check-version.outputs.new_version }}"
+          echo "Creating unified release v${{ needs.check-version.outputs.new_version }}"
 
           {
             echo "Released by @${{ github.triggering_actor }}"
@@ -215,11 +389,12 @@ jobs:
             cat release_notes.md
           } > attributed_release_notes.md
 
-          gh release create "v${{ needs.check-version.outputs.new_version }}" \
-            --title "${{ needs.check-version.outputs.new_version }}" \
+          ls -la dist/
+
+          gh release create "v${{ needs.check-version.outputs.new_version }}" dist/* \
+            --title "Muzik v${{ needs.check-version.outputs.new_version }}" \
             --notes-file attributed_release_notes.md \
-            --latest \
-            release_files/*.apk
+            --latest
 
           echo "Release created successfully!"
 
@@ -229,5 +404,5 @@ jobs:
           echo "- **Version**: v${{ needs.check-version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Version Code**: ${{ needs.check-version.outputs.version_code }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Released by**: @${{ github.triggering_actor }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **APKs Built**: $(ls release_files/*.apk | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Assets**: $(ls dist/* 2>/dev/null | wc -l)" >> $GITHUB_STEP_SUMMARY
           echo "- **Release URL**: https://github.com/${{ github.repository }}/releases/tag/v${{ needs.check-version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY

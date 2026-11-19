@@ -1,3 +1,16 @@
+---v8.1.0
+
+## What's New
+
+- One Muzik repo: desktop now lives alongside Android in MuzikGroup/Muzik, with one version line and one release for every platform
+- Every release ships the Android APKs together with the Windows, macOS and Linux desktop installers
+- About Muzik moved out of the settings page: it sits below the Together button on desktop and below the Settings button on phones
+
+## Improvements
+
+- Unified version bumping keeps Android and desktop perfectly in step
+- Desktop in-app updater and issue links now point at the Muzik monorepo
+
 ---v8.0.1
 
 ## What's New
