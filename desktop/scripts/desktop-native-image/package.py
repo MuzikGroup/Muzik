@@ -1,0 +1,224 @@
+"""Package a native application image without changing JVM distributions."""
+
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import plistlib
+import re
+import shutil
+import subprocess
+import zipfile
+
+from verify_linux_audio import verify_linux_audio
+
+ROOT = Path(__file__).resolve().parents[2]
+
+MACOS_JDK_DYLIBS = (
+    'libawt.dylib', 'libawt_lwawt.dylib', 'libfontmanager.dylib', 'libfreetype.dylib',
+    'libjava.dylib', 'libjavajpeg.dylib', 'libjawt.dylib', 'libjsound.dylib',
+    'liblcms.dylib', 'libmlib_image.dylib', 'libosxapp.dylib', 'libsplashscreen.dylib',
+    'server/libjvm.dylib',
+)
+
+
+def archive(directory, destination):
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(destination, 'w', compression=zipfile.ZIP_DEFLATED) as output:
+        for path in sorted(directory.rglob('*')):
+            if path.is_file():
+                info = zipfile.ZipInfo(path.relative_to(directory).as_posix())
+                info.external_attr = path.stat().st_mode << 16
+                info.compress_type = zipfile.ZIP_DEFLATED
+                with path.open('rb') as source, output.open(info, 'w') as target:
+                    shutil.copyfileobj(source, target)
+
+
+def validate_windows(image):
+    if not (image / 'Muzik.exe').is_file():
+        raise ValueError('Windows native image has no Muzik.exe launcher')
+    for path in image.rglob('*'):
+        if path.suffix.lower() not in ('.exe', '.dll'):
+            continue
+        with path.open('rb') as stream:
+            header = stream.read(64)
+            if len(header) < 64 or header[:2] != b'MZ':
+                raise ValueError(f'Invalid Windows executable: {path.name}')
+            stream.seek(int.from_bytes(header[60:64], 'little'))
+            pe = stream.read(6)
+        if pe[:4] != b'PE\0\0' or int.from_bytes(pe[4:6], 'little') != 0x8664:
+            raise ValueError(f'Expected x64 Windows executable: {path.name}')
+
+
+def validate_posix(image, target, launcher=None):
+    launcher = launcher or image / 'Muzik'
+    if not launcher.is_file():
+        raise ValueError('Native image has no Muzik launcher')
+    binaries = []
+    for path in sorted(image.rglob('*')):
+        if not path.is_file():
+            continue
+        with path.open('rb') as stream:
+            header = stream.read(20)
+            library = path.suffix in ('.dylib', '.jnilib', '.so') or '.so.' in path.name
+            # CAFEBABE is also the Java class magic, so universal Mach-O files are only checked by name.
+            binary = header[:4] in (b'\x7fELF', b'\xcf\xfa\xed\xfe', b'\xfe\xed\xfa\xcf')
+            if path != launcher and not library and not binary:
+                continue
+            if target.startswith('linux-'):
+                machine = 62 if target == 'linux-x64' else 183
+                valid = len(header) == 20 and header[:6] == b'\x7fELF\x02\x01' and int.from_bytes(header[18:20], 'little') == machine
+            elif header[:4] == b'\xca\xfe\xba\xbe' and path != launcher:
+                stream.seek(8)
+                count = int.from_bytes(header[4:8], 'big')
+                valid = count < 32 and any(int.from_bytes(stream.read(20)[:4], 'big') == 0x100000C for _ in range(count))
+            else:
+                valid = len(header) == 20 and header[:4] == b'\xcf\xfa\xed\xfe' and int.from_bytes(header[4:8], 'little') == 0x100000C
+        if not valid:
+            raise ValueError(f'Expected {target} executable or native library: {path.relative_to(image)}')
+        binaries.append(path)
+    return binaries
+
+
+def macos_minimum_version(binaries):
+    versions = []
+    for path in binaries:
+        commands = subprocess.check_output(['otool', '-l', str(path)], text=True)
+        for command in commands.split('Load command '):
+            if 'cmd LC_BUILD_VERSION\n' in command or 'cmd LC_VERSION_MIN_MACOSX\n' in command:
+                match = re.search(r'\b(?:minos|version) ([0-9.]+)', command)
+                if match:
+                    versions.append(tuple(int(part) for part in match[1].split('.')))
+    if not versions:
+        raise ValueError('macOS binaries have no minimum system version')
+    return '.'.join(str(part) for part in max(versions))
+
+
+def copy_macos_jdk(graal, macos, resources):
+    for library in MACOS_JDK_DYLIBS:
+        source = graal / 'lib' / library
+        target = macos / source.name
+        # Preserve any Native Image shims; some JDK versions omit optional AWT libraries.
+        if source.is_file() and not target.exists():
+            shutil.copy2(source, target)
+    for library in ('libawt.dylib', 'libawt_lwawt.dylib', 'libfontmanager.dylib',
+                    'libjava.dylib', 'libjawt.dylib', 'libosxapp.dylib', 'libjvm.dylib'):
+        if not (macos / library).is_file():
+            raise ValueError(f'macOS native image is missing {library}')
+    (macos / 'lib').mkdir(exist_ok=True)
+    shutil.copy2(graal / 'lib/libjawt.dylib', macos / 'lib/libjawt.dylib')
+    # Explicit sun.awt.fontconfig paths use the JDK's properties reader, even for .bfc files.
+    fontconfig = graal / 'lib/fontconfig.properties.src'
+    if not fontconfig.is_file():
+        raise ValueError('macOS JDK is missing lib/fontconfig.properties.src')
+    shutil.copy2(fontconfig, resources / 'fontconfig.properties')
+
+
+def macos_rpath(launcher):
+    commands = subprocess.check_output(['otool', '-l', str(launcher)], text=True)
+    for command in commands.split('Load command '):
+        if 'cmd LC_RPATH\n' in command and re.search(r'\bpath @executable_path/(?:\.)? \(offset ', command):
+            return
+    subprocess.run(['install_name_tool', '-add_rpath', '@executable_path/.', str(launcher)], check=True)
+
+
+def package(image, target, destination, version, graal=None):
+    name = f'muzik-desktop-native-{target}-{version}'
+    destination.mkdir(parents=True, exist_ok=True)
+    if target.startswith('linux-'):
+        if target not in ('linux-x64', 'linux-arm64'):
+            raise ValueError('Unsupported native package platform')
+        verify_linux_audio([image])
+        validate_posix(image, target)
+        app = destination / (name + '.AppDir')
+        if app.exists():
+            shutil.rmtree(app)
+        (app / 'lib').mkdir(parents=True)
+        shutil.copytree(image, app / 'lib/native')
+        (app / 'bin').mkdir()
+        shutil.copy2(Path(__file__).with_name('linux-launcher.sh'), app / 'bin/Muzik')
+        (app / 'bin/Muzik').chmod(0o755)
+        shutil.copy2(ROOT / 'scripts/linux-appimage-apprun.sh', app / 'AppRun')
+        (app / 'AppRun').chmod(0o755)
+        (app / 'Muzik.desktop').write_text('[Desktop Entry]\nType=Application\nName=Muzik\nExec=Muzik %u\nIcon=Muzik\nStartupWMClass=Muzik\nComment=Muzik music client\nCategories=AudioVideo;Player;\nTerminal=false\nMimeType=x-scheme-handler/muzik;x-scheme-handler/muzik-auth;\n')
+        shutil.copy2(ROOT / 'desktopApp/src/desktopMain/resources/logo.png', app / 'Muzik.png')
+        (app / 'resources').symlink_to('lib/native/resources', target_is_directory=True)
+        output = destination / (name + '.AppImage')
+        subprocess.run(['bash', str(ROOT / 'scripts/build_appimage.sh'), '--native-appdir', str(app.resolve()), str(output.resolve())], check=True)
+    elif target == 'windows-x64':
+        validate_windows(image)
+        helper = image / 'resources/windows/metro-wv2-helper.exe'
+        checksum = helper.with_suffix('.exe.sha256')
+        if not helper.is_file() or not checksum.is_file():
+            raise ValueError('Windows native image is missing the login helper or its checksum')
+        with helper.open('rb') as stream:
+            digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+        if digest != checksum.read_text().strip():
+            raise ValueError('Windows login helper checksum mismatch')
+        (image / 'install-manifest.json').write_text(json.dumps({'schema':1,'appId':'com.muzik.desktop','version':version,'platform':'windows','architecture':'x86_64','launcher':'Muzik.exe'},indent=2)+'\n')
+        output = destination / (name + '.zip')
+        archive(image, output)
+    elif target == 'macos-arm64':
+        if graal is None:
+            raise ValueError('macOS packaging requires --graalvm or GRAALVM_HOME')
+        root = destination / name
+        app = root / 'Muzik.app/Contents'
+        if root.exists():
+            shutil.rmtree(root)
+        shutil.copytree(image, app / 'MacOS', ignore=shutil.ignore_patterns('resources'))
+        shutil.copytree(image / 'resources', app / 'Resources')
+        shutil.copy2(ROOT / 'desktopApp/src/desktopMain/resources/logo.icns', app / 'Resources/logo.icns')
+        copy_macos_jdk(graal, app / 'MacOS', app / 'Resources')
+        binaries = validate_posix(app, target, app / 'MacOS/Muzik')
+        for path in (app / 'MacOS').rglob('*'):
+            if path.is_file() and path not in binaries:
+                raise ValueError(f'Non-Mach-O file in Contents/MacOS: {path.relative_to(app)}')
+        macos_rpath(app / 'MacOS/Muzik')
+        with (app / 'Info.plist').open('wb') as stream:
+            plistlib.dump({
+                'CFBundleExecutable': 'Muzik',
+                'CFBundleIdentifier': 'com.muzik.desktop',
+                'CFBundleName': 'Muzik',
+                'CFBundleDisplayName': 'Muzik',
+                'CFBundlePackageType': 'APPL',
+                'CFBundleShortVersionString': version.split('-')[0],
+                'CFBundleVersion': version.split('-')[0],
+                'CFBundleIconFile': 'logo.icns',
+                'NSHighResolutionCapable': True,
+                'LSMinimumSystemVersion': macos_minimum_version(binaries),
+                'CFBundleURLTypes': [{'CFBundleURLName': 'Muzik URL', 'CFBundleURLSchemes': ['muzik', 'muzik-auth']}],
+                'NSLocalNetworkUsageDescription': 'Muzik uses the local network to find and control casting devices.',
+                'NSBonjourServices': ['_fcast._tcp', '_googlecast._tcp'],
+            }, stream)
+        for path in sorted(binaries, key=lambda path: (path == app / 'MacOS/Muzik', -len(path.parts), str(path))):
+            subprocess.run(['codesign', '--force', '--sign', '-', str(path)], check=True)
+        subprocess.run(['codesign', '--force', '--sign', '-', str(app.parent)], check=True)
+        subprocess.run(['codesign', '--verify', '--deep', '--strict', str(app.parent)], check=True)
+        output = destination / (name + '.zip')
+        archive(root, output)
+    else:
+        raise ValueError('Unsupported native package platform')
+    if not output.is_file() or output.stat().st_size == 0:
+        raise RuntimeError('Native packaging produced no artifact')
+    return output
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--image', type=Path, required=True)
+    parser.add_argument('--platform', required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--graalvm', type=Path, default=Path(os.environ['GRAALVM_HOME']) if os.environ.get('GRAALVM_HOME') else None)
+    args = parser.parse_args()
+    # Same precedence as Gradle: an ORG_GRADLE_PROJECT_ override beats gradle.properties.
+    version = os.environ.get('ORG_GRADLE_PROJECT_appVersion') or next(line.split('=',1)[1] for line in (ROOT/'gradle.properties').read_text().splitlines() if line.startswith('appVersion='))
+    output = package(args.image.resolve(), args.platform, args.output.resolve(), version, args.graalvm.resolve() if args.graalvm else None)
+    print(output)
+    if os.environ.get('GITHUB_OUTPUT'):
+        with open(os.environ['GITHUB_OUTPUT'],'a') as stream:
+            stream.write(f'path={output}\n')
+
+
+if __name__ == '__main__':
+    main()

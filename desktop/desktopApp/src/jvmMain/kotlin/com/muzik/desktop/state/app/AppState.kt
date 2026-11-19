@@ -1,0 +1,229 @@
+/**
+ * Muzik Project (C) 2026
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
+ */
+
+package com.muzik.desktop.state.app
+
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import com.muzik.desktop.state.content.SearchState
+import com.muzik.desktop.update.DesktopUpdateManager
+import com.muzik.desktop.update.GitHubDesktopRelease
+import com.muzik.desktop.update.desktopUpdateCheckIsDue
+import com.muzik.desktop.utils.AppLogger
+import com.muzik.desktop.utils.ComposeTrayManager
+import com.muzik.desktop.utils.DesktopNotifier
+import com.muzik.shared.api.artwork.AnimatedArtworkService
+import com.muzik.shared.api.artwork.DirectCanvasProvider
+import com.muzik.shared.discord.DiscordRpcManager
+import com.muzik.shared.generated.resources.Res
+import com.muzik.shared.generated.resources.copied
+import com.muzik.shared.generated.resources.could_not_download_update_manager
+import com.muzik.shared.generated.resources.update_failed
+import com.muzik.shared.generated.resources.update_installing_in_background
+import com.muzik.shared.generated.resources.updates_available_title
+import com.muzik.shared.generated.resources.updates_title
+import com.muzik.shared.settings.Settings
+import com.muzik.shared.state.GlobalYouTube
+import com.muzik.shared.ui.settings.SettingsPageId
+import com.muzik.shared.utils.OsUtil
+import com.muzik.shared.utils.tryOpenUrl
+import dev.nucleusframework.share.ShareException
+import dev.nucleusframework.share.ShareSheet
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.getString
+import java.awt.Toolkit
+import java.awt.datatransfer.StringSelection
+import kotlin.time.Duration.Companion.hours
+
+object AppState {
+    val directCanvasProvider by lazy { DirectCanvasProvider(GlobalYouTube.client) }
+    val animatedArtworkService by lazy { AnimatedArtworkService(GlobalYouTube.client) }
+    internal val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    val snackbarHostState = SnackbarHostState()
+
+    private var updateDownloadJob: Job? = null
+
+    private val updateInitialization: Job =
+        scope.launch {
+            applyReleases(DesktopUpdateManager.cachedReleases())
+            if (Settings.shared.checkForUpdates &&
+                desktopUpdateCheckIsDue(Settings.shared.lastUpdateCheckAttemptTimestamp, System.currentTimeMillis())
+            ) {
+                checkForUpdates(notify = true)
+            }
+        }
+
+    init {
+        // Hourly keeps nightly users current while staying far below GitHub's unauthenticated rate limit.
+        scope.launch {
+            while (true) {
+                delay(1.hours)
+                if (Settings.shared.checkForUpdates) checkForUpdates(notify = true)
+            }
+        }
+    }
+
+    private suspend fun applyReleases(releases: List<GitHubDesktopRelease>) {
+        UiState.updateReleases = releases.filterNot { it.isNightly }
+        val update = DesktopUpdateManager.availableUpdate(releases)
+        if (UiState.availableUpdate?.updateKey != update?.updateKey) UiState.updateDownloadError = null
+        UiState.availableUpdate = update
+        UiState.canInstallUpdate = UiState.availableUpdate?.let { DesktopUpdateManager.canInstall(it) } == true
+    }
+
+    fun checkForUpdates(notify: Boolean = false) {
+        if (UiState.isCheckingForUpdates || UiState.isDownloadingUpdate || UiState.updateManagerStarted) return
+        UiState.isCheckingForUpdates = true
+        UiState.updateCheckFailed = false
+        scope.launch {
+            try {
+                updateInitialization.join()
+                DesktopUpdateManager.check().fold(
+                    onSuccess = {
+                        applyReleases(it)
+                        UiState.hasCheckedForUpdates = true
+                        if (notify) notifyUpdateAvailable()
+                    },
+                    onFailure = {
+                        UiState.updateCheckFailed = true
+                        AppLogger.warning("Updates", "Update check failed", it)
+                    },
+                )
+            } finally {
+                UiState.isCheckingForUpdates = false
+            }
+        }
+    }
+
+    private fun notifyUpdateAvailable() {
+        val release = UiState.availableUpdate ?: return
+        if (!Settings.shared.updateNotifications || Settings.shared.lastNotifiedUpdateVersion == release.updateKey) return
+        scope.launch {
+            Settings.shared.lastNotifiedUpdateVersion = release.updateKey
+            val message = getString(Res.string.updates_available_title, release.version)
+
+            // The user may be away with the window hidden in the tray: a system
+            // notification carries the update message, and the update itself is
+            // prepared in the background so it is ready when they return. When
+            // the window is visible, the in-app flow takes over instead.
+            DesktopNotifier.notify(
+                title = message,
+                message = getString(Res.string.updates_title),
+                onClick = {
+                    ComposeTrayManager.showWindow()
+                    UiState.selectedSettingsPage = SettingsPageId.UPDATES
+                    UiState.showSettings = true
+                },
+            )
+            if (!ComposeTrayManager.windowVisible && UiState.canInstallUpdate) {
+                snackbarHostState.showSnackbar(
+                    message = getString(Res.string.update_installing_in_background),
+                )
+                installUpdate()
+                return@launch
+            }
+
+            val result =
+                snackbarHostState.showSnackbar(
+                    message = message,
+                    actionLabel = getString(Res.string.updates_title),
+                )
+            if (result == SnackbarResult.ActionPerformed) {
+                UiState.selectedSettingsPage = SettingsPageId.UPDATES
+                UiState.showSettings = true
+            }
+        }
+    }
+
+    fun copyToClipboard(text: String) {
+        try {
+            val sel = StringSelection(text)
+            Toolkit.getDefaultToolkit().systemClipboard.setContents(sel, sel)
+            scope.launch { snackbarHostState.showSnackbar(getString(Res.string.copied)) }
+        } catch (_: Exception) {
+        }
+    }
+
+    fun shareLink(
+        link: String,
+        title: String,
+    ) {
+        copyToClipboard(link)
+        if (OsUtil.isLinux) {
+            return
+        }
+        scope.launch {
+            try {
+                ShareSheet.share {
+                    this.title = title
+                    url(link)
+                }
+            } catch (e: ShareException) {
+                AppLogger.warning("Main", "${e.error}: ${e.message}")
+            }
+        }
+    }
+
+    fun installUpdate() {
+        val release = UiState.availableUpdate ?: return
+        if (UiState.isDownloadingUpdate || UiState.isCheckingForUpdates || UiState.updateManagerStarted) return
+        UiState.isDownloadingUpdate = true
+        UiState.updateDownloadError = null
+        updateDownloadJob =
+            scope.launch {
+                try {
+                    if (!DesktopUpdateManager.canInstall(release)) {
+                        openUpdateRelease(release)
+                        return@launch
+                    }
+                    DesktopUpdateManager
+                        .downloadAndLaunch(release.version) {
+                            withContext(Dispatchers.Main) { UiState.updateManagerStarted = true }
+                        }.fold(
+                            onSuccess = {},
+                            onFailure = {
+                                AppLogger.warning("Updates", "Update manager download failed", it)
+                                UiState.updateDownloadError = getString(Res.string.could_not_download_update_manager)
+                            },
+                        )
+                } finally {
+                    UiState.isDownloadingUpdate = false
+                }
+            }
+    }
+
+    fun openUpdateRelease(release: GitHubDesktopRelease) {
+        tryOpenUrl(release.url) { opened ->
+            if (!opened) {
+                scope.launch {
+                    val message = getString(Res.string.update_failed)
+                    UiState.updateDownloadError = message
+                    snackbarHostState.showSnackbar(message)
+                }
+            }
+        }
+    }
+
+    fun cancelUpdateDownload() {
+        updateDownloadJob?.cancel()
+        DesktopUpdateManager.cancelDownload()
+    }
+
+    suspend fun release() {
+        cancelUpdateDownload()
+        SearchState.close()
+        scope.coroutineContext[Job]?.cancelAndJoin()
+        DiscordRpcManager
+            .destroy()
+        runCatching { GlobalYouTube.close() }
+    }
+}

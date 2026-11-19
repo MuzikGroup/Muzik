@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Write an AltStore/SideStore source for a stable release IPA.
+
+The release publishes it as `muzik-altstore.json`, so the stable source URL is
+https://github.com/MuzikGroup/MuzikDesktop/releases/latest/download/muzik-altstore.json.
+"""
+
+import argparse
+import datetime
+import json
+from pathlib import Path
+
+BUNDLE_ID = "com.muzik.MuzikApp"
+MIN_OS_VERSION = "17.0"
+
+
+def source(repository: str, version: str, ipa: Path, date: str) -> dict:
+    raw = f"https://raw.githubusercontent.com/{repository}/v{version}"
+    return {
+        "name": "Muzik",
+        "identifier": "com.muzik.source",
+        "website": f"https://github.com/{repository}",
+        "apps": [
+            {
+                "name": "Muzik",
+                "bundleIdentifier": BUNDLE_ID,
+                "developerName": "MuzikGroup",
+                "localizedDescription": "A Material Design YouTube Music client.",
+                "iconURL": f"{raw}/fastlane/metadata/android/en-US/images/icon.png",
+                "versions": [
+                    {
+                        "version": version,
+                        "date": date,
+                        "downloadURL": f"https://github.com/{repository}/releases/download/v{version}/{ipa.name}",
+                        "size": ipa.stat().st_size,
+                        "minOSVersion": MIN_OS_VERSION,
+                    }
+                ],
+            }
+        ],
+    }
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("repository")
+    parser.add_argument("version")
+    parser.add_argument("ipa", type=Path)
+    parser.add_argument("output", type=Path)
+    args = parser.parse_args()
+    date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+    args.output.write_text(json.dumps(source(args.repository, args.version, args.ipa, date), indent=2) + "\n")

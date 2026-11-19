@@ -1,0 +1,34 @@
+/*
+ * Muzik Project (C) 2026
+ * Licensed under GPL-3.0 | Built by Ignatius (lead developer) and the Pipo Team
+ */
+
+package com.muzik.shared.ui.settings
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import com.muzik.shared.generated.resources.Res
+import com.muzik.shared.generated.resources.settings_home_section_dynamic
+import com.muzik.shared.generated.resources.settings_home_section_items
+import com.muzik.shared.settings.Settings
+import com.muzik.shared.ui.screens.HomeShelfBuilder
+import com.muzik.shared.ui.screens.homeContentText
+import com.muzik.shared.viewmodels.HomeViewModel.HomeUiState
+import org.jetbrains.compose.resources.stringResource
+
+@Composable
+fun settingsHomeSections(state: HomeUiState): List<SettingsHomeSection> =
+    HomeShelfBuilder.build(state, homeContentText(), 1000.dp, includeHidden = true).map { section ->
+        SettingsHomeSection(
+            id = section.key,
+            preferenceKey = section.visibilityKey,
+            title = section.title,
+            description =
+                if (section.items.isNotEmpty()) {
+                    stringResource(Res.string.settings_home_section_items, section.items.size)
+                } else {
+                    stringResource(Res.string.settings_home_section_dynamic)
+                },
+            visible = Settings.shared.shouldShowHomeSection(section.visibilityKey, section.title),
+        )
+    }
