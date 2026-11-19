@@ -176,10 +176,13 @@ jobs:
 
       - name: Install smoke runtime libraries
         run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb scrot rpm \
-            libasound2t64 libdrm2 libegl1 libfontconfig1 libfreetype6 libgl1 \
-            libpulse0 libva-drm2 libva2 libx11-6 libxcb-shm0
+          for i in 1 2 3; do
+            sudo apt-get update && sudo apt-get install -y xvfb scrot rpm \
+              libasound2t64 libdrm2 libegl1 libfontconfig1 libfreetype6 libgl1 \
+              libpulse0 libva-drm2 libva2 libx11-6 libxcb-shm0 && break
+            echo "apt attempt $i failed — retrying in 20s"
+            sleep 20
+          done
 
       - name: Build Linux DEB
         run: ./gradlew :desktopApp:packageReleaseDeb --no-configuration-cache

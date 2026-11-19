@@ -8,6 +8,7 @@ if (useLocalInnerTubeX && useMavenLocalInnerTubeX) {
 
 pluginManagement {
     repositories {
+        maven { setUrl("https://repo.huaweicloud.com/repository/maven") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -32,6 +33,7 @@ dependencyResolutionManagement {
 
     repositories {
         if (useMavenLocalInnerTubeX) mavenLocal()
+        maven { setUrl("https://repo.huaweicloud.com/repository/maven") }
         google()
         mavenCentral()
         maven {

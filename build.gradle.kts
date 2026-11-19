@@ -6,6 +6,7 @@ plugins {
 
 buildscript {
     repositories {
+        maven { setUrl("https://mirrors.huaweicloud.com/repository/maven/") }
         google()
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
