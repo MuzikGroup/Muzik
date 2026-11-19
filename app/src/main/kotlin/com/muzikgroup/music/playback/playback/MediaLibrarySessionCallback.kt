@@ -50,9 +50,10 @@ import com.muzikgroup.music.utils.getArtistSeparator
 import com.muzikgroup.music.utils.joinToArtistString
 import com.muzikgroup.music.utils.reportException
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
@@ -78,7 +79,17 @@ constructor(
     val database: MusicDatabase,
     val downloadUtil: DownloadUtil,
 ) : MediaLibrarySession.Callback {
-    private val scope = CoroutineScope(Dispatchers.Main) + Job()
+    // Media-session commands (notification buttons, media buttons, assistant actions) all run on
+    // this scope. A crashed command used to take down the whole process; contain it with a
+    // CoroutineExceptionHandler so playback survives a failed command.
+    private val scope =
+        CoroutineScope(
+            Dispatchers.Main +
+                SupervisorJob() +
+                CoroutineExceptionHandler { _, throwable ->
+                    timber.log.Timber.e(throwable, "Uncaught exception in MediaSession callback")
+                },
+        )
     lateinit var service: MusicService
     var toggleLike: () -> Unit = {}
     var toggleStartRadio: () -> Unit = {}

@@ -1,7 +1,6 @@
 package com.muzikgroup.music.ui.screens.settings
 
 import android.content.res.Configuration
-import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -48,8 +47,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -63,7 +60,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -88,7 +84,6 @@ data class ThemePalette(
 )
 
 val PaletteColors = listOf(
-    ThemePalette(R.string.palette_dynamic, Color.Transparent), // Sentinel for System/Dynamic colors
     ThemePalette(R.string.palette_crimson, Color(0xFFEC5464)), // Slightly shifted from DefaultThemeColor (0xFFED5564) to avoid conflict
     ThemePalette(R.string.palette_rose, Color(0xFFD81B60)),
     ThemePalette(R.string.palette_purple, Color(0xFF8E24AA)),
@@ -415,7 +410,6 @@ fun ModeCircle(
     showIcon: Boolean,
     onClick: () -> Unit
 ) {
-    val context = LocalContext.current
     val isSystemDark = isSystemInDarkTheme()
     val isSelected = darkMode == targetMode && pureBlack == targetPureBlack
     
@@ -425,16 +419,13 @@ fun ModeCircle(
         DarkMode.OFF -> false
     }
     
-    // Use actual system colors for AUTO mode on Android 12+
-    val modeColorScheme = if (targetMode == DarkMode.AUTO && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        if (effectiveDark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-    } else {
+    // Theme preview always uses the brand seed scheme, matching what the app actually renders.
+    val modeColorScheme =
         rememberDynamicColorScheme(
             seedColor = DefaultThemeColor,
             isDark = effectiveDark,
-            style = PaletteStyle.TonalSpot
+            style = PaletteStyle.TonalSpot,
         )
-    }
     
     val fillColor = when {
         targetPureBlack -> Color.Black

@@ -18,7 +18,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ServiceInfo
-import android.database.SQLException
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioFocusRequest
@@ -226,6 +225,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CancellationException
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -317,7 +317,19 @@ class MusicService :
             }
         }
 
-    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    // The service scope deliberately carries a CoroutineExceptionHandler: every Player.Listener
+    // callback below (track transitions, end-of-song stats, queue persistence) launches work on
+    // this scope. A single uncaught failure in any of them used to bubble up to the default
+    // uncaught-exception handler and kill the whole process, which users perceived as
+    // "the app shutting itself down after playing a song". Failures are now logged instead.
+    private val scope =
+        CoroutineScope(
+            Dispatchers.Main +
+                SupervisorJob() +
+                CoroutineExceptionHandler { _, throwable ->
+                    Timber.tag(TAG).e(throwable, "Uncaught exception in MusicService coroutine")
+                },
+        )
 
     private val binder = MusicBinder()
 
@@ -2484,7 +2496,7 @@ class MusicService :
         // it gets overwritten below.
         if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_AUTO) {
             lastTransitionedMediaId?.let { previousId ->
-                scope.launch(Dispatchers.IO) { markCachedIfFullyDownloaded(previousId) }
+                scope.launch(Dispatchers.IO + SilentHandler) { markCachedIfFullyDownloaded(previousId) }
             }
         }
         lastTransitionedMediaId = mediaItem?.mediaId
@@ -2574,9 +2586,11 @@ class MusicService :
         @Player.State playbackState: Int,
     ) {
         if (playbackState == Player.STATE_ENDED) {
-            // Check sleep timer guard - don't autoplay/repeat if sleep timer will pause
-            val timer = sleepTimer ?: return
-            if (timer.isActive && timer.pauseWhenSongEnd) {
+            // Check sleep timer guard - don't autoplay/repeat if sleep timer will pause.
+            // Null-safe: an unset sleep timer must never swallow the end-of-song handling
+            // (repeat modes and queue auto-advance live behind this guard).
+            val timer = sleepTimer
+            if (timer != null && timer.isActive && timer.pauseWhenSongEnd) {
                 return
             }
 
@@ -3871,9 +3885,12 @@ class MusicService :
         if (playbackStats.totalPlayTimeMs >= historyDurationMs &&
             !dataStore.get(PauseListenHistoryKey, false)
         ) {
+            // This block runs on Room's query executor; any exception escaping it used to hit
+            // the thread's uncaught-exception handler and kill the process right after a song
+            // finished (onPlaybackStatsReady fires on track end). Contain every failure.
             database.query {
-                incrementTotalPlayTime(mediaItem.mediaId, playbackStats.totalPlayTimeMs)
-                try {
+                runCatching {
+                    incrementTotalPlayTime(mediaItem.mediaId, playbackStats.totalPlayTimeMs)
                     insert(
                         Event(
                             songId = mediaItem.mediaId,
@@ -3881,7 +3898,8 @@ class MusicService :
                             playTime = playbackStats.totalPlayTimeMs,
                         ),
                     )
-                } catch (_: SQLException) {
+                }.onFailure { e ->
+                    Timber.tag(TAG).e(e, "Failed to record playback stats for ${mediaItem.mediaId}")
                 }
             }
         }
