@@ -275,8 +275,8 @@ jobs:
               DEST="Muzik-$VERSION-windows-x64.msi"
               ZIP="dist/Muzik-Desktop-Windows.zip"
               if [ -f "$ZIP" ]; then
-                cp "$ZIP" "Muzik-$VERSION-windows-x64.zip"
-                echo "zip=Muzik-$VERSION-windows-x64.zip" >> "$GITHUB_OUTPUT"
+                cp "$ZIP" "$GITHUB_WORKSPACE/Muzik-$VERSION-windows-x64.zip"
+                echo "zip=$GITHUB_WORKSPACE/Muzik-$VERSION-windows-x64.zip" >> "$GITHUB_OUTPUT"
               fi
               ;;
             dmg)
@@ -287,20 +287,20 @@ jobs:
               FILE=$(find "$OUT_DIR/deb" -name "*.deb" | head -1)
               DEST="muzik-$VERSION-linux-amd64.deb"
               if [ -n "$FILE" ]; then
-                cp "$FILE" "$DEST"
-                echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+                cp "$FILE" "$GITHUB_WORKSPACE/$DEST"
+                echo "renamed=$GITHUB_WORKSPACE/$DEST" >> "$GITHUB_OUTPUT"
               fi
               RPM=$(find "$OUT_DIR/rpm" -name "*.rpm" | head -1)
               if [ -n "$RPM" ]; then
-                cp "$RPM" "muzik-$VERSION-linux-x64.rpm"
-                echo "rpm=muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
+                cp "$RPM" "$GITHUB_WORKSPACE/muzik-$VERSION-linux-x64.rpm"
+                echo "rpm=$GITHUB_WORKSPACE/muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
               fi
               JAR=$(find desktopApp/build/compose/jars -name "Muzik-*.jar" | head -1)
               if [ -n "$JAR" ]; then
-                cp "$JAR" "muzik-$VERSION-portable.jar"
-                echo "jar=muzik-$VERSION-portable.jar" >> "$GITHUB_OUTPUT"
+                cp "$JAR" "$GITHUB_WORKSPACE/muzik-$VERSION-portable.jar"
+                echo "jar=$GITHUB_WORKSPACE/muzik-$VERSION-portable.jar" >> "$GITHUB_OUTPUT"
               fi
-              if [ -z "$DEST" ] || [ ! -f "$DEST" ]; then
+              if [ -z "$DEST" ] || [ ! -f "$GITHUB_WORKSPACE/$DEST" ]; then
                 echo "No deb found for linux target"
                 exit 1
               fi
@@ -308,8 +308,8 @@ jobs:
               ;;
           esac
           if [ -n "$FILE" ]; then
-            cp "$FILE" "$DEST"
-            echo "renamed=$DEST" >> "$GITHUB_OUTPUT"
+            cp "$FILE" "$GITHUB_WORKSPACE/$DEST"
+            echo "renamed=$GITHUB_WORKSPACE/$DEST" >> "$GITHUB_OUTPUT"
           else
             echo "No installer found for ${{ matrix.target }}"
             exit 1

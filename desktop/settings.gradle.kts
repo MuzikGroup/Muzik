@@ -8,11 +8,11 @@ if (useLocalInnerTubeX && useMavenLocalInnerTubeX) {
 
 pluginManagement {
     repositories {
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://repo.huaweicloud.com/repository/maven") }
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven { setUrl("https://maven.aliyun.com/repository/public") }
     }
 }
 plugins {
@@ -33,7 +33,17 @@ dependencyResolutionManagement {
 
     repositories {
         if (useMavenLocalInnerTubeX) mavenLocal()
-        maven { setUrl("https://repo.huaweicloud.com/repository/maven") }
+        // JitPack builds its artifacts on demand; a mirror that cached a POM without
+        // the binary would pin resolution to itself and fail the build. Keep
+        // com.github.* on JitPack.
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public")
+            content { excludeGroupByRegex("com\\.github\\..*") }
+        }
+        maven {
+            setUrl("https://repo.huaweicloud.com/repository/maven")
+            content { excludeGroupByRegex("com\\.github\\..*") }
+        }
         google()
         mavenCentral()
         maven {
