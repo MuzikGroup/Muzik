@@ -6,10 +6,10 @@
 
 Search any song, stream in high quality, follow synced lyrics, manage playlists and downloads, cast to your TV — wrapped in a polished, native-feeling app.
 
-[![Release](https://img.shields.io/github/v/release/MuzikGroup/MuzikDesktop?color=7C4DFF&label=latest&logo=github)](https://github.com/MuzikGroup/MuzikDesktop/releases/latest)
+[![Release](https://img.shields.io/github/v/release/MuzikGroup/Muzik?color=7C4DFF&label=latest&logo=github)](https://github.com/MuzikGroup/Muzik/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-9D7BFF)](#-install-in-one-click)
-[![License](https://img.shields.io/github/license/MuzikGroup/MuzikDesktop?color=FF5C8A)](LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/MuzikGroup/MuzikDesktop/release.yml?label=build&logo=githubactions)](../../actions)
+[![License](https://img.shields.io/github/license/MuzikGroup/Muzik?color=FF5C8A)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/MuzikGroup/Muzik/release.yml?label=build&logo=githubactions)](../../actions)
 
 [![Sponsor](https://img.shields.io/badge/Support_Muzik-Buy_Me_a_Soda-FF5C8A?style=for-the-badge&logo=buymeacoffee)](https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13)
 

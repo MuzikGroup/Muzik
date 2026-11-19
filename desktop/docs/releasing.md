@@ -1,5 +1,11 @@
 # Releasing
 
+> As of 8.1.0, desktop ships from the unified Muzik monorepo: one release in
+> MuzikGroup/Muzik publishes the Android APKs and every desktop installer
+> together (`.github/workflows/release.yml` at the repository root, versioned
+> by `appVersion` in desktop/gradle.properties, mirrored from the Android
+> `versionName`). This page keeps the desktop packaging internals for reference.
+
 Change `appVersion` only with release authorization. Workflows own signing, checksums, publication and cleanup. Package names and download channels are in [installation](install/README.md#get-the-package).
 
 ## Reuse verification

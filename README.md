@@ -76,15 +76,17 @@
 
 **Minimum requirement:** Android 8.0 (API 26) — covering virtually every Android device in use today.
 
-<h2>Desktop — <a href="https://github.com/MuzikGroup/MuzikDesktop">Muzik for Desktop</a> is here</h2>
+<h2>Desktop — built right here in this repo</h2>
 
-Muzik now runs on your computer too. Same violet, same catalog, one suite:
+Muzik now runs on your computer too. Same violet, same catalog, one suite — Android and desktop live together in this single repository and ship every release together:
 
 | OS | Get it |
 | --- | :---: |
-| **Windows 10/11** | [MSI installer](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
-| **macOS** (Apple Silicon + Intel) | [DMG](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
-| **Linux** (Deb / RPM / portable JAR) | [Download](https://github.com/MuzikGroup/MuzikDesktop/releases/latest) |
+| **Windows 10/11** | [MSI installer](https://github.com/MuzikGroup/Muzik/releases/latest) |
+| **macOS** (Apple Silicon) | [DMG](https://github.com/MuzikGroup/Muzik/releases/latest) |
+| **Linux** (Deb / RPM / portable JAR) | [Download](https://github.com/MuzikGroup/Muzik/releases/latest) |
+
+The desktop sources live in the [`desktop/`](desktop) directory (Kotlin Multiplatform + Compose, modules `shared` and `desktopApp`).
 
 </div>
 

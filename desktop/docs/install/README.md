@@ -4,7 +4,7 @@ Choose your platform: [Android](android.md), [iOS and iPadOS](ios.md), [Windows]
 
 ## Get the package
 
-Use [Muzik releases](https://github.com/MuzikGroup/MuzikDesktop/releases) for downloads. The table describes workflow outputs, not a guarantee that every package is published.
+Use [Muzik releases](https://github.com/MuzikGroup/Muzik/releases) for downloads. The table describes workflow outputs, not a guarantee that every package is published.
 
 The [release workflow](../../.github/workflows/release.yml) defines these packages. `VERSION` below means the version in the download's filename.
 
@@ -58,4 +58,4 @@ Export a backup from Muzik's settings and keep it outside the installation direc
 
 Use the same platform, architecture and installation method for updates. Avoid downgrading a database created by a newer version; see [downgrade safety](../crash-recovery.md). Uninstalling a mobile app deletes its local data. Removing a desktop application can leave settings, credentials, caches and downloaded music behind.
 
-If installation or startup still fails, include the package filename, app version, OS version, CPU architecture and exact error in a report to the [issue tracker](https://github.com/MuzikGroup/MuzikDesktop/issues). For desktop failures, collect the [application log](../desktop.md#logs-and-profiling). Remove account details and tokens before sharing logs.
+If installation or startup still fails, include the package filename, app version, OS version, CPU architecture and exact error in a report to the [issue tracker](https://github.com/MuzikGroup/Muzik/issues). For desktop failures, collect the [application log](../desktop.md#logs-and-profiling). Remove account details and tokens before sharing logs.
