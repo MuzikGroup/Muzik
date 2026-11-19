@@ -1,7 +1,7 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
-
 import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputFile
@@ -42,7 +42,7 @@ plugins {
 
 abstract class GenerateProtoTask : DefaultTask() {
     @get:Input
-    abstract val protocUrl: Property<String>
+    abstract val protocUrls: ListProperty<String>
 
     @get:InputFile
     abstract val protoSourceFile: RegularFileProperty
@@ -65,19 +65,39 @@ abstract class GenerateProtoTask : DefaultTask() {
         outputDir.mkdirs()
 
         if (!protocFile.exists() || protocFile.length() == 0L) {
-            val url = protocUrl.get()
-            logger.lifecycle("Downloading protoc ${url.substringAfterLast('/')} from $url")
+            // Maven Central's CDN intermittently serves 404/429 for this artifact (seen on CI
+            // and locally), so try every mirror before giving up.
+            val urls = protocUrls.get()
             protocFile.parentFile.mkdirs()
-            val connection = URL(url).openConnection() as java.net.HttpURLConnection
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-            val responseCode = connection.responseCode
-            if (responseCode !in 200..299) {
-                throw GradleException("Failed to download protoc: Server returned HTTP response code $responseCode for URL: $url")
-            }
-            connection.inputStream.use { input ->
-                protocFile.outputStream().use { output ->
-                    input.copyTo(output)
+            var lastFailure: String? = null
+            var downloaded = false
+            for (url in urls) {
+                try {
+                    logger.lifecycle("Downloading protoc ${url.substringAfterLast('/')} from $url")
+                    val connection = URL(url).openConnection() as java.net.HttpURLConnection
+                    connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+                    connection.connectTimeout = 15000
+                    connection.readTimeout = 60000
+                    val responseCode = connection.responseCode
+                    if (responseCode !in 200..299) {
+                        lastFailure = "HTTP $responseCode from $url"
+                        logger.lifecycle("protoc download failed: $lastFailure")
+                        continue
+                    }
+                    connection.inputStream.use { input ->
+                        protocFile.outputStream().use { output ->
+                            input.copyTo(output)
+                        }
+                    }
+                    downloaded = true
+                    break
+                } catch (e: Exception) {
+                    lastFailure = "${e.javaClass.simpleName}: ${e.message} from $url"
+                    logger.lifecycle("protoc download failed: $lastFailure")
                 }
+            }
+            if (!downloaded) {
+                throw GradleException("Failed to download protoc from any mirror. Last failure: $lastFailure")
             }
             protocFile.setExecutable(true)
         }
@@ -269,7 +289,7 @@ android {
 
 val protocVersion = libs.versions.protobuf.get()
 
-fun getProtocUrl(): String {
+fun getProtocUrls(): List<String> {
     val os = System.getProperty("os.name").lowercase()
     val arch = System.getProperty("os.arch").lowercase()
 
@@ -287,15 +307,23 @@ fun getProtocUrl(): String {
         else -> "x86_64"
     }
 
-    return "https://repo1.maven.org/maven2/com/google/protobuf/protoc/$protocVersion/protoc-$protocVersion-$osName-$archName.exe"
+    // Order matters: repo1.maven.org intermittently 404s/429s on CI, so the
+    // mirrors are tried before the canonical Central hosts.
+    val artifact = "com/google/protobuf/protoc/$protocVersion/protoc-$protocVersion-$osName-$archName.exe"
+    return listOf(
+        "https://repo.huaweicloud.com/repository/maven/$artifact",
+        "https://maven.aliyun.com/repository/public/$artifact",
+        "https://repo.maven.apache.org/maven2/$artifact",
+        "https://repo1.maven.org/maven2/$artifact",
+    )
 }
 
 val protoDir = rootProject.file("muzzproto")
 val protoFile = protoDir.resolve("listentogether.proto")
 
 val generateProto = if (protoFile.exists()) {
-    val protocUrl = getProtocUrl()
-    val protocFileName = URL(protocUrl).path.substringAfterLast('/')
+    val protocUrls = getProtocUrls()
+    val protocFileName = URL(protocUrls.first()).path.substringAfterLast('/')
 
     tasks.register<GenerateProtoTask>("generateProto") {
         group = "build"
@@ -303,7 +331,7 @@ val generateProto = if (protoFile.exists()) {
 
         protoSourceFile.set(protoFile)
         generatedSourcesDir.set(file("src/main/java"))
-        this.protocUrl.set(protocUrl)
+        this.protocUrls.set(protocUrls)
         protocExecutable.set(layout.buildDirectory.file("protoc/$protocFileName"))
     }
 } else {
