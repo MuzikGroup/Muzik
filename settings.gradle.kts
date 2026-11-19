@@ -3,7 +3,13 @@
 pluginManagement {
     repositories {
         google()
-        maven { setUrl("https://repo.huaweicloud.com/repository/maven/") }
+        maven {
+            setUrl("https://repo.huaweicloud.com/repository/maven/")
+            // JitPack builds its artifacts on demand; a mirror that has cached a module's POM
+            // without the binary would pin resolution to itself and fail the build
+            // (observed with com.github.yalantis:ucrop on CI). Keep com.github.* on JitPack.
+            content { excludeGroupByRegex("com\\.github\\..*") }
+        }
         mavenCentral()
         gradlePluginPortal()
     }
@@ -18,7 +24,10 @@ dependencyResolutionManagement {
         maven { setUrl("https://repo.huaweicloud.com/repository/maven/") }
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
-        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public")
+            content { excludeGroupByRegex("com\\.github\\..*") }
+        }
     }
 }
 
