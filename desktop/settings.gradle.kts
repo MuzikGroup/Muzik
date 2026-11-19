@@ -8,8 +8,8 @@ if (useLocalInnerTubeX && useMavenLocalInnerTubeX) {
 
 pluginManagement {
     repositories {
-        maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://repo.huaweicloud.com/repository/maven") }
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -37,11 +37,11 @@ dependencyResolutionManagement {
         // the binary would pin resolution to itself and fail the build. Keep
         // com.github.* on JitPack.
         maven {
-            setUrl("https://maven.aliyun.com/repository/public")
+            setUrl("https://repo.huaweicloud.com/repository/maven")
             content { excludeGroupByRegex("com\\.github\\..*") }
         }
         maven {
-            setUrl("https://repo.huaweicloud.com/repository/maven")
+            setUrl("https://maven.aliyun.com/repository/public")
             content { excludeGroupByRegex("com\\.github\\..*") }
         }
         google()
