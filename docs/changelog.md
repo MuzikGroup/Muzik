@@ -3,6 +3,13 @@
 Release notes for Muzik Desktop. Muzik is built by Ignatius (lead developer)
 together with the Pipo Team contributors and is released under GPL-3.0.
 
+---v8.0.0
+# Eight, in step with Android
+- Desktop joins the Android app in the 8.0.x series: one Muzik, one version line everywhere
+- Music alarm on desktop: schedule any playlist to start playing at a set time, with a random-song option
+- The last leftover Metrolist logo is gone; the Muzik M shows everywhere, matching the Android app
+- Streaming resolves innertubex through the MuzikGroup JitPack build for dependable playback
+
 ---v7.9.5
 # Support and updates, everywhere
 - The M logo is hard-coded across the window, taskbar (including pinned buttons), Alt-Tab and the system tray
