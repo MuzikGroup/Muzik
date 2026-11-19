@@ -1,19 +1,19 @@
 {
-  "version": "14.0.0",
-  "releaseUrl": "https://github.com/MuzikGroup/MuzikDesktop/releases/tag/v14.0.0",
-  "date": "2026-11-14",
+  "version": "8.1.1",
+  "releaseUrl": "https://github.com/MuzikGroup/Muzik/releases/tag/v8.1.1",
+  "date": "2026-11-19",
   "linux": {
     "x86_64-linux": {
-      "name": "muzik-desktop-linux-x64-14.0.0.AppImage",
-      "url": "https://github.com/MuzikGroup/MuzikDesktop/releases/download/v14.0.0/muzik-desktop-linux-x64-14.0.0.AppImage",
-      "sha256": "0e75981e7a805ce669290edfb5537b96a4ac8951c2c3e6a50f00ed2b7896045f",
-      "hash": "sha256-DnWYHnqAXOZpKQ7ftVN7lqSsiVHCw+alDwDtK3iWBF8="
+      "name": "muzik-8.1.1-portable.jar",
+      "url": "https://github.com/MuzikGroup/Muzik/releases/download/v8.1.1/muzik-8.1.1-portable.jar",
+      "sha256": "1a81c11eee54b10054ff4d865ece0cc79f448b4abcfddc5b24b98985f899fd68",
+      "hash": "sha256-GoHBHu5UsQBU/02GXs4Mx59Ei0q8/dxbJLmJhfiZ/Wg="
     },
     "aarch64-linux": {
-      "name": "muzik-desktop-linux-arm64-14.0.0.AppImage",
-      "url": "https://github.com/MuzikGroup/MuzikDesktop/releases/download/v14.0.0/muzik-desktop-linux-arm64-14.0.0.AppImage",
-      "sha256": "4e73eb3fa6b8bc8d20e783bd931fcf36365a9dae836d76ed9870e1be34d0e54a",
-      "hash": "sha256-TnPrP6a4vI0g54O9kx/PNjZana6DbXbtmHDhvjTQ5Uo="
+      "name": "muzik-8.1.1-portable.jar",
+      "url": "https://github.com/MuzikGroup/Muzik/releases/download/v8.1.1/muzik-8.1.1-portable.jar",
+      "sha256": "1a81c11eee54b10054ff4d865ece0cc79f448b4abcfddc5b24b98985f899fd68",
+      "hash": "sha256-GoHBHu5UsQBU/02GXs4Mx59Ei0q8/dxbJLmJhfiZ/Wg="
     }
   }
 }
