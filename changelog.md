@@ -1,3 +1,13 @@
+---v8.0.0
+
+## What's New
+
+- Stability and performance improvements
+
+## Improvements
+
+- Under-the-hood refinements and fixes
+
 ---v7.9.9
 
 ## What's New
