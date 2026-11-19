@@ -64,6 +64,7 @@ import com.muzik.desktop.ui.screens.PlaylistScreen
 import com.muzik.desktop.ui.screens.PodcastScreen
 import com.muzik.desktop.ui.screens.SearchResultsList
 import com.muzik.desktop.ui.screens.StatsScreen
+import com.muzik.desktop.ui.screens.settings.DesktopAboutScreen
 import com.muzik.shared.db.isHistoryPlaylistId
 import com.muzik.shared.deviceconnect.DeviceConnectPairingHost
 import com.muzik.shared.generated.resources.Res
@@ -242,6 +243,14 @@ fun AppContentHost(
 
                     Screen.History -> {
                         HistoryScreen()
+                    }
+
+                    Screen.About -> {
+                        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                            Box(Modifier.widthIn(max = 1400.dp).fillMaxSize()) {
+                                DesktopAboutScreen(colorScheme = colorScheme)
+                            }
+                        }
                     }
 
                     else -> {

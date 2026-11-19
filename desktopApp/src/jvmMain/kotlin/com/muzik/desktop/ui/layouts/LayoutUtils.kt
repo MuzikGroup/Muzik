@@ -32,6 +32,7 @@ import com.muzik.shared.generated.resources.history
 import com.muzik.shared.generated.resources.home
 import com.muzik.shared.generated.resources.listen_together
 import com.muzik.shared.generated.resources.podcast
+import com.muzik.shared.generated.resources.settings_about_title
 import com.muzik.shared.generated.resources.statistics
 import com.muzik.shared.generated.resources.top_playlist_title
 import com.muzik.shared.generated.resources.uploaded_playlist_name
@@ -109,6 +110,7 @@ object LayoutUtils {
         val appName = stringResource(Res.string.app_name)
         val browse = stringResource(Res.string.browse)
         val podcast = stringResource(Res.string.podcast)
+        val aboutTitle = stringResource(Res.string.settings_about_title)
         val navigationTitle =
             when (visibleItems.getOrNull(selectedNavIndex)?.id) {
                 NavigationId.HOME -> stringResource(Res.string.home)
@@ -134,6 +136,7 @@ object LayoutUtils {
             appName,
             browse,
             podcast,
+            aboutTitle,
             autoPlaylistTitle,
         ) {
             derivedStateOf {
@@ -142,6 +145,7 @@ object LayoutUtils {
                     is Screen.Browse -> BrowseState.selectedBrowseTitle ?: route.title ?: browse
                     is Screen.HomeSection -> route.title
                     is Screen.AutoPlaylist -> autoPlaylistTitle ?: navigationTitle
+                    Screen.About -> aboutTitle
                     else -> navigationTitle
                 }
             }

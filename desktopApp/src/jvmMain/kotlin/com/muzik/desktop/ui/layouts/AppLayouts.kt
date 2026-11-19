@@ -98,6 +98,7 @@ import com.muzik.shared.generated.resources.edit_sidebar
 import com.muzik.shared.generated.resources.filter_library
 import com.muzik.shared.generated.resources.home
 import com.muzik.shared.generated.resources.menu_history
+import com.muzik.shared.generated.resources.settings_about_title
 import com.muzik.shared.generated.resources.statistics
 import com.muzik.shared.settings.NavItem
 import com.muzik.shared.settings.NavigationId
@@ -192,7 +193,15 @@ private fun DesktopNavigationScaffold(
     content: @Composable (isNavigationRail: Boolean) -> Unit,
 ) {
     val isNavigationRail = !adaptiveLayout.navigationSuiteType.isNavigationBar
-    val allItems =
+    val aboutItem =
+        AdaptiveNavigationItem(
+            key = NavigationId.ABOUT,
+            label = stringResource(Res.string.settings_about_title),
+            icon = MuzikIcons.Outlined.Info,
+            selectedIcon = MuzikIcons.Filled.Info,
+            visible = true,
+        )
+    val baseItems =
         LibraryState.sidebarNavItems.mapNotNull { item ->
             if (item.id == NavigationId.LISTEN_TOGETHER && !Settings.shared.listenTogetherEnabled) return@mapNotNull null
             val icons = navIcons(item.id)
@@ -213,12 +222,32 @@ private fun DesktopNavigationScaffold(
                 visible = item.visible,
             )
         }
+    // "About Muzik" sits directly below the Together button in the rail; when
+    // Together is hidden or disabled it stays pinned at the bottom of the rail.
+    val allItems =
+        buildList {
+            var aboutInserted = false
+            for (item in baseItems) {
+                add(item)
+                if (item.key == NavigationId.LISTEN_TOGETHER) {
+                    add(aboutItem)
+                    aboutInserted = true
+                }
+            }
+            if (!aboutInserted) add(aboutItem)
+        }
 
     AdaptiveNavigationScaffold(
         layout = adaptiveLayout,
         items = allItems,
         selectedKey = selectedNavId,
         onSelect = { id ->
+            if (id == NavigationId.ABOUT) {
+                // About Muzik is its own destination, directly below the Together
+                // button — no longer buried inside the settings page.
+                DesktopNavigation.navigate(Screen.About)
+                return@AdaptiveNavigationScaffold
+            }
             val destination = screenForNavigationId(id) ?: return@AdaptiveNavigationScaffold
             val reselectLibrary =
                 destination == Screen.Library && DesktopNavigation.navigator.state.topLevelRoute == Screen.Library

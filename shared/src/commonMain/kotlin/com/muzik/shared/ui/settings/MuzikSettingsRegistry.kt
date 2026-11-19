@@ -254,7 +254,6 @@ fun rememberMuzikSettingsRegistry(
             SettingsPageId.UPDATES,
             SettingsPageId.ANDROID_AUTO,
             SettingsPageId.SUPPORTED_LINKS,
-            SettingsPageId.ABOUT,
             SettingsPageId.DEVTOOLS,
         ).filter { it in host.availablePages }
             .toTypedArray(),

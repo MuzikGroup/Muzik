@@ -313,7 +313,7 @@ data class GitHubDesktopRelease(
         get() = assets.singleOrNull { it.name == "muzik-installer-windows-x64-$version.exe" }
     val url: String get() =
         nightlyAsset?.takeIf { isNightly }?.downloadUrl
-            ?: "https://github.com/MuzikGroup/MuzikDesktop/releases/tag/$tagName"
+            ?: "https://github.com/MuzikGroup/Muzik/releases/tag/$tagName"
 
     internal fun canInstall(registeredInstallation: Boolean): Boolean =
         registeredInstallation && !draft && !prerelease && ReleaseVersion.parse(version)?.prerelease?.isEmpty() == true
