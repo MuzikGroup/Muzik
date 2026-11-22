@@ -173,7 +173,7 @@ class PipelineTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory); image=root/'image'; image.mkdir()
             executable(image/'Muzik.exe')
-            helper=image/'resources/windows/metro-wv2-helper.exe';executable(helper)
+            helper=image/'resources/windows/muzz-wv2-helper.exe';executable(helper)
             checksum=helper.with_suffix('.exe.sha256'); checksum.write_text(hashlib.sha256(helper.read_bytes()).hexdigest())
             result=package.package(image,'windows-x64',root/'dist','14.0.0-test')
             with zipfile.ZipFile(result) as archive:

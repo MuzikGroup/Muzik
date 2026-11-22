@@ -1,6 +1,6 @@
 package com.muzik.shared.cast
 
-import com.metrolist.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.AudioQuality
 import com.muzik.shared.model.AlbumTiny
 import com.muzik.shared.model.ArtistTiny
 import com.muzik.shared.model.SongItem

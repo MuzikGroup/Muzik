@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.models.response.BrowseResponse
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

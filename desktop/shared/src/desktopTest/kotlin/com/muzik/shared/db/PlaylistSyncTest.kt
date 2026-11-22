@@ -1,8 +1,8 @@
 package com.muzik.shared.db
 
 import androidx.sqlite.execSQL
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.InnerTubeHttpException
 import com.muzik.shared.api.LibraryItemsResult
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.playlistSongs

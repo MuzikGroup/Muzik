@@ -15,7 +15,7 @@ import com.muzik.desktop.state.content.PodcastState
 import com.muzik.desktop.state.content.SearchState
 import com.muzik.desktop.state.playback.ListenTogetherState
 import com.muzik.desktop.state.playback.PlayerState
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.utils.extractListenTogetherRoomCode
 import com.muzik.shared.utils.isListenTogetherUrl

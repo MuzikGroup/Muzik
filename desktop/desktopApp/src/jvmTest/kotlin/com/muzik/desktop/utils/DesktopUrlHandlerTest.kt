@@ -71,8 +71,8 @@ class DesktopUrlHandlerTest {
         assertTrue(DesktopUrlHandler.canHandle("muzik://watch?v=123456789"))
         assertTrue(DesktopUrlHandler.canHandle("muzik://party?r=listentogetherid"))
         assertTrue(DesktopUrlHandler.canHandle("https://muzik.cc/party?r=listentogetherid"))
-        assertFalse(DesktopUrlHandler.canHandle("https://feat-redesign2-metrosite.muzik.workers.dev/party?r=listentogetherid"))
-        assertFalse(DesktopUrlHandler.canHandle("https://feat-redesign2-metrosite.muzik.workers.dev/watch?v=R93xV3v718s"))
+        assertFalse(DesktopUrlHandler.canHandle("https://feat-redesign2-muzzsite.muzik.workers.dev/party?r=listentogetherid"))
+        assertFalse(DesktopUrlHandler.canHandle("https://feat-redesign2-muzzsite.muzik.workers.dev/watch?v=R93xV3v718s"))
         assertFalse(DesktopUrlHandler.canHandle("http://localhost:8080/party?r=listentogetherid"))
     }
 

@@ -1,9 +1,9 @@
 package com.muzik.shared.playback
 
 import androidx.compose.runtime.snapshotFlow
-import com.metrolist.innertubex.extraction.PlaybackTrackingData
-import com.metrolist.innertubex.extraction.generateClientPlaybackNonce
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.extraction.PlaybackTrackingData
+import com.muzik.innertubex.extraction.generateClientPlaybackNonce
+import com.muzik.innertubex.models.YouTubeClient
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.YouTubeRepository.PlaybackTrackingSession
 import com.muzik.shared.settings.Settings

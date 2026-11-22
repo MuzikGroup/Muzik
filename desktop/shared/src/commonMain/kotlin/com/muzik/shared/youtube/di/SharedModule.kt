@@ -1,16 +1,16 @@
 package com.muzik.shared.youtube.di
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.cipher.RemotePlayerConfigStore
-import com.metrolist.innertubex.cipher.YouTubeCipherService
-import com.metrolist.innertubex.extraction.InnerTubeExtractor
-import com.metrolist.innertubex.extraction.StreamExtractor
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.extraction.YtConfigParser
-import com.metrolist.innertubex.extraction.YtConfigParserImpl
-import com.metrolist.innertubex.extraction.strategy.ClientFallbackStrategy
-import com.metrolist.innertubex.extraction.strategy.ClientHealthMonitor
-import com.metrolist.innertubex.extraction.strategy.ContentAwareFallbackStrategy
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.cipher.RemotePlayerConfigStore
+import com.muzik.innertubex.cipher.YouTubeCipherService
+import com.muzik.innertubex.extraction.InnerTubeExtractor
+import com.muzik.innertubex.extraction.StreamExtractor
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.YtConfigParser
+import com.muzik.innertubex.extraction.YtConfigParserImpl
+import com.muzik.innertubex.extraction.strategy.ClientFallbackStrategy
+import com.muzik.innertubex.extraction.strategy.ClientHealthMonitor
+import com.muzik.innertubex.extraction.strategy.ContentAwareFallbackStrategy
 import com.muzik.shared.BuildConfig
 import com.muzik.shared.api.lyrics.AiModelCatalog
 import com.muzik.shared.api.lyrics.LyprioLyricsProvider

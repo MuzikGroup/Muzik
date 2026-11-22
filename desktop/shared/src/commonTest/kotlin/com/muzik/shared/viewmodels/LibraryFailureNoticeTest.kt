@@ -1,6 +1,6 @@
 package com.muzik.shared.viewmodels
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.AccountLibraryFailureTest
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.auth.YouTubeSyncState

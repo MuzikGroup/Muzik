@@ -1,8 +1,8 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.StreamResolveException
 import com.muzik.shared.youtube.playback.PlaybackResource
 
 internal const val IOS_OPUS_MAX_INPUT_BYTES = 32L * 1024 * 1024

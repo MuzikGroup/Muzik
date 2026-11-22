@@ -1,11 +1,11 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.potoken.PoTokenException
-import com.metrolist.innertubex.extraction.potoken.requireTrustedAttestationInterpreterUrl
-import com.metrolist.innertubex.extraction.strategy.ClientSelectionRequest
-import com.metrolist.innertubex.extraction.strategy.ContentAwareFallbackStrategy
-import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.potoken.PoTokenException
+import com.muzik.innertubex.extraction.potoken.requireTrustedAttestationInterpreterUrl
+import com.muzik.innertubex.extraction.strategy.ClientSelectionRequest
+import com.muzik.innertubex.extraction.strategy.ContentAwareFallbackStrategy
+import com.muzik.innertubex.extraction.strategy.PoTokenProviderKind
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

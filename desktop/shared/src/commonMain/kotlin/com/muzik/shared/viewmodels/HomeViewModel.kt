@@ -2,7 +2,7 @@ package com.muzik.shared.viewmodels
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.snapshotFlow
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.auth.AuthManager
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.entities.Song

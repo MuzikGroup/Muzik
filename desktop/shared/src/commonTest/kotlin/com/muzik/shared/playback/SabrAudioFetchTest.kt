@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrChunk
 import com.muzik.shared.playback.opus.OpusMp4Remuxer
 import com.muzik.shared.playback.opus.opusWebmFixture
 import io.ktor.client.HttpClient

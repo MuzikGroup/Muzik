@@ -1,10 +1,10 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.models.response.PlayerResponse
-import com.metrolist.innertubex.sabr.ExperimentalSabrApi
-import com.metrolist.innertubex.sabr.toSabrBootstrap
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.response.PlayerResponse
+import com.muzik.innertubex.sabr.ExperimentalSabrApi
+import com.muzik.innertubex.sabr.toSabrBootstrap
 import com.muzik.shared.network.createHttpClient
 import com.muzik.shared.playback.opus.OpusMp4Remuxer
 import com.muzik.shared.playback.opus.opusWebmFixture

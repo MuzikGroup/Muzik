@@ -1,8 +1,8 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrBootstrap
-import com.metrolist.innertubex.sabr.SabrChunk
-import com.metrolist.innertubex.sabr.SabrFormatId
+import com.muzik.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrFormatId
 import com.muzik.shared.youtube.playback.PlaybackResource
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.asFlow

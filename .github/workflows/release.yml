@@ -120,6 +120,42 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
           buildToolsVersion: 35.0.0
 
+      # Signature-drift guard: every published APK must be signed by the one pinned
+      # release key, or users hit install failures ("App not installed" / Play-Protect
+      # style errors) when updating over an existing install. Hard-fails when the
+      # RELEASE_KEY_FINGERPRINT secret is set (SHA-256, no colons); otherwise prints
+      # the certificate for manual review so the step is never a silent no-op.
+      - name: Verify APK signature
+        env:
+          EXPECTED_FINGERPRINT: ${{ secrets.RELEASE_KEY_FINGERPRINT }}
+        run: |
+          OUTPUT_DIR="app/build/outputs/apk/${{ matrix.variant }}/release"
+          APK=$(find "$OUTPUT_DIR" -maxdepth 1 -name "*.apk" ! -name "*-unsigned.apk" | head -1)
+          if [ -z "$APK" ]; then
+            echo "No APK found to verify in $OUTPUT_DIR"
+            ls -la "$OUTPUT_DIR"
+            exit 1
+          fi
+          APKSIGNER="$(ls "$ANDROID_HOME"/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)"
+          if [ -z "$APKSIGNER" ]; then
+            echo "apksigner not found under $ANDROID_HOME/build-tools"
+            exit 1
+          fi
+          "$APKSIGNER" verify --print-certs "$APK" | tee "$OUTPUT_DIR/signature.txt"
+          ACTUAL="$("$APKSIGNER" verify --print-certs "$APK" \
+            | grep -i "SHA-256 digest" | grep -oE '[0-9a-fA-F]{64}' \
+            | head -1 | tr '[:upper:]' '[:lower:]')"
+          if [ -n "$EXPECTED_FINGERPRINT" ]; then
+            EXPECTED="$(echo "$EXPECTED_FINGERPRINT" | tr -d ':' | tr '[:upper:]' '[:lower:]')"
+            if [ "$ACTUAL" != "$EXPECTED" ]; then
+              echo "::error::APK certificate fingerprint mismatch — refusing to publish. expected=$EXPECTED actual=$ACTUAL"
+              exit 1
+            fi
+            echo "Signature verified against the pinned release key fingerprint."
+          else
+            echo "RELEASE_KEY_FINGERPRINT secret not set — add it to enforce a hard check."
+          fi
+
       - name: Move and rename signed APKs
         run: |
           OUTPUT_DIR="app/build/outputs/apk/${{ matrix.variant }}/release"
@@ -240,7 +276,7 @@ jobs:
         if: matrix.target == 'msi'
         shell: pwsh
         run: |
-          dotnet publish metro-wv2-helper/metro-wv2-helper.csproj `
+          dotnet publish muzz-wv2-helper/muzz-wv2-helper.csproj `
             --configuration Release --runtime win-x64 --self-contained true `
             --output desktopApp/src/desktopMain/resources/windows `
             -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `

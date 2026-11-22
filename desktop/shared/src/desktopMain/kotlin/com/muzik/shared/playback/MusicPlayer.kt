@@ -1,9 +1,9 @@
 package com.muzik.shared.playback
 
 import androidx.compose.runtime.snapshotFlow
-import com.metrolist.innertubex.sabr.ExperimentalSabrApi
-import com.metrolist.innertubex.sabr.SabrVideoStream
-import com.metrolist.innertubex.sabr.findSabrProtocolException
+import com.muzik.innertubex.sabr.ExperimentalSabrApi
+import com.muzik.innertubex.sabr.SabrVideoStream
+import com.muzik.innertubex.sabr.findSabrProtocolException
 import com.muzik.shared.deviceconnect.DcLocalPlaybackState
 import com.muzik.shared.deviceconnect.DeviceConnectControllerClock
 import com.muzik.shared.model.MUSIC_VIDEO_TYPE_LIVE

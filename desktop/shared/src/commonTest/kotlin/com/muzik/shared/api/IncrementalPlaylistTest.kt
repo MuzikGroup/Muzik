@@ -1,7 +1,7 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.InnerTubeHttpException
 import com.muzik.shared.db.entities.PlaylistEntity
 import com.muzik.shared.model.PlaylistPresentationOptions
 import com.muzik.shared.model.PlaylistSongSort

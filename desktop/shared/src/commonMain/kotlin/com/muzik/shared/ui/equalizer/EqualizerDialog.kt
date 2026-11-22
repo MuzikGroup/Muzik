@@ -88,35 +88,35 @@ fun EqualizerDialog(
     rememberProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
     isAudioProcessingAvailable: Boolean = true,
     onOpenSystemEqualizer: (() -> Unit)? = null,
-    metroEqContent: (@Composable (onDismiss: () -> Unit, searchAutoEq: Boolean) -> Unit)? = null,
+    muzzEqContent: (@Composable (onDismiss: () -> Unit, searchAutoEq: Boolean) -> Unit)? = null,
 ) {
     var visible by remember { mutableStateOf(true) }
-    var openMetroEq by remember { mutableStateOf(false) }
+    var openMuzzEq by remember { mutableStateOf(false) }
     var searchAutoEq by remember { mutableStateOf(false) }
     var editorVisible by remember { mutableStateOf(false) }
     PopupVisibility(
         visible = visible,
-        onHidden = { if (openMetroEq) editorVisible = true else onDismiss() },
+        onHidden = { if (openMuzzEq) editorVisible = true else onDismiss() },
     ) {
         EqualizerProfileDialog(
             onDismiss = { visible = false },
             rememberProfilePicker = rememberProfilePicker,
             isAudioProcessingAvailable = isAudioProcessingAvailable,
             onOpenSystemEqualizer = onOpenSystemEqualizer,
-            onOpenMetroEq = { search ->
+            onOpenMuzzEq = { search ->
                 searchAutoEq = search
-                openMetroEq = true
+                openMuzzEq = true
                 visible = false
             },
         )
     }
     if (editorVisible) {
-        if (metroEqContent != null) {
-            metroEqContent(onDismiss, searchAutoEq)
+        if (muzzEqContent != null) {
+            muzzEqContent(onDismiss, searchAutoEq)
         } else {
             var editorDialogVisible by remember { mutableStateOf(true) }
             PopupVisibility(visible = editorDialogVisible, onHidden = onDismiss) {
-                MetroEqDialog(
+                MuzzEqDialog(
                     onDismiss = { editorDialogVisible = false },
                     rememberProfilePicker = rememberProfilePicker,
                     isAudioProcessingAvailable = isAudioProcessingAvailable,
@@ -133,7 +133,7 @@ private fun EqualizerProfileDialog(
     rememberProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)?,
     isAudioProcessingAvailable: Boolean,
     onOpenSystemEqualizer: (() -> Unit)?,
-    onOpenMetroEq: (searchAutoEq: Boolean) -> Unit,
+    onOpenMuzzEq: (searchAutoEq: Boolean) -> Unit,
 ) {
     val profiles = EqualizerProfiles.profiles
     val activeId = EqualizerProfiles.activeProfileId
@@ -231,11 +231,11 @@ private fun EqualizerProfileDialog(
                                 },
                                 onEdit = {
                                     if (activeId == profile.id) {
-                                        onOpenMetroEq(false)
+                                        onOpenMuzzEq(false)
                                     } else {
                                         changeProfile {
                                             EqualizerProfiles.setActive(profile.id)
-                                            onOpenMetroEq(false)
+                                            onOpenMuzzEq(false)
                                         }
                                     }
                                 },
@@ -256,7 +256,7 @@ private fun EqualizerProfileDialog(
                     horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    FilledTonalButton(onClick = { onOpenMetroEq(false) }, shapes = ButtonDefaults.shapes()) {
+                    FilledTonalButton(onClick = { onOpenMuzzEq(false) }, shapes = ButtonDefaults.shapes()) {
                         Text(stringResource(Res.string.muzikeq))
                     }
                     onOpenSystemEqualizer?.let { open ->
@@ -273,7 +273,7 @@ private fun EqualizerProfileDialog(
                                 text = { Text(stringResource(Res.string.eq_wizard)) },
                                 onClick = {
                                     importing = false
-                                    changeProfile { onOpenMetroEq(true) }
+                                    changeProfile { onOpenMuzzEq(true) }
                                 },
                             )
                             pickFile?.let { pick ->

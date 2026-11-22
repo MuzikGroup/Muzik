@@ -1366,7 +1366,7 @@ class Settings(
                 )
         private val backupExcludedKeys = nonPortableKeys - backupCredentialKeys
         private const val PORTABLE_SETTINGS_VERSION = 1
-        const val DEFAULT_LISTEN_TOGETHER_SERVER_URL = "wss://metroserverx.meowery.eu/ws"
+        const val DEFAULT_LISTEN_TOGETHER_SERVER_URL = "wss://muzzserverx.meowery.eu/ws"
         const val DEFAULT_FARADAY_PLAYER_CONFIG_URL =
             "https://raw.githubusercontent.com/MuzikGroup/faraday/master/registry/player_configs.json"
 

@@ -8,7 +8,7 @@ import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.app_icon_arctic_haze
 import com.muzik.shared.generated.resources.app_icon_gradient
 import com.muzik.shared.generated.resources.app_icon_lavender_leap
-import com.muzik.shared.generated.resources.app_icon_metromallow
+import com.muzik.shared.generated.resources.app_icon_muzzmallow
 import com.muzik.shared.generated.resources.app_icon_original
 import com.muzik.shared.generated.resources.app_icon_pride_special
 import com.muzik.shared.generated.resources.app_icon_static
@@ -31,7 +31,7 @@ private enum class IosAppIcon(
     ORIGINAL(Res.string.app_icon_original),
     ARCTIC_HAZE(Res.string.app_icon_arctic_haze),
     LAVENDER_LEAP(Res.string.app_icon_lavender_leap),
-    METROMALLOW(Res.string.app_icon_metromallow),
+    MUZZMALLOW(Res.string.app_icon_muzzmallow),
     PRIDE_SPECIAL(Res.string.app_icon_pride_special),
     STATIC(Res.string.app_icon_static),
     ZENITH_BLACK(Res.string.app_icon_zenith_black),

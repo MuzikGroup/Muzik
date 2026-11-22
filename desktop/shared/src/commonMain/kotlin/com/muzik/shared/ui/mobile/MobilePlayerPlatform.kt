@@ -49,7 +49,7 @@ import com.muzik.shared.ui.components.SleepTimerDialog
 import com.muzik.shared.ui.components.TempoPitchControls
 import com.muzik.shared.ui.components.rememberModalSheetState
 import com.muzik.shared.ui.equalizer.EqualizerDialog
-import com.muzik.shared.ui.equalizer.MetroEqSheet
+import com.muzik.shared.ui.equalizer.MuzzEqSheet
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.menu.LyricsMenu
 import com.muzik.shared.ui.menu.MediaDownloadState
@@ -181,8 +181,8 @@ internal class MobilePlayerPlatform(
             EqualizerDialog(
                 onDismiss = onDismiss,
                 isAudioProcessingAvailable = playbackState.isAudioProcessingAvailable,
-                metroEqContent = { close, searchAutoEq ->
-                    MetroEqSheet(
+                muzzEqContent = { close, searchAutoEq ->
+                    MuzzEqSheet(
                         onDismiss = close,
                         initialAutoEqSearch = searchAutoEq,
                         varispeed = Settings.shared.varispeed,

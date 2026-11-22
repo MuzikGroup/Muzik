@@ -143,7 +143,7 @@ verify_pid() {
 
 write_session_meta() {
     {
-        echo "=== Metromem Session ==="
+        echo "=== Muzzmem Session ==="
         echo "Date: $(date)"
         echo "PID: $PID"
         echo "App: $(cat /proc/$PID/cmdline 2>/dev/null | tr '\0' ' ' || echo 'N/A')"
@@ -288,7 +288,7 @@ summary_table() {
 
     echo ""
     echo "═══════════════════════════════════════════════════════════════════"
-    echo "  Metromem Summary  |  PID: $PID  |  Snapshots: $(tail -n +2 "$CSV_FILE" | wc -l)"
+    echo "  Muzzmem Summary  |  PID: $PID  |  Snapshots: $(tail -n +2 "$CSV_FILE" | wc -l)"
     echo "  Log: $SESSION_DIR"
     echo "═══════════════════════════════════════════════════════════════════"
     printf "  %-4s %-22s %10s %10s %10s %10s %10s\n" \
@@ -346,7 +346,7 @@ analyze_csv() {
         die "CSV not found: $csv"
     fi
     echo "═══════════════════════════════════════════════════════════════════"
-    echo "  Metromem Analysis: $csv"
+    echo "  Muzzmem Analysis: $csv"
     echo "═══════════════════════════════════════════════════════════════════"
     printf "  %-4s %-22s %10s %10s %10s %10s %10s %10s\n" \
         "Snap" "Stage" "VmRSS" "Heap" "Outside" "PrvDirty" "RSS" "Outside"
@@ -384,7 +384,7 @@ cleanup() {
     echo ""
     warn "Finalizing..."
     summary_table
-    info "Session: $SESSION_DIR/metromem.csv"
+    info "Session: $SESSION_DIR/muzzmem.csv"
     if [[ -n "$GRADLE_RUN_PID" ]]; then
         info "Stopping Gradle (PID $GRADLE_RUN_PID)..."
         kill "$GRADLE_RUN_PID" 2>/dev/null
@@ -405,7 +405,7 @@ cleanup() {
 run_interactive() {
     echo ""
     echo "═══════════════════════════════════════════════════════════════════"
-    echo "  Metromem -- Muzik Memory Profiler -- PID $PID"
+    echo "  Muzzmem -- Muzik Memory Profiler -- PID $PID"
     echo "═══════════════════════════════════════════════════════════════════"
     echo ""
     echo "  Suggested stages:"
@@ -506,10 +506,10 @@ fi
 
 check_deps
 
-SESSION_DIR="$OUTPUT_BASE/metromem-$(date +%Y%m%d-%H%M%S)"
+SESSION_DIR="$OUTPUT_BASE/muzzmem-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$SESSION_DIR"
-CSV_FILE="$SESSION_DIR/metromem.csv"
-LOG_FILE="$SESSION_DIR/metromem.log"
+CSV_FILE="$SESSION_DIR/muzzmem.csv"
+LOG_FILE="$SESSION_DIR/muzzmem.log"
 printf "snap,label,timestamp,vmrss_kb,heap_used_kb,heap_max_kb,young_used_kb,old_used_kb,metaspace_kb,gc_count_young,gc_count_full,gc_time_ms,nmt_total_kb,private_dirty_kb,native_est_kb,threads\n" > "$CSV_FILE"
 info "Logging to: $SESSION_DIR"
 trap cleanup EXIT INT TERM

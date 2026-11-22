@@ -10,8 +10,8 @@ import android.os.IBinder
 import android.os.Looper
 import android.os.Message
 import android.os.Messenger
-import com.metrolist.innertubex.extraction.PoTokenResult
-import com.metrolist.innertubex.extraction.potoken.PoTokenException
+import com.muzik.innertubex.extraction.PoTokenResult
+import com.muzik.innertubex.extraction.potoken.PoTokenException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.withTimeoutOrNull
 import java.util.UUID

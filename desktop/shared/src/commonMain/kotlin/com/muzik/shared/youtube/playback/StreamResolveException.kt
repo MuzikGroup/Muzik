@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.StreamResolveException
 import com.muzik.shared.playback.PlaybackErrorContext
 import com.muzik.shared.playback.PlaybackFailureCategory
 import io.ktor.client.network.sockets.ConnectTimeoutException

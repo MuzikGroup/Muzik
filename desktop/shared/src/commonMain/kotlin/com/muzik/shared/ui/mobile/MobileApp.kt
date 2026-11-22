@@ -105,7 +105,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleStartEffect
 import coil3.SingletonImageLoader
 import coil3.compose.LocalPlatformContext
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.api.artwork.AnimatedArtworkService
 import com.muzik.shared.auth.YouTubeSessionState
 import com.muzik.shared.constants.MiniPlayerHeight

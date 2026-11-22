@@ -1,6 +1,6 @@
 package com.muzik.shared.ui.mobile
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.responseDecodeDispatcher
 import com.muzik.shared.settings.Settings

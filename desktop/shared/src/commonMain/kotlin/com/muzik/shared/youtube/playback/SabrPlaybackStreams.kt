@@ -1,13 +1,13 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTubeLogger
-import com.metrolist.innertubex.sabr.ExperimentalSabrApi
-import com.metrolist.innertubex.sabr.SabrAudioStream
-import com.metrolist.innertubex.sabr.SabrBootstrap
-import com.metrolist.innertubex.sabr.SabrChunk
-import com.metrolist.innertubex.sabr.SabrFailureKind
-import com.metrolist.innertubex.sabr.SabrProtocolException
-import com.metrolist.innertubex.sabr.SabrResponseDiagnostics
+import com.muzik.innertubex.InnerTubeLogger
+import com.muzik.innertubex.sabr.ExperimentalSabrApi
+import com.muzik.innertubex.sabr.SabrAudioStream
+import com.muzik.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.sabr.SabrResponseDiagnostics
 import io.ktor.client.HttpClient
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.delay

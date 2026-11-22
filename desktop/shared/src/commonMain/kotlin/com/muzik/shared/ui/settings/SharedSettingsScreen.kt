@@ -108,7 +108,7 @@ import com.muzik.shared.ui.components.ExpressiveSwitch
 import com.muzik.shared.ui.components.SwipeBackLayout
 import com.muzik.shared.ui.components.focusOutline
 import com.muzik.shared.ui.components.singleLineMarquee
-import com.muzik.shared.ui.equalizer.MetroEqScreen
+import com.muzik.shared.ui.equalizer.MuzzEqScreen
 import com.muzik.shared.ui.haptics.rememberMuzikHaptics
 import com.muzik.shared.ui.icons.MuzikIcons
 import com.muzik.shared.ui.menu.ExpressiveSelectionMenu
@@ -134,8 +134,8 @@ fun SharedSettingsScreen(
             availablePages = host.availablePages + SettingsPageId.EQUALIZER,
             pageContent = { page, onBack, onNavigate ->
                 if (page == SettingsPageId.EQUALIZER) {
-                    MetroEqScreen(
-                        rememberProfilePicker = host.rememberMetroEqProfilePicker,
+                    MuzzEqScreen(
+                        rememberProfilePicker = host.rememberMuzzEqProfilePicker,
                         isAudioProcessingAvailable = host.isAudioProcessingAvailable,
                     )
                 } else if (page == SettingsPageId.LYRICS_AI_SETUP) {

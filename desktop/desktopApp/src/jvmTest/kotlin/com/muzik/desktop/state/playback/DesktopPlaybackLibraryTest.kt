@@ -3,7 +3,7 @@ package com.muzik.desktop.state.playback
 import com.muzik.desktop.history.HistoryStat
 import com.muzik.desktop.state.app.AppState
 import com.muzik.desktop.state.content.PlaylistAlbumState
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.PlaylistSongAlreadyPresentException
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.playlistSongs

@@ -1,6 +1,6 @@
 package com.muzik.shared.playlistimport
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.SongVote
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.playlistSongs

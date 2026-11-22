@@ -46,7 +46,7 @@ import com.muzik.desktop.ui.components.rememberLinuxWebKitAvailable
 import com.muzik.desktop.utils.prepareDesktopWebViewDataDirectory
 import com.muzik.desktop.web.DesktopWebView
 import com.muzik.desktop.window.ClearWindowContentOnDispose
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.response.AccountsListResponse
 import com.muzik.shared.auth.AccountDiscoveryAction
 import com.muzik.shared.auth.AuthManager
 import com.muzik.shared.auth.accountDiscoveryAction
@@ -422,7 +422,7 @@ private fun WindowsHelperContent(
                 isRunning = true
                 status = WindowsLoginStatus.Launching
 
-                val helperExeName = "metro-wv2-helper.exe"
+                val helperExeName = "muzz-wv2-helper.exe"
                 val resourcesDir = System.getProperty("compose.application.resources.dir")
                 val helperExe =
                     if (resourcesDir != null) {

@@ -124,7 +124,7 @@ class ListenTogetherManager(
     private val codecDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
     private companion object {
-        const val DEFAULT_SERVER_URL = "wss://metroserverx.meowery.eu/ws"
+        const val DEFAULT_SERVER_URL = "wss://muzzserverx.meowery.eu/ws"
         const val MAX_RECONNECT_ATTEMPTS = 15
         const val MAX_LOG_ENTRIES = 500
         const val OUTGOING_CAPACITY = 64

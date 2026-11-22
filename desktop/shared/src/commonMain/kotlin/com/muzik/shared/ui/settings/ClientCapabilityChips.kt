@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.metrolist.innertubex.extraction.strategy.AuthenticationPolicy
-import com.metrolist.innertubex.extraction.strategy.CapabilitySupport
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientManifest
+import com.muzik.innertubex.extraction.strategy.AuthenticationPolicy
+import com.muzik.innertubex.extraction.strategy.CapabilitySupport
+import com.muzik.innertubex.extraction.strategy.PlaybackClientManifest
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.devtools_access_anonymous
 import com.muzik.shared.generated.resources.devtools_access_any

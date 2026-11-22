@@ -1,8 +1,8 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.PlaybackTrackingData
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.PlaybackTrackingData
+import com.muzik.innertubex.models.YouTubeClient
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.responseDecodeDispatcher
 import com.muzik.shared.settings.Settings

@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
 import com.muzik.shared.youtube.playback.PlaybackResource
 import com.muzik.shared.youtube.playback.WebPoTokenHealth
 import kotlinx.coroutines.CancellationException

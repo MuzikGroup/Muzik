@@ -27,8 +27,12 @@ object PlayerConfigStore {
     private const val TAG = "Muzik_CipherConfig"
     private const val ASSET_NAME = "player_configs.json"
 
+    // Self-hosted cipher registry: faraday watches YouTube player.js rotations, derives and
+    // CDN-validates every config, and publishes this file on its default branch. Same
+    // schemaVersion-1 shape the bundled asset and the desktop player use, so the parser
+    // below needs no changes to trust it.
     private const val REMOTE_URL =
-        "https://raw.githubusercontent.com/ZemerTeam/zemer-cipher/master/library/src/main/assets/player_configs.json"
+        "https://raw.githubusercontent.com/MuzikGroup/faraday/main/registry/player_configs.json"
 
     // Mirrors PlayerJsFetcher.CACHE_TTL_MS.
     private const val REFRESH_TTL_MS = 6 * 60 * 60 * 1000L

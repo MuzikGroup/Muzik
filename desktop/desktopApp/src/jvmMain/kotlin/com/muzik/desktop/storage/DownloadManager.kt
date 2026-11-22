@@ -6,7 +6,7 @@
 package com.muzik.desktop.storage
 
 import com.muzik.desktop.utils.AppLogger
-import com.metrolist.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.AudioQuality
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.upsertHistorySong
 import com.muzik.shared.db.withDatabaseTransaction

@@ -5,7 +5,7 @@ import coil3.PlatformContext
 import coil3.SingletonImageLoader
 import coil3.request.ImageRequest
 import coil3.request.SuccessResult
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.ui.settings.IosNativeFiles
 import com.muzik.shared.ui.theme.ThemeColorExtractor

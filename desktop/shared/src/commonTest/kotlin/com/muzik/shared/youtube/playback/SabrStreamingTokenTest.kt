@@ -1,10 +1,10 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.PoTokenResult
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.extraction.TokenProviderCapabilities
-import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.PoTokenResult
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.TokenProviderCapabilities
+import com.muzik.innertubex.extraction.strategy.PoTokenProviderKind
 import com.muzik.shared.playback.sabrAudioResource
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine

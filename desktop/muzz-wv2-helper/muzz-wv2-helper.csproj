@@ -7,8 +7,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon />
     <StartupObject />
-    <AssemblyName>metro-wv2-helper</AssemblyName>
-    <RootNamespace>MetroWv2Helper</RootNamespace>
+    <AssemblyName>muzz-wv2-helper</AssemblyName>
+    <RootNamespace>MuzzWv2Helper</RootNamespace>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>

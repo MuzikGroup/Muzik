@@ -1,14 +1,14 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.bodyAsTextLimited
-import com.metrolist.innertubex.extraction.potoken.PoTokenException
-import com.metrolist.innertubex.extraction.potoken.parseAttestationChallengeData
-import com.metrolist.innertubex.extraction.potoken.parseAttestationInterpreterUrl
-import com.metrolist.innertubex.extraction.potoken.parseIntegrityTokenData
-import com.metrolist.innertubex.extraction.potoken.parseWebPageAttestationContext
-import com.metrolist.innertubex.extraction.potoken.requireTrustedAttestationInterpreterUrl
-import com.metrolist.innertubex.extraction.potoken.stringToU8
-import com.metrolist.innertubex.extraction.potoken.u8ToBase64
+import com.muzik.innertubex.bodyAsTextLimited
+import com.muzik.innertubex.extraction.potoken.PoTokenException
+import com.muzik.innertubex.extraction.potoken.parseAttestationChallengeData
+import com.muzik.innertubex.extraction.potoken.parseAttestationInterpreterUrl
+import com.muzik.innertubex.extraction.potoken.parseIntegrityTokenData
+import com.muzik.innertubex.extraction.potoken.parseWebPageAttestationContext
+import com.muzik.innertubex.extraction.potoken.requireTrustedAttestationInterpreterUrl
+import com.muzik.innertubex.extraction.potoken.stringToU8
+import com.muzik.innertubex.extraction.potoken.u8ToBase64
 import com.muzik.shared.network.HttpFailureLog
 import com.muzik.shared.network.sharedHttpTransportHandlesFailures
 import io.ktor.client.HttpClient

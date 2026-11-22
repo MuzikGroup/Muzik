@@ -1,10 +1,10 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.PlaybackTrackingData
-import com.metrolist.innertubex.extraction.generateClientPlaybackNonce
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.models.response.PlayerResponse
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.PlaybackTrackingData
+import com.muzik.innertubex.extraction.generateClientPlaybackNonce
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.response.PlayerResponse
 import com.muzik.shared.api.YouTubeRepository.PlaybackTrackingSession
 import com.muzik.shared.auth.supportedYouTubeAuthCredential
 import com.muzik.shared.settings.Settings

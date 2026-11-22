@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.YouTubeDataPage
+import com.muzik.innertubex.models.YouTubeDataPage
 import com.muzik.shared.model.BrowsePageData
 import com.muzik.shared.model.HomeSection
 import com.muzik.shared.model.YTItem

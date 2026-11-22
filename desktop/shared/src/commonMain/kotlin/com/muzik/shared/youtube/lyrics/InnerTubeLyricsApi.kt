@@ -1,10 +1,10 @@
 package com.muzik.shared.youtube.lyrics
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.bodyAsJsonObjectLimited
-import com.metrolist.innertubex.fetchCaptionText
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.transcriptCues
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.bodyAsJsonObjectLimited
+import com.muzik.innertubex.fetchCaptionText
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.transcriptCues
 import com.muzik.shared.api.lyrics.YouTubeLyricsApi
 import com.muzik.shared.api.lyrics.YouTubeTranscriptCue
 import kotlinx.serialization.json.JsonArray

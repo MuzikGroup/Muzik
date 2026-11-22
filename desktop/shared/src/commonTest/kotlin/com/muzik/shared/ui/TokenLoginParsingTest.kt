@@ -1,6 +1,6 @@
 package com.muzik.shared.ui
 
-import com.metrolist.innertubex.models.AccountInfo
+import com.muzik.innertubex.models.AccountInfo
 import com.muzik.shared.auth.supportedYouTubeAuthCredential
 import kotlin.test.Test
 import kotlin.test.assertEquals

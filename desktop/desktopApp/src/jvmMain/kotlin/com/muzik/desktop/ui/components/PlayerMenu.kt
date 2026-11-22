@@ -532,7 +532,7 @@ fun PlayerMenuPanel(
     if (showEqualizer) {
         EqualizerDialog(
             onDismiss = { showEqualizer = false },
-            rememberProfilePicker = { onPicked -> rememberMetroEqProfilePicker(onPicked) },
+            rememberProfilePicker = { onPicked -> rememberMuzzEqProfilePicker(onPicked) },
         )
     }
     val speed by PlayerState.player.playbackSpeed.collectAsState()

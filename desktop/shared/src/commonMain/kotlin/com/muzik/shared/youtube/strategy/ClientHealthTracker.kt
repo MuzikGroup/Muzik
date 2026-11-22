@@ -1,10 +1,10 @@
 package com.muzik.shared.youtube.strategy
 
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.strategy.ClientFailureKind
-import com.metrolist.innertubex.extraction.strategy.ClientHealthMonitor
-import com.metrolist.innertubex.extraction.strategy.ClientHealthScope
-import com.metrolist.innertubex.utils.sha1
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.strategy.ClientFailureKind
+import com.muzik.innertubex.extraction.strategy.ClientHealthMonitor
+import com.muzik.innertubex.extraction.strategy.ClientHealthScope
+import com.muzik.innertubex.utils.sha1
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.youtube.playback.PlaybackNetworkState
 import com.muzik.shared.youtube.playback.PlaybackNetworkStateStore

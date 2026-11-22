@@ -61,7 +61,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.metrolist.innertubex.models.AccountInfo
+import com.muzik.innertubex.models.AccountInfo
 import com.muzik.shared.auth.AuthManager
 import com.muzik.shared.auth.hasSupportedYouTubeAuthCookie
 import com.muzik.shared.generated.resources.Res

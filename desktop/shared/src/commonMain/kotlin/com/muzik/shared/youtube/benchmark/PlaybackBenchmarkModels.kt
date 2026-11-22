@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.benchmark
 
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientOption
+import com.muzik.innertubex.extraction.strategy.PlaybackClientOption
 
 enum class PlaybackBenchmarkCase {
     NORMAL,

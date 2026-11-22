@@ -12,7 +12,7 @@ import com.muzik.desktop.state.app.AppState
 import com.muzik.desktop.state.app.DesktopNavigation
 import com.muzik.desktop.state.app.UiState
 import com.muzik.desktop.state.playback.PlayerState
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.search_history_removal_failed
 import com.muzik.shared.model.SearchFilter

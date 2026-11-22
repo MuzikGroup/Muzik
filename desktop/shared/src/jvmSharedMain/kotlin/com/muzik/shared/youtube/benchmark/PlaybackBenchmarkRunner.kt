@@ -1,10 +1,10 @@
 package com.muzik.shared.youtube.benchmark
 
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.StreamResolveException
-import com.metrolist.innertubex.extraction.generateClientPlaybackNonce
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientOption
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.generateClientPlaybackNonce
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PlaybackClientOption
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.playback.PlaybackFailureClassifier
 import com.muzik.shared.playback.PlaybackReporterPingResult

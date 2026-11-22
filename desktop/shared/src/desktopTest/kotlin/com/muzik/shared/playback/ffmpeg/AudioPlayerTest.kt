@@ -1,7 +1,7 @@
 package com.muzik.shared.playback.ffmpeg
 
-import com.metrolist.innertubex.sabr.SabrFailureKind
-import com.metrolist.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.SabrProtocolException
 import com.muzik.shared.playback.PlaybackProgressTimeoutException
 import com.muzik.shared.playback.TestPlaybackLine
 import com.muzik.shared.playback.testAudioRenderer

@@ -1,9 +1,9 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.PoTokenResult
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.extraction.TokenProviderCapabilities
-import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
+import com.muzik.innertubex.extraction.PoTokenResult
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.TokenProviderCapabilities
+import com.muzik.innertubex.extraction.strategy.PoTokenProviderKind
 import com.muzik.shared.network.HttpFailureLog
 import com.muzik.shared.youtube.logging.YtLogger
 import io.ktor.client.HttpClient

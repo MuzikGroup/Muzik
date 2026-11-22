@@ -1,12 +1,12 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.StreamDiagnostics
-import com.metrolist.innertubex.extraction.StreamResolveException
-import com.metrolist.innertubex.extraction.TokenProviderCapabilities
-import com.metrolist.innertubex.sabr.SabrBootstrap
-import com.metrolist.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.StreamDiagnostics
+import com.muzik.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.TokenProviderCapabilities
+import com.muzik.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.sabr.SabrProtocolException
 import com.muzik.shared.BuildConfig
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.playback.PlaybackFailure

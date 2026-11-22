@@ -136,7 +136,7 @@ data class SharedSettingsHost(
     val alarmDatabase: MusicDatabase? = null,
     val customPageIcons: Map<SettingsPageId, @Composable (Color) -> Unit> = emptyMap(),
     val pageContent: @Composable (SettingsPageId, onBack: () -> Unit, onNavigate: (SettingsPageId) -> Unit) -> Unit = { _, _, _ -> },
-    val rememberMetroEqProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
+    val rememberMuzzEqProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
 )
 
 enum class SettingsControl {

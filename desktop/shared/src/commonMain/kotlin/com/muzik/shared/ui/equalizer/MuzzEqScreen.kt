@@ -178,7 +178,7 @@ import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MetroEqScreen(
+fun MuzzEqScreen(
     rememberProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
     allowAutoEqSearch: Boolean = true,
     isAudioProcessingAvailable: Boolean = true,

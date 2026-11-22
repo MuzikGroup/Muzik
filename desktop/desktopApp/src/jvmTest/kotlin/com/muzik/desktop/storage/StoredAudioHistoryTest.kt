@@ -1,6 +1,6 @@
 package com.muzik.desktop.storage
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.getDatabaseBuilder
 import com.muzik.shared.db.upsertHistorySong

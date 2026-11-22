@@ -1,7 +1,7 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.YouTubeClient
 import com.muzik.shared.api.YouTubeResponseParser.feedbackToken
 import com.muzik.shared.api.YouTubeResponseParser.findAllObjects
 import com.muzik.shared.api.YouTubeResponseParser.findFirstObject

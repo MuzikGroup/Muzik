@@ -1,7 +1,7 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.sabr.SabrBootstrap
-import com.metrolist.innertubex.sabr.SabrFormatId
+import com.muzik.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.sabr.SabrFormatId
 import com.muzik.shared.model.MUSIC_VIDEO_TYPE_LIVE
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.model.isLive

@@ -1,10 +1,10 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.sabr.ExperimentalSabrApi
-import com.metrolist.innertubex.sabr.SabrAudioStream
-import com.metrolist.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.sabr.ExperimentalSabrApi
+import com.muzik.innertubex.sabr.SabrAudioStream
+import com.muzik.innertubex.sabr.SabrChunk
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.state.GlobalYouTube
 import com.muzik.shared.state.GlobalYouTubeRepository

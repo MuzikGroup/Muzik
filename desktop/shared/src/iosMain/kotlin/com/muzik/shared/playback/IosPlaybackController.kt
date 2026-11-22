@@ -1,7 +1,7 @@
 package com.muzik.shared.playback
 
 import androidx.compose.runtime.snapshotFlow
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.entities.Event

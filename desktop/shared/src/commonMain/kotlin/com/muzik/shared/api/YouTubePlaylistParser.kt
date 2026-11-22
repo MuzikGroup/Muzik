@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.models.response.BrowseResponse
 import com.muzik.shared.api.YouTubeResponseParser.asArray
 import com.muzik.shared.api.YouTubeResponseParser.asObject
 import com.muzik.shared.api.YouTubeResponseParser.bestChannelThumbnailUrl

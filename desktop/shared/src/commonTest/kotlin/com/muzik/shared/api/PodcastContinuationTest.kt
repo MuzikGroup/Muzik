@@ -1,7 +1,7 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.response.BrowseResponse
 import com.muzik.shared.model.EpisodeItem
 import com.muzik.shared.model.PodcastItem
 import com.muzik.shared.model.PodcastPage

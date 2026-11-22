@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
-internal fun rememberMetroEqProfilePicker(onPicked: (fileName: String, content: String) -> Unit): () -> Unit {
+internal fun rememberMuzzEqProfilePicker(onPicked: (fileName: String, content: String) -> Unit): () -> Unit {
     val scope = rememberCoroutineScope()
     return {
         scope.launch {

@@ -1,7 +1,7 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTubeHttpException
-import com.metrolist.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.extraction.StreamResolveException
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.api.Send
 import io.ktor.client.plugins.api.createClientPlugin

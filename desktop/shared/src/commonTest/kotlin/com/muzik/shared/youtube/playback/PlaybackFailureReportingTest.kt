@@ -1,8 +1,8 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.StreamResolveException
-import com.metrolist.innertubex.sabr.SabrFailureKind
-import com.metrolist.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.SabrProtocolException
 import com.muzik.shared.playback.PlaybackErrorContext
 import com.muzik.shared.playback.PlaybackNetworkChangedException
 import io.ktor.client.plugins.HttpRequestTimeoutException

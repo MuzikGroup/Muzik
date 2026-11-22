@@ -1,11 +1,11 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.InnerTubeHttpException
-import com.metrolist.innertubex.bodyAsTextLimited
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.models.response.BrowseResponse
-import com.metrolist.innertubex.models.response.CreatePlaylistResponse
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.bodyAsTextLimited
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.models.response.CreatePlaylistResponse
 import com.muzik.shared.auth.isExpiredYouTubeSessionResponse
 import com.muzik.shared.model.isEditablePlaylistId
 import com.muzik.shared.utils.Logger

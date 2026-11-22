@@ -11,8 +11,8 @@ import androidx.compose.runtime.setValue
 import com.muzik.desktop.state.app.AppState
 import com.muzik.desktop.state.app.DesktopNavigation
 import com.muzik.desktop.state.playback.PlayerState
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.InnerTubeHttpException
 import com.muzik.shared.api.PlaylistNotFoundException
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.playlistSongs

@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.SabrFailureKind
 
 data class PlaybackFailure(
     val stage: String,

@@ -1,8 +1,8 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.StreamResolveException
-import com.metrolist.innertubex.sabr.SabrFailureKind
-import com.metrolist.innertubex.sabr.findSabrProtocolException
+import com.muzik.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.findSabrProtocolException
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.playback_error_age_restricted
 import com.muzik.shared.generated.resources.playback_error_explicit_sign_in

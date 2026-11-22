@@ -1,6 +1,6 @@
 package com.muzik.shared.utils
 
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.listentogether.parseListenTogetherInvitation
 import com.muzik.shared.settings.Settings
 import com.muzik.shared.ui.mobile.resolveMobileDeepLink
@@ -184,7 +184,7 @@ class YouTubeUrlParsingTest {
         for (host in listOf(
             "localhost:8080",
             "127.0.0.1:8080",
-            "feat-redesign2-metrosite.muzik.workers.dev",
+            "feat-redesign2-muzzsite.muzik.workers.dev",
             "other.muzik.workers.dev",
         )) {
             for (path in listOf(

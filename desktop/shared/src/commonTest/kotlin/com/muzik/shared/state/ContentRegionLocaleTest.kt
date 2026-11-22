@@ -1,8 +1,8 @@
 package com.muzik.shared.state
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.models.YouTubeLocale
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.YouTubeLocale
 import com.muzik.shared.settings.Settings
 import com.russhwolf.settings.MapSettings
 import io.ktor.client.HttpClient

@@ -10,7 +10,7 @@ import com.muzik.desktop.storage.DownloadManager
 import com.muzik.desktop.storage.SongCacheManager
 import com.muzik.desktop.storage.desktopSongOfflineAvailability
 import com.muzik.desktop.youtube.DesktopPageBoundTokenRuntime
-import com.metrolist.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.TokenProvider
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.OfflineSongAvailability
 import com.muzik.shared.db.daos.DatabaseDao

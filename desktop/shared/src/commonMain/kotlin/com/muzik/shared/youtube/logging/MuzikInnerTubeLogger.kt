@@ -1,8 +1,8 @@
 package com.muzik.shared.youtube.logging
 
-import com.metrolist.innertubex.InnerTubeLogEvent
-import com.metrolist.innertubex.InnerTubeLogLevel
-import com.metrolist.innertubex.InnerTubeLogger
+import com.muzik.innertubex.InnerTubeLogEvent
+import com.muzik.innertubex.InnerTubeLogLevel
+import com.muzik.innertubex.InnerTubeLogger
 import com.muzik.shared.youtube.playback.PlaybackEventKind
 import com.muzik.shared.youtube.playback.PlaybackEventLevel
 import com.muzik.shared.youtube.playback.PlaybackEventLog

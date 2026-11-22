@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.sync.Mutex

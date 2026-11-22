@@ -1,7 +1,7 @@
 package com.muzik.shared.youtube.benchmark
 
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.youtube.playback.PlaybackResource
 import com.muzik.shared.youtube.playback.StreamResolver

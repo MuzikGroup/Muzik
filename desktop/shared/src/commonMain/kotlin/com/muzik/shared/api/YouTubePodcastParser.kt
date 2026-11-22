@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.models.response.BrowseResponse
 import com.muzik.shared.api.YouTubeResponseParser.browseId
 import com.muzik.shared.api.YouTubeResponseParser.pageTitle
 import com.muzik.shared.api.YouTubeResponseParser.parseBrowseResponse

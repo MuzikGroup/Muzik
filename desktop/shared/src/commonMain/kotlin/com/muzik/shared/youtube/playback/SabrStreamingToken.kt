@@ -1,10 +1,10 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
-import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
-import com.metrolist.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PoTokenProviderKind
+import com.muzik.innertubex.sabr.SabrBootstrap
 import kotlin.io.encoding.Base64
 
 internal fun sabrStreamingTokenSupplier(

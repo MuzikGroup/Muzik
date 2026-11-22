@@ -1,6 +1,6 @@
 package com.muzik.shared.state
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.entities.AlbumEntity

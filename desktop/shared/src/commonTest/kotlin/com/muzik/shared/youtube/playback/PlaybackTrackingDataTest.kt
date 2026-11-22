@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.PlaybackTrackingData
+import com.muzik.innertubex.extraction.PlaybackTrackingData
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue

@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.db.entities.PlaylistEntity
 import com.muzik.shared.db.getDatabaseBuilder
 import com.muzik.shared.model.SongItem

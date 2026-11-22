@@ -40,7 +40,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun MetroEqSheet(
+fun MuzzEqSheet(
     onDismiss: () -> Unit,
     varispeed: Boolean,
     rememberProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
@@ -90,7 +90,7 @@ fun MetroEqSheet(
                     }
                 } else {
                     Box(Modifier.weight(1f)) {
-                        MetroEqScreen(
+                        MuzzEqScreen(
                             rememberProfilePicker = rememberProfilePicker,
                             isAudioProcessingAvailable = isAudioProcessingAvailable,
                             initialAutoEqSearch = initialAutoEqSearch,

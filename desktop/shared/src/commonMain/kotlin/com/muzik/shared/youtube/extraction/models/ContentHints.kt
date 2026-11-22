@@ -1,7 +1,7 @@
 package com.muzik.shared.youtube.extraction.models
 
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.model.isLive
 import com.muzik.shared.model.isUploadedType

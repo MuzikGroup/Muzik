@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 
-namespace MetroWv2Helper
+namespace MuzzWv2Helper
 {
     internal record YouTubeCredentials(string cookie, string visitorData, string dataSyncId, string authUser);
 

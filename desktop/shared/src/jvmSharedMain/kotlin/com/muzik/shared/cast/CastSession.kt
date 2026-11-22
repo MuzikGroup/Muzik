@@ -1,6 +1,6 @@
 package com.muzik.shared.cast
 
-import com.metrolist.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.AudioQuality
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.playback.MusicQueueEntry
 import com.muzik.shared.youtube.playback.PlaybackResource

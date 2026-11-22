@@ -322,8 +322,8 @@ fun registerWindowsPortableArchive(
             }
             val requiredLoginHelperResources =
                 setOf(
-                    "metro-wv2-helper.exe",
-                    "metro-wv2-helper.exe.sha256",
+                    "muzz-wv2-helper.exe",
+                    "muzz-wv2-helper.exe.sha256",
                 )
             val packagedFiles =
                 directory

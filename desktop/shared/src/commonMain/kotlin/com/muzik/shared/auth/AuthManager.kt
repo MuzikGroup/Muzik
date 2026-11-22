@@ -1,10 +1,10 @@
 package com.muzik.shared.auth
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.AccountInfo
-import com.metrolist.innertubex.models.response.AccountsListResponse
-import com.metrolist.innertubex.utils.parseCookieString
-import com.metrolist.innertubex.utils.sanitizeCookieString
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.AccountInfo
+import com.muzik.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.utils.parseCookieString
+import com.muzik.innertubex.utils.sanitizeCookieString
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.playlist.LibraryDeletionTracker
 import com.muzik.shared.settings.Settings

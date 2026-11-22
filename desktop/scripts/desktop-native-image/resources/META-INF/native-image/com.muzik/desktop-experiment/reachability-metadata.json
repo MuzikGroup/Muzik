@@ -41,7 +41,7 @@
       "type": "coil3.network.okhttp.internal.OkHttpNetworkFetcherServiceLoaderTarget"
     },
     {
-      "type": "com.metrolist.innertubex.models.body.BrowseBody",
+      "type": "com.muzik.innertubex.models.body.BrowseBody",
       "fields": [
         {
           "name": "Companion"
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.BrowseBody$Companion",
+      "type": "com.muzik.innertubex.models.body.BrowseBody$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -58,7 +58,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.NextBody",
+      "type": "com.muzik.innertubex.models.body.NextBody",
       "fields": [
         {
           "name": "Companion"
@@ -66,7 +66,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.NextBody$Companion",
+      "type": "com.muzik.innertubex.models.body.NextBody$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.PlayerBody",
+      "type": "com.muzik.innertubex.models.body.PlayerBody",
       "fields": [
         {
           "name": "Companion"
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.PlayerBody$Companion",
+      "type": "com.muzik.innertubex.models.body.PlayerBody$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.SearchBody",
+      "type": "com.muzik.innertubex.models.body.SearchBody",
       "fields": [
         {
           "name": "Companion"
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "type": "com.metrolist.innertubex.models.body.SearchBody$Companion",
+      "type": "com.muzik.innertubex.models.body.SearchBody$Companion",
       "methods": [
         {
           "name": "serializer",

@@ -5,7 +5,7 @@
 
 package com.muzik.shared.api.lyrics
 
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.YouTubeClient
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope

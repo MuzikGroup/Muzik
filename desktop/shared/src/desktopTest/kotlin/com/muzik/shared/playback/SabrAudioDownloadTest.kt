@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrChunk
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.cancelAndJoin

@@ -32,12 +32,12 @@ class DesktopRelaunchTest {
             listOf(image, "--profile", "test"),
             desktopRestartCommand(
                 image,
-                "/tmp/.mount_Metro/bin/Muzik",
+                "/tmp/.mount_Muzz/bin/Muzik",
                 recovery + listOf("--profile", "test"),
                 emptyList(),
                 "",
                 "",
-                "/tmp/.mount_Metro/bin/Muzik",
+                "/tmp/.mount_Muzz/bin/Muzik",
             ),
         )
     }

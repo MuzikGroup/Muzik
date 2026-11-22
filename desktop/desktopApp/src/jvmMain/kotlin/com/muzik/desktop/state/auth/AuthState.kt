@@ -12,8 +12,8 @@ import com.muzik.desktop.state.app.UiState
 import com.muzik.desktop.state.content.HomeState
 import com.muzik.desktop.state.content.LibraryContentState
 import com.muzik.desktop.state.playback.PlayerState
-import com.metrolist.innertubex.models.AccountInfo
-import com.metrolist.innertubex.utils.sanitizeCookieString
+import com.muzik.innertubex.models.AccountInfo
+import com.muzik.innertubex.utils.sanitizeCookieString
 import com.muzik.shared.auth.AuthManager
 import com.muzik.shared.auth.YouTubeSyncState
 import com.muzik.shared.model.HomePageData

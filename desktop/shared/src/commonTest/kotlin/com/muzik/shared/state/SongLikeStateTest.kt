@@ -1,7 +1,7 @@
 package com.muzik.shared.state
 
 import androidx.compose.runtime.snapshots.Snapshot
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.ContinuationBranch
 import com.muzik.shared.api.PlaylistPage
 import com.muzik.shared.api.SongVote

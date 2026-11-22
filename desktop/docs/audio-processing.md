@@ -2,13 +2,13 @@
 
 ## Equalizer and gain
 
-MetroEQ uses shared profiles and DSP under `shared`. Platform players apply those profiles through their PCM paths. Output volume carries attenuation and crossfade fades; do not apply crossfade gain before silence skipping or tempo processing.
+MuzzEQ uses shared profiles and DSP under `shared`. Platform players apply those profiles through their PCM paths. Output volume carries attenuation and crossfade fades; do not apply crossfade gain before silence skipping or tempo processing.
 
-MetroEQ band gains and AutoEQ imports support -30 to +30 dB. The separate output preamp supports -12 to +12 dB. The graph shows the full band range plus preamp and holds its scale during a drag. Frequency edits stay within 20 Hz to 20 kHz, or the lower sample-rate ceiling, and stop at neighbouring bands. The editor lists bands by frequency while retaining their storage indices for reset and DSP history. Enabling MetroEQ retains the selected profile and live edits, or selects Flat when no profile is selected.
+MuzzEQ band gains and AutoEQ imports support -30 to +30 dB. The separate output preamp supports -12 to +12 dB. The graph shows the full band range plus preamp and holds its scale during a drag. Frequency edits stay within 20 Hz to 20 kHz, or the lower sample-rate ceiling, and stop at neighbouring bands. The editor lists bands by frequency while retaining their storage indices for reset and DSP history. Enabling MuzzEQ retains the selected profile and live edits, or selects Flat when no profile is selected.
 
 - Android uses Media3 audio processors and PCM16. Eligible compressed streams can offload when software effects, tempo, pitch and meter use do not require PCM. Libopus always decodes to PCM. An output error or playback stall can disable offload for the player lifetime and recover on PCM.
 - Desktop decodes through FFmpeg. `AudioRenderer` applies EQ and gain before silence skipping, then normalization and user volume at output.
-- iOS attaches `MTAudioProcessingTap` through `AVAudioMix` before starting a prepared player. Each tap owns its processing state. HLS fallback bypasses the tap, so MetroEQ, independent pitch and the meter are unavailable for that stream. Speed remains available.
+- iOS attaches `MTAudioProcessingTap` through `AVAudioMix` before starting a prepared player. Each tap owns its processing state. HLS fallback bypasses the tap, so MuzzEQ, independent pitch and the meter are unavailable for that stream. Speed remains available.
 
 Android's System equalizer opens the installed audio-effects panel for the current audio session. Each new player opens its own effects session; releasing an outgoing player closes only that session. Panel availability depends on the device and route. Changing hardware audio processing requires restart because the sink reads it at construction.
 
@@ -28,7 +28,7 @@ Android Bluetooth recovery observes the actual AudioTrack route and available ou
 
 ## Meter
 
-The shared 18-band meter captures PCM only while the MetroEQ page requests it. Analysis runs outside the audio callback. Hiding the page stops capture and clears display state. Preserve stereo energy when combining channels.
+The shared 18-band meter captures PCM only while the MuzzEQ page requests it. Analysis runs outside the audio callback. Hiding the page stops capture and clears display state. Preserve stereo energy when combining channels.
 
 ## Verification
 

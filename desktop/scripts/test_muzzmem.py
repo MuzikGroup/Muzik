@@ -7,9 +7,9 @@ import tempfile
 import unittest
 
 
-class MetromemLaunchTest(unittest.TestCase):
+class MuzzmemLaunchTest(unittest.TestCase):
     def launch(self, mode, initial_status=1, polling_status=0):
-        source = Path(__file__).with_name('metromem').read_text()
+        source = Path(__file__).with_name('muzzmem').read_text()
         functions = source.split('if [[ $# -eq 0 ]]; then usage; fi', 1)[0]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

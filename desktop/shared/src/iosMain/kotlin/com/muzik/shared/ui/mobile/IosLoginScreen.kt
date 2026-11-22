@@ -40,7 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.UIKitView
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.response.AccountsListResponse
 import com.muzik.shared.auth.AccountDiscoveryAction
 import com.muzik.shared.auth.AuthManager
 import com.muzik.shared.auth.accountDiscoveryAction

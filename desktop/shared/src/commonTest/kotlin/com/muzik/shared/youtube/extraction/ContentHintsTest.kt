@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.extraction
 
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.model.isLive
 import com.muzik.shared.settings.Settings

@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrChunk
 import com.muzik.shared.youtube.playback.PlaybackResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

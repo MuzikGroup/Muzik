@@ -1,6 +1,6 @@
 package com.muzik.shared.db
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.ContinuationBranch
 import com.muzik.shared.api.PlaylistPage
 import com.muzik.shared.api.YouTubeRepository

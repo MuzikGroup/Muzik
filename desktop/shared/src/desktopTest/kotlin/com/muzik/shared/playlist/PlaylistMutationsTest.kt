@@ -1,7 +1,7 @@
 package com.muzik.shared.playlist
 
 import androidx.room3.useWriterConnection
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.PlaylistRemovalFailedException
 import com.muzik.shared.api.PlaylistSongAlreadyPresentException
 import com.muzik.shared.api.YouTubeRepository

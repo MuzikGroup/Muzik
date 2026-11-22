@@ -5,9 +5,9 @@ package com.muzik.shared.playback
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.room3.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.responseDecodeDispatcher
 import com.muzik.shared.db.MusicDatabase

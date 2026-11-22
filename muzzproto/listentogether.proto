@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package listentogether;
 
-option go_package = "github.com/MuzikGroup/MuzzServer/proto";
+option go_package = "github.com/MuzikGroup/muzzserver/proto";
 option java_package = "com.muzikgroup.music.listentogether.proto";
 option java_outer_classname = "Listentogether";
 option java_multiple_files = false;

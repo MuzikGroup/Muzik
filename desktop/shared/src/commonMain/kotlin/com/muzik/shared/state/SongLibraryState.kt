@@ -1,6 +1,6 @@
 package com.muzik.shared.state
 
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.YouTubeClient
 import com.muzik.shared.db.MusicDatabase
 import com.muzik.shared.db.syncRemoteLibraryItems
 import com.muzik.shared.model.SongItem

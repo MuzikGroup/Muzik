@@ -1,8 +1,8 @@
 package com.muzik.desktop.state
 
 import com.muzik.desktop.state.content.canRestoreAlbum
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.YouTubeLocale
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.YouTubeLocale
 import com.muzik.shared.model.AlbumItem
 import com.muzik.shared.model.AlbumPage
 import kotlin.test.Test

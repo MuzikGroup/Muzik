@@ -1,7 +1,7 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrFailureKind
-import com.metrolist.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.sabr.SabrFailureKind
+import com.muzik.innertubex.sabr.SabrProtocolException
 import com.muzik.shared.youtube.playback.PlaybackResource
 import kotlin.test.Test
 import kotlin.test.assertEquals

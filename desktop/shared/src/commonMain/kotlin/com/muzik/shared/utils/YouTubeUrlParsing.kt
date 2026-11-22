@@ -1,6 +1,6 @@
 package com.muzik.shared.utils
 
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import io.ktor.http.Url
 
 private val youtubeVideoId = Regex("^[A-Za-z0-9_-]+$")

@@ -1,6 +1,6 @@
 package com.muzik.shared.viewmodels
 
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.model.SearchFilter
 import com.muzik.shared.model.SearchResultPage

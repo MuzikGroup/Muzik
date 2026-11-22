@@ -8,8 +8,8 @@ import coil3.annotation.ExperimentalCoilApi
 import coil3.decode.BlackholeDecoder
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.api.artwork.AnimatedArtworkService
 import com.muzik.shared.api.artwork.CanvasArtworkState
 import com.muzik.shared.api.artwork.CanvasContentSource

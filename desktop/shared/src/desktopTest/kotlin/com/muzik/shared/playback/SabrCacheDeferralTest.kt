@@ -1,7 +1,7 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.SabrBootstrap
-import com.metrolist.innertubex.sabr.SabrFormatId
+import com.muzik.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.sabr.SabrFormatId
 import com.muzik.shared.youtube.playback.PlaybackResource
 import kotlin.test.Test
 import kotlin.test.assertFalse

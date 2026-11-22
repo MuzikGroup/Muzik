@@ -61,7 +61,7 @@ import com.muzik.desktop.ui.components.SongContextMenu
 import com.muzik.desktop.ui.components.SongSwipeActions
 import com.muzik.desktop.utils.playlistCoverFilenameFilter
 import com.muzik.desktop.utils.readPlaylistCover
-import com.metrolist.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.InnerTubeHttpException
 import com.muzik.shared.api.PlaylistNotFoundException
 import com.muzik.shared.api.PlaylistSongAlreadyPresentException
 import com.muzik.shared.api.playlistSongs

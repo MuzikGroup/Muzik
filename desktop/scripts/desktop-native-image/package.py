@@ -148,7 +148,7 @@ def package(image, target, destination, version, graal=None):
         subprocess.run(['bash', str(ROOT / 'scripts/build_appimage.sh'), '--native-appdir', str(app.resolve()), str(output.resolve())], check=True)
     elif target == 'windows-x64':
         validate_windows(image)
-        helper = image / 'resources/windows/metro-wv2-helper.exe'
+        helper = image / 'resources/windows/muzz-wv2-helper.exe'
         checksum = helper.with_suffix('.exe.sha256')
         if not helper.is_file() or not checksum.is_file():
             raise ValueError('Windows native image is missing the login helper or its checksum')

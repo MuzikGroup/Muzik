@@ -1,6 +1,6 @@
 package com.muzik.desktop.state
 
-import com.metrolist.innertubex.models.YouTubeDataPage
+import com.muzik.innertubex.models.YouTubeDataPage
 import com.muzik.shared.api.loadBrowsePage
 import com.muzik.shared.model.BrowsePageData
 import com.muzik.shared.model.HomeSection

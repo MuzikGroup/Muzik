@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.response.AccountsListResponse
 import com.muzik.shared.ui.components.images.AsyncImage
 
 @Composable

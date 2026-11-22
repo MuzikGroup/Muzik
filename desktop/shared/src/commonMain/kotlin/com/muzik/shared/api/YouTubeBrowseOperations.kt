@@ -1,9 +1,9 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.models.YouTubeClient
-import com.metrolist.innertubex.models.YouTubeDataPage
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.YouTubeDataPage
+import com.muzik.innertubex.models.response.BrowseResponse
 import com.muzik.shared.api.YouTubeResponseParser.browseId
 import com.muzik.shared.api.YouTubeResponseParser.browseParams
 import com.muzik.shared.api.YouTubeResponseParser.continuationToken

@@ -1,7 +1,7 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.generateClientPlaybackNonce
-import com.metrolist.innertubex.extraction.replaceClientPlaybackNonce
+import com.muzik.innertubex.extraction.generateClientPlaybackNonce
+import com.muzik.innertubex.extraction.replaceClientPlaybackNonce
 
 internal fun PlaybackResource.withFreshClientPlaybackNonce(): PlaybackResource = withClientPlaybackNonce(generateClientPlaybackNonce())
 

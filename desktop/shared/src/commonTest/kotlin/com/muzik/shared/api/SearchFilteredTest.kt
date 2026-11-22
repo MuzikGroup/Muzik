@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.model.EpisodeItem
 import com.muzik.shared.model.SearchFilter
 import com.muzik.shared.settings.Settings

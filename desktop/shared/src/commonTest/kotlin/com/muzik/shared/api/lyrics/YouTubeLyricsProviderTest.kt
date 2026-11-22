@@ -1,6 +1,6 @@
 package com.muzik.shared.api.lyrics
 
-import com.metrolist.innertubex.models.YouTubeClient
+import com.muzik.innertubex.models.YouTubeClient
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject

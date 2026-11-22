@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.auth.invalidateYouTubeSession
 import com.muzik.shared.constants.QueuedYouTubeHistoryJsonKey
 import com.muzik.shared.settings.Settings

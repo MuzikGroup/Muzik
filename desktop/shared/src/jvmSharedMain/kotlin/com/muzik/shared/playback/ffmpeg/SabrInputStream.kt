@@ -1,8 +1,8 @@
 package com.muzik.shared.playback.ffmpeg
 
-import com.metrolist.innertubex.sabr.SabrChunk
-import com.metrolist.innertubex.sabr.SabrProtocolException
-import com.metrolist.innertubex.sabr.findSabrProtocolException
+import com.muzik.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrProtocolException
+import com.muzik.innertubex.sabr.findSabrProtocolException
 import com.muzik.shared.playback.SeekableMediaSource
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope

@@ -1,6 +1,6 @@
 package com.muzik.shared.repository
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.BuildConfig
 import com.muzik.shared.api.lyrics.LyprioLyricsProvider
 import com.muzik.shared.api.lyrics.LyricsClient

@@ -36,7 +36,7 @@ import com.muzik.shared.ui.icons.MuzikIcons
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun MetroEqDialog(
+fun MuzzEqDialog(
     onDismiss: () -> Unit,
     rememberProfilePicker: (@Composable (onPicked: (fileName: String, content: String) -> Unit) -> () -> Unit)? = null,
     isAudioProcessingAvailable: Boolean = true,
@@ -67,7 +67,7 @@ fun MetroEqDialog(
                     }
                 }
                 Box(Modifier.weight(1f)) {
-                    MetroEqScreen(
+                    MuzzEqScreen(
                         rememberProfilePicker = rememberProfilePicker,
                         isAudioProcessingAvailable = isAudioProcessingAvailable,
                         initialAutoEqSearch = initialAutoEqSearch,

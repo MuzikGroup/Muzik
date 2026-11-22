@@ -3,7 +3,7 @@ package com.muzik.shared.auth
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.playback.PendingYouTubePlaybackReportStore
 import com.muzik.shared.playlist.LibraryDeletionTracker
 import com.muzik.shared.settings.Settings

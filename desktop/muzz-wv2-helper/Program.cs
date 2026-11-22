@@ -9,7 +9,7 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using Timer = System.Windows.Forms.Timer;
 
-namespace MetroWv2Helper
+namespace MuzzWv2Helper
 {
     static class Program
     {

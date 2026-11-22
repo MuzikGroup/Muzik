@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.response.BrowseResponse
+import com.muzik.innertubex.models.response.BrowseResponse
 import com.muzik.shared.model.AlbumItem
 import com.muzik.shared.model.AlbumTiny
 import com.muzik.shared.model.ArtistTiny

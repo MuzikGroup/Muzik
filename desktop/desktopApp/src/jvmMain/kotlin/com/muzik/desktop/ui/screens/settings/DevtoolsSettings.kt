@@ -26,8 +26,8 @@ import com.muzik.desktop.crash.DesktopCrashRecovery
 import com.muzik.desktop.state.app.UiState
 import com.muzik.desktop.utils.DesktopRenderBackend
 import com.muzik.desktop.utils.desktopRenderBackends
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientManifest
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PlaybackClientManifest
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.crash_logs
 import com.muzik.shared.generated.resources.crash_restart

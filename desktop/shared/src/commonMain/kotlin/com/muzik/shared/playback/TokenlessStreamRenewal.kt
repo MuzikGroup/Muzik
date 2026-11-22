@@ -1,6 +1,6 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
 import com.muzik.shared.youtube.playback.PlaybackEventKind
 import com.muzik.shared.youtube.playback.PlaybackEventLog
 import com.muzik.shared.youtube.playback.PlaybackResource

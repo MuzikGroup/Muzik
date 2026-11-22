@@ -1,6 +1,6 @@
 package com.muzik.shared.utils
 
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.listentogether.parseListenTogetherInvitation
 import kotlin.test.Test
 import kotlin.test.assertEquals

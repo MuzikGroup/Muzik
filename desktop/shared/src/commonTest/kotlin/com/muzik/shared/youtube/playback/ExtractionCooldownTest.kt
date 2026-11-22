@@ -1,16 +1,16 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.InnerTubeHttpException
-import com.metrolist.innertubex.cipher.YouTubeCipherService
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.ExtractedStream
-import com.metrolist.innertubex.extraction.InnerTubeExtractor
-import com.metrolist.innertubex.extraction.PlayerConfig
-import com.metrolist.innertubex.extraction.StreamExtractor
-import com.metrolist.innertubex.extraction.StreamResolveException
-import com.metrolist.innertubex.extraction.YtConfigParser
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.InnerTubeHttpException
+import com.muzik.innertubex.cipher.YouTubeCipherService
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.ExtractedStream
+import com.muzik.innertubex.extraction.InnerTubeExtractor
+import com.muzik.innertubex.extraction.PlayerConfig
+import com.muzik.innertubex.extraction.StreamExtractor
+import com.muzik.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.YtConfigParser
 import com.muzik.shared.settings.Settings
 import com.russhwolf.settings.MapSettings
 import io.ktor.client.HttpClient

@@ -1,6 +1,6 @@
 package com.muzik.shared.viewmodels
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals

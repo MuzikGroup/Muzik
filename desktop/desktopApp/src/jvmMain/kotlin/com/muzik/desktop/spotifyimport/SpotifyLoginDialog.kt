@@ -235,7 +235,7 @@ private suspend fun runSpotifyWindowsHelper(): Result<String> =
     withContext(Dispatchers.IO) {
         val helper = resolveWindowsLoginHelper()
         try {
-            check(helper.exists()) { "The Windows login helper was not found. Rebuild metro-wv2-helper." }
+            check(helper.exists()) { "The Windows login helper was not found. Rebuild muzz-wv2-helper." }
             val content = readWindowsLoginHelperOutput(ProcessBuilder(helper.absolutePath, "--provider", "spotify"))
             check(content.isNotEmpty()) { "The Spotify login window closed before sign-in completed." }
             val cookie =
@@ -254,7 +254,7 @@ private suspend fun runSpotifyWindowsHelper(): Result<String> =
     }
 
 private fun resolveWindowsLoginHelper(): File {
-    val helperName = "metro-wv2-helper.exe"
+    val helperName = "muzz-wv2-helper.exe"
     val resourcesDirectory = System.getProperty("compose.application.resources.dir")?.let(::File)
     return resourcesDirectory
         ?.let { directory ->

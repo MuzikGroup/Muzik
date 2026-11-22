@@ -1,6 +1,6 @@
 package com.muzik.shared.api.artwork
 
-import com.metrolist.innertubex.models.YouTubeLocale
+import com.muzik.innertubex.models.YouTubeLocale
 import com.muzik.shared.api.lyrics.LyricsUtils
 import com.muzik.shared.api.lyrics.PaxsenixLyricsProvider
 import com.muzik.shared.network.createHttpClient

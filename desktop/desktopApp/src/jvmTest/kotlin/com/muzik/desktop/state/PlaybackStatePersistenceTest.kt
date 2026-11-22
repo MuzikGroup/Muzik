@@ -6,7 +6,7 @@ import com.muzik.desktop.state.playback.PlaybackStateWrite
 import com.muzik.desktop.state.playback.PlaybackStateWriteQueue
 import com.muzik.desktop.state.playback.localPlaybackResource
 import com.muzik.desktop.state.playback.validatedLocalMediaUrl
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.entities.toSongItem
 import com.muzik.shared.db.getDatabaseBuilder

@@ -2,8 +2,8 @@ package com.muzik.shared.viewmodels
 
 import coil3.ImageLoader
 import coil3.PlatformContext
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.extraction.ContentHints
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.extraction.ContentHints
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.artwork.AnimatedArtworkService
 import com.muzik.shared.api.lastfm.LastFM

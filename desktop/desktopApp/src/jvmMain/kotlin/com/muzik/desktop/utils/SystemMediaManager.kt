@@ -7,7 +7,7 @@ package com.muzik.desktop.utils
 
 import androidx.compose.runtime.snapshotFlow
 import com.muzik.desktop.state.playback.PlayerState
-import com.metrolist.innertubex.utils.YouTubeUrlParser
+import com.muzik.innertubex.utils.YouTubeUrlParser
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.app_name
 import com.muzik.shared.settings.displayName

@@ -1,6 +1,6 @@
 package com.muzik.desktop.ui.screens
 
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.response.AccountsListResponse
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

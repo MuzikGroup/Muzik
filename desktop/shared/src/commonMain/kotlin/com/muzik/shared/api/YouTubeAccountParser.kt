@@ -1,7 +1,7 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.models.AccountInfo
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.AccountInfo
+import com.muzik.innertubex.models.response.AccountsListResponse
 import com.muzik.shared.ui.sanitizeDataSyncId
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

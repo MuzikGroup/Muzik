@@ -1,9 +1,9 @@
 package com.muzik.shared.state
 
-import com.metrolist.innertubex.InnerTube
-import com.metrolist.innertubex.cipher.YouTubeCipherService
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.models.YouTubeLocale
+import com.muzik.innertubex.InnerTube
+import com.muzik.innertubex.cipher.YouTubeCipherService
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.models.YouTubeLocale
 import com.muzik.shared.BuildConfig
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.MusicDatabase

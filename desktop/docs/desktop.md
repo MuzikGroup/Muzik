@@ -66,7 +66,7 @@ Linux launchers default `WEBKIT_DISABLE_DMABUF_RENDERER` and `WEBKIT_DISABLE_COM
 
 The hidden PO-token WebView is created on first use and reused until shutdown. Idle release navigates it to `about:blank`; the next request loads a fresh attestation document. This bounds native views and contexts because Wry 0.54.2 can retain them after disposal. One idle WebKit process can remain resident. Login and Last.fm views keep their own lifecycles.
 
-On Windows, native WebView creation failures show the error dialog and disable embedded browsers until restart. Pending PO-token requests fail without waiting for the browser timeout, and playback can continue without a PO token. WebView2 error `0x80070002` means the runtime could not be found. Install or repair the [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/). The PO-token browser profile uses `%LOCALAPPDATA%/Muzik/WebView2`, outside the portable ZIP or installation directory. Backup restore imports settings before startup; it does not create a WebView or validate login. Windows YouTube login runs in `metro-wv2-helper`, not the hidden PO-token WebView.
+On Windows, native WebView creation failures show the error dialog and disable embedded browsers until restart. Pending PO-token requests fail without waiting for the browser timeout, and playback can continue without a PO token. WebView2 error `0x80070002` means the runtime could not be found. Install or repair the [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/). The PO-token browser profile uses `%LOCALAPPDATA%/Muzik/WebView2`, outside the portable ZIP or installation directory. Backup restore imports settings before startup; it does not create a WebView or validate login. Windows YouTube login runs in `muzz-wv2-helper`, not the hidden PO-token WebView.
 
 ## Discord login
 
@@ -128,7 +128,7 @@ Build on Windows ARM64 with Microsoft Build of OpenJDK 25 for ARM64, Visual Stud
 
 Bytedeco publishes no `windows-arm64` FFmpeg natives. `scripts/build_windows_arm64_ffmpeg.ps1` downloads a pinned BtbN FFmpeg 8.1 LGPL shared build and compiles the JNI libraries with JavaCPP from the same preset classes the app loads. When the preset version changes, pin a BtbN monthly build of the matching FFmpeg branch. Gradle also builds the Compose WebView DLL for `win32-aarch64`. The PO token sidecar has no Windows ARM64 binary, so tokens come from the WebView minter only.
 
-`metro-wv2-helper/build_helper.bat` builds x64 only. For ARM64, publish the helper with `--runtime win-arm64` as the Windows workflow does.
+`muzz-wv2-helper/build_helper.bat` builds x64 only. For ARM64, publish the helper with `--runtime win-arm64` as the Windows workflow does.
 
 ## Native packages
 
@@ -145,7 +145,7 @@ On launch, JVM and native AppImages install a per-user `Muzik.desktop` with the 
 
 The Arch recipe is in [`aur/`](../aur/). `make aur-install` builds from the local tree. Standalone recipes fetch remote source. `bash aur/test-recipe.sh` checks recipe behavior without building the app.
 
-Windows login uses `metro-wv2-helper`. With the .NET SDK selected by `metro-wv2-helper/global.json`, run `metro-wv2-helper/build_helper.bat`. It copies the self-contained x64 helper into desktop resources. Run `dotnet run --project metro-wv2-helper/tests/LoginCompletion.Tests.csproj` for backend checks.
+Windows login uses `muzz-wv2-helper`. With the .NET SDK selected by `muzz-wv2-helper/global.json`, run `muzz-wv2-helper/build_helper.bat`. It copies the self-contained x64 helper into desktop resources. Run `dotnet run --project muzz-wv2-helper/tests/LoginCompletion.Tests.csproj` for backend checks.
 
 Desktop Settings > Content > Account includes Switch YouTube channel for signed-in users. If Windows cannot load the channel list, Sign in again opens the helper and retries discovery with fresh cookies before saving a selected channel. Cancelling the helper returns to the picker without replacing the saved session. Account-list logs record HTTP status, exception class and parsed/selectable counts, without response bodies or credentials. The helper deletes its browser cookies after extraction, so stored sessions cannot rotate those cookies.
 
@@ -275,7 +275,7 @@ The Spotify sign-in button in player artwork settings opens the same login windo
 
 `session-running.txt` records an active desktop session. Normal app shutdown removes it. On the next start, a remaining marker or an unreported `hs_err_pid` file produces a diagnostic in both logs. On stable releases, when crash reporting is enabled and an unreported crash file exists, the Sentry client sends a previous-exit event with `previous-desktop-exit.txt` attached. The attachment contains the session description and a bounded, redacted summary of each crash header and native stack. It omits VM arguments, environment variables and memory dumps. The original crash files stay on disk; `.reported` files prevent repeated uploads. An unfinished shutdown alone also covers forced termination and power loss, so it does not prove a native crash. Sentry events include `desktop.os`, `desktop.os_version` and `desktop.arch` tags.
 
-`scripts/metromem --help` lists profiling modes. Keep heap dumps and traces private; they can contain account data.
+`scripts/muzzmem --help` lists profiling modes. Keep heap dumps and traces private; they can contain account data.
 
 ### Crash reports
 

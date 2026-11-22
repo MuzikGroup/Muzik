@@ -22,9 +22,9 @@ import com.muzik.desktop.storage.SongCacheManager
 import com.muzik.desktop.utils.AppLogger
 import com.muzik.desktop.utils.ComposeTrayManager
 import com.muzik.desktop.window.playbackWindowVisibility
-import com.metrolist.innertubex.extraction.AudioQuality
-import com.metrolist.innertubex.extraction.ContentHints
-import com.metrolist.innertubex.extraction.strategy.PlaybackClientCatalog
+import com.muzik.innertubex.extraction.AudioQuality
+import com.muzik.innertubex.extraction.ContentHints
+import com.muzik.innertubex.extraction.strategy.PlaybackClientCatalog
 import com.muzik.shared.BuildConfig
 import com.muzik.shared.api.musicvideo.CounterpartPositionMap
 import com.muzik.shared.api.musicvideo.MusicTrackResult

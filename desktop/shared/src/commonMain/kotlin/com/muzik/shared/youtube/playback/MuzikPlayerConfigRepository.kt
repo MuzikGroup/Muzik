@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.cipher.PlayerConfigRepository
+import com.muzik.innertubex.cipher.PlayerConfigRepository
 import com.muzik.shared.settings.Settings
 
 object MuzikPlayerConfigRepository : PlayerConfigRepository {

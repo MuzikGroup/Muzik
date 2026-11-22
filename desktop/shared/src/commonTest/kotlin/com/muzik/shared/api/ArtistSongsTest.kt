@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.model.AlbumTiny
 import com.muzik.shared.model.ArtistPageResult
 import com.muzik.shared.model.MUSIC_VIDEO_TYPE_OMV

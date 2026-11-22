@@ -1,8 +1,8 @@
 package com.muzik.desktop.playback
 
 import com.muzik.desktop.utils.SentryManager
-import com.metrolist.innertubex.extraction.StreamDiagnostics
-import com.metrolist.innertubex.extraction.StreamResolveException
+import com.muzik.innertubex.extraction.StreamDiagnostics
+import com.muzik.innertubex.extraction.StreamResolveException
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.playback.PlaybackErrorContext
 import com.muzik.shared.playback.PlaybackFailure

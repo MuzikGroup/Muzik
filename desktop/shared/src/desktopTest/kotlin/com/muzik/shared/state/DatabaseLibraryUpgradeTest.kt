@@ -1,7 +1,7 @@
 package com.muzik.shared.state
 
 import androidx.sqlite.execSQL
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.backup.copyLegacyBackupTables
 import com.muzik.shared.db.JdbcSQLiteDriver

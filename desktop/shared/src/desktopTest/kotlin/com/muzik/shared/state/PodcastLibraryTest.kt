@@ -1,7 +1,7 @@
 package com.muzik.shared.state
 
 import androidx.room3.useWriterConnection
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.db.entities.Event
 import com.muzik.shared.db.entities.SongEntity

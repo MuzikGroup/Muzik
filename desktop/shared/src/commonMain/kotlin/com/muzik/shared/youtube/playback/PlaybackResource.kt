@@ -1,8 +1,8 @@
 package com.muzik.shared.youtube.playback
 
-import com.metrolist.innertubex.extraction.PlaybackTrackingData
-import com.metrolist.innertubex.extraction.StreamDiagnostics
-import com.metrolist.innertubex.sabr.SabrBootstrap
+import com.muzik.innertubex.extraction.PlaybackTrackingData
+import com.muzik.innertubex.extraction.StreamDiagnostics
+import com.muzik.innertubex.sabr.SabrBootstrap
 import com.muzik.shared.api.musicvideo.CounterpartPositionMap
 import com.muzik.shared.model.MUSIC_VIDEO_TYPE_LIVE
 import com.muzik.shared.model.SongItem

@@ -2,10 +2,10 @@ package com.muzik.shared.youtube.playback
 
 import android.content.Context
 import android.os.SystemClock
-import com.metrolist.innertubex.extraction.PoTokenResult
-import com.metrolist.innertubex.extraction.TokenProvider
-import com.metrolist.innertubex.extraction.TokenProviderCapabilities
-import com.metrolist.innertubex.extraction.strategy.PoTokenProviderKind
+import com.muzik.innertubex.extraction.PoTokenResult
+import com.muzik.innertubex.extraction.TokenProvider
+import com.muzik.innertubex.extraction.TokenProviderCapabilities
+import com.muzik.innertubex.extraction.strategy.PoTokenProviderKind
 import com.muzik.shared.youtube.logging.YtLogger
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope

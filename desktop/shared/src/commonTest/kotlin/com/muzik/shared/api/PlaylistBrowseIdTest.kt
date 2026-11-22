@@ -1,6 +1,6 @@
 package com.muzik.shared.api
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.model.PlaylistItem
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine

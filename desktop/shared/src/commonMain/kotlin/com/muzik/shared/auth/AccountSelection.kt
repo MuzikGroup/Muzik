@@ -1,6 +1,6 @@
 package com.muzik.shared.auth
 
-import com.metrolist.innertubex.models.response.AccountsListResponse
+import com.muzik.innertubex.models.response.AccountsListResponse
 import com.muzik.shared.ui.sanitizeDataSyncId
 
 fun AccountsListResponse.Account.selectionDataSyncId(currentDataSyncId: String): String? =

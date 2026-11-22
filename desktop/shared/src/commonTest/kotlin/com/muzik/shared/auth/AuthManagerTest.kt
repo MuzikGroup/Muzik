@@ -1,7 +1,7 @@
 package com.muzik.shared.auth
 
-import com.metrolist.innertubex.models.AccountInfo
-import com.metrolist.innertubex.models.YouTubeLocale
+import com.muzik.innertubex.models.AccountInfo
+import com.muzik.innertubex.models.YouTubeLocale
 import com.muzik.shared.api.parseAccountInfoResponse
 import com.muzik.shared.model.ArtistTiny
 import com.muzik.shared.model.SongItem

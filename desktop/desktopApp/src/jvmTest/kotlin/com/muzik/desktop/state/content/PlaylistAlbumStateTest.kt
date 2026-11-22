@@ -1,7 +1,7 @@
 package com.muzik.desktop.state.content
 
 import com.muzik.desktop.state.app.AppState
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.api.YouTubeRepository
 import com.muzik.shared.api.playlistSongs
 import com.muzik.shared.db.entities.PlaylistEntity

@@ -1,9 +1,9 @@
 package com.muzik.shared.playback
 
-import com.metrolist.innertubex.sabr.ExperimentalSabrApi
-import com.metrolist.innertubex.sabr.SabrAudioStream
-import com.metrolist.innertubex.sabr.SabrChunk
-import com.metrolist.innertubex.sabr.SabrResponseDiagnostics
+import com.muzik.innertubex.sabr.ExperimentalSabrApi
+import com.muzik.innertubex.sabr.SabrAudioStream
+import com.muzik.innertubex.sabr.SabrChunk
+import com.muzik.innertubex.sabr.SabrResponseDiagnostics
 import com.muzik.shared.youtube.playback.PlaybackResource
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.currentCoroutineContext

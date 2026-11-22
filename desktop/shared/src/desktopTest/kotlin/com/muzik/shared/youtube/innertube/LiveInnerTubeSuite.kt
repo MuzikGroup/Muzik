@@ -1,6 +1,6 @@
 package com.muzik.shared.youtube.innertube
 
-import com.metrolist.innertubex.InnerTube
+import com.muzik.innertubex.InnerTube
 import com.muzik.shared.network.createHttpClient
 import com.muzik.shared.settings.Settings
 import io.ktor.client.HttpClient

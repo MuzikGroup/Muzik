@@ -968,7 +968,7 @@ class ListenTogetherManagerLifecycleTest {
     fun `terminal error cleans up room state and clears persisted session`() {
         runBlocking {
             Settings.shared.listenTogetherDesktopSession =
-                "token\n---\nROOM\n---\nuser\n---\ntrue\n---\n123\n---\nwss://metroserverx.meowery.eu/ws"
+                "token\n---\nROOM\n---\nuser\n---\ntrue\n---\n123\n---\nwss://muzzserverx.meowery.eu/ws"
             val callerJob = Job()
             val callerScope = CoroutineScope(callerJob + Dispatchers.Unconfined)
             val client = HttpClient(MockEngine { error("No request expected") })

@@ -54,7 +54,7 @@ import com.muzik.desktop.state.playback.PlayerState
 import com.muzik.desktop.storage.DownloadManager
 import com.muzik.desktop.storage.SongCacheManager
 import com.muzik.desktop.ui.components.LocalCaptionBarInsets
-import com.muzik.desktop.ui.components.rememberMetroEqProfilePicker
+import com.muzik.desktop.ui.components.rememberMuzzEqProfilePicker
 import com.muzik.desktop.utils.AppLogger
 import com.muzik.desktop.utils.DesktopFontManager
 import com.muzik.desktop.utils.SentryManager
@@ -367,7 +367,7 @@ fun SettingsOverlay(colorScheme: ColorScheme) {
                                 onSeek = PlayerState::seekToPosition,
                             )
                         },
-                        rememberMetroEqProfilePicker = { onPicked -> rememberMetroEqProfilePicker(onPicked) },
+                        rememberMuzzEqProfilePicker = { onPicked -> rememberMuzzEqProfilePicker(onPicked) },
                         storageSummary = storageSummary,
                         onClose = {
                             UiState.showSettings = false
