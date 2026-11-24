@@ -42,6 +42,7 @@ import coil3.compose.AsyncImage
 import com.muzikgroup.music.BuildConfig
 import com.muzikgroup.music.R
 import com.muzikgroup.music.ui.screens.Screens
+import com.muzikgroup.music.utils.Updater
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
@@ -91,7 +92,8 @@ private fun NavigationAccountItem(
     latestVersionName: String?,
     description: String,
 ) {
-    val showBadge = latestVersionName != null && latestVersionName != BuildConfig.VERSION_NAME
+    val showBadge =
+        latestVersionName != null && Updater.isUpdateAvailable(BuildConfig.VERSION_NAME, latestVersionName)
     if (showBadge) {
         BadgedBox(
             badge = { Badge() },

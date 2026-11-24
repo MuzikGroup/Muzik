@@ -40,7 +40,9 @@ object Updater {
     
     private const val CHECK_INTERVAL_MILLIS = 2 * 60 * 60 * 1000L // 2 hours
     private const val GITHUB_API_BASE = "https://api.github.com/repos/MuzikGroup/Muzik"
-    private const val KMP_RELEASES_URL = "https://api.github.com/repos/MuzikGroup/Muzik-KMP/releases?per_page=30"
+    // The migration APK ships with every stable Muzik release; the old
+    // Muzik-KMP repository is gone (404), so query the current one.
+    private const val KMP_RELEASES_URL = "https://api.github.com/repos/MuzikGroup/Muzik/releases?per_page=30"
     const val KMP_APK_NAME = "Muzik.apk"
 
     /**
@@ -69,6 +71,20 @@ object Updater {
      */
     fun isUpdateAvailable(currentVersion: String, latestVersion: String): Boolean {
         return compareVersions(latestVersion, currentVersion) > 0
+    }
+
+    private val VERSION_IN_TEXT = Regex("""[0-9]+\.[0-9]+\.[0-9]+""")
+
+    /**
+     * Extracts a bare MAJOR.MINOR.PATCH version from a release title such as
+     * "Muzik v8.1.1", falling back to the tag name. Everything downstream
+     * compares dotted versions only: a decorated title used to be matched
+     * against the installed version as a raw string, which kept the
+     * "update available" banner alive even on the latest release.
+     */
+    fun parseVersionName(title: String?, tagName: String?): String {
+        VERSION_IN_TEXT.find(title.orEmpty())?.value?.let { return it }
+        return tagName?.removePrefix("v")?.trim().orEmpty()
     }
 
     /**
@@ -136,8 +152,8 @@ object Updater {
                 
                 val releaseInfo = ReleaseInfo(
                     tagName = json.getString("tag_name"),
-                    versionName = json.getString("name"),
-                    description = json.getString("body"),
+                    versionName = parseVersionName(json.optString("name"), json.getString("tag_name")),
+                    description = json.optString("body"),
                     releaseDate = json.getString("published_at"),
                     assets = parseAssets(json.getJSONArray("assets"))
                 )
@@ -176,8 +192,8 @@ object Updater {
                         val releaseObj = json.getJSONObject(i)
                         releases.add(ReleaseInfo(
                             tagName = releaseObj.getString("tag_name"),
-                            versionName = releaseObj.getString("name"),
-                            description = releaseObj.getString("body"),
+                            versionName = parseVersionName(releaseObj.optString("name"), releaseObj.getString("tag_name")),
+                            description = releaseObj.optString("body"),
                             releaseDate = releaseObj.getString("published_at"),
                             assets = parseAssets(releaseObj.getJSONArray("assets"))
                         ))
@@ -207,7 +223,7 @@ object Updater {
                     val tagName = release.getString("tag_name")
                     return@runCatching ReleaseInfo(
                         tagName = tagName,
-                        versionName = release.optString("name").takeIf { it.isNotBlank() } ?: tagName,
+                        versionName = parseVersionName(release.optString("name"), tagName),
                         description = release.optString("body"),
                         releaseDate = release.getString("published_at"),
                         assets = assets,

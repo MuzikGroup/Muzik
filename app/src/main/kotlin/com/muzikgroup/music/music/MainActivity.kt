@@ -480,7 +480,12 @@ class MainActivity : ComponentActivity() {
 
                         Updater.checkForUpdate().onSuccess { (releaseInfo, hasUpdate) ->
                             if (releaseInfo != null) {
-                                onLatestVersionNameChange(releaseInfo.versionName)
+                                // Feed the UI a version it can trust: only a genuinely
+                                // newer release reaches the banner and badge, otherwise
+                                // the state resets to our own version so nothing nags.
+                                onLatestVersionNameChange(
+                                    if (hasUpdate) releaseInfo.versionName else BuildConfig.VERSION_NAME
+                                )
                                 if (hasUpdate && notifEnabled) {
                                     val downloadUrl = Updater.getDownloadUrlForCurrentVariant(releaseInfo)
                                     if (downloadUrl != null) {
@@ -513,7 +518,11 @@ class MainActivity : ComponentActivity() {
                         }
 
                         Updater.getLatestKmpRelease().onSuccess { releaseInfo ->
+                            // Keep the migration candidate only when it is genuinely
+                            // newer than this build, so the "upgrade to Muzik <x>"
+                            // dialog cannot repeat itself when we are already on it.
                             kmpRelease = releaseInfo
+                                ?.takeIf { Updater.isUpdateAvailable(BuildConfig.VERSION_NAME, it.versionName) }
                         }
                     }
                 } else {

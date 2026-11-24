@@ -437,8 +437,10 @@ jobs:
 
           ls -la dist/
 
+          # The release TITLE must stay the bare dotted version: the Android
+          # in-app updater and legacy v13 apps parse the title, not the tag.
           gh release create "v${{ needs.check-version.outputs.new_version }}" dist/* \
-            --title "Muzik v${{ needs.check-version.outputs.new_version }}" \
+            --title "${{ needs.check-version.outputs.new_version }}" \
             --notes-file attributed_release_notes.md \
             --latest
 
