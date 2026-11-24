@@ -95,6 +95,7 @@ class HomeViewModel @Inject constructor(
     val quickPicks = MutableStateFlow<List<Song>?>(null)
     val dailyDiscover = MutableStateFlow<List<DailyDiscoverItem>?>(null)
     val forgottenFavorites = MutableStateFlow<List<Song>?>(null)
+    val onRepeat = MutableStateFlow<List<Song>?>(null)
     val keepListening = MutableStateFlow<List<LocalItem>?>(null)
     val similarRecommendations = MutableStateFlow<List<SimilarRecommendation>?>(null)
     val accountPlaylists = MutableStateFlow<List<PlaylistItem>?>(null)
@@ -471,6 +472,18 @@ class HomeViewModel @Inject constructor(
             launch(Dispatchers.IO) {
                 forgottenFavorites.value = database.forgottenFavorites().first()
                     .filterVideoSongs(hideVideoSongs).shuffled().take(20)
+            }
+
+            launch(Dispatchers.IO) {
+                onRepeat.value = database.mostPlayedSongs(
+                    fromTimeStamp = LocalDateTime.now().minusDays(30),
+                    limit = 15,
+                    offset = 0,
+                    toTimeStamp = LocalDateTime.now(),
+                ).first()
+                    .filterVideoSongs(hideVideoSongs)
+                    .distinctBy { it.id }
+                    .take(15)
             }
 
             launch(Dispatchers.IO) {

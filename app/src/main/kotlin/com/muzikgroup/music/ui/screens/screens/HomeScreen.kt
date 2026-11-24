@@ -188,6 +188,8 @@ sealed class HomeSection(
 
     data object ForgottenFavorites : HomeSection("forgotten_favorites", 30)
 
+    data object OnRepeat : HomeSection("on_repeat", 45)
+
     data object FromTheCommunity : HomeSection("from_the_community", 20)
 
     data class SimilarRecommendation(
@@ -645,6 +647,7 @@ fun HomeScreen(
 
     val quickPicks by viewModel.quickPicks.collectAsStateWithLifecycle()
     val forgottenFavorites by viewModel.forgottenFavorites.collectAsStateWithLifecycle()
+    val onRepeat by viewModel.onRepeat.collectAsStateWithLifecycle()
     val keepListening by viewModel.keepListening.collectAsStateWithLifecycle()
     val similarRecommendations by viewModel.similarRecommendations.collectAsStateWithLifecycle()
     val accountPlaylists by viewModel.accountPlaylists.collectAsStateWithLifecycle()
@@ -671,6 +674,7 @@ fun HomeScreen(
 
     val quickPicksLazyGridState = rememberLazyGridState()
     val forgottenFavoritesLazyGridState = rememberLazyGridState()
+    val onRepeatLazyGridState = rememberLazyGridState()
 
     val accountName by viewModel.accountName.collectAsStateWithLifecycle()
     val accountImageUrl by viewModel.accountImageUrl.collectAsStateWithLifecycle()
@@ -1017,6 +1021,7 @@ fun HomeScreen(
             keepListening,
             accountPlaylists,
             forgottenFavorites,
+            onRepeat,
             communityPlaylists,
             similarRecommendations,
             homePage?.sections,
@@ -1032,6 +1037,7 @@ fun HomeScreen(
             if (!chipActive && keepListening?.isNotEmpty() == true) list.add(HomeSection.KeepListening)
             if (!chipActive && accountPlaylists?.isNotEmpty() == true) list.add(HomeSection.AccountPlaylists)
             if (!chipActive && forgottenFavorites?.isNotEmpty() == true) list.add(HomeSection.ForgottenFavorites)
+            if (!chipActive && onRepeat?.isNotEmpty() == true) list.add(HomeSection.OnRepeat)
 
             if (!chipActive) {
                 similarRecommendations?.indices?.forEach { i ->
@@ -1065,6 +1071,7 @@ fun HomeScreen(
 
                             HomeSection.KeepListening,
                             HomeSection.AccountPlaylists,
+                            HomeSection.OnRepeat,
                             HomeSection.ForgottenFavorites,
                             HomeSection.FromTheCommunity,
                             -> 300
@@ -1088,6 +1095,7 @@ fun HomeScreen(
                             // This allows them to occasionally appear above a "bad roll" top tier item
                             HomeSection.KeepListening,
                             HomeSection.AccountPlaylists,
+                            HomeSection.OnRepeat,
                             HomeSection.ForgottenFavorites,
                             HomeSection.FromTheCommunity,
                             -> sectionRandom.nextInt(-100, 400)
@@ -1106,6 +1114,7 @@ fun HomeScreen(
                         HomeSection.DailyDiscover to 70,
                         HomeSection.KeepListening to 60,
                         HomeSection.AccountPlaylists to 50,
+                        HomeSection.OnRepeat to 45,
                         HomeSection.ForgottenFavorites to 40,
                         HomeSection.MoodAndGenres to 10,
                     )
@@ -1126,6 +1135,10 @@ fun HomeScreen(
 
     LaunchedEffect(forgottenFavorites) {
         forgottenFavoritesLazyGridState.scrollToItem(0)
+    }
+
+    LaunchedEffect(onRepeat) {
+        onRepeatLazyGridState.scrollToItem(0)
     }
 
     PullToRefreshBox(
@@ -1162,6 +1175,15 @@ fun HomeScreen(
                 remember(forgottenFavoritesLazyGridState) {
                     SnapLayoutInfoProvider(
                         lazyGridState = forgottenFavoritesLazyGridState,
+                        positionInLayout = { layoutSize, itemSize ->
+                            (layoutSize * horizontalLazyGridItemWidthFactor / 2f - itemSize / 2f)
+                        },
+                    )
+                }
+            val onRepeatSnapLayoutInfoProvider =
+                remember(onRepeatLazyGridState) {
+                    SnapLayoutInfoProvider(
+                        lazyGridState = onRepeatLazyGridState,
                         positionInLayout = { layoutSize, itemSize ->
                             (layoutSize * horizontalLazyGridItemWidthFactor / 2f - itemSize / 2f)
                         },
@@ -2115,6 +2137,120 @@ fun HomeScreen(
                                             items(
                                                 items = forgottenFavorites.distinctBy { it.id },
                                                 key = { "home_forgotten_${it.id}" },
+                                            ) { originalSong ->
+                                            val song by database
+                                                .song(originalSong.id)
+                                                .collectAsStateWithLifecycle(initialValue = originalSong)
+
+                                            SongListItem(
+                                                song = song!!,
+                                                showInLibraryIcon = true,
+                                                isActive = song!!.id == mediaMetadata?.id,
+                                                isPlaying = isPlaying,
+                                                isSwipeable = false,
+                                                trailingContent = {
+                                                    IconButton(
+                                                        onClick = {
+                                                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                                                            menuState.show {
+                                                                SongMenu(
+                                                                    originalSong = song!!,
+                                                                    onDismiss = menuState::dismiss,
+                                                                )
+                                                            }
+                                                        },
+                                                    ) {
+                                                        Icon(
+                                                            painter = painterResource(R.drawable.more_vert),
+                                                            contentDescription = null,
+                                                        )
+                                                    }
+                                                },
+                                                modifier =
+                                                    Modifier
+                                                        .width(horizontalLazyGridItemWidth)
+                                                        .combinedClickable(
+                                                            onClick = {
+                                                                if (!isListenTogetherGuest) {
+                                                                    if (song!!.id == mediaMetadata?.id) {
+                                                                        playerConnection.togglePlayPause()
+                                                                    } else {
+                                                                        playerConnection.playQueue(
+                                                                            if (autoRadioQueue) {
+                                                                                YouTubeQueue.radio(
+                                                                                    song!!.toMediaMetadata(),
+                                                                                )
+                                                                            } else {
+                                                                                ListQueue(
+                                                                                    title = song!!.title,
+                                                                                    items = listOf(song!!.toMediaItem())
+                                                                                )
+                                                                            }
+                                                                        )
+                                                                    }
+                                                                }
+                                                            },
+                                                            onLongClick = {
+                                                                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                                                                menuState.show {
+                                                                    SongMenu(
+                                                                        originalSong = song!!,
+                                                                        onDismiss = menuState::dismiss,
+                                                                    )
+                                                                }
+                                                            },
+                                                        ),
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        HomeSection.OnRepeat -> {
+                            onRepeat?.takeIf { it.isNotEmpty() }?.let { onRepeat ->
+                                item(key = "on_repeat_title") {
+                                    val onRepeatTitle = stringResource(R.string.on_repeat)
+                                    NavigationTitle(
+                                        title = onRepeatTitle,
+                                        onPlayAllClick =
+                                            if (!isListenTogetherGuest) {
+                                                {
+                                                    playerConnection.playQueue(
+                                                        ListQueue(
+                                                            title = onRepeatTitle,
+                                                            items = onRepeat.distinctBy { it.id }.map { it.toMediaItem() },
+                                                        ),
+                                                    )
+                                                }
+                                            } else {
+                                                null
+                                            },
+                                    )
+                                }
+
+                                item(key = "on_repeat_list") {
+                                    // take min in case list size is less than 4
+                                    val rows = min(4, onRepeat.size)
+                                    LazyHorizontalGrid(
+                                        state = onRepeatLazyGridState,
+                                        rows = GridCells.Fixed(rows),
+                                        contentPadding =
+                                            WindowInsets.systemBars
+                                                .only(WindowInsetsSides.Horizontal)
+                                                .asPaddingValues(),
+                                        flingBehavior =
+                                            rememberSnapFlingBehavior(
+                                                onRepeatSnapLayoutInfoProvider,
+                                            ),
+                                        modifier =
+                                            Modifier
+                                                .fillMaxWidth()
+                                                .height(ListItemHeight * rows),
+                                        ) {
+                                            items(
+                                                items = onRepeat.distinctBy { it.id },
+                                                key = { "home_on_repeat_${it.id}" },
                                             ) { originalSong ->
                                             val song by database
                                                 .song(originalSong.id)
