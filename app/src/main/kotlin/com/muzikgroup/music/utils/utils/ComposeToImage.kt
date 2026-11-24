@@ -26,6 +26,7 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.withClip
@@ -41,6 +42,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import java.text.NumberFormat
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -377,6 +379,345 @@ object ComposeToImage {
             return@withContext bitmap
         }
 
+    /**
+     * Builds a 1080x1920 Muzik Wrapped recap card ready for social sharing.
+     * The background gradient is derived from the top song's cover art palette,
+     * falling back to the brand purple when no artwork is available. All
+     * sections degrade gracefully: with no listening history the card simply
+     * shows the header and the (zero) minutes stat.
+     */
+    suspend fun createWrappedImage(
+        context: Context,
+        year: Int,
+        totalMinutes: Long,
+        uniqueSongCount: Int,
+        uniqueArtistCount: Int,
+        topSongTitle: String?,
+        topSongArtist: String?,
+        topSongThumbnailUrl: String?,
+        topArtistName: String?,
+        topArtistThumbnailUrl: String?,
+        topFiveSongs: List<Pair<String, String>>,
+    ): Bitmap =
+        withContext(Dispatchers.Default) {
+            val imageWidth = 1080
+            val imageHeight = 1920
+            val bitmap = createBitmap(imageWidth, imageHeight)
+            val canvas = Canvas(bitmap)
+            val backgroundRect = RectF(0f, 0f, imageWidth.toFloat(), imageHeight.toFloat())
+
+            val displayTypeface =
+                ResourcesCompat.getFont(context, R.font.bbh_bartle_regular) ?: Typeface.DEFAULT_BOLD
+
+            var coverArtBitmap: Bitmap? = null
+            if (topSongThumbnailUrl != null) {
+                try {
+                    val imageLoader = ImageLoader(context)
+                    val request =
+                        ImageRequest
+                            .Builder(context)
+                            .data(topSongThumbnailUrl)
+                            .size(512)
+                            .allowHardware(false)
+                            .build()
+                    coverArtBitmap = imageLoader.execute(request).image?.toBitmap()
+                } catch (_: Exception) {
+                }
+            }
+
+            var artistBitmap: Bitmap? = null
+            if (topArtistThumbnailUrl != null) {
+                try {
+                    val imageLoader = ImageLoader(context)
+                    val request =
+                        ImageRequest
+                            .Builder(context)
+                            .data(topArtistThumbnailUrl)
+                            .size(512)
+                            .allowHardware(false)
+                            .build()
+                    artistBitmap = imageLoader.execute(request).image?.toBitmap()
+                } catch (_: Exception) {
+                }
+            }
+
+            // Background: vertical gradient driven by the cover palette (brand purple fallback)
+            val fallbackTop = 0xFF5B2E91.toInt()
+            val fallbackBottom = 0xFF170B26.toInt()
+            val palette = coverArtBitmap?.let { Palette.from(it).generate() }
+            val topColor = palette?.getVibrantColor(fallbackTop) ?: fallbackTop
+            val bottomColor = palette?.getDarkVibrantColor(fallbackBottom) ?: fallbackBottom
+            val backgroundPaint =
+                Paint().apply {
+                    isAntiAlias = true
+                    shader =
+                        LinearGradient(
+                            0f,
+                            0f,
+                            0f,
+                            imageHeight.toFloat(),
+                            intArrayOf(topColor, bottomColor),
+                            null,
+                            Shader.TileMode.CLAMP,
+                        )
+                }
+            canvas.drawRect(backgroundRect, backgroundPaint)
+
+            val mainTextColor = 0xFFFFFFFF.toInt()
+            val secondaryTextColor = 0xB3FFFFFF.toInt()
+            val accentColor = 0xFFFFC94D.toInt()
+
+            val pad = 64f
+            val contentWidth = imageWidth - pad * 2
+
+            var cursor = 104f
+
+            fun singleLine(
+                text: String,
+                paint: TextPaint,
+                width: Float,
+            ): StaticLayout =
+                StaticLayout.Builder
+                    .obtain(text, 0, text.length, paint, width.toInt().coerceAtLeast(1))
+                    .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+                    .setMaxLines(1)
+                    .setEllipsize(android.text.TextUtils.TruncateAt.END)
+                    .setIncludePad(false)
+                    .build()
+
+            fun sectionLabel(text: String) {
+                val paint =
+                    TextPaint().apply {
+                        color = accentColor
+                        textSize = 42f
+                        typeface = displayTypeface
+                        isAntiAlias = true
+                    }
+                canvas.withTranslation(pad, cursor) {
+                    singleLine(text.uppercase(), paint, contentWidth).draw(this)
+                }
+                cursor += 44f + 24f
+            }
+
+            // --- Header ---
+            val headerText = context.getString(R.string.wrapped_intro_title) + " WRAPPED"
+            val headerPaint =
+                TextPaint().apply {
+                    color = mainTextColor
+                    textSize = 84f
+                    typeface = displayTypeface
+                    isAntiAlias = true
+                }
+            canvas.withTranslation(pad, cursor) {
+                singleLine(headerText, headerPaint, contentWidth).draw(this)
+            }
+            cursor += 96f
+
+            val yearPaint =
+                TextPaint().apply {
+                    color = accentColor
+                    textSize = 44f
+                    typeface = displayTypeface
+                    isAntiAlias = true
+                }
+            canvas.withTranslation(pad, cursor) {
+                singleLine(year.toString(), yearPaint, contentWidth).draw(this)
+            }
+            cursor += 44f + 52f
+
+            // --- Minutes listened ---
+            val minutesText = NumberFormat.getIntegerInstance().format(totalMinutes)
+            val minutesPaint =
+                TextPaint().apply {
+                    color = mainTextColor
+                    textSize = 150f
+                    typeface = Typeface.DEFAULT_BOLD
+                    isAntiAlias = true
+                }
+            canvas.withTranslation(pad, cursor) {
+                singleLine(minutesText, minutesPaint, contentWidth).draw(this)
+            }
+            cursor += 168f
+
+            val minutesLabelPaint =
+                TextPaint().apply {
+                    color = secondaryTextColor
+                    textSize = 44f
+                    typeface = Typeface.DEFAULT_BOLD
+                    isAntiAlias = true
+                }
+            canvas.withTranslation(pad, cursor) {
+                singleLine(context.getString(R.string.wrapped_share_minutes), minutesLabelPaint, contentWidth).draw(this)
+            }
+            cursor += 46f + 48f
+
+            // --- #1 song ---
+            if (!topSongTitle.isNullOrBlank()) {
+                sectionLabel(context.getString(R.string.wrapped_share_top_song))
+
+                val coverSize = 216f
+                val hasCover = coverArtBitmap != null
+                if (hasCover) {
+                    val coverRect = RectF(pad, cursor, pad + coverSize, cursor + coverSize)
+                    val coverPath =
+                        Path().apply {
+                            addRoundRect(coverRect, 28f, 28f, Path.Direction.CW)
+                        }
+                    canvas.withClip(coverPath) {
+                        drawBitmap(coverArtBitmap!!, null, coverRect, null)
+                    }
+                }
+
+                val songTitlePaint =
+                    TextPaint().apply {
+                        color = mainTextColor
+                        textSize = 54f
+                        typeface = Typeface.DEFAULT_BOLD
+                        isAntiAlias = true
+                    }
+                val songArtistPaint =
+                    TextPaint().apply {
+                        color = secondaryTextColor
+                        textSize = 44f
+                        typeface = Typeface.DEFAULT
+                        isAntiAlias = true
+                    }
+
+                val textLeft = if (hasCover) pad + coverSize + 36f else pad
+                val textWidth = imageWidth - textLeft - pad
+                val titleLayout = singleLine(topSongTitle, songTitlePaint, textWidth)
+                val artistLayout =
+                    topSongArtist?.takeIf { it.isNotBlank() }?.let { singleLine(it, songArtistPaint, textWidth) }
+                val blockHeight = titleLayout.height + 12f + (artistLayout?.height ?: 0)
+                val textTop = if (hasCover) cursor + (coverSize - blockHeight) / 2f else cursor
+
+                canvas.withTranslation(textLeft, textTop) { titleLayout.draw(this) }
+                artistLayout?.let {
+                    canvas.withTranslation(textLeft, textTop + titleLayout.height + 12f) { it.draw(this) }
+                }
+                cursor += if (hasCover) coverSize + 48f else blockHeight + 48f
+            }
+
+            // --- #1 artist ---
+            if (!topArtistName.isNullOrBlank()) {
+                sectionLabel(context.getString(R.string.wrapped_share_top_artist))
+
+                val avatarSize = 152f
+                val hasAvatar = artistBitmap != null
+                if (hasAvatar) {
+                    val avatarRect = RectF(pad, cursor, pad + avatarSize, cursor + avatarSize)
+                    val avatarPath =
+                        Path().apply {
+                            addCircle(avatarRect.centerX(), avatarRect.centerY(), avatarSize / 2f, Path.Direction.CW)
+                        }
+                    canvas.withClip(avatarPath) {
+                        drawBitmap(artistBitmap!!, null, avatarRect, null)
+                    }
+                }
+
+                val artistNamePaint =
+                    TextPaint().apply {
+                        color = mainTextColor
+                        textSize = 54f
+                        typeface = Typeface.DEFAULT_BOLD
+                        isAntiAlias = true
+                    }
+                val nameLeft = if (hasAvatar) pad + avatarSize + 36f else pad
+                val nameLayout = singleLine(topArtistName, artistNamePaint, imageWidth - nameLeft - pad)
+                val nameTop =
+                    if (hasAvatar) cursor + avatarSize / 2f - nameLayout.height / 2f else cursor
+                canvas.withTranslation(nameLeft, nameTop) { nameLayout.draw(this) }
+                cursor += if (hasAvatar) avatarSize + 48f else nameLayout.height + 48f
+            }
+
+            // --- Top 5 songs ---
+            val topFive = topFiveSongs.take(5).filter { it.first.isNotBlank() }
+            if (topFive.isNotEmpty()) {
+                sectionLabel(context.getString(R.string.wrapped_top_5_songs_title))
+
+                val rowNumberPaint =
+                    TextPaint().apply {
+                        color = accentColor
+                        textSize = 44f
+                        typeface = Typeface.DEFAULT_BOLD
+                        isAntiAlias = true
+                    }
+                val rowPaint =
+                    TextPaint().apply {
+                        color = mainTextColor
+                        textSize = 44f
+                        typeface = Typeface.DEFAULT_BOLD
+                        isAntiAlias = true
+                    }
+
+                topFive.forEachIndexed { index, (title, artist) ->
+                    val numberLayout = singleLine((index + 1).toString(), rowNumberPaint, 72f)
+                    canvas.withTranslation(pad, cursor) { numberLayout.draw(this) }
+
+                    val rowText = if (artist.isBlank()) title else "$title · $artist"
+                    val rowLeft = pad + 72f
+                    canvas.withTranslation(rowLeft, cursor) {
+                        singleLine(rowText, rowPaint, imageWidth - rowLeft - pad).draw(this)
+                    }
+                    cursor += 68f
+                }
+                cursor += 20f
+            }
+
+            // --- Unique counts ---
+            val uniqueText =
+                listOf(
+                    context.getString(R.string.wrapped_share_unique_songs, uniqueSongCount),
+                    context.getString(R.string.wrapped_share_unique_artists, uniqueArtistCount),
+                ).joinToString("  ·  ")
+            val uniquePaint =
+                TextPaint().apply {
+                    color = secondaryTextColor
+                    textSize = 40f
+                    typeface = Typeface.DEFAULT_BOLD
+                    isAntiAlias = true
+                }
+            canvas.withTranslation(pad, cursor) {
+                singleLine(uniqueText, uniquePaint, contentWidth).draw(this)
+            }
+
+            // --- Footer (logo + app name) ---
+            val logoBoxSize = 56f
+            val logoIconSize = 40f
+            val footerY = imageHeight - pad - logoBoxSize
+            val logoBgPaint =
+                Paint().apply {
+                    color = secondaryTextColor
+                    isAntiAlias = true
+                }
+            canvas.drawOval(RectF(pad, footerY, pad + logoBoxSize, footerY + logoBoxSize), logoBgPaint)
+
+            val rawLogo = ContextCompat.getDrawable(context, R.drawable.ic_launcher_app)?.toBitmap()
+            rawLogo?.let {
+                val logoOffset = (logoBoxSize - logoIconSize) / 2f
+                val logoRect =
+                    RectF(
+                        pad + logoOffset,
+                        footerY + logoOffset,
+                        pad + logoBoxSize - logoOffset,
+                        footerY + logoBoxSize - logoOffset,
+                    )
+                canvas.drawBitmap(it, null, logoRect, Paint().apply { isAntiAlias = true })
+            }
+
+            val appNamePaint =
+                TextPaint().apply {
+                    color = secondaryTextColor
+                    textSize = 40f
+                    typeface = Typeface.DEFAULT_BOLD
+                    isAntiAlias = true
+                }
+            val appName = context.getString(R.string.app_name)
+            val appNameY = footerY + logoBoxSize / 2f - (appNamePaint.descent() + appNamePaint.ascent()) / 2f
+            canvas.drawText(appName, pad + logoBoxSize + 24f, appNameY, appNamePaint)
+
+            return@withContext bitmap
+        }
     // Stack Blur v1.0 from http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html
     // Java Author: Mario Klingemann <mario at quasimondo.com>
     // http://incubator.quasimondo.com

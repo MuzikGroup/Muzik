@@ -453,6 +453,13 @@
     <string name="wrapped_playlist_title">Your %s Wrapped</string>
     <string name="wrapped_create_playlist">Create playlist</string>
     <string name="wrapped_playlist_saved">Playlist saved</string>
+    <string name="wrapped_share">Share</string>
+    <string name="wrapped_share_title">Share your Wrapped</string>
+    <string name="wrapped_share_minutes">minutes listened</string>
+    <string name="wrapped_share_top_song">Your #1 song</string>
+    <string name="wrapped_share_top_artist">Your #1 artist</string>
+    <string name="wrapped_share_unique_songs">%1$d unique songs</string>
+    <string name="wrapped_share_unique_artists">%1$d unique artists</string>
     <!-- Equalizer UI -->
     <plurals name="profiles_count">
         <item quantity="one">%d profile</item>
