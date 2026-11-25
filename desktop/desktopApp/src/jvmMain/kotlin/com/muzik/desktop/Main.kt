@@ -126,6 +126,7 @@ import com.muzik.desktop.utils.AppLogger
 import com.muzik.desktop.utils.ComposeTrayManager
 import com.muzik.desktop.utils.DesktopImageLoader
 import com.muzik.desktop.utils.DesktopNativeCrashRecovery
+import com.muzik.desktop.utils.DesktopRenderAutoFallback
 import com.muzik.desktop.utils.DesktopSingleInstance
 import com.muzik.desktop.utils.DesktopStartup
 import com.muzik.desktop.utils.DesktopUrlHandler
@@ -849,6 +850,21 @@ private fun runDesktopApp(args: Array<String>) {
         environment = System.getenv("SKIKO_RENDER_API"),
         property = System.getProperty("skiko.renderApi"),
     )?.let { System.setProperty("skiko.renderApi", it) }
+    // Self-heal repeated GPU render crashes: repeated hs_err logs implicating the
+    // active backend (skiko / GPU driver) downgrade it for this launch instead of
+    // dying again with no UI. Explicit user backend choices are respected.
+    val renderAutoFallback =
+        if (System.getenv("SKIKO_RENDER_API") == null && System.getProperty("skiko.renderApi") == null) {
+            DesktopRenderAutoFallback.fallback(
+                crashes = DesktopRenderAutoFallback.collectCrashes(File(XdgUtils.getXdgStateHome(), "muzik/logs")),
+                choice = settings.desktopRenderBackend,
+                osName = OsUtil.name,
+                osArch = System.getProperty("os.arch"),
+            )
+        } else {
+            null
+        }
+    renderAutoFallback?.let { System.setProperty("skiko.renderApi", it.name) }
     if (OsUtil.isMac) {
         System.setProperty("apple.awt.enableTemplateImages", "true")
         // Without this AppKit keeps the Aqua (light) title bar even in Dark Mode.
@@ -887,6 +903,13 @@ private fun runDesktopApp(args: Array<String>) {
 
     AppLogger.info("Main", "Muzik starting up")
     AppLogger.info("Main", "OS: ${OsUtil.name}")
+    renderAutoFallback?.let {
+        AppLogger.warning(
+            "Main",
+            "Recent GPU crashes detected - forcing render backend ${it.name} for this session " +
+                "(set a permanent backend in Settings > Developer tools)",
+        )
+    }
     val javaVersion = Runtime.version()
     AppLogger.info(
         "Main",

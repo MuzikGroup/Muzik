@@ -37,21 +37,65 @@
 
 <h1><a id="install-in-one-click"></a>Install in One Click</h1>
 
-<h3>No accounts. No waiting. Tap the button below and the latest APK downloads instantly — open it, install, done.</h3>
+<h3>Every button below downloads the latest Muzik build directly — no redirects, no other pages.<br/>Open the downloaded file and the installer does the rest.</h3>
 
 <br/>
 
+### Android (phones & tablets)
+
 <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
-  <img src="https://img.shields.io/badge/Install%20Muzik%20Now-Direct%20APK%20Download-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117" alt="Install Muzik in one click" height="64"/>
+  <img src="https://img.shields.io/badge/Android-Install%20Muzik%20Now-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117" alt="Install Muzik for Android" height="64"/>
 </a>
+
+<sub>Tap the button → the APK downloads → open it and tap Install. Done.</sub>
+
+<br/>
+
+### Windows 10 / 11
+
+<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.msi">
+  <img src="https://img.shields.io/badge/Windows-Install%20Muzik%20Now-0078D4?style=for-the-badge&logo=windows&logoColor=white&labelColor=0d1117" alt="Install Muzik for Windows" height="64"/>
+</a>
+
+<sub>Run the downloaded MSI → Muzik installs with Start-menu and desktop shortcuts and launches automatically when the install finishes.</sub>
+
+<br/>
+
+### macOS (Apple Silicon)
+
+<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-macos-arm64.dmg">
+  <img src="https://img.shields.io/badge/macOS-Download%20DMG-111111?style=for-the-badge&logo=apple&logoColor=white&labelColor=0d1117" alt="Download Muzik for macOS" height="64"/>
+</a>
+
+<sub>Open the DMG → drag Muzik into Applications → done.</sub>
+
+<br/>
+
+### Linux (Debian / Ubuntu / Mint)
+
+<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-amd64.deb">
+  <img src="https://img.shields.io/badge/Linux-Install%20DEB-FCC624?style=for-the-badge&logo=linux&logoColor=black&labelColor=0d1117" alt="Install Muzik for Debian/Ubuntu Linux" height="64"/>
+</a>
+
+<sub>Double-click the DEB (or <code>sudo apt install ./muzik-linux-amd64.deb</code>) → Muzik appears in your applications menu.</sub>
 
 <br/><br/>
 
-**Direct link:** [github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk)
+### More direct downloads (no redirects)
 
-**Other variants:** [Muzik-izzy.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-izzy.apk) (IzzyOnDroid repo) · [Muzik-with-Google-Cast.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-with-Google-Cast.apk) (Google Cast support)
+| Platform | File | Direct link |
+| --- | --- | :---: |
+| Windows | Portable ZIP (no installer) | [Muzik-windows-x64.zip](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.zip) |
+| Windows | In-app updater binary | [muzik-installer-windows-x64.exe](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-installer-windows-x64.exe) |
+| Linux | Fedora / openSUSE | [muzik-linux-x64.rpm](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-x64.rpm) |
+| Any OS | Portable JAR (Java 21+) | [muzik-portable.jar](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-portable.jar) |
+| Android | Google Cast variant | [Muzik-with-Google-Cast.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-with-Google-Cast.apk) |
+| Android | IzzyOnDroid variant | [Muzik-izzy.apk](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-izzy.apk) |
+| Any | Checksums | [SHA256SUMS](https://github.com/MuzikGroup/Muzik/releases/latest/download/SHA256SUMS) |
 
 <p><b>F-Droid:</b> coming soon (build recipe in <code>.fdroid/fdroid.yml</code>)</p>
+
+<sub>Windows installers are Authenticode-signed when a signing certificate is configured in CI; until then SmartScreen may ask for <i>More info → Run anyway</i> on first run.</sub>
 
 </div>
 
@@ -80,11 +124,13 @@
 
 Muzik now runs on your computer too. Same violet, same catalog, one suite — Android and desktop live together in this single repository and ship every release together:
 
-| OS | Get it |
+| OS | Get it (direct download) |
 | --- | :---: |
-| **Windows 10/11** | [MSI installer](https://github.com/MuzikGroup/Muzik/releases/latest) |
-| **macOS** (Apple Silicon) | [DMG](https://github.com/MuzikGroup/Muzik/releases/latest) |
-| **Linux** (Deb / RPM / portable JAR) | [Download](https://github.com/MuzikGroup/Muzik/releases/latest) |
+| **Windows 10/11** | [MSI installer](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.msi) · [Portable ZIP](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.zip) |
+| **macOS** (Apple Silicon) | [DMG](https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-macos-arm64.dmg) |
+| **Linux** (Deb / RPM / portable JAR) | [DEB](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-amd64.deb) · [RPM](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-x64.rpm) · [JAR](https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-portable.jar) |
+
+One-click install buttons with per-platform instructions live in the [**Install in One Click**](#install-in-one-click) section above.
 
 The desktop sources live in the [`desktop/`](desktop) directory (Kotlin Multiplatform + Compose, modules `shared` and `desktopApp`).
 

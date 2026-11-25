@@ -312,7 +312,9 @@ jobs:
               ZIP="dist/Muzik-Desktop-Windows.zip"
               if [ -f "$ZIP" ]; then
                 cp "$ZIP" "$GITHUB_WORKSPACE/Muzik-$VERSION-windows-x64.zip"
+                cp "$ZIP" "$GITHUB_WORKSPACE/Muzik-windows-x64.zip"
                 echo "zip=$GITHUB_WORKSPACE/Muzik-$VERSION-windows-x64.zip" >> "$GITHUB_OUTPUT"
+                echo "zip_alias=$GITHUB_WORKSPACE/Muzik-windows-x64.zip" >> "$GITHUB_OUTPUT"
               fi
               ;;
             dmg)
@@ -324,17 +326,23 @@ jobs:
               DEST="muzik-$VERSION-linux-amd64.deb"
               if [ -n "$FILE" ]; then
                 cp "$FILE" "$GITHUB_WORKSPACE/$DEST"
+                cp "$FILE" "$GITHUB_WORKSPACE/muzik-linux-amd64.deb"
                 echo "renamed=$GITHUB_WORKSPACE/$DEST" >> "$GITHUB_OUTPUT"
+                echo "deb_alias=$GITHUB_WORKSPACE/muzik-linux-amd64.deb" >> "$GITHUB_OUTPUT"
               fi
               RPM=$(find "$OUT_DIR/rpm" -name "*.rpm" | head -1)
               if [ -n "$RPM" ]; then
                 cp "$RPM" "$GITHUB_WORKSPACE/muzik-$VERSION-linux-x64.rpm"
+                cp "$RPM" "$GITHUB_WORKSPACE/muzik-linux-x64.rpm"
                 echo "rpm=$GITHUB_WORKSPACE/muzik-$VERSION-linux-x64.rpm" >> "$GITHUB_OUTPUT"
+                echo "rpm_alias=$GITHUB_WORKSPACE/muzik-linux-x64.rpm" >> "$GITHUB_OUTPUT"
               fi
               JAR=$(find desktopApp/build/compose/jars -name "Muzik-*.jar" | head -1)
               if [ -n "$JAR" ]; then
                 cp "$JAR" "$GITHUB_WORKSPACE/muzik-$VERSION-portable.jar"
+                cp "$JAR" "$GITHUB_WORKSPACE/muzik-portable.jar"
                 echo "jar=$GITHUB_WORKSPACE/muzik-$VERSION-portable.jar" >> "$GITHUB_OUTPUT"
+                echo "jar_alias=$GITHUB_WORKSPACE/muzik-portable.jar" >> "$GITHUB_OUTPUT"
               fi
               if [ -z "$DEST" ] || [ ! -f "$GITHUB_WORKSPACE/$DEST" ]; then
                 echo "No deb found for linux target"
@@ -351,6 +359,77 @@ jobs:
             exit 1
           fi
 
+      # The in-app desktop updater downloads a bound MuzikManager binary from the
+      # release assets (muzik-installer-windows-x64-<version>.exe). Build it here,
+      # bound to exactly this release, from the MuzikGroup/MuzikManager repo.
+      - name: Build Windows manager installer
+        if: matrix.target == 'msi'
+        shell: pwsh
+        env:
+          VERSION: ${{ needs.check-version.outputs.new_version }}
+        run: |
+          $managerDir = Join-Path $env:RUNNER_TEMP "muzik-manager-src"
+          git clone --depth 1 https://github.com/MuzikGroup/MuzikManager.git $managerDir
+          $configPath = Join-Path $managerDir "internal/buildconfig/config.go"
+          $config = Get-Content $configPath -Raw
+          $config = $config -replace 'TargetVersion\s*=\s*"0\.0\.0-dev"', ('TargetVersion    = "{0}"' -f $env:VERSION)
+          $config = $config -replace 'ReleaseTag\s*=\s*""', ('ReleaseTag       = "v{0}"' -f $env:VERSION)
+          $config = $config -replace 'RepositoryName\s*=\s*"Muzik-KMP"', 'RepositoryName  = "Muzik"'
+          Set-Content $configPath $config -NoNewline
+          Push-Location $managerDir
+          go run github.com/akavel/rsrc@v0.10.2 `
+            -arch amd64 `
+            -manifest MuzikManager.exe.manifest `
+            -ico "$env:GITHUB_WORKSPACE/desktop/desktopApp/src/desktopMain/resources/logo.ico" `
+            -o rsrc_windows_amd64.syso
+          go test ./...
+          go build -trimpath -ldflags "-s -w -H=windowsgui" `
+            -o "$env:GITHUB_WORKSPACE/muzik-installer-windows-x64-$env:VERSION.exe" .
+          Pop-Location
+          if (-not (Test-Path "$env:GITHUB_WORKSPACE/muzik-installer-windows-x64-$env:VERSION.exe")) {
+            throw "MuzikManager installer binary was not produced"
+          }
+          Write-Host "Manager installer built: muzik-installer-windows-x64-$env:VERSION.exe"
+
+      - name: Add launch-after-install to MSI
+        if: matrix.target == 'msi'
+        shell: pwsh
+        env:
+          VERSION: ${{ needs.check-version.outputs.new_version }}
+        run: |
+          desktop/scripts/msi-launch-after-install.ps1 `
+            -MsiPath "$env:GITHUB_WORKSPACE/Muzik-$env:VERSION-windows-x64.msi"
+
+      - name: Sign Windows installer and manager
+        if: matrix.target == 'msi'
+        shell: pwsh
+        env:
+          VERSION: ${{ needs.check-version.outputs.new_version }}
+          WINDOWS_SIGNING_CERT_PFX: ${{ secrets.WINDOWS_SIGNING_CERT_PFX }}
+          WINDOWS_SIGNING_CERT_PASSWORD: ${{ secrets.WINDOWS_SIGNING_CERT_PASSWORD }}
+        run: |
+          desktop/scripts/sign_windows.ps1 `
+            -Files @("$env:GITHUB_WORKSPACE/Muzik-$env:VERSION-windows-x64.msi", "$env:GITHUB_WORKSPACE/muzik-installer-windows-x64-$env:VERSION.exe")
+
+      # Direct-download aliases so README install buttons can point at
+      # releases/latest/download/<name> and always fetch the newest build.
+      # Created after patching and signing so aliases carry the final artifact.
+      - name: Create unversioned download alias (msi/dmg)
+        id: alias
+        if: matrix.target == 'msi' || matrix.target == 'dmg'
+        shell: bash
+        run: |
+          VERSION=${{ needs.check-version.outputs.new_version }}
+          DEST=""
+          if [ "${{ matrix.target }}" = "msi" ]; then
+            cp "$GITHUB_WORKSPACE/Muzik-$VERSION-windows-x64.msi" "$GITHUB_WORKSPACE/Muzik-windows-x64.msi"
+            DEST="Muzik-windows-x64.msi"
+          else
+            cp "$GITHUB_WORKSPACE/Muzik-$VERSION-macos-arm64.dmg" "$GITHUB_WORKSPACE/Muzik-macos-arm64.dmg"
+            DEST="Muzik-macos-arm64.dmg"
+          fi
+          echo "alias=$GITHUB_WORKSPACE/$DEST" >> "$GITHUB_OUTPUT"
+
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
         with:
@@ -360,6 +439,12 @@ jobs:
             ${{ matrix.target == 'linux' && steps.rename.outputs.rpm || '' }}
             ${{ matrix.target == 'linux' && steps.rename.outputs.jar || '' }}
             ${{ matrix.target == 'msi' && steps.rename.outputs.zip || '' }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.deb_alias || '' }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.rpm_alias || '' }}
+            ${{ matrix.target == 'linux' && steps.rename.outputs.jar_alias || '' }}
+            ${{ matrix.target == 'msi' && steps.rename.outputs.zip_alias || '' }}
+            ${{ (matrix.target == 'msi' || matrix.target == 'dmg') && steps.alias.outputs.alias || '' }}
+            ${{ matrix.target == 'msi' && format('{0}/muzik-installer-windows-x64-{1}.exe', github.workspace, needs.check-version.outputs.new_version) || '' }}
           if-no-files-found: error
 
   release:
@@ -412,13 +497,15 @@ jobs:
             echo ""
             echo "## Desktop"
             echo "One-click installers for every desktop platform:"
-            echo "- **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64) plus a portable ZIP"
+            echo "- **Windows**: \`Muzik-$VERSION-windows-x64.msi\` (Windows 10/11, x64) plus a portable ZIP; launches Muzik automatically after a fresh install"
             echo "- **macOS**: \`Muzik-$VERSION-macos-arm64.dmg\` (Apple Silicon) — Intel Macs can use the portable JAR with Java 21+"
             echo "- **Linux**: \`muzik-$VERSION-linux-amd64.deb\` (Debian/Ubuntu/Mint), RPM for Fedora/openSUSE, and a portable JAR"
             echo "- **Any OS with Java 21+**: the portable \`muzik-$VERSION-portable.jar\`"
+            echo "- **Windows in-app updates**: \`muzik-installer-windows-x64-$VERSION.exe\` (Muzik Manager, used by the desktop updater)"
             echo "- Verify any download with the attached \`SHA256SUMS\` checksum file"
             echo ""
-            echo "Unsigned builds: on Windows SmartScreen, choose *More info > Run anyway*."
+            echo "Unversioned direct-download aliases are also attached (e.g. \`Muzik-windows-x64.msi\`), so install links always fetch the newest build."
+            echo "Windows artifacts are Authenticode-signed when a signing certificate is configured; otherwise SmartScreen may ask to choose *More info > Run anyway* on first run."
             echo ""
             echo "Built by Ignatius and the Pipo Team (GPL-3.0). Support Muzik: https://buymesoda.com/lllcuDCr25N1a1peiKOCl22Oaf13"
           } >> release_notes.md

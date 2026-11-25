@@ -1,3 +1,17 @@
+---v8.1.5
+
+## What's New
+
+- The Windows installer now launches Muzik automatically after a successful install — through the logged-in user's shell, so the app never starts with the installer's admin rights
+- Clear per-platform install buttons in the README: Android, Windows, macOS and Linux buttons download the latest build directly, with no redirects to other pages
+- Every release now attaches unversioned download aliases (Muzik-windows-x64.msi, Muzik-macos-arm64.dmg, muzik-linux-amd64.deb, ...) so install links never break between versions
+
+## Improvements
+
+- The desktop app no longer dies silently on GPU driver crashes: repeated render-related JVM crash logs now automatically downgrade the rendering backend (Direct3D → OpenGL → software) for the next launch, and the choice is logged at startup
+- Windows release builds again attach the Muzik Manager updater binary (muzik-installer-windows-x64-<version>.exe), which restores in-app desktop updates
+- Windows installers and the manager binary are Authenticode-signed whenever a signing certificate is configured in CI, reducing SmartScreen warnings
+
 ---v8.1.1
 
 ## What's New
