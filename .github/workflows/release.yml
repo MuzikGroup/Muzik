@@ -397,7 +397,7 @@ jobs:
         env:
           VERSION: ${{ needs.check-version.outputs.new_version }}
         run: |
-          ./desktop/scripts/msi-launch-after-install.ps1 `
+          & "$env:GITHUB_WORKSPACE/desktop/scripts/msi-launch-after-install.ps1" `
             -MsiPath "$env:GITHUB_WORKSPACE/Muzik-$env:VERSION-windows-x64.msi"
 
       - name: Sign Windows installer and manager
@@ -408,7 +408,7 @@ jobs:
           WINDOWS_SIGNING_CERT_PFX: ${{ secrets.WINDOWS_SIGNING_CERT_PFX }}
           WINDOWS_SIGNING_CERT_PASSWORD: ${{ secrets.WINDOWS_SIGNING_CERT_PASSWORD }}
         run: |
-          ./desktop/scripts/sign_windows.ps1 `
+          & "$env:GITHUB_WORKSPACE/desktop/scripts/sign_windows.ps1" `
             -Files @("$env:GITHUB_WORKSPACE/Muzik-$env:VERSION-windows-x64.msi", "$env:GITHUB_WORKSPACE/muzik-installer-windows-x64-$env:VERSION.exe")
 
       # Direct-download aliases so README install buttons can point at
