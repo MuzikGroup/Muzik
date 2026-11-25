@@ -66,9 +66,10 @@ Invoke-MsiView -Sql "INSERT INTO ``InstallExecuteSequence`` (``Action``, ``Condi
 
 $database.GetType().InvokeMember("Commit", "InvokeMethod", $null, $database, $null)
 
-# Verify the committed row before declaring success.
-$sequence = Invoke-MsiView -Sql "SELECT ``Sequence`` FROM ``InstallExecuteSequence`` WHERE ``Action`` = 'JpLaunchApp'" -FetchColumn 1
-if ($sequence -ne "6602") {
+# Verify the committed row before declaring success. Integer columns come back
+# from StringData space-padded (e.g. ' 6602 '), so compare trimmed values.
+$sequence = (Invoke-MsiView -Sql "SELECT ``Sequence`` FROM ``InstallExecuteSequence`` WHERE ``Action`` = 'JpLaunchApp'" -FetchColumn 1)
+if ($sequence -notmatch '^\s*6602\s*$') {
     throw "MSI patch verification failed: JpLaunchApp row missing after commit (got '$sequence')"
 }
 Write-Host "MSI patched successfully: Muzik launches after a fresh install (via explorer, non-elevated)."
