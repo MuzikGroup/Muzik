@@ -23,7 +23,9 @@ import com.muzik.shared.listentogether.network.ListenTogetherMessageCodec
 import com.muzik.shared.listentogether.network.MessageTypes
 import com.muzik.shared.listentogether.network.ErrorPayload
 import com.muzik.shared.listentogether.network.PlaybackActions
+import com.muzik.shared.listentogether.network.isAllowedListenTogetherServerUrl
 import com.muzik.shared.listentogether.network.TrackInfo
+import com.muzik.shared.listentogether.network.createListenTogetherMessageCodec
 import com.muzik.shared.model.SongItem
 import com.muzik.shared.settings.Settings
 import io.ktor.client.HttpClient
@@ -31,6 +33,7 @@ import io.ktor.client.plugins.websocket.webSocketSession
 import io.ktor.websocket.CloseReason
 import io.ktor.websocket.Frame
 import io.ktor.websocket.WebSocketSession
+import io.ktor.websocket.close
 import io.ktor.websocket.readBytes
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
