@@ -41,45 +41,44 @@
 
 <br/>
 
-### Android (phones & tablets)
+### Android · Windows · macOS · Linux — one glossy button each
 
-<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
-  <img src="https://img.shields.io/badge/Android-Install%20Muzik%20Now-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0d1117" alt="Install Muzik for Android" height="64"/>
-</a>
+<table>
+  <tr>
+    <td align="center" valign="bottom">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik.apk">
+        <img src="assets/download-buttons/android.svg" alt="Download Muzik for Android" width="380"/>
+      </a>
+      <br/>
+      <sub>Phones &amp; tablets — tap the button, the APK downloads,<br/>open it and tap Install. Done.</sub>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.msi">
+        <img src="assets/download-buttons/windows.svg" alt="Download Muzik for Windows" width="380"/>
+      </a>
+      <br/>
+      <sub>Windows 10 / 11 — run the MSI, Muzik installs with<br/>Start-menu shortcuts and launches automatically.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="bottom">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-macos-arm64.dmg">
+        <img src="assets/download-buttons/macos.svg" alt="Download Muzik for macOS" width="380"/>
+      </a>
+      <br/>
+      <sub>Apple Silicon (M1 – M4) — open the DMG and<br/>drag Muzik into Applications. Done.</sub>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-amd64.deb">
+        <img src="assets/download-buttons/linux.svg" alt="Download Muzik for Linux" width="380"/>
+      </a>
+      <br/>
+      <sub>Debian / Ubuntu / Mint — double-click the DEB or<br/><code>sudo apt install ./muzik-linux-amd64.deb</code></sub>
+    </td>
+  </tr>
+</table>
 
-<sub>Tap the button → the APK downloads → open it and tap Install. Done.</sub>
-
-<br/>
-
-### Windows 10 / 11
-
-<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-windows-x64.msi">
-  <img src="https://img.shields.io/badge/Windows-Install%20Muzik%20Now-0078D4?style=for-the-badge&logo=windows&logoColor=white&labelColor=0d1117" alt="Install Muzik for Windows" height="64"/>
-</a>
-
-<sub>Run the downloaded MSI → Muzik installs with Start-menu and desktop shortcuts and launches automatically when the install finishes.</sub>
-
-<br/>
-
-### macOS (Apple Silicon)
-
-<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/Muzik-macos-arm64.dmg">
-  <img src="https://img.shields.io/badge/macOS-Download%20DMG-111111?style=for-the-badge&logo=apple&logoColor=white&labelColor=0d1117" alt="Download Muzik for macOS" height="64"/>
-</a>
-
-<sub>Open the DMG → drag Muzik into Applications → done.</sub>
-
-<br/>
-
-### Linux (Debian / Ubuntu / Mint)
-
-<a href="https://github.com/MuzikGroup/Muzik/releases/latest/download/muzik-linux-amd64.deb">
-  <img src="https://img.shields.io/badge/Linux-Install%20DEB-FCC624?style=for-the-badge&logo=linux&logoColor=black&labelColor=0d1117" alt="Install Muzik for Debian/Ubuntu Linux" height="64"/>
-</a>
-
-<sub>Double-click the DEB (or <code>sudo apt install ./muzik-linux-amd64.deb</code>) → Muzik appears in your applications menu.</sub>
-
-<br/><br/>
+Every button points straight at the newest release asset — the download starts immediately, no redirects, no other pages.
 
 ### More direct downloads (no redirects)
 
