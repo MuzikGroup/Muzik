@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
  */
 object MuzikLinkState {
     private const val TAG = "MuzikLink"
-    private const val MAX_FRAME_SIZE_BYTES = 256 * 1024
+    private const val MAX_FRAME_SIZE_BYTES = 256 * 1024L
 
     private val httpClient =
         HttpClient(CIO) {

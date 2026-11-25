@@ -92,6 +92,7 @@ import com.muzik.desktop.ui.components.VideoMiniViewer
 import com.muzik.desktop.ui.components.deviceConnectSideSheetWidth
 import com.muzik.shared.generated.resources.Res
 import com.muzik.shared.generated.resources.close
+import com.muzik.shared.generated.resources.desktop_navigation_link
 import com.muzik.shared.generated.resources.desktop_navigation_together
 import com.muzik.shared.generated.resources.done
 import com.muzik.shared.generated.resources.edit_sidebar
