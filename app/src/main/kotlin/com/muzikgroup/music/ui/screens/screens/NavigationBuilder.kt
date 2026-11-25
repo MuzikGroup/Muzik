@@ -60,6 +60,7 @@ import com.muzikgroup.music.ui.screens.settings.UpdaterScreen
 import com.muzikgroup.music.ui.screens.settings.integrations.DiscordSettings
 import com.muzikgroup.music.ui.screens.settings.integrations.IntegrationScreen
 import com.muzikgroup.music.ui.screens.settings.integrations.LastFMSettings
+import com.muzikgroup.music.link.MuzikLinkScreen
 import com.muzikgroup.music.ui.screens.settings.integrations.ListenTogetherSettings
 
 import com.muzikgroup.music.ui.screens.wrapped.WrappedScreen
@@ -403,6 +404,10 @@ fun NavGraphBuilder.navigationBuilder(
 
     composable(route = "settings/integrations/listen_together") {
         ListenTogetherSettings(navController)
+    }
+
+    composable("muzik_link") {
+        MuzikLinkScreen(navController)
     }
 
     composable("settings/updater") {

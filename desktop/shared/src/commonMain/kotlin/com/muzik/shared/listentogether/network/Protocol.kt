@@ -409,3 +409,127 @@ internal fun validateRoomResponse(
     require(roomCode.isNotBlank() && userId.isNotBlank() && state.hostId.isNotBlank()) { "Missing room identifiers" }
     require(state.roomCode == roomCode) { "Room state does not match response" }
 }
+
+// ---------------------------------------------------------------------------
+// Muzik Link (device pairing, remote control, handoff)
+// ---------------------------------------------------------------------------
+
+object LinkMessageTypes {
+    // Client -> Server
+    const val LINK_REGISTER = "link_register"
+    const val LINK_PAIR = "link_pair"
+    const val LINK_LEAVE = "link_leave"
+    const val LINK_COMMAND = "link_command"
+    const val LINK_STATE = "link_state"
+    const val LINK_HANDOFF = "link_handoff"
+
+    // Server -> Client
+    const val LINK_REGISTERED = "link_registered"
+    const val LINK_PAIRED = "link_paired"
+    const val LINK_DEVICE_JOINED = "link_device_joined"
+    const val LINK_DEVICE_LEFT = "link_device_left"
+    const val LINK_HANDOFF_START = "link_handoff_start"
+    const val LINK_STOP = "link_stop"
+    const val LINK_PLAYER_CHANGED = "link_player_changed"
+}
+
+object LinkDeviceTypes {
+    const val ANDROID = "android"
+    const val DESKTOP = "desktop"
+    const val IOS = "ios"
+    const val OTHER = "other"
+}
+
+@Serializable
+data class LinkDeviceInfo(
+    @SerialName("device_id") val deviceId: String,
+    @SerialName("device_name") val deviceName: String,
+    @SerialName("device_type") val deviceType: String = LinkDeviceTypes.OTHER,
+    @SerialName("app_version") val appVersion: String = "",
+    @SerialName("is_player") val isPlayer: Boolean = false,
+)
+
+@Serializable
+data class LinkRegisterPayload(
+    @SerialName("device_name") val deviceName: String,
+    @SerialName("device_type") val deviceType: String,
+    @SerialName("app_version") val appVersion: String,
+)
+
+@Serializable
+data class LinkPairPayload(
+    @SerialName("pairing_code") val pairingCode: String,
+    @SerialName("device_name") val deviceName: String,
+    @SerialName("device_type") val deviceType: String,
+    @SerialName("app_version") val appVersion: String,
+)
+
+@Serializable
+data class LinkSessionPayload(
+    @SerialName("link_id") val linkId: String,
+    @SerialName("device_id") val deviceId: String,
+    @SerialName("pairing_code") val pairingCode: String,
+    val devices: List<LinkDeviceInfo> = emptyList(),
+    @SerialName("player_device_id") val playerDeviceId: String = "",
+    val state: LinkStatePayload? = null,
+)
+
+@Serializable
+data class LinkDeviceJoinedPayload(
+    val device: LinkDeviceInfo,
+)
+
+@Serializable
+data class LinkDeviceLeftPayload(
+    @SerialName("device_id") val deviceId: String,
+    @SerialName("was_player") val wasPlayer: Boolean = false,
+)
+
+@Serializable
+data class LinkCommandPayload(
+    val action: String,
+    @SerialName("track_id") val trackId: String? = null,
+    val position: Long? = null,
+    @SerialName("track_info") val trackInfo: TrackInfo? = null,
+    @SerialName("insert_next") val insertNext: Boolean? = null,
+    val queue: List<TrackInfo>? = null,
+    @SerialName("queue_title") val queueTitle: String? = null,
+    val volume: Float? = null,
+    @SerialName("captured_at_server_time") val capturedAtServerTime: Long? = null,
+    @SerialName("from_device_id") val fromDeviceId: String? = null,
+    @SerialName("from_device_name") val fromDeviceName: String? = null,
+)
+
+@Serializable
+data class LinkStatePayload(
+    @SerialName("current_track") val currentTrack: TrackInfo? = null,
+    @SerialName("is_playing") val isPlaying: Boolean = false,
+    val position: Long = 0L,
+    @SerialName("last_update") val lastUpdate: Long = 0L,
+    val queue: List<TrackInfo> = emptyList(),
+    val volume: Float = 0f,
+    val revision: Long = 0L,
+)
+
+@Serializable
+data class LinkHandoffPayload(
+    @SerialName("target_device_id") val targetDeviceId: String,
+)
+
+@Serializable
+data class LinkHandoffStartPayload(
+    val state: LinkStatePayload? = null,
+    @SerialName("from_device_id") val fromDeviceId: String? = null,
+)
+
+@Serializable
+data class LinkStopPayload(
+    val state: LinkStatePayload? = null,
+    @SerialName("to_device_id") val toDeviceId: String? = null,
+)
+
+@Serializable
+data class LinkPlayerChangedPayload(
+    @SerialName("new_player_device_id") val newPlayerDeviceId: String,
+    @SerialName("new_player_device_name") val newPlayerDeviceName: String = "",
+)

@@ -237,6 +237,9 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var listenTogetherManager: com.muzikgroup.music.listentogether.ListenTogetherManager
 
+    @Inject
+    lateinit var muzikLinkManager: com.muzikgroup.music.link.MuzikLinkManager
+
     private lateinit var navController: NavHostController
     private var pendingIntent: Intent? = null
     private var latestVersionName by mutableStateOf(BuildConfig.VERSION_NAME)
@@ -260,12 +263,14 @@ class MainActivity : ComponentActivity() {
                     playerConnection = PlayerConnection(this@MainActivity, service, database, lifecycleScope)
                     playerConnectionSnapshot = playerConnection
                     listenTogetherManager.setPlayerConnection(playerConnection)
+                    muzikLinkManager.setPlayerConnection(playerConnection)
                 }
             }
 
             override fun onServiceDisconnected(name: ComponentName?) {
                 // Disconnect Listen Together manager
                 listenTogetherManager.setPlayerConnection(null)
+                muzikLinkManager.setPlayerConnection(null)
                 playerConnection?.dispose()
                 // DO NOT null out playerConnection here - keep it for when service reconnects
                 // DO NOT update playerConnectionSnapshot - this is the key to preventing recomposition
@@ -281,6 +286,7 @@ class MainActivity : ComponentActivity() {
         } finally {
             isServiceBound = false
             listenTogetherManager.setPlayerConnection(null)
+            muzikLinkManager.setPlayerConnection(null)
             playerConnection?.dispose()
             // DO NOT null out playerConnection here - keep it for reconnection
             // DO NOT update playerConnectionSnapshot - this prevents UI recomposition
@@ -378,6 +384,9 @@ class MainActivity : ComponentActivity() {
 
         // Initialize Listen Together manager
         listenTogetherManager.initialize()
+
+        // Initialize Muzik Link manager
+        muzikLinkManager.initialize()
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             val locale =
@@ -941,6 +950,7 @@ class MainActivity : ComponentActivity() {
                     LocalShimmerTheme provides ShimmerTheme,
                     LocalSyncUtils provides syncUtils,
                     LocalListenTogetherManager provides listenTogetherManager,
+                    LocalMuzikLinkManager provides muzikLinkManager,
                     LocalChangelogState provides showChangelog,
                 ) {
                     if (showChangelog.value) {
@@ -1581,5 +1591,6 @@ val LocalPlayerAwareWindowInsets = compositionLocalOf<WindowInsets> { error("No 
 val LocalDownloadUtil = staticCompositionLocalOf<DownloadUtil> { error("No DownloadUtil provided") }
 val LocalSyncUtils = staticCompositionLocalOf<SyncUtils> { error("No SyncUtils provided") }
 val LocalListenTogetherManager = staticCompositionLocalOf<com.muzikgroup.music.listentogether.ListenTogetherManager?> { null }
+val LocalMuzikLinkManager = staticCompositionLocalOf<com.muzikgroup.music.link.MuzikLinkManager?> { null }
 val LocalChangelogState = staticCompositionLocalOf<MutableState<Boolean>> { error("No LocalChangelogState provided") }
 val LocalIsPlayerExpanded = compositionLocalOf { false }

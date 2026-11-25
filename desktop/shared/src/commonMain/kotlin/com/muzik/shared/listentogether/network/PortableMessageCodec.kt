@@ -232,6 +232,69 @@ class PortableMessageCodec(
                 SuggestionSubmittedPayload(f.string(1), f.nested(2).orEmpty().track())
             }
 
+            LinkMessageTypes.LINK_REGISTER -> {
+                LinkRegisterPayload(f.string(1), f.string(2), f.string(3))
+            }
+
+            LinkMessageTypes.LINK_PAIR -> {
+                LinkPairPayload(f.string(1), f.string(2), f.string(3), f.string(4))
+            }
+
+            LinkMessageTypes.LINK_COMMAND -> {
+                LinkCommandPayload(
+                    action = f.string(1),
+                    trackId = f.optionalString(2),
+                    position = f.long(3),
+                    trackInfo = f.nested(4)?.track(),
+                    insertNext = f.bool(5).takeIf { it },
+                    queue = f.repeated(6).map { it.track() },
+                    queueTitle = f.optionalString(7),
+                    volume = f.float(8),
+                    capturedAtServerTime = f.long(9).takeIf { it > 0 },
+                    fromDeviceId = f.optionalString(10),
+                    fromDeviceName = f.optionalString(11),
+                )
+            }
+
+            LinkMessageTypes.LINK_STATE -> {
+                f.linkState()
+            }
+
+            LinkMessageTypes.LINK_HANDOFF -> {
+                LinkHandoffPayload(f.string(1))
+            }
+
+            LinkMessageTypes.LINK_REGISTERED, LinkMessageTypes.LINK_PAIRED -> {
+                LinkSessionPayload(
+                    linkId = f.string(1),
+                    deviceId = f.string(2),
+                    pairingCode = f.string(3),
+                    devices = f.repeated(4).map { it.linkDevice() },
+                    playerDeviceId = f.string(5),
+                    state = f.nested(6)?.linkState(),
+                )
+            }
+
+            LinkMessageTypes.LINK_DEVICE_JOINED -> {
+                LinkDeviceJoinedPayload(f.nested(1).orEmpty().linkDevice())
+            }
+
+            LinkMessageTypes.LINK_DEVICE_LEFT -> {
+                LinkDeviceLeftPayload(f.string(1), f.bool(2))
+            }
+
+            LinkMessageTypes.LINK_HANDOFF_START -> {
+                LinkHandoffStartPayload(f.nested(1)?.linkState(), f.optionalString(2))
+            }
+
+            LinkMessageTypes.LINK_STOP -> {
+                LinkStopPayload(f.nested(1)?.linkState(), f.optionalString(2))
+            }
+
+            LinkMessageTypes.LINK_PLAYER_CHANGED -> {
+                LinkPlayerChangedPayload(f.string(1), f.string(2))
+            }
+
             else -> {
                 error("Payload not supported: $msgType")
             }
@@ -453,6 +516,74 @@ class PortableMessageCodec(
                     string(2, payload.reason)
                 }
 
+                is LinkRegisterPayload -> {
+                    string(1, payload.deviceName)
+                    string(2, payload.deviceType)
+                    string(3, payload.appVersion)
+                }
+
+                is LinkPairPayload -> {
+                    string(1, payload.pairingCode)
+                    string(2, payload.deviceName)
+                    string(3, payload.deviceType)
+                    string(4, payload.appVersion)
+                }
+
+                is LinkCommandPayload -> {
+                    string(1, payload.action)
+                    string(2, payload.trackId)
+                    long(3, payload.position ?: 0)
+                    payload.trackInfo?.let { nested(4, encodeTrack(it)) }
+                    bool(5, payload.insertNext == true)
+                    payload.queue?.forEach { nested(6, encodeTrack(it)) }
+                    string(7, payload.queueTitle)
+                    float(8, payload.volume ?: 0f)
+                    long(9, payload.capturedAtServerTime ?: 0)
+                    string(10, payload.fromDeviceId)
+                    string(11, payload.fromDeviceName)
+                }
+
+                is LinkStatePayload -> {
+                    encodeLinkState(payload)
+                }
+
+                is LinkHandoffPayload -> {
+                    string(1, payload.targetDeviceId)
+                }
+
+                is LinkSessionPayload -> {
+                    string(1, payload.linkId)
+                    string(2, payload.deviceId)
+                    string(3, payload.pairingCode)
+                    payload.devices.forEach { nested(4, encodeLinkDevice(it)) }
+                    string(5, payload.playerDeviceId)
+                    payload.state?.let { nested(6, encodeLinkState(it)) }
+                }
+
+                is LinkDeviceJoinedPayload -> {
+                    nested(1, encodeLinkDevice(payload.device))
+                }
+
+                is LinkDeviceLeftPayload -> {
+                    string(1, payload.deviceId)
+                    bool(2, payload.wasPlayer)
+                }
+
+                is LinkHandoffStartPayload -> {
+                    payload.state?.let { nested(1, encodeLinkState(it)) }
+                    string(2, payload.fromDeviceId)
+                }
+
+                is LinkStopPayload -> {
+                    payload.state?.let { nested(1, encodeLinkState(it)) }
+                    string(2, payload.toDeviceId)
+                }
+
+                is LinkPlayerChangedPayload -> {
+                    string(1, payload.newPlayerDeviceId)
+                    string(2, payload.newPlayerDeviceName)
+                }
+
                 else -> {
                     error("Unsupported payload")
                 }
@@ -469,6 +600,46 @@ class PortableMessageCodec(
             string(6, track.thumbnail)
             string(7, track.suggestedBy)
         }
+
+    private fun encodeLinkDevice(device: LinkDeviceInfo) =
+        message {
+            string(1, device.deviceId)
+            string(2, device.deviceName)
+            string(3, device.deviceType)
+            string(4, device.appVersion)
+            bool(5, device.isPlayer)
+        }
+
+    private fun encodeLinkState(state: LinkStatePayload) =
+        message {
+            state.currentTrack?.let { nested(1, encodeTrack(it)) }
+            bool(2, state.isPlaying)
+            long(3, state.position)
+            long(4, state.lastUpdate)
+            state.queue.forEach { nested(5, encodeTrack(it)) }
+            float(6, state.volume)
+            long(7, state.revision)
+        }
+
+    private fun ProtoFields.linkDevice() =
+        LinkDeviceInfo(
+            string(1),
+            string(2),
+            optionalString(3) ?: LinkDeviceTypes.OTHER,
+            optionalString(4) ?: "",
+            bool(5),
+        )
+
+    private fun ProtoFields.linkState() =
+        LinkStatePayload(
+            currentTrack = nested(1)?.track(),
+            isPlaying = bool(2),
+            position = long(3),
+            lastUpdate = long(4),
+            queue = repeated(5).map { it.track() },
+            volume = float(6),
+            revision = long(7),
+        )
 
     private fun encodeRoom(room: RoomState) =
         message {

@@ -654,6 +654,7 @@ object PlayerState {
         }
         deviceConnect.detach(deviceConnectPlayback)
         ListenTogetherState.close()
+        MuzikLinkState.close()
         playbackTransitionJob?.cancel()
         videoModeRequestJob?.cancel()
         runCatching { video.close() }

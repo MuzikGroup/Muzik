@@ -286,3 +286,111 @@ message SuggestionSubmittedPayload {
   string suggestion_id = 1;
   TrackInfo track_info = 2;
 }
+
+// ---------------------------------------------------------------------------
+// Muzik Link: pair a user's own devices for remote control and playback
+// handoff. One paired device is the active player; every other device acts
+// as a controller. Commands flow controller -> server -> player, and playback
+// state flows player -> server -> controllers.
+// ---------------------------------------------------------------------------
+
+// One member of a link group.
+message LinkDeviceInfo {
+  string device_id = 1;
+  string device_name = 2;
+  string device_type = 3;  // "android" | "desktop" | "ios" | "other"
+  string app_version = 4;
+  bool is_player = 5;
+}
+
+// Client -> server: create a new link group (the creator becomes the
+// initial player).
+message LinkRegisterPayload {
+  string device_name = 1;
+  string device_type = 2;
+  string app_version = 3;
+}
+
+// Client -> server: join an existing link group via its pairing code.
+message LinkPairPayload {
+  string pairing_code = 1;
+  string device_name = 2;
+  string device_type = 3;
+  string app_version = 4;
+}
+
+// Server -> client: response to link_register / link_pair. `state` is the
+// player's last published playback state, if any.
+message LinkSessionPayload {
+  string link_id = 1;
+  string device_id = 2;
+  string pairing_code = 3;
+  repeated LinkDeviceInfo devices = 4;
+  string player_device_id = 5;
+  LinkStatePayload state = 6;
+}
+
+// Server -> client: another device paired with the group.
+message LinkDeviceJoinedPayload {
+  LinkDeviceInfo device = 1;
+}
+
+// Server -> client: a device left the group or disconnected.
+message LinkDeviceLeftPayload {
+  string device_id = 1;
+  bool was_player = 2;
+}
+
+// Controller -> server -> player (relayed). Carries the same action set as
+// PlaybackActionPayload but is NOT applied to shared room state; the player
+// device stays the source of truth for its own playback.
+message LinkCommandPayload {
+  string action = 1;
+  string track_id = 2;
+  int64 position = 3;
+  TrackInfo track_info = 4;
+  bool insert_next = 5;
+  repeated TrackInfo queue = 6;
+  string queue_title = 7;
+  float volume = 8;
+  int64 captured_at_server_time = 9;
+  string from_device_id = 10;
+  string from_device_name = 11;
+}
+
+// Player -> server -> controllers (relayed and stored as the group's last
+// known playback state).
+message LinkStatePayload {
+  TrackInfo current_track = 1;
+  bool is_playing = 2;
+  int64 position = 3;
+  int64 last_update = 4;
+  repeated TrackInfo queue = 5;
+  float volume = 6;
+  uint64 revision = 7;
+}
+
+// Client -> server: make target_device_id the active player. The current
+// player is told to stop; the target receives the last known state to resume.
+message LinkHandoffPayload {
+  string target_device_id = 1;
+}
+
+// Server -> new player after a successful handoff.
+message LinkHandoffStartPayload {
+  LinkStatePayload state = 1;
+  string from_device_id = 2;
+}
+
+// Server -> previous player after a successful handoff.
+message LinkStopPayload {
+  LinkStatePayload state = 1;
+  string to_device_id = 2;
+}
+
+// Server -> all devices after the active player changed (handoff or player
+// disconnect promotion).
+message LinkPlayerChangedPayload {
+  string new_player_device_id = 1;
+  string new_player_device_name = 2;
+}

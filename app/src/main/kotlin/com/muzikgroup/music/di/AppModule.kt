@@ -20,6 +20,8 @@ import com.muzikgroup.music.db.InternalDatabase
 import com.muzikgroup.music.db.MusicDatabase
 import com.muzikgroup.music.listentogether.ListenTogetherClient
 import com.muzikgroup.music.listentogether.ListenTogetherManager
+import com.muzikgroup.music.link.MuzikLinkClient
+import com.muzikgroup.music.link.MuzikLinkManager
 import com.muzikgroup.music.utils.dataStore
 import com.muzikgroup.music.utils.get
 import dagger.Module
@@ -208,4 +210,18 @@ object AppModule {
         @ApplicationContext context: Context,
         client: ListenTogetherClient,
     ): ListenTogetherManager = ListenTogetherManager(client, context)
+
+    @Singleton
+    @Provides
+    fun provideMuzikLinkClient(
+        @ApplicationContext context: Context,
+    ): MuzikLinkClient = MuzikLinkClient(context)
+
+    @Singleton
+    @Provides
+    fun provideMuzikLinkManager(
+        @ApplicationContext context: Context,
+        client: MuzikLinkClient,
+        listenTogetherManager: ListenTogetherManager,
+    ): MuzikLinkManager = MuzikLinkManager(client, context, listenTogetherManager)
 }

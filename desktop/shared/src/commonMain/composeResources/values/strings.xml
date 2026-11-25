@@ -3887,6 +3887,7 @@
     <!-- Desktop: ui/components internationalization -->
     <!-- Product name used for the compact desktop navigation destination. -->
     <string name="desktop_navigation_together" translatable="false">Together</string>
+    <string name="desktop_navigation_link" translatable="false">Muzik Link</string>
     <!-- Translators: Imperative action label for toggle sidebar; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Label for done editing; retained for translation compatibility but not currently referenced by app code. -->
     <!-- Translators: Imperative action label for edit sidebar in the desktop app. -->

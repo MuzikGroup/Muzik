@@ -169,6 +169,7 @@ private fun navIcons(navId: String): Pair<ImageVector, ImageVector> =
         NavigationId.HISTORY -> MuzikIcons.Outlined.MusicHistory to MuzikIcons.Filled.MusicHistory
         NavigationId.STATISTICS -> MuzikIcons.Outlined.SsidChart to MuzikIcons.Filled.SsidChart
         NavigationId.LISTEN_TOGETHER -> MuzikIcons.Outlined.Group to MuzikIcons.Filled.Groups
+        NavigationId.MUZIK_LINK -> MuzikIcons.Outlined.Link to MuzikIcons.Filled.Link
         else -> MuzikIcons.Default.QuestionMark to MuzikIcons.Default.QuestionMark
     }
 
@@ -212,6 +213,7 @@ private fun DesktopNavigationScaffold(
                     NavigationId.HISTORY -> Res.string.menu_history
                     NavigationId.STATISTICS -> Res.string.statistics
                     NavigationId.LISTEN_TOGETHER -> Res.string.desktop_navigation_together
+                    NavigationId.MUZIK_LINK -> Res.string.desktop_navigation_link
                     else -> return@mapNotNull null
                 }
             AdaptiveNavigationItem(

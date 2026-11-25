@@ -50,6 +50,7 @@ import com.muzik.desktop.state.content.SearchState
 import com.muzik.desktop.state.playback.ListenTogetherPlaybackRequest
 import com.muzik.desktop.state.playback.ListenTogetherState
 import com.muzik.desktop.state.playback.LyricsState
+import com.muzik.desktop.state.playback.MuzikLinkState
 import com.muzik.desktop.state.playback.PlayerState
 import com.muzik.desktop.ui.screens.AboutArtistScreenHost
 import com.muzik.desktop.ui.screens.AlbumScreen
@@ -59,6 +60,7 @@ import com.muzik.desktop.ui.screens.HistoryScreen
 import com.muzik.desktop.ui.screens.HomeScreen
 import com.muzik.desktop.ui.screens.LibraryScreen
 import com.muzik.desktop.ui.screens.ListenTogetherScreen
+import com.muzik.desktop.ui.screens.MuzikLinkScreen
 import com.muzik.desktop.ui.screens.LocalPlaylistScreen
 import com.muzik.desktop.ui.screens.PlaylistScreen
 import com.muzik.desktop.ui.screens.PodcastScreen
@@ -216,7 +218,7 @@ fun AppContentHost(
                         )
                     }
 
-                    Screen.Library, Screen.Statistics, Screen.ListenTogether -> {
+                    Screen.Library, Screen.Statistics, Screen.ListenTogether, Screen.MuzikLink -> {
                         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
                             Box(Modifier.widthIn(max = 1400.dp).fillMaxSize()) {
                                 when (destination) {
@@ -233,8 +235,12 @@ fun AppContentHost(
                                         StatsScreen()
                                     }
 
-                                    else -> {
+                                    Screen.ListenTogether -> {
                                         ListenTogetherScreen(ListenTogetherState.listenTogetherManager)
+                                    }
+
+                                    else -> {
+                                        MuzikLinkScreen(MuzikLinkState.muzikLinkManager)
                                     }
                                 }
                             }

@@ -176,6 +176,37 @@ class MessageCodec(
             is TransferHostPayload -> Listentogether.TransferHostPayload.newBuilder()
                 .setNewHostId(payload.newHostId)
                 .build()
+            is LinkRegisterPayload -> Listentogether.LinkRegisterPayload.newBuilder()
+                .setDeviceName(payload.deviceName)
+                .setDeviceType(payload.deviceType)
+                .setAppVersion(payload.appVersion)
+                .build()
+            is LinkPairPayload -> Listentogether.LinkPairPayload.newBuilder()
+                .setPairingCode(payload.pairingCode)
+                .setDeviceName(payload.deviceName)
+                .setDeviceType(payload.deviceType)
+                .setAppVersion(payload.appVersion)
+                .build()
+            is LinkCommandPayload -> {
+                val builder = Listentogether.LinkCommandPayload.newBuilder()
+                    .setAction(payload.action)
+                    .setPosition(payload.position ?: 0)
+                    .setInsertNext(payload.insertNext ?: false)
+                    .setVolume(payload.volume ?: 0f)
+                    .setCapturedAtServerTime(payload.capturedAtServerTime ?: 0)
+
+                payload.trackId?.let { builder.setTrackId(it) }
+                payload.trackInfo?.let { builder.setTrackInfo(trackInfoToProto(it)) }
+                payload.queueTitle?.let { builder.setQueueTitle(it) }
+                payload.queue?.forEach { track ->
+                    builder.addQueue(trackInfoToProto(track))
+                }
+                builder.build()
+            }
+            is LinkStatePayload -> linkStateToProto(payload)
+            is LinkHandoffPayload -> Listentogether.LinkHandoffPayload.newBuilder()
+                .setTargetDeviceId(payload.targetDeviceId)
+                .build()
             else -> throw IllegalArgumentException("Unsupported payload type: ${payload::class.simpleName}")
         }
     }
@@ -319,11 +350,118 @@ class MessageCodec(
                 val pb = Listentogether.SuggestionRejectedPayload.parseFrom(payloadBytes)
                 SuggestionRejectedPayload(pb.suggestionId, pb.reason.takeIf { it.isNotEmpty() })
             }
+            LinkMessageTypes.LINK_REGISTERED, LinkMessageTypes.LINK_PAIRED -> {
+                val pb = Listentogether.LinkSessionPayload.parseFrom(payloadBytes)
+                LinkSessionPayload(
+                    linkId = pb.linkId,
+                    deviceId = pb.deviceId,
+                    pairingCode = pb.pairingCode,
+                    devices = pb.devicesList.map { protoToLinkDeviceInfo(it) },
+                    playerDeviceId = pb.playerDeviceId,
+                    state = pb.takeIf { it.hasState() }?.state?.let { protoToLinkState(it) },
+                )
+            }
+            LinkMessageTypes.LINK_DEVICE_JOINED -> {
+                val pb = Listentogether.LinkDeviceJoinedPayload.parseFrom(payloadBytes)
+                LinkDeviceJoinedPayload(device = protoToLinkDeviceInfo(pb.device))
+            }
+            LinkMessageTypes.LINK_DEVICE_LEFT -> {
+                val pb = Listentogether.LinkDeviceLeftPayload.parseFrom(payloadBytes)
+                LinkDeviceLeftPayload(deviceId = pb.deviceId, wasPlayer = pb.wasPlayer)
+            }
+            LinkMessageTypes.LINK_COMMAND -> {
+                val pb = Listentogether.LinkCommandPayload.parseFrom(payloadBytes)
+                LinkCommandPayload(
+                    action = pb.action,
+                    trackId = pb.trackId.takeIf { it.isNotEmpty() },
+                    position = pb.position.takeIf { it != 0L },
+                    trackInfo = pb.takeIf { it.hasTrackInfo() }?.trackInfo?.let { protoToTrackInfo(it) },
+                    insertNext = pb.insertNext.takeIf { it },
+                    queue = pb.queueList.map { protoToTrackInfo(it) },
+                    queueTitle = pb.queueTitle.takeIf { it.isNotEmpty() },
+                    volume = pb.volume.takeIf { pb.action == PlaybackActions.SET_VOLUME },
+                    capturedAtServerTime = pb.capturedAtServerTime.takeIf { it > 0 },
+                    fromDeviceId = pb.fromDeviceId.takeIf { it.isNotEmpty() },
+                    fromDeviceName = pb.fromDeviceName.takeIf { it.isNotEmpty() },
+                )
+            }
+            LinkMessageTypes.LINK_STATE -> {
+                val pb = Listentogether.LinkStatePayload.parseFrom(payloadBytes)
+                protoToLinkState(pb)
+            }
+            LinkMessageTypes.LINK_HANDOFF_START -> {
+                val pb = Listentogether.LinkHandoffStartPayload.parseFrom(payloadBytes)
+                LinkHandoffStartPayload(
+                    state = pb.takeIf { it.hasState() }?.state?.let { protoToLinkState(it) },
+                    fromDeviceId = pb.fromDeviceId.takeIf { it.isNotEmpty() },
+                )
+            }
+            LinkMessageTypes.LINK_STOP -> {
+                val pb = Listentogether.LinkStopPayload.parseFrom(payloadBytes)
+                LinkStopPayload(
+                    state = pb.takeIf { it.hasState() }?.state?.let { protoToLinkState(it) },
+                    toDeviceId = pb.toDeviceId.takeIf { it.isNotEmpty() },
+                )
+            }
+            LinkMessageTypes.LINK_PLAYER_CHANGED -> {
+                val pb = Listentogether.LinkPlayerChangedPayload.parseFrom(payloadBytes)
+                LinkPlayerChangedPayload(
+                    newPlayerDeviceId = pb.newPlayerDeviceId,
+                    newPlayerDeviceName = pb.newPlayerDeviceName,
+                )
+            }
             else -> null
         }
     }
-    
+
     // Helper conversion functions
+
+    private fun linkDeviceInfoToProto(device: LinkDeviceInfo): Listentogether.LinkDeviceInfo {
+        return Listentogether.LinkDeviceInfo.newBuilder()
+            .setDeviceId(device.deviceId)
+            .setDeviceName(device.deviceName)
+            .setDeviceType(device.deviceType)
+            .setAppVersion(device.appVersion)
+            .setIsPlayer(device.isPlayer)
+            .build()
+    }
+
+    private fun protoToLinkDeviceInfo(proto: Listentogether.LinkDeviceInfo): LinkDeviceInfo {
+        return LinkDeviceInfo(
+            deviceId = proto.deviceId,
+            deviceName = proto.deviceName,
+            deviceType = proto.deviceType.takeIf { it.isNotEmpty() } ?: LinkDeviceTypes.OTHER,
+            appVersion = proto.appVersion.takeIf { it.isNotEmpty() } ?: "",
+            isPlayer = proto.isPlayer,
+        )
+    }
+
+    private fun linkStateToProto(state: LinkStatePayload): Listentogether.LinkStatePayload {
+        val builder = Listentogether.LinkStatePayload.newBuilder()
+            .setIsPlaying(state.isPlaying)
+            .setPosition(state.position)
+            .setLastUpdate(state.lastUpdate)
+            .setVolume(state.volume)
+            .setRevision(state.revision)
+
+        state.currentTrack?.let { builder.setCurrentTrack(trackInfoToProto(it)) }
+        state.queue?.forEach { track ->
+            builder.addQueue(trackInfoToProto(track))
+        }
+        return builder.build()
+    }
+
+    private fun protoToLinkState(proto: Listentogether.LinkStatePayload): LinkStatePayload {
+        return LinkStatePayload(
+            currentTrack = proto.takeIf { it.hasCurrentTrack() }?.currentTrack?.let { protoToTrackInfo(it) },
+            isPlaying = proto.isPlaying,
+            position = proto.position,
+            lastUpdate = proto.lastUpdate,
+            queue = proto.queueList.map { protoToTrackInfo(it) },
+            volume = proto.volume,
+            revision = proto.revision,
+        )
+    }
     
     private fun trackInfoToProto(track: TrackInfo): Listentogether.TrackInfo {
         return Listentogether.TrackInfo.newBuilder()

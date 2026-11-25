@@ -209,6 +209,10 @@ val ListenTogetherUserIdKey = stringPreferencesKey("listenTogetherUserId")
 val ListenTogetherIsHostKey = booleanPreferencesKey("listenTogetherIsHost")
 val ListenTogetherSessionTimestampKey = longPreferencesKey("listenTogetherSessionTimestamp")
 
+// Muzik Link (device pairing / remote control)
+val MuzikLinkPairingCodeKey = stringPreferencesKey("muzikLinkPairingCode")
+val MuzikLinkDeviceNameKey = stringPreferencesKey("muzikLinkDeviceName")
+
 val LastFMSessionKey = stringPreferencesKey("lastfmSession")
 val LastFMUsernameKey = stringPreferencesKey("lastfmUsername")
 val EnableLastFMScrobblingKey = booleanPreferencesKey("lastfmScrobblingEnable")

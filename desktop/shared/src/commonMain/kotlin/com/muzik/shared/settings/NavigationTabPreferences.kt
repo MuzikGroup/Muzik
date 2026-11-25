@@ -80,6 +80,7 @@ fun Settings.desktopSidebarNavItems(): List<NavItem> =
             NavItem(NavigationId.HISTORY),
             NavItem(NavigationId.STATISTICS),
             NavItem(NavigationId.LISTEN_TOGETHER),
+            NavItem(NavigationId.MUZIK_LINK),
         )
     }
 

@@ -129,6 +129,8 @@ import com.muzik.shared.constants.LyricsShareImageStyleKey
 import com.muzik.shared.constants.LyricsShowOriginalLyricsKey
 import com.muzik.shared.constants.MinimumSongDurationSecondsKey
 import com.muzik.shared.constants.MusicVideoCacheJsonKey
+import com.muzik.shared.constants.MuzikLinkDeviceNameKey
+import com.muzik.shared.constants.MuzikLinkPairingCodeKey
 import com.muzik.shared.constants.MusicVideoPlaybackEnabledKey
 import com.muzik.shared.constants.MusicVideoQualityKey
 import com.muzik.shared.constants.PauseOnMuteKey
@@ -659,6 +661,9 @@ class Settings(
     var listenTogetherAutoApproveSongSuggestions by preference(false)
     var listenTogetherSyncHostVolume by preference(true)
     var listenTogetherBlockedUsers by preference("")
+
+    var muzikLinkPairingCode by preference(MuzikLinkPairingCodeKey, "")
+    var muzikLinkDeviceName by preference(MuzikLinkDeviceNameKey, "")
 
     var deviceConnectEnabled by preference(false)
     var deviceConnectDeviceId by preference("")

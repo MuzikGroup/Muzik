@@ -6,6 +6,8 @@
 package com.muzik.shared.constants
 
 val ListenTogetherEnabledKey = "listenTogetherEnabled"
+val MuzikLinkPairingCodeKey = "muzikLinkPairingCode"
+val MuzikLinkDeviceNameKey = "muzikLinkDeviceName"
 val ListenTogetherServerMetadataKey = "listenTogetherServerMetadata"
 val TokenLoginWarningDismissedKey = "tokenLoginWarningDismissed"
 

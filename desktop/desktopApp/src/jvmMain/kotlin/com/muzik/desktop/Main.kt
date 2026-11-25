@@ -95,6 +95,7 @@ import com.muzik.desktop.alarm.MusicAlarmEngine
 import com.muzik.desktop.state.content.LibraryState
 import com.muzik.desktop.state.playback.DesktopPlaybackController
 import com.muzik.desktop.state.playback.ListenTogetherState
+import com.muzik.desktop.state.playback.MuzikLinkState
 import com.muzik.desktop.state.playback.LyricsState
 import com.muzik.desktop.state.playback.PlayerState
 import com.muzik.desktop.storage.DownloadManager
@@ -1007,6 +1008,7 @@ private fun runDesktopApp(args: Array<String>) {
             LyricsState.currentLyricsEntries
             HomeState.setLikedSongsName(runBlocking { getString(Res.string.liked_songs) })
             ListenTogetherState.initialize()
+            MuzikLinkState.initialize()
             MusicAlarmEngine.start()
             if (OsUtil.isWindows) {
                 listOf("previous.ico", "play.ico", "pause.ico", "next.ico").forEach { IconResources.toTempFile(it) }
@@ -1208,6 +1210,7 @@ private fun runDesktopApp(args: Array<String>) {
                     Screen.History,
                     Screen.Statistics,
                     Screen.ListenTogether,
+                    Screen.MuzikLink,
                 )
             }
         val navigationState =

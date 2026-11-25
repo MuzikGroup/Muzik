@@ -43,6 +43,18 @@ internal fun payloadMatchesMessageType(
         MessageTypes.ACK -> payload == null
         MessageTypes.SERVER_RESTARTING -> payload is ServerRestartingPayload
         MessageTypes.SUGGESTION_SUBMITTED -> payload is SuggestionSubmittedPayload
+        LinkMessageTypes.LINK_REGISTER -> payload is LinkRegisterPayload
+        LinkMessageTypes.LINK_PAIR -> payload is LinkPairPayload
+        LinkMessageTypes.LINK_LEAVE -> payload == null
+        LinkMessageTypes.LINK_COMMAND -> payload is LinkCommandPayload
+        LinkMessageTypes.LINK_STATE -> payload is LinkStatePayload
+        LinkMessageTypes.LINK_HANDOFF -> payload is LinkHandoffPayload
+        LinkMessageTypes.LINK_REGISTERED, LinkMessageTypes.LINK_PAIRED -> payload is LinkSessionPayload
+        LinkMessageTypes.LINK_DEVICE_JOINED -> payload is LinkDeviceJoinedPayload
+        LinkMessageTypes.LINK_DEVICE_LEFT -> payload is LinkDeviceLeftPayload
+        LinkMessageTypes.LINK_HANDOFF_START -> payload is LinkHandoffStartPayload
+        LinkMessageTypes.LINK_STOP -> payload is LinkStopPayload
+        LinkMessageTypes.LINK_PLAYER_CHANGED -> payload is LinkPlayerChangedPayload
         else -> false
     }
 
@@ -88,6 +100,25 @@ internal val knownMessageTypes =
         MessageTypes.ACK,
         MessageTypes.SERVER_RESTARTING,
         MessageTypes.SUGGESTION_SUBMITTED,
+        LinkMessageTypes.LINK_REGISTER,
+        LinkMessageTypes.LINK_PAIR,
+        LinkMessageTypes.LINK_LEAVE,
+        LinkMessageTypes.LINK_COMMAND,
+        LinkMessageTypes.LINK_STATE,
+        LinkMessageTypes.LINK_HANDOFF,
+        LinkMessageTypes.LINK_REGISTERED,
+        LinkMessageTypes.LINK_PAIRED,
+        LinkMessageTypes.LINK_DEVICE_JOINED,
+        LinkMessageTypes.LINK_DEVICE_LEFT,
+        LinkMessageTypes.LINK_HANDOFF_START,
+        LinkMessageTypes.LINK_STOP,
+        LinkMessageTypes.LINK_PLAYER_CHANGED,
     )
 
-internal val payloadlessMessageTypes = setOf(MessageTypes.LEAVE_ROOM, MessageTypes.REQUEST_SYNC, MessageTypes.ACK)
+internal val payloadlessMessageTypes =
+    setOf(
+        MessageTypes.LEAVE_ROOM,
+        MessageTypes.REQUEST_SYNC,
+        MessageTypes.ACK,
+        LinkMessageTypes.LINK_LEAVE,
+    )
