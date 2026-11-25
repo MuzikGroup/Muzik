@@ -35,7 +35,7 @@ $database = $installer.GetType().InvokeMember("OpenDatabase", "InvokeMethod", $n
 function Invoke-MsiView {
     param(
         [Parameter(Mandatory = $true)][string]$Sql,
-        [Parameter(Mandatory = $false)][int]$FetchColumn = -1,
+        [Parameter(Mandatory = $false)][int]$FetchColumn = -1
     )
     $view = $database.GetType().InvokeMember("OpenView", "InvokeMethod", $null, $database, @($Sql))
     try {
