@@ -607,7 +607,7 @@ class MuzikLinkManager(
         if (track == null) return
         callerScope.launch {
             val song = resolver.resolve(track) ?: track.toSongItem(omitNonPositiveDuration = true)
-            playback.addToQueueFromRemote(listOf(song))
+            playback.addToQueueFromRemote(song)
         }
     }
 
