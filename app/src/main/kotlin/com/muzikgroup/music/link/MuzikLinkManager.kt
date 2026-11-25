@@ -535,7 +535,7 @@ class MuzikLinkManager
                         YouTube.queue(listOf(track.id))
                     }
                 result.onSuccess { list ->
-                    val preloadItem = list.firstOrNull()?.toMediaMetadata()?.toMediaItem()
+                    val preloadItem = list.firstOrNull()?.toMediaMetadata()
                     connection.allowInternalSync = true
                     try {
                         connection.playQueue(
@@ -609,7 +609,7 @@ class MuzikLinkManager
                         YouTube.queue(listOf(track.id))
                     }
                 result.onSuccess { list ->
-                    val preloadItem = list.firstOrNull()?.toMediaMetadata()?.toMediaItem()
+                    val preloadItem = list.firstOrNull()?.toMediaMetadata()
                     connection.allowInternalSync = true
                     try {
                         connection.playQueue(

@@ -19,17 +19,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Computer
-import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material.icons.rounded.DeviceUnknown
-import androidx.compose.material.icons.rounded.Logout
-import androidx.compose.material.icons.rounded.PauseCircle
-import androidx.compose.material.icons.rounded.PhoneAndroid
-import androidx.compose.material.icons.rounded.PlayCircle
-import androidx.compose.material.icons.rounded.SkipNext
-import androidx.compose.material.icons.rounded.SkipPrevious
-import androidx.compose.material.icons.rounded.Smartphone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -50,8 +39,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
@@ -62,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.muzikgroup.music.LocalListenTogetherManager
+import com.muzikgroup.music.R
 import com.muzikgroup.music.LocalMuzikLinkManager
 import com.muzikgroup.music.constants.AppBarHeight
 import com.muzikgroup.music.listentogether.LinkDeviceInfo
@@ -69,12 +59,12 @@ import com.muzikgroup.music.listentogether.LinkDeviceTypes
 import com.muzikgroup.music.listentogether.LinkStatePayload
 import com.muzikgroup.music.listentogether.PlaybackActions
 
-private fun deviceIcon(deviceType: String): ImageVector =
+private fun deviceLabel(deviceType: String): String =
     when (deviceType) {
-        LinkDeviceTypes.ANDROID -> Icons.Rounded.PhoneAndroid
-        LinkDeviceTypes.DESKTOP -> Icons.Rounded.Computer
-        LinkDeviceTypes.IOS -> Icons.Rounded.Smartphone
-        else -> Icons.Rounded.DeviceUnknown
+        LinkDeviceTypes.ANDROID -> "Android device"
+        LinkDeviceTypes.DESKTOP -> "Computer"
+        LinkDeviceTypes.IOS -> "iOS device"
+        else -> "Device"
     }
 
 private fun formatMs(ms: Long): String {
@@ -248,7 +238,7 @@ fun MuzikLinkScreen(navController: NavController) {
                             clipboard.setText(AnnotatedString(currentSession.pairingCode))
                             Toast.makeText(context, "Code copied", Toast.LENGTH_SHORT).show()
                         }) {
-                            Icon(Icons.Rounded.ContentCopy, contentDescription = "Copy pairing code")
+                            Icon(painterResource(R.drawable.content_copy), contentDescription = "Copy pairing code")
                         }
                     }
                 }
@@ -312,7 +302,7 @@ fun MuzikLinkScreen(navController: NavController) {
                     onClick = { manager.leaveLink() },
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    Icon(Icons.Rounded.Logout, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Icon(painterResource(R.drawable.logout), contentDescription = null, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
                     Text("Leave link")
                 }
@@ -333,25 +323,17 @@ private fun DeviceRow(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Icon(
-            deviceIcon(device.deviceType),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.size(28.dp),
-        )
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 device.deviceName + if (isSelf) " (this device)" else "",
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = if (device.isPlayer) FontWeight.Bold else FontWeight.Normal,
             )
-            if (device.isPlayer) {
-                Text(
-                    "Active player",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-            }
+            Text(
+                if (device.isPlayer) "Active player" else deviceLabel(device.deviceType),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary,
+            )
         }
         if (!device.isPlayer && !isSelf && canHandoff) {
             FilledTonalButton(onClick = onHandoff) {
@@ -407,7 +389,7 @@ private fun RemoteControlCard(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         FilledTonalIconButton(onClick = { manager.sendRemoteCommand(PlaybackActions.SKIP_PREV) }) {
-                            Icon(Icons.Rounded.SkipPrevious, contentDescription = "Previous")
+                            Icon(painterResource(R.drawable.skip_previous), contentDescription = "Previous")
                         }
                         FilledTonalIconButton(onClick = {
                             if (current.isPlaying) {
@@ -417,13 +399,13 @@ private fun RemoteControlCard(
                             }
                         }) {
                             Icon(
-                                if (current.isPlaying) Icons.Rounded.PauseCircle else Icons.Rounded.PlayCircle,
+                                painterResource(if (current.isPlaying) R.drawable.pause else R.drawable.play),
                                 contentDescription = if (current.isPlaying) "Pause" else "Play",
                                 modifier = Modifier.size(32.dp),
                             )
                         }
                         FilledTonalIconButton(onClick = { manager.sendRemoteCommand(PlaybackActions.SKIP_NEXT) }) {
-                            Icon(Icons.Rounded.SkipNext, contentDescription = "Next")
+                            Icon(painterResource(R.drawable.skip_next), contentDescription = "Next")
                         }
                     }
 
